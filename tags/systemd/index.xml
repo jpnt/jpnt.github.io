@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>systemd on jpnt&#39;s website</title>
-    <link>http://example.org/tags/systemd/</link>
+    <link>https://jpnt.github.io/tags/systemd/</link>
     <description>Recent content in systemd on jpnt&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 30 Jul 2021 13:47:02 +0000</lastBuildDate><atom:link href="http://example.org/tags/systemd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Jul 2021 13:47:02 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/systemd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Disable Suspend on Linux</title>
-      <link>http://example.org/posts/disable-suspend/</link>
+      <link>https://jpnt.github.io/posts/disable-suspend/</link>
       <pubDate>Fri, 30 Jul 2021 13:47:02 +0000</pubDate>
       
-      <guid>http://example.org/posts/disable-suspend/</guid>
+      <guid>https://jpnt.github.io/posts/disable-suspend/</guid>
       <description>Disable / Mask services using systemctl sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target Edit &amp;ldquo;/etc/systemd/logind.conf&amp;rdquo; to avoid errors and high CPU usage HandleSuspendKey=ignore HandleHibernateKey=ignore HandleLidSwitch=ignore HandleLidSwitchExternalPower=ignore HandleLidSwitchDocked=ignore Restart systemd-logind sudo systemctl restart systemd-logind Check for errors journalctl -xe That&amp;rsquo;s it!</description>
     </item>
     
