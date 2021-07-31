@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on jpnt&#39;s website</title>
+    <link>http://example.org/posts/</link>
+    <description>Recent content in Posts on jpnt&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Fri, 30 Jul 2021 13:47:02 +0000</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Disable Suspend on Linux</title>
+      <link>http://example.org/posts/disable-suspend/</link>
+      <pubDate>Fri, 30 Jul 2021 13:47:02 +0000</pubDate>
+      
+      <guid>http://example.org/posts/disable-suspend/</guid>
+      <description>Disable / Mask services using systemctl sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target Edit &amp;ldquo;/etc/systemd/logind.conf&amp;rdquo; to avoid errors and high CPU usage HandleSuspendKey=ignore HandleHibernateKey=ignore HandleLidSwitch=ignore HandleLidSwitchExternalPower=ignore HandleLidSwitchDocked=ignore Restart systemd-logind sudo systemctl restart systemd-logind Check for errors journalctl -xe That&amp;rsquo;s it!</description>
+    </item>
+    
+    <item>
+      <title>First Post</title>
+      <link>http://example.org/posts/first-post/</link>
+      <pubDate>Fri, 30 Jul 2021 11:03:15 +0000</pubDate>
+      
+      <guid>http://example.org/posts/first-post/</guid>
+      <description>First post! This website is built with Hugo and I am using the Archie theme. int main() { cout &amp;lt;&amp;lt; &amp;#34;Welcome to my website!&amp;#34;; } </description>
+    </item>
+    
+  </channel>
+</rss>
