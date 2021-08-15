@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on jpnt&#39;s website</title>
+    <link>https://jpnt.github.io/tags/rust/</link>
+    <description>Recent content in rust on jpnt&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Mon, 02 Aug 2021 15:44:10 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust Ownership</title>
+      <link>https://jpnt.github.io/posts/rust-ownership/</link>
+      <pubDate>Mon, 02 Aug 2021 15:44:10 +0000</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/rust-ownership/</guid>
+      <description>Understanding Ownership Ownership is what enables Rust to make memory safety guarantees without needing a garbage collector.
+What is a Garbage collector? Garbage collection (GC) is a form of automatic memory management.
+It attempts to reclaim memory which was allocated by the program, but is no longer used &amp;mdash; hence the name garbage.
+GC exists to relieve the programmer from manually managing memory, which can be susceptible to errors such as memory leaks.</description>
+    </item>
+    
+  </channel>
+</rss>

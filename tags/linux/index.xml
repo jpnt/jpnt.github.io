@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 31 Jul 2021 19:06:06 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Aug 2021 18:52:51 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Save Battery on Linux</title>
+      <link>https://jpnt.github.io/posts/battery-linux/</link>
+      <pubDate>Wed, 04 Aug 2021 18:52:51 +0000</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/battery-linux/</guid>
+      <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.
+How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.
+However, I will install it from source code, since this way will work on most Linux distributions.
+ Clone the git repository:  git clone https://github.</description>
+    </item>
+    
     <item>
       <title>Pop!_OS Install</title>
       <link>https://jpnt.github.io/posts/popos-install/</link>
