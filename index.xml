@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Wed, 04 Aug 2021 18:52:51 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jan 2022 22:41:20 -0100</lastBuildDate><atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LEARN LINUX THE RIGHT WAY</title>
+      <link>https://jpnt.github.io/posts/learn-linux/</link>
+      <pubDate>Thu, 06 Jan 2022 22:41:20 -0100</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/learn-linux/</guid>
+      <description>WHAT IS LINUX?  Concept of a kernel  Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel   Open source nature  Worldwide development You can contribute to it    WHAT IS A LINUX DISTRIBUTION  OS based on monolithic Linux kernel  WHAT MAKES A LINUX DISTRIBUTION  Core: libc; Base: coreutils; Extras;  Most Linux distros differ on Extras    DIFFERENCE BETWEEM LINUX DISTROS  User-friendly vs user-centric distros Rolling release vs fixed release * Linux Mint vs Arch Binary vs Source based  INSTALLING SOFTWARE ON A LINUX DISTRO  A linux distro distributes packages Package manager: apt, pacman  apt install firefox pacman -S firefox    FLEXIBILITY OF LINUX  Used on super computers  100% of top 500   Used on the server  96% of top 1,000,000   Used on personal computers  INSTRODUCTION TO THE TERMINAL  Commands are programs  ls, cd, cat, pwd, whoami, echo, ps Learn every command: man &amp;lt;command&amp;gt;   Everything is a file  Programs, devices and drivers are files ls /dev, ls /bin    AUTOMATION AND SCRIPTING  Bash scripts  Shell vs Terminal Variables: PATH, export, env #!</description>
+    </item>
+    
     <item>
       <title>Save Battery on Linux</title>
       <link>https://jpnt.github.io/posts/battery-linux/</link>
@@ -59,7 +68,7 @@ Pop!_OS comes in two versions: the latest, and the LTS (Long Term Support). I wi
       <pubDate>Fri, 30 Jul 2021 12:59:15 +0000</pubDate>
       
       <guid>https://jpnt.github.io/about/</guid>
-      <description>Welcome to my personal website! My name&amp;rsquo;s João Pinto (jpnt), and my passions are Software Engineering, Low Level Computing, Computer Networking and DevOps / Automation / Deployment. Some of the programming languages I&amp;rsquo;ve used so far: Visual Basic, C, C#, C++, Python and Rust. I&amp;rsquo;ve not mastered any of these, but at the moment I&amp;rsquo;m just using Rust, since I&amp;rsquo;m really enjoying it. </description>
+      <description>First of all, welcome to my personal website! My name&amp;rsquo;s João Pinto (jpnt) and my passions are Programming, Operating Systems, Low Level Computing, Computer Networking, Linux and DevOps. Programming languages I&amp;rsquo;m familiar with: C, C++, C#, Rust and Python. Check out my projects at https://github.com/jpnt </description>
     </item>
     
   </channel>

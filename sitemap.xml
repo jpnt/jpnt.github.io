@@ -1,74 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/learn-linux/</loc>
+    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/tags/linux/</loc>
-    <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/</loc>
+    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/tutorial/</loc>
+    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/posts/battery-linux/</loc>
     <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpnt.github.io/tags/</loc>
-    <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jpnt.github.io/tags/tutorial/</loc>
-    <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/tags/programming/</loc>
     <lastmod>2021-08-02T15:44:10+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/tags/rust/</loc>
     <lastmod>2021-08-02T15:44:10+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/posts/rust-ownership/</loc>
     <lastmod>2021-08-02T15:44:10+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/posts/popos-install/</loc>
     <lastmod>2021-07-31T19:06:06+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/posts/disable-suspend/</loc>
     <lastmod>2021-07-30T13:47:02+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/tags/systemd/</loc>
     <lastmod>2021-07-30T13:47:02+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/about/</loc>
     <lastmod>2021-07-30T12:59:15+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jpnt.github.io/categories/</loc>
   </url>
-  
 </urlset>

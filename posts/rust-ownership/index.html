@@ -7,9 +7,10 @@
 	<meta property="og:title" content="Rust Ownership" />
 <meta property="og:description" content="Understanding how Ownership works in Rust" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jpnt.github.io/posts/rust-ownership/" />
+<meta property="og:url" content="https://jpnt.github.io/posts/rust-ownership/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-02T15:44:10+00:00" />
 <meta property="article:modified_time" content="2021-08-02T15:44:10+00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rust Ownership"/>
 <meta name="twitter:description" content="Understanding how Ownership works in Rust"/>
@@ -75,7 +76,7 @@
 </ol>
 <p><strong>Example:</strong></p>
 <p>After the variable <strong>goes out of scope</strong>, it is not valid anymore:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {			<span style="color:#75715e">// x is not valid here, it&#39;s not declared yet.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {			<span style="color:#75715e">// x is not valid here, it&#39;s not declared yet.
 </span><span style="color:#75715e"></span>	
 	<span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;		<span style="color:#75715e">// integer x is declared, x is valid from now on.
 </span><span style="color:#75715e"></span>	
@@ -85,10 +86,10 @@
 }					<span style="color:#75715e">// the scope ends here, x is not valid anymore.
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">print_x</span>(){
-	println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
+	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
 }
 </code></pre></div><p>If we try to run this we will get the following <strong>error</strong>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">error<span style="color:#f92672">[</span>E0425<span style="color:#f92672">]</span>: cannot find value <span style="color:#e6db74">`</span>x<span style="color:#e6db74">`</span> in this scope
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">error<span style="color:#f92672">[</span>E0425<span style="color:#f92672">]</span>: cannot find value <span style="color:#e6db74">`</span>x<span style="color:#e6db74">`</span> in this scope
   --&gt; main.rs:10:20
    |
 <span style="color:#ae81ff">10</span> |     println!<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{}&#34;</span>, x<span style="color:#f92672">)</span>;
@@ -99,11 +100,11 @@ error: aborting due to previous error
 For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0425<span style="color:#e6db74">`</span>.
 </code></pre></div><p><strong>Another example:</strong></p>
 <p>Every variable in the stack has a <strong>known fixed size:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() { 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() { 
     <span style="color:#66d9ef">let</span> stack_int: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">// 32 bit integer to the stack
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_float: <span style="color:#66d9ef">f64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20.</span>;		<span style="color:#75715e">// 64 bit float to the stack
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_bool: <span style="color:#66d9ef">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;	<span style="color:#75715e">// bool variable to the stack (true or false)
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_char: <span style="color:#a6e22e">char</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;		<span style="color:#75715e">// char data type to the stack (fixed size)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_char: <span style="color:#66d9ef">char</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;		<span style="color:#75715e">// char data type to the stack (fixed size)
 </span><span style="color:#75715e"></span>	<span style="color:#66d9ef">let</span> stack_str: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;	<span style="color:#75715e">// &amp;str (string that consists of unsigned 8 bit integers)
 </span><span style="color:#75715e"></span>}
 </code></pre></div><p>Learn more about strings in Rust at: <a href="https://doc.rust-lang.org/rust-by-example/std/str.html">https://doc.rust-lang.org/rust-by-example/std/str.html</a></p>
@@ -115,25 +116,25 @@ For more information about this error, try <span style="color:#e6db74">`</span>r
 <li>Memory can live beyond the scope that created it.</li>
 <li>Memory is retrieved when the Owner goes out of scope.</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>; 
 <span style="color:#75715e">/*  |    |
 </span><span style="color:#75715e">    |    +--&gt; Value
 </span><span style="color:#75715e">    V     
 </span><span style="color:#75715e">  Owner				*/</span>
 </code></pre></div><p><strong>Example:</strong></p>
 <p>When the <strong>Owner</strong> goes out of scope, the memory is retrieved:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
 	<span style="color:#66d9ef">let</span> heap_string: String <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Hello&#34;</span>);	<span style="color:#75715e">// Heap String (vector of bytes)
 </span><span style="color:#75715e"></span>
 	<span style="color:#66d9ef">let</span> heap_string_2 <span style="color:#f92672">=</span> heap_string;   <span style="color:#75715e">/* heap_string value is assigned to heap_string_2
 </span><span style="color:#75715e">									      a copy is not created because the ownership of
 </span><span style="color:#75715e">										  heap_string is transferred to heap_string_2,
 </span><span style="color:#75715e">								   	      and heap_string gets destroyed (out of scope) */</span>
-	println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string);
-	println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string_2);
+	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string);
+	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string_2);
 }
 </code></pre></div><p>This will print an <strong>error</strong> because <strong>heap_string</strong> Ownership is moved to <strong>heap_string_2</strong>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: borrow of moved value: <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span>                                           
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: borrow of moved value: <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span>                                           
  --&gt; main.rs:6:17                                                                            
   |                                                                                          
 <span style="color:#ae81ff">2</span> |     let heap_string: String <span style="color:#f92672">=</span> String::from<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello&#34;</span><span style="color:#f92672">)</span>;                                     
@@ -185,7 +186,7 @@ For more information about this error, try <span style="color:#e6db74">`</span>r
 </main>
 <footer>
 <hr><a class="soc" href="https://github.com/jpnt" title="GitHub"><i data-feather="github"></i></a>|⚡️
-	2021  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+	2022  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
 </footer>
 
 
