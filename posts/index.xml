@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Thu, 06 Jan 2022 22:41:20 -0100</lastBuildDate><atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jan 2022 21:02:39 -0100</lastBuildDate><atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modern Software is a disaster</title>
+      <link>https://jpnt.github.io/posts/modern-software/</link>
+      <pubDate>Sat, 15 Jan 2022 21:02:39 -0100</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/modern-software/</guid>
+      <description>&amp;ldquo;Designing simple and elegant software is far more difficult than letting ad-hoc or over-ambitious features obscure the code over time.&amp;rdquo; &amp;ndash; suckless.org
+We live in a really agitated world where information flows much faster than anyone could ever grasp. Due to the agile technological advancements and the appearance of new technologies every day, the demand for people on the Information Technology is extremely high.
+However, because there is still so much software to write, there is no market pressure in the software space to ship high quality code.</description>
+    </item>
+    
     <item>
       <title>LEARN LINUX THE RIGHT WAY</title>
       <link>https://jpnt.github.io/posts/learn-linux/</link>
