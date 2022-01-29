@@ -14,7 +14,7 @@
       <pubDate>Fri, 28 Jan 2022 22:06:11 -0100</pubDate>
       
       <guid>https://jpnt.github.io/posts/cloud-native/</guid>
-      <description>Cloud Native is Modern Software approach that makes use of cloud computing to build and execute scalable programs.
+      <description>Cloud Native is a Modern Software approach that makes use of cloud computing to build and execute scalable programs.
 The goal of Cloud Native development Speed of software development.
 The concepts of Cloud Native Cloud Native development is divided into four aspects:
   DevOps
@@ -23,7 +23,7 @@ The concepts of Cloud Native Cloud Native development is divided into four aspec
     </item>
     
     <item>
-      <title>Take Notes on VIM</title>
+      <title>Take Notes in VIM</title>
       <link>https://jpnt.github.io/posts/vimwiki/</link>
       <pubDate>Fri, 28 Jan 2022 20:26:06 -0100</pubDate>
       
