@@ -60,22 +60,22 @@ VIM, why not take notes on your own text editor?</p>
 <p>Make sure you have some type of VIM plugin manager installed.
 Personally, I use ´vim-plug´.</p>
 <p>Install ´vim-plug´ for VIM, on Unix based systems:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -fLo ~/.vim/autoload/plug.vim --create-dirs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-</code></pre></div><p>Documentation is available at: <a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -fLo ~/.vim/autoload/plug.vim --create-dirs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+</span></span></code></pre></div><p>Documentation is available at: <a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a></p>
 <h2 id="install-vimwiki">Install vimwiki</h2>
 <p>Edit ´~/.vimrc´ to configure VIM and make it use vimwiki:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">call plug#begin()
-
-Plug &#39;vimwiki/vimwiki&#39;
-
-call plug#end()
-</code></pre></div><p>Documentation is available at: <a href="https://github.com/vimwiki/vimwiki">https://github.com/vimwiki/vimwiki</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>call plug#begin()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Plug &#39;vimwiki/vimwiki&#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>call plug#end()
+</span></span></code></pre></div><p>Documentation is available at: <a href="https://github.com/vimwiki/vimwiki">https://github.com/vimwiki/vimwiki</a></p>
 <h2 id="configure-vimwiki">Configure vimwiki</h2>
 <p>Now, we will configure vimwiki to use Markdown syntax and save
 the notes on a custom path. Once again, edit ´~/.vimrc´:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let g:vimwiki_list = [{&#39;path&#39;: &#39;~/Documents/vimwiki/&#39;, &#39;syntax&#39;: &#39;markdown&#39;, &#39;ext&#39;: &#39;.md&#39;}]
-</code></pre></div><h2 id="using-vimwiki">Using vimwiki</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let g:vimwiki_list = [{&#39;path&#39;: &#39;~/Documents/vimwiki/&#39;, &#39;syntax&#39;: &#39;markdown&#39;, &#39;ext&#39;: &#39;.md&#39;}]
+</span></span></code></pre></div><h2 id="using-vimwiki">Using vimwiki</h2>
 <p>All that is left is to actually use it! Open VIM and then type: <code>\ww</code></p>
 <p>This will open ´index.md´, some sort of homepage where you can
 put your topics and organize them however you like.</p>

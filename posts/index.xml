@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 28 Jan 2022 22:06:11 -0100</lastBuildDate><atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 May 2022 23:21:40 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Steam on Void Linux</title>
+      <link>https://jpnt.github.io/posts/voidlinux-steam/</link>
+      <pubDate>Mon, 30 May 2022 23:21:40 +0000</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/voidlinux-steam/</guid>
+      <description>How to install Steam on Void Linux 1. Non-free repositories To install Steam, you will need to enable the non-free repositories. To do so, install the non-free repository packages:
+# xbps-install -S void-repo-nonfree void-repo-multilib-nonfree 2. Install Steam Now, you should have the Steam package available. To install it:
+# xbps-install -S steam 3. Additional packages Unlike the Arch Linux steam package, in Void Linux this package does not contain the additional library packages.</description>
+    </item>
+    
     <item>
       <title>Cloud Native</title>
       <link>https://jpnt.github.io/posts/cloud-native/</link>

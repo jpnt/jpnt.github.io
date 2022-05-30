@@ -76,38 +76,38 @@
 </ol>
 <p><strong>Example:</strong></p>
 <p>After the variable <strong>goes out of scope</strong>, it is not valid anymore:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {			<span style="color:#75715e">// x is not valid here, it&#39;s not declared yet.
-</span><span style="color:#75715e"></span>	
-	<span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;		<span style="color:#75715e">// integer x is declared, x is valid from now on.
-</span><span style="color:#75715e"></span>	
-	print_x();	    <span style="color:#75715e">// this runs the function &#34;print_x&#34; that is not
-</span><span style="color:#75715e"></span>					<span style="color:#75715e">// on the &#34;main&#34; function scope.
-</span><span style="color:#75715e"></span>
-}					<span style="color:#75715e">// the scope ends here, x is not valid anymore.
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">print_x</span>(){
-	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
-}
-</code></pre></div><p>If we try to run this we will get the following <strong>error</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">error<span style="color:#f92672">[</span>E0425<span style="color:#f92672">]</span>: cannot find value <span style="color:#e6db74">`</span>x<span style="color:#e6db74">`</span> in this scope
-  --&gt; main.rs:10:20
-   |
-<span style="color:#ae81ff">10</span> |     println!<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{}&#34;</span>, x<span style="color:#f92672">)</span>;
-   |                    ^ not found in this scope
-
-error: aborting due to previous error
-
-For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0425<span style="color:#e6db74">`</span>.
-</code></pre></div><p><strong>Another example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {			<span style="color:#75715e">// x is not valid here, it&#39;s not declared yet.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;		<span style="color:#75715e">// integer x is declared, x is valid from now on.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span>	print_x();	    <span style="color:#75715e">// this runs the function &#34;print_x&#34; that is not
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>					<span style="color:#75715e">// on the &#34;main&#34; function scope.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>}					<span style="color:#75715e">// the scope ends here, x is not valid anymore.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">print_x</span>(){
+</span></span><span style="display:flex;"><span>	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If we try to run this we will get the following <strong>error</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>error<span style="color:#f92672">[</span>E0425<span style="color:#f92672">]</span>: cannot find value <span style="color:#e6db74">`</span>x<span style="color:#e6db74">`</span> in this scope
+</span></span><span style="display:flex;"><span>  --&gt; main.rs:10:20
+</span></span><span style="display:flex;"><span>   |
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> |     println!<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{}&#34;</span>, x<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>   |                    ^ not found in this scope
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>error: aborting due to previous error
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0425<span style="color:#e6db74">`</span>.
+</span></span></code></pre></div><p><strong>Another example:</strong></p>
 <p>Every variable in the stack has a <strong>known fixed size:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() { 
-    <span style="color:#66d9ef">let</span> stack_int: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">// 32 bit integer to the stack
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_float: <span style="color:#66d9ef">f64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20.</span>;		<span style="color:#75715e">// 64 bit float to the stack
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_bool: <span style="color:#66d9ef">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;	<span style="color:#75715e">// bool variable to the stack (true or false)
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_char: <span style="color:#66d9ef">char</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;		<span style="color:#75715e">// char data type to the stack (fixed size)
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">let</span> stack_str: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;	<span style="color:#75715e">// &amp;str (string that consists of unsigned 8 bit integers)
-</span><span style="color:#75715e"></span>}
-</code></pre></div><p>Learn more about strings in Rust at: <a href="https://doc.rust-lang.org/rust-by-example/std/str.html">https://doc.rust-lang.org/rust-by-example/std/str.html</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> stack_int: <span style="color:#66d9ef">i32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">// 32 bit integer to the stack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_float: <span style="color:#66d9ef">f64</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20.</span>;		<span style="color:#75715e">// 64 bit float to the stack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_bool: <span style="color:#66d9ef">bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;	<span style="color:#75715e">// bool variable to the stack (true or false)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> stack_char: <span style="color:#66d9ef">char</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;		<span style="color:#75715e">// char data type to the stack (fixed size)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">let</span> stack_str: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;	<span style="color:#75715e">// &amp;str (string that consists of unsigned 8 bit integers)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Learn more about strings in Rust at: <a href="https://doc.rust-lang.org/rust-by-example/std/str.html">https://doc.rust-lang.org/rust-by-example/std/str.html</a></p>
 <hr>
 <h2 id="heap">Heap</h2>
 <ol>
@@ -116,41 +116,41 @@ For more information about this error, try <span style="color:#e6db74">`</span>r
 <li>Memory can live beyond the scope that created it.</li>
 <li>Memory is retrieved when the Owner goes out of scope.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>; 
-<span style="color:#75715e">/*  |    |
-</span><span style="color:#75715e">    |    +--&gt; Value
-</span><span style="color:#75715e">    V     
-</span><span style="color:#75715e">  Owner				*/</span>
-</code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">22</span>; 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*  |    |
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    |    +--&gt; Value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    V     
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Owner				*/</span>
+</span></span></code></pre></div><p><strong>Example:</strong></p>
 <p>When the <strong>Owner</strong> goes out of scope, the memory is retrieved:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
-	<span style="color:#66d9ef">let</span> heap_string: String <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Hello&#34;</span>);	<span style="color:#75715e">// Heap String (vector of bytes)
-</span><span style="color:#75715e"></span>
-	<span style="color:#66d9ef">let</span> heap_string_2 <span style="color:#f92672">=</span> heap_string;   <span style="color:#75715e">/* heap_string value is assigned to heap_string_2
-</span><span style="color:#75715e">									      a copy is not created because the ownership of
-</span><span style="color:#75715e">										  heap_string is transferred to heap_string_2,
-</span><span style="color:#75715e">								   	      and heap_string gets destroyed (out of scope) */</span>
-	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string);
-	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string_2);
-}
-</code></pre></div><p>This will print an <strong>error</strong> because <strong>heap_string</strong> Ownership is moved to <strong>heap_string_2</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: borrow of moved value: <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span>                                           
- --&gt; main.rs:6:17                                                                            
-  |                                                                                          
-<span style="color:#ae81ff">2</span> |     let heap_string: String <span style="color:#f92672">=</span> String::from<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello&#34;</span><span style="color:#f92672">)</span>;                                     
-  |         ----------- move occurs because <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span> has type <span style="color:#e6db74">`</span>String<span style="color:#e6db74">`</span>, which does not i
-mplement the <span style="color:#e6db74">`</span>Copy<span style="color:#e6db74">`</span> trait                                                                    
-<span style="color:#ae81ff">3</span> |                                                                                          
-<span style="color:#ae81ff">4</span> |     let heap_string_2 <span style="color:#f92672">=</span> heap_string;                                                     
-  |                         ----------- value moved here                                     
-<span style="color:#ae81ff">5</span> |                                                                                          
-<span style="color:#ae81ff">6</span> |     println!<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{}&#34;</span>, heap_string<span style="color:#f92672">)</span>;                                                         
-  |                    ^^^^^^^^^^^ value borrowed here after move                            
-                                                                                             
-error: aborting due to previous error                                                        
-                                                                                             
-For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0382<span style="color:#e6db74">`</span>.
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> heap_string: String <span style="color:#f92672">=</span> String::from(<span style="color:#e6db74">&#34;Hello&#34;</span>);	<span style="color:#75715e">// Heap String (vector of bytes)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> heap_string_2 <span style="color:#f92672">=</span> heap_string;   <span style="color:#75715e">/* heap_string value is assigned to heap_string_2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">									      a copy is not created because the ownership of
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">										  heap_string is transferred to heap_string_2,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">								   	      and heap_string gets destroyed (out of scope) */</span>
+</span></span><span style="display:flex;"><span>	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string);
+</span></span><span style="display:flex;"><span>	println!(<span style="color:#e6db74">&#34;{}&#34;</span>, heap_string_2);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This will print an <strong>error</strong> because <strong>heap_string</strong> Ownership is moved to <strong>heap_string_2</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: borrow of moved value: <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span>                                           
+</span></span><span style="display:flex;"><span> --&gt; main.rs:6:17                                                                            
+</span></span><span style="display:flex;"><span>  |                                                                                          
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> |     let heap_string: String <span style="color:#f92672">=</span> String::from<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello&#34;</span><span style="color:#f92672">)</span>;                                     
+</span></span><span style="display:flex;"><span>  |         ----------- move occurs because <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span> has type <span style="color:#e6db74">`</span>String<span style="color:#e6db74">`</span>, which does not i
+</span></span><span style="display:flex;"><span>mplement the <span style="color:#e6db74">`</span>Copy<span style="color:#e6db74">`</span> trait                                                                    
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span> |                                                                                          
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span> |     let heap_string_2 <span style="color:#f92672">=</span> heap_string;                                                     
+</span></span><span style="display:flex;"><span>  |                         ----------- value moved here                                     
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span> |                                                                                          
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span> |     println!<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{}&#34;</span>, heap_string<span style="color:#f92672">)</span>;                                                         
+</span></span><span style="display:flex;"><span>  |                    ^^^^^^^^^^^ value borrowed here after move                            
+</span></span><span style="display:flex;"><span>                                                                                             
+</span></span><span style="display:flex;"><span>error: aborting due to previous error                                                        
+</span></span><span style="display:flex;"><span>                                                                                             
+</span></span><span style="display:flex;"><span>For more information about this error, try <span style="color:#e6db74">`</span>rustc --explain E0382<span style="color:#e6db74">`</span>.
+</span></span></code></pre></div><hr>
 <h1 id="ownership-rules">Ownership rules</h1>
 <ol>
 <li>Each value in Rust has a variable called its <strong>owner</strong></li>

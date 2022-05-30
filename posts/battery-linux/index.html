@@ -62,24 +62,24 @@
 <ol>
 <li>Clone the git repository:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/AdnanHodzic/auto-cpufreq.git
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+</span></span></code></pre></div><ol start="2">
 <li>Change the directory to the repository and execute the installer:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd auto-cpufreq <span style="color:#f92672">&amp;&amp;</span> sudo ./auto-cpufreq-installer
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd auto-cpufreq <span style="color:#f92672">&amp;&amp;</span> sudo ./auto-cpufreq-installer
+</span></span></code></pre></div><ol start="3">
 <li>Install the auto-cpufreq daemon to make changes permanent:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo auto-cpufreq --install
-</code></pre></div><p><strong>That&rsquo;s it! auto-cpufreq is installed.</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo auto-cpufreq --install
+</span></span></code></pre></div><p><strong>That&rsquo;s it! auto-cpufreq is installed.</strong></p>
 <h1 id="verify-if-auto-cpufreq-is-running">Verify if auto-cpufreq is running</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl status auto-cpufreq
-</code></pre></div><h1 id="monitor-cpu-load-using-auto-cpufreq">Monitor CPU load using auto-cpufreq</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo auto-cpufreq --stats
-</code></pre></div><h1 id="extra-install-tlp-alongside-auto-cpufreq-for-even-better-battery-life">Extra: Install TLP alongside auto-cpufreq for even better battery life</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl status auto-cpufreq
+</span></span></code></pre></div><h1 id="monitor-cpu-load-using-auto-cpufreq">Monitor CPU load using auto-cpufreq</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo auto-cpufreq --stats
+</span></span></code></pre></div><h1 id="extra-install-tlp-alongside-auto-cpufreq-for-even-better-battery-life">Extra: Install TLP alongside auto-cpufreq for even better battery life</h1>
 <p><strong>Warning: You will lose boost clocks after installing TLP.</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install tlp
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install tlp
+</span></span></code></pre></div>
 		</section>
 
 		<div class="post-tags">
