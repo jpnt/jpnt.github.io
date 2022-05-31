@@ -26,7 +26,7 @@
       <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.
 How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.
 However, I will install it from source code, since this way will work on most Linux distributions.
- Clone the git repository:  git clone https://github.</description>
+ Clone the git repository:  $ git clone https://github.</description>
     </item>
     
     <item>

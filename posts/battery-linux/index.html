@@ -56,29 +56,29 @@
 		<section class="body">
 			<h1 id="linux-on-laptops">Linux on laptops</h1>
 <p>The <strong>downside</strong> of Linux when it comes to laptops is that it&rsquo;s very <strong>power hungry</strong>, <strong>however</strong> we can fix this by installing a power saving program called <strong>auto-cpufreq</strong>.</p>
-<h1 id="how-to-install-auto-cpufreq">How to install auto-cpufreq</h1>
+<h2 id="how-to-install-auto-cpufreq">How to install auto-cpufreq</h2>
 <p>There are many ways of installing auto-cpufreq provided at <a href="https://github.com/AdnanHodzic/auto-cpufreq">https://github.com/AdnanHodzic/auto-cpufreq</a>.</p>
 <p><strong>However</strong>, I will install it from <strong>source code</strong>, since this way will work on <strong>most Linux distributions</strong>.</p>
 <ol>
 <li>Clone the git repository:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 </span></span></code></pre></div><ol start="2">
 <li>Change the directory to the repository and execute the installer:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd auto-cpufreq <span style="color:#f92672">&amp;&amp;</span> sudo ./auto-cpufreq-installer
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cd auto-cpufreq <span style="color:#f92672">&amp;&amp;</span> sudo ./auto-cpufreq-installer
 </span></span></code></pre></div><ol start="3">
 <li>Install the auto-cpufreq daemon to make changes permanent:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo auto-cpufreq --install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo auto-cpufreq --install
 </span></span></code></pre></div><p><strong>That&rsquo;s it! auto-cpufreq is installed.</strong></p>
-<h1 id="verify-if-auto-cpufreq-is-running">Verify if auto-cpufreq is running</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl status auto-cpufreq
-</span></span></code></pre></div><h1 id="monitor-cpu-load-using-auto-cpufreq">Monitor CPU load using auto-cpufreq</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo auto-cpufreq --stats
-</span></span></code></pre></div><h1 id="extra-install-tlp-alongside-auto-cpufreq-for-even-better-battery-life">Extra: Install TLP alongside auto-cpufreq for even better battery life</h1>
+<h2 id="verify-if-auto-cpufreq-is-running">Verify if auto-cpufreq is running</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ systemctl status auto-cpufreq
+</span></span></code></pre></div><h2 id="monitor-cpu-load-using-auto-cpufreq">Monitor CPU load using auto-cpufreq</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo auto-cpufreq --stats
+</span></span></code></pre></div><h2 id="extra-install-tlp-alongside-auto-cpufreq-for-even-better-battery-life">Extra: Install TLP alongside auto-cpufreq for even better battery life</h2>
 <p><strong>Warning: You will lose boost clocks after installing TLP.</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install tlp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo apt install tlp
 </span></span></code></pre></div>
 		</section>
 

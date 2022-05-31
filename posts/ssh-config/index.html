@@ -54,30 +54,34 @@
 		
 
 		<section class="body">
-			<h2 id="ssh-daemon-configuration-file">SSH Daemon Configuration File</h2>
+			<h2 id="ssh-daemon-sshd-configuration-file">SSH Daemon (sshd) Configuration File</h2>
 <p>The SSH daemon settings can be entirely configured through its configuration
-file located at <code>/etc/ssh/sshd_config</code>. Use your favorite text editor to change it.</p>
+file located at <code>/etc/ssh/sshd_config</code>. Use a text editor to modify it.</p>
 <p>Recommended settings:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>PermitRootLogin no
 </span></span><span style="display:flex;"><span>PubkeyAuthentication yes
-</span></span><span style="display:flex;"><span>AUthorizedKeysFile .ssh/authorized_keys
+</span></span><span style="display:flex;"><span>AuthorizedKeysFile .ssh/authorized_keys
 </span></span><span style="display:flex;"><span>PasswordAuthentication no
-</span></span></code></pre></div><h2 id="using-a-ssh-key">Using a SSH Key</h2>
+</span></span></code></pre></div><h2 id="how-to-use-ssh-keys">How To Use SSH Keys</h2>
 <p>The client creates a private key and sends a public key to the server.</p>
-<p>Private -&gt; Client</p>
-<p>Public -&gt; Server</p>
+<p>Private &lt;-&gt; Client</p>
+<p>Public &lt;-&gt; Server</p>
 <ol>
 <li>Create key pair in client</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -b <span style="color:#ae81ff">4096</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -b <span style="color:#ae81ff">4096</span>
 </span></span></code></pre></div><ol start="2">
-<li>Upload public key to server</li>
+<li>Copy public key to server</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-copy-id -i ~/.ssh/mykey.pub user@127.0.2.1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-copy-id -i ~/.ssh/mykey.pub user@127.0.2.1
 </span></span></code></pre></div><ol start="3">
-<li>SSH authentication agent</li>
+<li>Start SSH authentication agent</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>eval <span style="color:#e6db74">`</span>ssh-agent -s<span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ eval <span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><ol start="4">
+<li>Add private key to ssh-agent</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-add ~/.ssh/id_rsa
 </span></span></code></pre></div>
 		</section>
 
