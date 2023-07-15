@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Mon, 30 May 2022 23:21:40 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jun 2023 14:58:09 +0100</lastBuildDate><atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pointers</title>
+      <link>https://jpnt.github.io/posts/pointers/</link>
+      <pubDate>Sat, 17 Jun 2023 14:58:09 +0100</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/pointers/</guid>
+      <description>Prerequisite knowledge Data types Variables or data objects Basic C syntax Memory (will cover this here) What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).
+Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.
+So that is all a pointer is: a memory address that points to some data.</description>
+    </item>
+    
     <item>
       <title>Steam on Void Linux</title>
       <link>https://jpnt.github.io/posts/voidlinux-steam/</link>
@@ -28,9 +39,10 @@
       <description>Cloud Native is a Modern Software approach that makes use of cloud computing to build and execute scalable programs.
 The goal of Cloud Native development Speed of software development.
 The concepts of Cloud Native Cloud Native development is divided into four aspects:
-  DevOps
- Manage infrastructure as code Merge Developers and Operators    Continuous integration/Continuous development (CI/CD)
- Always shipping software Automation of testing software    Microservices</description>
+DevOps
+Manage infrastructure as code Merge Developers and Operators Continuous integration/Continuous development (CI/CD)
+Always shipping software Automation of testing software Microservices
+Scaling of application components Communication between components via APIs Containers</description>
     </item>
     
     <item>
@@ -42,7 +54,7 @@ The concepts of Cloud Native Cloud Native development is divided into four aspec
       <description>There are a lot of programs to take notes on, however, if you use VIM, why not take notes on your own text editor?
 Install a plugin manager Make sure you have some type of VIM plugin manager installed. Personally, I use ´vim-plug´.
 Install ´vim-plug´ for VIM, on Unix based systems:
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim Documentation is available at: https://github.com/junegunn/vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim Documentation is available at: https://github.com/junegunn/vim-plug
 Install vimwiki Edit ´~/.vimrc´ to configure VIM and make it use vimwiki:</description>
     </item>
     
@@ -57,7 +69,7 @@ Recommended settings:
 PermitRootLogin no PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys PasswordAuthentication no How To Use SSH Keys The client creates a private key and sends a public key to the server.
 Private &amp;lt;-&amp;gt; Client
 Public &amp;lt;-&amp;gt; Server
- Create key pair in client  $ ssh-keygen -b 4096 Copy public key to server  $ ssh-copy-id -i ~/.</description>
+Create key pair in client $ ssh-keygen -b 4096 Copy public key to server $ ssh-copy-id -i ~/.</description>
     </item>
     
     <item>
@@ -67,7 +79,8 @@ Public &amp;lt;-&amp;gt; Server
       
       <guid>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</guid>
       <description>The Information Technology field is immensely vast, however, one can break it down in three core aspects.
-What is IT?  Programming Computer Networking Operating Systems  The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.</description>
+What is IT? Programming Computer Networking Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.
+IT is not social studies and humanities, it is all about engineering and math, knowing how to approach a problem and solve it in the most optimal and correct way, it involves logic reasoning without a place for ambiguities.</description>
     </item>
     
     <item>
@@ -87,7 +100,7 @@ However, because there is still so much software to write, there is no market pr
       <pubDate>Thu, 06 Jan 2022 22:41:20 -0100</pubDate>
       
       <guid>https://jpnt.github.io/posts/learn-linux/</guid>
-      <description>WHAT IS LINUX?  Concept of a kernel  Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel   Open source nature  Worldwide development You can contribute to it    WHAT IS A LINUX DISTRIBUTION  OS based on monolithic Linux kernel  WHAT MAKES A LINUX DISTRIBUTION  Core: libc; Base: coreutils; Extras;  Most Linux distros differ on Extras    DIFFERENCE BETWEEN LINUX DISTROS  User-friendly vs user-centric distros Rolling release vs fixed release  Linux Mint vs Arch   Binary vs Source based  INSTALLING SOFTWARE ON A LINUX DISTRO  A linux distro distributes packages Package manager: apt, pacman  ´apt install firefox´ ´pacman -S firefox´    FLEXIBILITY OF LINUX  Used on super computers  100% of top 500   Used on the server  96% of top 1,000,000   Used on personal computers  INTRODUCTION TO THE TERMINAL  Commands are programs  ls, cd, cat, pwd, whoami, echo, ps Learn every command: ´man command´   Everything is a file  Programs, devices and drivers are files ´ls /dev´, ´ls /bin´    AUTOMATION AND SCRIPTING  Bash scripts  Shell vs Terminal Variables: PATH, export, env ´#!</description>
+      <description>WHAT IS LINUX? Concept of a kernel Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel Open source nature Worldwide development You can contribute to it WHAT IS A LINUX DISTRIBUTION OS based on monolithic Linux kernel WHAT MAKES A LINUX DISTRIBUTION Core: libc; Base: coreutils; Extras; Most Linux distros differ on Extras DIFFERENCE BETWEEN LINUX DISTROS User-friendly vs user-centric distros Rolling release vs fixed release Linux Mint vs Arch Binary vs Source based INSTALLING SOFTWARE ON A LINUX DISTRO A linux distro distributes packages Package manager: apt, pacman ´apt install firefox´ ´pacman -S firefox´ FLEXIBILITY OF LINUX Used on super computers 100% of top 500 Used on the server 96% of top 1,000,000 Used on personal computers INTRODUCTION TO THE TERMINAL Commands are programs ls, cd, cat, pwd, whoami, echo, ps Learn every command: ´man command´ Everything is a file Programs, devices and drivers are files ´ls /dev´, ´ls /bin´ AUTOMATION AND SCRIPTING Bash scripts Shell vs Terminal Variables: PATH, export, env ´#!</description>
     </item>
     
     <item>
@@ -99,7 +112,7 @@ However, because there is still so much software to write, there is no market pr
       <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.
 How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.
 However, I will install it from source code, since this way will work on most Linux distributions.
- Clone the git repository:  $ git clone https://github.</description>
+Clone the git repository: $ git clone https://github.com/AdnanHodzic/auto-cpufreq.git Change the directory to the repository and execute the installer: $ cd auto-cpufreq &amp;amp;&amp;amp; sudo .</description>
     </item>
     
     <item>
@@ -141,7 +154,7 @@ Pop!_OS comes in two versions: the latest, and the LTS (Long Term Support). I wi
       <pubDate>Fri, 30 Jul 2021 12:59:15 +0000</pubDate>
       
       <guid>https://jpnt.github.io/about/</guid>
-      <description>First of all, welcome to my personal website! My name&amp;rsquo;s João Pinto (jpnt) and my passions are Programming, Operating Systems, Low Level Computing, Computer Networking, Linux and DevOps. Programming languages I&amp;rsquo;m familiar with: C, C++, C#, Rust and Python. Check out my projects at https://github.com/jpnt </description>
+      <description>First of all, welcome to my personal website! My name&amp;rsquo;s João Pinto (jpnt) and my passions are Programming, Operating Systems, Low Level Computing and Computer Networking. Programming languages I&amp;rsquo;m familiar with: C, C#, Java, Rust and Python. Check out my projects at https://github.com/jpnt </description>
     </item>
     
   </channel>
