@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>memory on jpnt&#39;s website</title>
+    <link>https://jpnt.github.io/tags/memory/</link>
+    <description>Recent content in memory on jpnt&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Fri, 21 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/memory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pointers</title>
+      <link>https://jpnt.github.io/posts/pointers/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/pointers/</guid>
+      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs, and unions).
+Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.
+So that is all a pointer is: a memory address that points to some data.
+We will see how they prove to be very useful and how to use them in the C programming language.</description>
+    </item>
+    
+  </channel>
+</rss>

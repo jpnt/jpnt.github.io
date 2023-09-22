@@ -8,8 +8,8 @@
 <meta property="og:description" content="A solid introduction to pointers" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jpnt.github.io/posts/pointers/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-06-17T14:58:09+01:00" />
-<meta property="article:modified_time" content="2023-06-17T14:58:09+01:00" />
+<meta property="article:published_time" content="2023-07-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pointers"/>
 <meta name="twitter:description" content="A solid introduction to pointers"/>
@@ -48,59 +48,80 @@
 	<article>
 		<div class="title">
 			<h1 class="title">Pointers</h1>
-			<div class="meta">Posted on Jun 17, 2023</div>
+			<div class="meta">Posted on Jul 21, 2023</div>
 		</div>
 		
 
 		<section class="body">
-			<h1 id="prerequisite-knowledge">Prerequisite knowledge</h1>
-<ul>
-<li>Data types</li>
-<li>Variables or data objects</li>
-<li>Basic C syntax</li>
-<li>Memory (will cover this here)</li>
-</ul>
-<hr>
-<h1 id="what-are-pointers">What are pointers?</h1>
-<p>In programming, a pointer is a derived data type (like arrays, structs and unions).</p>
+			<h1 id="what-are-pointers">What are pointers?</h1>
+<p>In programming, a pointer is a derived data type (like arrays, structs, and unions).</p>
 <p>Instead of storing values like normal types, pointers store memory addresses
 of another data objects.
 Hence the name pointer, because these addresses &ldquo;point&rdquo; to some data.</p>
-<p>So that is all a pointer is: <strong>a memory address that points to some data</strong>.</p>
-<p>We will see how they prove to be very useful, know what they can do for us and
-how to use them in the C programming language.</p>
-<p>Before that, lets go more in depth about what a &ldquo;memory address&rdquo; is. Even if
-it is a concept you may already know, it is crucial to understand them very well
-if you want to work with pointers in lower level languages.</p>
-<h1 id="memory-addresses">Memory addresses</h1>
-<p>A memory address is a unique identifier assigned to each byte (8 bits) of memory in
-a computer. Therefore, it represents a location in computer memory, since memory is
-just a &ldquo;string of bytes&rdquo;.</p>
+<p>So that is all a pointer is: a memory address that points to some data.</p>
+<p>We will see how they prove to be very useful and how to use them in the C
+programming language.</p>
+<p>Before that, lets take a brief look at what memory and memory addresses are.</p>
+<h1 id="memory">Memory</h1>
+<p>Computer memory refers to the hardware components that store data.</p>
+<p>The basic unit of memory is a byte (8 binary digits); Each byte is uniquely
+addressable, meaning it has a specific location in memory. Similar how every
+house has a unique address in a city.</p>
+<p>Memory chips are composed of memory cells, each capable of storing a single byte.
+When the CPU needs to read or write data, it sends the memory address over the
+memory bus, triggering the appropriate location to activate, retrieving or storing
+the data.</p>
+<p>However, memory is not organized just as a raw sequence of bytes; It stores data
+in a structured manner, for example, data might be organized into variables,
+arrays, objects or executable code. Different memory locations are used for
+program code, stack, heap and other data structures.</p>
+<h1 id="memory-bus">Memory bus</h1>
+<p>You can think of the memory bus as a digital highway that connects the CPU and
+computer memory modules; It is like a high-speed road where data and instructions
+zoom back and forth.</p>
+<p>When the CPU needs to fetch or store data, it sends a memory address on the
+memory bus; This address represents a unique ID or location on a memory chip.
+The data is then transferred through the memory bus to the CPU, where it can be
+processed or used for various tasks.</p>
+<h1 id="types-of-memory">Types of memory</h1>
 <p>Computers have a memory structure hierarchy, each offering different characteristics
-such as capacity and speed. This hierarchy usually includes: registers, cache, main
-memory (RAM) and secondary memory (HDD, SSD, etc).</p>
-<p>Memory addresses primarly refer to main memory (RAM).</p>
-<p>A byte is (typically) the smallest addressable unit of memory, since memory is
-organized into small units of bytes (byte, byte, byte, byte, &hellip;).</p>
-<p>Memory addresses are represented in binary form, in a sequence of 1s and 0s. Usually,
-programmers like to use the hexadecimal numbering system because it offers a direct
-representation to binary: each 4 digits (individual bits) in binary represent 1 digit
-in hexadecimal. Therefore a byte can be represented in memory as an address with two
-digits in hexadecimal, which makes reading addresses alot easier.</p>
+such as capacity and speed.</p>
+<p>The hierarchy goes as follows (from fastest to slowest):</p>
+<ol>
+<li>Registers</li>
+</ol>
+<p>Fastest memory units, located within the CPU</p>
+<ol start="2">
+<li>Cache</li>
+</ol>
+<p>Acts as a bridge between registers and RAM</p>
+<ol start="3">
+<li>RAM (Random Access Memory)</li>
+</ol>
+<p>Main memory used by the computer for running programs</p>
+<ol start="4">
+<li>Secondary memory (NVMe, SSD, HDD, CD/DVD, &hellip;)</li>
+</ol>
+<p>Provides large non-volatile storage capacity</p>
+<p>When programming in C, memory addresses typically refer to main memory (RAM).</p>
+<h1 id="memory-addresses">Memory addresses</h1>
+<p>A memory address is a unique identifier assigned to each byte (8 bits) of memory
+in a computer; It represents a location in computer memory.</p>
+<p>Memory addresses are usually represented in hexadecimal; Programmers like to
+use the hexadecimal numbering system because it offers a direct representation
+to binary: each 4 binary digits represent 1 hexadecimal digit; A byte can be
+represented with two hexadecimal ditits.</p>
 <p>In a 32 bit system a memory address consists of 32 bits, or 4 bytes. In a 64 bit
 computer a memory address consists of 64 bits, or 8 bytes.</p>
-<p>Applying a bit of math we can calculate how many different memory addresses we can have
-in a, for example, 32 bit system: 2^32 = 4,294,967,296 unique memory locations. This
-is called address space.</p>
-<p>Working with memory in programming languages involves working with memory allocation,
-with funtions like malloc(), deallocation with free(), accessing memory (directly and
-inderectly) and pointers.</p>
-<p>Remember, keep it simple, this may seem like a lot of new concepts if its your first
-time learning about them, but it is actually really easy when you start to code and
-really understand it. But first, lets see what pointers can do for us.</p>
+<p>With a bit of math we can calculate how many different memory addresses we can have
+in a 32 bit system: 2^32 = 4,294,967,296 unique memory locations, which is 4GB;
+This is called address space.</p>
+<p>Working with memory in programming languages involves memory allocation,
+reallocation and deallocation; Accessing memory (directly and inderectly); And
+using pointers.</p>
 <h1 id="what-can-pointers-do">What can pointers do?</h1>
 <p>Altough the definition of a pointer may seem simple, there are a lot of things you
-can do with pointers that are really practical. Some of those things are:</p>
+can do with pointers that are really useful. Some of those things are:</p>
 <ul>
 <li><strong>DYNAMIC MEMORY ALLOCATION</strong></li>
 </ul>
@@ -110,7 +131,7 @@ data structures that need to grow or shrink dynamically.</p>
 <ul>
 <li><strong>EFFICIENT PASSING OF LARGE DATA</strong></li>
 </ul>
-<p>WHEN passing data to functions, rather then making copies of large data, you can
+<p>When passing data to functions, rather then making copies of large data, you can
 just pass the pointer which points to the memory location of the data. This
 avoids
 unnecessary memory consumption and improves the performance of your program.</p>
@@ -139,28 +160,22 @@ and access elements arrays more efficiently than using array indexing.</p>
 <p>Pointers provide direct access to memory, allowing memory manipulation
 operations, such as
 copying bocks of memory, comparing memory areas and so on.</p>
-<p>I hope by now that you are convinced that using pointers bring a lot of
-advantages and power to
-the programmer. Of course this power does not come without a cost. As you may
-already know:
-&ldquo;With great power, comes great responsability&rdquo;.</p>
+<p>I hope by now you are convinced that using pointers bring a lot of
+advantages and power to the programmer.</p>
 <h1 id="how-to-use-them">How to use them?</h1>
-<p>In this guide I will use the C programming language to demonstrate how to
+<p>I will use the C programming language to demonstrate how to
 use pointers.
 I highly recommend you to play with this code examples and even try to do
-something new
-in your own. You will only learn by doing.</p>
+something new in your own. You will only learn by doing.</p>
 <ul>
 <li><strong>DECLARING POINTERS</strong></li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>That is all you need! The star symbol (*) in front of the data type indicates
-that it is a pointer.</p>
-<p>Now what does it mean? <code>int* ptr;</code> declares a pointer that can hold the memory
-address of an
-integer value.</p>
+</span></span></code></pre></div><p>That is all you need!</p>
+<p><code>int* ptr</code> declares a pointer that can hold the memory address of an integer
+variable.</p>
 <ul>
 <li><strong>INITIALIZING POINTERS</strong></li>
 </ul>
@@ -168,31 +183,27 @@ integer value.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_value <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>value;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>In this example I have created an integer variable, value, and a pointer,
+</span></span></code></pre></div><p>In this example I created an integer variable, value, and a pointer,
 ptr_value, that points to
 its memory address. I assigned the address to the pointer using the &ldquo;address-of&rdquo;
 operator (&amp;).</p>
-<p>Simple right? The next step is accessing the data or value that the pointer
-points to, IE: get a
-value through its memory address, also called reference. For that we must do a
-thing called
-&ldquo;dereferencing pointers&rdquo;.</p>
+<p>Simple right? The next step is accessing the variable that the pointer
+points to, ie: get a value through its memory address, also called reference.
+For that we must dereference the pointer.</p>
 <ul>
 <li><strong>DEREFERENCING POINTERS</strong></li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_value <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>value;
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value2 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>ptr_value;
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;value2 = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, value2); <span style="color:#75715e">// value2 = 13
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><p>Here, in order to dereference a pointer I use the same star operator (*) on the
-pointer, creating
-a pointer to a pointer, which just equals to a variable, in this case value (= 13).
-Basically I am asking what the pointer points to, i.e., where does this specific
-address point to?</p>
+</span></span></code></pre></div><p>In order to dereference a pointer I use the star operator (*) on
+ptr_value, creating a pointer to a pointer, which just equals to the value
+variable.</p>
 <ul>
 <li><strong>PRINTING A POINTER OR MEMORY ADDRESS</strong></li>
 </ul>
@@ -205,11 +216,8 @@ address point to?</p>
 </span></span></code></pre></div><p>The printf function is called with the <code>%p</code> format specifier to indicate to the
 compiler that I
 am in fact trying to print a pointer variable. <code>\n</code> is new line.</p>
-<p>For now, you have covered the basics of pointers, but there is much more to
-explore! Next, I will
-talk about various techniques and concepts about pointers that programmers use
-to code and solve
-their problems.</p>
+<p>For now, you have covered the basics of pointers, but there is more to
+explore!</p>
 <h1 id="null-pointers">Null pointers</h1>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr; <span style="color:#75715e">// dont do this
@@ -409,9 +417,9 @@ address. It is important to be aware of aliasing issues in your code. Handle
 it properly to ensure correct behavior:</p>
 <ul>
 <li>Use const whenever possible</li>
-<li>Avoid overlapping types</li>
-<li>Optimize compiler flags (-O2, -O3)</li>
 <li>Use the restrict keyword (C99)</li>
+<li>Avoid casting pointers</li>
+<li>Avoid global variables</li>
 </ul>
 <h1 id="bit-manipulation">Bit manipulation</h1>
 <p>Bit manipulation with pointers involves doing bitwise operations on the binary
@@ -448,6 +456,18 @@ It allows to treat a memory location as if it stored a different type of data.</
 
 		<div class="post-tags">
 			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/programming">programming</a></li>
+					
+					<li><a href="/tags/c">c</a></li>
+					
+					<li><a href="/tags/memory">memory</a></li>
+					
+				</ul>
+			</nav>
 			
 			
 		</div>

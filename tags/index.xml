@@ -7,22 +7,40 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 28 Jan 2022 20:26:06 -0100</lastBuildDate><atom:link href="https://jpnt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>tutorial</title>
-      <link>https://jpnt.github.io/tags/tutorial/</link>
-      <pubDate>Fri, 28 Jan 2022 20:26:06 -0100</pubDate>
+      <title>c</title>
+      <link>https://jpnt.github.io/tags/c/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://jpnt.github.io/tags/tutorial/</guid>
+      <guid>https://jpnt.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>memory</title>
+      <link>https://jpnt.github.io/tags/memory/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jpnt.github.io/tags/memory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>programming</title>
       <link>https://jpnt.github.io/tags/programming/</link>
-      <pubDate>Tue, 18 Jan 2022 14:56:45 -0100</pubDate>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jpnt.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://jpnt.github.io/tags/tutorial/</link>
+      <pubDate>Fri, 28 Jan 2022 20:26:06 -0100</pubDate>
+      
+      <guid>https://jpnt.github.io/tags/tutorial/</guid>
       <description></description>
     </item>
     
