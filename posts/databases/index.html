@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Databases - jpnt&#39;s website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Introduction, Design and Normalization" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Databases" />
+<meta property="og:description" content="Introduction, Design and Normalization" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jpnt.github.io/posts/databases/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-26T16:47:56+01:00" />
+<meta property="article:modified_time" content="2023-09-26T16:47:56+01:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Databases"/>
+<meta name="twitter:description" content="Introduction, Design and Normalization"/>
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.2f9b5946627215dc1ae7fa5f82bfc9cfcab000329136befeea5733f21e77d68f.css" />
+		<link rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt&#39;s website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about_me</a>
+		
+		<a href="/tags">tags</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Databases</h1>
+			<div class="meta">Posted on Sep 26, 2023</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="introductory-concepts">Introductory Concepts</h2>
+<p>A <strong>database</strong> (DB) is defined as a collection of related data; A <strong>database management
+system</strong> (DBMS) is the software that manages and controls access to the DB.</p>
+<p>A <strong>database application</strong> is a program which interacts with the database at
+some point in its execution; <strong>Database system</strong> is a term used for a collection
+of application programs that interact with the DB along with the DBMS.</p>
+<h2 id="file-based-systems">File-Based systems</h2>
+<p>Before the database system there was the <strong>file-based system</strong> which is now obsolete.</p>
+<table>
+<thead>
+<tr>
+<th>File-based system</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>A collection of application programs that perform services for the
+end-users. Each program defines and manages its own data.</p>
+</blockquote>
+<p>The database system emerged due to <strong>problems</strong> inherent in file-based systems;
+Understanding this problems is critical and may prevent us from repeating them in
+database systems.</p>
+<ol>
+<li>
+<p>Separation an isolation of data</p>
+<ul>
+<li>When data is isolated in separate files, it is harder to access data that
+should be available.</li>
+</ul>
+</li>
+<li>
+<p>Duplication of data</p>
+<ul>
+<li>File-based systems encouraged and needed the uncontrolled duplication of data.</li>
+<li>Duplication costs time and money to enter the data more than once.</li>
+<li>It takes up additional storage space to have duplicated data.</li>
+<li>More importantly, duplication leads to <strong>loss of data integrity</strong> i.e. data
+is no longer consistent.</li>
+</ul>
+</li>
+<li>
+<p>Data dependence</p>
+<ul>
+<li>The physical structure and storage of the data files and records are defined
+in the application code; Meaning that changing an already existing structure
+difficult.</li>
+</ul>
+</li>
+<li>
+<p>Incompatible file formats</p>
+<ul>
+<li>The structure of files is embedded in the application programs, making them
+dependent on the application programming language.</li>
+</ul>
+</li>
+<li>
+<p>Fixed queries/proliferation of application programs</p>
+<ul>
+<li>File-based systems are very dependent upon the application developer, who
+has to write any queries that are required; There was no facility for asking
+unplanned or <em>ad hoc</em> queries about the data.</li>
+</ul>
+</li>
+</ol>
+<h2 id="the-database-approach">The Database Approach</h2>
+<p>These limitations of the file-based approach can be attributed to two reasons:</p>
+<ol>
+<li>
+<p>The definition of data is embedded into the application programs; It should be
+stored separately and independently.</p>
+</li>
+<li>
+<p>There is no control over the access and manipulation of data beyond that dictated
+by the application programs.</p>
+</li>
+</ol>
+<p>A new, more efficient approach was required. Then the Database and the
+DBMS emerged.</p>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>A shared collection of logically related data and its description,
+designed to meet the information needs of an organization.</p>
+</blockquote>
+<p>The database is no longer owner by one department but is a shared corporate
+resource. It is a single repository of data that can be used simultaneously by
+many departments and users.</p>
+<p>A database is also defined as a <em>self-describing
+collection of integrated records</em> because it contains the description of the data,
+known as system catalog (or metadata); This nature of the database is what provides
+program-data independence.</p>
+<p>Another very important aspect in the definition of a database is the concept of
+<em>logically related</em>. When analyzing the information needs of a organization,
+we need to identify <strong>entities</strong>, <strong>attributes</strong> and <strong>relationships</strong>; Attributes
+are the properties of entities and a relationship is an association between entities.</p>
+<table>
+<thead>
+<tr>
+<th>DBMS</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>A software system that enables users to define, create, maintain, and
+control access to the database.</p>
+</blockquote>
+<p>A Database Management System provides the following facilities:</p>
+<ol>
+<li>
+<p>Allow users to define the database, through a Data Definition Language (DLL);
+Specifying data types and structures and the restrictions on the data to be stored.</p>
+</li>
+<li>
+<p>Allow users to insert, update, delete and retrieve data through a Data
+Manipulation Language (DML); The primary language for performing DML operations is
+Structured Query Language (SQL) which provides specific commands like INSERT,
+UPDATE, DELETE and SELECT which perform the corresponding DML actions on the data
+stored in a database.</p>
+</li>
+<li>
+<p>Provide controlled access to the database; For example a security system which
+prevents unauthorized access to the DB, an integrity system to maintain the consistency
+of stored data, a concurrency control system, a recovery control system and a
+user-accessible catalog, which contain descriptions of the data in the database.</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Application Programs</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>A computer program that interacts with the database by issuing
+an appropriate request (typically an SQL statement) to the DBMS.</p>
+</blockquote>
+<p>Users may interact with the database through application programs that are used
+to create and maintain the database and to generate information.</p>
+<h2 id="database-design">Database Design</h2>
+<table>
+<thead>
+<tr>
+<th>Database Design</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>The process of creating a design that will support the enterprise’s mission
+statement and mission objectives for the required database system.</p>
+</blockquote>
+<p>There are three models of database design, from top to down:</p>
+<ol>
+<li>
+<p>Conceptual Model</p>
+<ul>
+<li>Domain Model of the data used in the organization, independent of all physical
+considerations</li>
+<li>Class association</li>
+</ul>
+</li>
+<li>
+<p>Logical Model</p>
+<ul>
+<li>Relational Model (in SQL databases)</li>
+<li>Entity association</li>
+</ul>
+</li>
+<li>
+<p>Physical Model</p>
+<ul>
+<li>Description of the implementation of the database on secondary storage; describing
+the relations, file organizations and indexes to efficiently access data.</li>
+</ul>
+</li>
+</ol>
+<h2 id="normalization">Normalization</h2>
+<p>When designing a database for an enterprise, the main goal is to create an accurate
+representation of the data; Relationships between the data and restrictions on the
+data.</p>
+<p>Normalization is a database design technique that focuses on organizing data by
+examining the relationships (<strong>functional dependencies</strong>) between attributes; It involves
+a series of steps called <strong>normal forms</strong> to ensure the data is structured efficiently
+while minimizing redundancy and maitaining data integrity.</p>
+<table>
+<thead>
+<tr>
+<th>Normalization</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>A technique for producing a set of relations with desirable properties,
+given the data requirements of an enterprise.</p>
+</blockquote>
+<h2 id="functional-dependencies">Functional Dependencies</h2>
+<p>A functional dependency is a very important concept associated with normalization which
+describes the relationship between attributes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>A --&gt; B
+</span></span></code></pre></div><p>This representation of a functional dependency means: B is functionally dependent
+on A (or A functionally determines B). In this case, A is called the determinant.</p>
+<table>
+<thead>
+<tr>
+<th>Functional Dependency</th>
+</tr>
+</thead>
+</table>
+<blockquote>
+<p>Describes the relationship between attributes in a relation.
+If A and B are attributes of a relation, B is functionally
+dependent on A, if each value of a is associated with exactly one value of B.
+(A and B may each consist of one o more attributes.)</p>
+</blockquote>
+<p>Additionally, if the determinants have the minimal number of attributes to maintain
+the functional dependency with the attribute(s) on the righthand side, it is called
+a <strong>full functional dependency</strong>.</p>
+<p>A <strong>partial dependency</strong> means that there is some attribute that can be removed from
+A and yet the dependency still holds.</p>
+<p>Now a <strong>transitive dependency</strong> is another condition where A, B and C are attributes of a
+relation such that if A &ndash;&gt; B and B &ndash;&gt; C, then C is transitively dependent on A via B
+(if A is not functionally dependent on B or C).</p>
+<h2 id="first-normal-form-1nf">First Normal Form (1NF)</h2>
+<ol>
+<li>Contains only atomic (indivisible/in the simplest form) values</li>
+<li>Each row must be uniquely identified through a primary key</li>
+<li>The order of data storage is irrelevant</li>
+</ol>
+<h2 id="second-normal-form-2nf">Second Normal Form (2NF)</h2>
+<ol>
+<li>Satisfies 1NF</li>
+<li>Every non-primary-key attribute is fully functionally dependent on the primary-key</li>
+</ol>
+<p>It eliminates partial dependencies, ensuring that each non-primary-key attribute
+depends on the entire primary key.</p>
+<h2 id="third-normal-form-3nf">Third Normal Form (3NF)</h2>
+<ol>
+<li>Satisfies 2NF</li>
+<li>No non-primary-key attribute is transitively dependent on the primary-key</li>
+</ol>
+<p>It eliminates transitive dependencies, ensuring that each non-primary-key attribute
+depends directly on the primary key.</p>
+<h4 id="references">References</h4>
+<p>Database Systems: A Practical Approach to Design, Implementation, and Management</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/jpnt" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2023  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
+</html>

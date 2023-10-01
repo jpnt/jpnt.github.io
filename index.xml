@@ -7,14 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 21 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Sep 2023 16:47:56 +0100</lastBuildDate><atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Databases</title>
+      <link>https://jpnt.github.io/posts/databases/</link>
+      <pubDate>Tue, 26 Sep 2023 16:47:56 +0100</pubDate>
+      
+      <guid>https://jpnt.github.io/posts/databases/</guid>
+      <description>Introductory Concepts A database (DB) is defined as a collection of related data; A database management system (DBMS) is the software that manages and controls access to the DB.
+A database application is a program which interacts with the database at some point in its execution; Database system is a term used for a collection of application programs that interact with the DB along with the DBMS.
+File-Based systems Before the database system there was the file-based system which is now obsolete.</description>
+    </item>
+    
     <item>
       <title>Pointers</title>
       <link>https://jpnt.github.io/posts/pointers/</link>
       <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jpnt.github.io/posts/pointers/</guid>
-      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs, and unions).
+      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).
 Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.
 So that is all a pointer is: a memory address that points to some data.
 We will see how they prove to be very useful and how to use them in the C programming language.</description>
@@ -79,9 +90,8 @@ Create key pair in client $ ssh-keygen -b 4096 Copy public key to server $ ssh-c
       <pubDate>Tue, 18 Jan 2022 14:56:45 -0100</pubDate>
       
       <guid>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</guid>
-      <description>The Information Technology field is immensely vast, however, one can break it down in three core aspects.
-What is IT? Programming Computer Networking Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.
-IT is not social studies and humanities, it is all about engineering and math, knowing how to approach a problem and solve it in the most optimal and correct way, it involves logic reasoning without a place for ambiguities.</description>
+      <description>The Information Technology field is immensely vast, however, one can break it down in these core aspects.
+What is IT? Programming Computer Networking Databases Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.</description>
     </item>
     
     <item>
