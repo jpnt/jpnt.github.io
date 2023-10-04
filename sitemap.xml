@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jpnt.github.io/tags/databases/</loc>
+    <lastmod>2023-09-26T16:47:56+01:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/posts/databases/</loc>
     <lastmod>2023-09-26T16:47:56+01:00</lastmod>
   </url><url>
@@ -11,11 +14,8 @@
     <loc>https://jpnt.github.io/posts/</loc>
     <lastmod>2023-09-26T16:47:56+01:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/c/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/memory/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/tags/</loc>
+    <lastmod>2023-09-26T16:47:56+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/pointers/</loc>
     <lastmod>2023-07-21T00:00:00+00:00</lastmod>
@@ -23,8 +23,8 @@
     <loc>https://jpnt.github.io/tags/programming/</loc>
     <lastmod>2023-07-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/tags/os/</loc>
+    <lastmod>2022-05-30T23:21:40+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/voidlinux-steam/</loc>
     <lastmod>2022-05-30T23:21:40+00:00</lastmod>
@@ -35,8 +35,8 @@
     <loc>https://jpnt.github.io/posts/vimwiki/</loc>
     <lastmod>2022-01-28T20:26:06-01:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/tutorial/</loc>
-    <lastmod>2022-01-28T20:26:06-01:00</lastmod>
+    <loc>https://jpnt.github.io/tags/networks/</loc>
+    <lastmod>2022-01-28T19:59:08-01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/ssh-config/</loc>
     <lastmod>2022-01-28T19:59:08-01:00</lastmod>
@@ -50,14 +50,8 @@
     <loc>https://jpnt.github.io/posts/learn-linux/</loc>
     <lastmod>2022-01-06T22:41:20-01:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/linux/</loc>
-    <lastmod>2022-01-06T22:41:20-01:00</lastmod>
-  </url><url>
     <loc>https://jpnt.github.io/posts/battery-linux/</loc>
     <lastmod>2021-08-04T18:52:51+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/rust/</loc>
-    <lastmod>2021-08-02T15:44:10+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/rust-ownership/</loc>
     <lastmod>2021-08-02T15:44:10+00:00</lastmod>
@@ -66,9 +60,6 @@
     <lastmod>2021-07-31T19:06:06+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/disable-suspend/</loc>
-    <lastmod>2021-07-30T13:47:02+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/systemd/</loc>
     <lastmod>2021-07-30T13:47:02+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/about/</loc>

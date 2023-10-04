@@ -77,7 +77,7 @@ Understanding these problems is critical and may prevent us from repeating them 
 database systems.</p>
 <ol>
 <li>
-<p>Separation an isolation of data</p>
+<p>Separation and isolation of data</p>
 <ul>
 <li>When data is isolated in separate files, it is harder to access data that
 should be available.</li>
@@ -214,23 +214,25 @@ statement and mission objectives for the required database system.</p>
 <li>
 <p>Conceptual Model</p>
 <ul>
-<li>Domain Model of the data used in the organization, independent of all physical
-considerations</li>
-<li>Class association</li>
+<li>Represents the domain model of the data used in the organization, independent
+of all physical considerations.</li>
+<li>Defines entity relationships.</li>
 </ul>
 </li>
 <li>
 <p>Logical Model</p>
 <ul>
-<li>Relational Model (in SQL databases)</li>
-<li>Entity association</li>
+<li>Utilizes the Relational Model (common in SQL databases).</li>
+<li>Specifies entity associations.</li>
+<li>Bridge between the high-level conceptual model and the physical implementation
+of the database.</li>
 </ul>
 </li>
 <li>
 <p>Physical Model</p>
 <ul>
-<li>Description of the implementation of the database on secondary storage; describing
-the relations, file organizations and indexes to efficiently access data.</li>
+<li>Describes the implementation of the database on secondary storage, including
+relations, file organizations and indexes to efficiently access data.</li>
 </ul>
 </li>
 </ol>
@@ -280,26 +282,291 @@ A and yet the dependency still holds.</p>
 <p>Now a <strong>transitive dependency</strong> is another condition where A, B and C are attributes of a
 relation such that if A &ndash;&gt; B and B &ndash;&gt; C, then C is transitively dependent on A via B
 (if A is not functionally dependent on B or C).</p>
+<h3 id="functional-dependency-examples">Functional Dependency Examples</h3>
+<table>
+<thead>
+<tr>
+<th>Dependency Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional Dependency</td>
+<td>In a relation &ldquo;Employees&rdquo; with attributes (EmployeeID, FirstName, LastName, Department), &ldquo;Department&rdquo; is functionally dependent on &ldquo;EmployeeID&rdquo; if each EmployeeID corresponds to exactly one Department. In this case, EmployeeID is the determinant, and Department is the dependent attribute.</td>
+</tr>
+<tr>
+<td>Full Functional Dependency</td>
+<td>In the &ldquo;Employees&rdquo; relation, if both &ldquo;FirstName&rdquo; and &ldquo;LastName&rdquo; depend on &ldquo;EmployeeID,&rdquo; it&rsquo;s a full functional dependency. For instance, if EmployeeID 101 corresponds to FirstName &ldquo;John&rdquo; and LastName &ldquo;Smith,&rdquo; and no other EmployeeID has &ldquo;John&rdquo; as the FirstName, then FirstName and LastName are fully functionally dependent on EmployeeID.</td>
+</tr>
+<tr>
+<td>Partial Dependency</td>
+<td>Imagine that in the &ldquo;Employees&rdquo; relation, &ldquo;Department&rdquo; depends on &ldquo;EmployeeID,&rdquo; but &ldquo;PhoneNumber&rdquo; depends only on &ldquo;Department.&rdquo; In this case, &ldquo;PhoneNumber&rdquo; partially depends on the primary key &ldquo;EmployeeID&rdquo; because it indirectly depends on it through &ldquo;Department.&rdquo;</td>
+</tr>
+<tr>
+<td>Transitive Dependency</td>
+<td>Suppose you have a &ldquo;Courses&rdquo; relation with attributes (CourseID, Professor, Department). If &ldquo;Professor&rdquo; depends on &ldquo;Department,&rdquo; and &ldquo;Department&rdquo; depends on &ldquo;CourseID,&rdquo; then &ldquo;Professor&rdquo; is transitively dependent on &ldquo;CourseID&rdquo; via &ldquo;Department.&rdquo;</td>
+</tr>
+</tbody>
+</table>
 <h2 id="first-normal-form-1nf">First Normal Form (1NF)</h2>
 <ol>
-<li>Contains only atomic (indivisible/in the simplest form) values</li>
-<li>Each row must be uniquely identified through a primary key</li>
+<li>Contains only atomic (indivisible) values</li>
+<li>Each row must have a unique identifier (primary-key)</li>
 <li>The order of data storage is irrelevant</li>
 </ol>
+<p>1NF ensures that each column contains indivisible values, and it requires a unique
+identifier (primary-key) for each row to distinguish them from one another.</p>
 <h2 id="second-normal-form-2nf">Second Normal Form (2NF)</h2>
 <ol>
 <li>Satisfies 1NF</li>
-<li>Every non-primary-key attribute is fully functionally dependent on the primary-key</li>
+<li>Every non-primary-key attribute is fully functionally dependent on the entire primary-key</li>
 </ol>
-<p>It eliminates partial dependencies, ensuring that each non-primary-key attribute
-depends on the entire primary key.</p>
+<p>2NF eliminates partial dependencies, ensuring that each non-primary-key attribute
+depends on the entire composite primary-key, if applicable.</p>
 <h2 id="third-normal-form-3nf">Third Normal Form (3NF)</h2>
 <ol>
 <li>Satisfies 2NF</li>
 <li>No non-primary-key attribute is transitively dependent on the primary-key</li>
 </ol>
-<p>It eliminates transitive dependencies, ensuring that each non-primary-key attribute
-depends directly on the primary key.</p>
+<p>3NF eliminates transitive dependencies, ensuring that each non-primary-key attribute
+depends directly on the primary key. Furthermore, it is worth noting that we do not
+remove candidate keys.</p>
+<h2 id="forth-and-fifth-normal-forms-4nf-and-5nf">Forth and Fifth Normal Forms (4NF and 5NF)</h2>
+<p>While the concepts of Fourth Normal Form (4NF) and Fifth Normal Form (5NF) exist,
+their practical application is quite limited, and they are rarely used in the industry.
+Typically, database designs are considered to be adequately normalized when they achieve
+the Third Normal Form (3NF).</p>
+<hr>
+<h2 id="normalization-example">Normalization Example</h2>
+<p>After comprehending these abstract concepts, it is essential to grasp how normalization
+translates into the conceptual and logical models.</p>
+<p>In the conceptual model, we focus on defining the essential entities and their attributes,
+as well as the relationships between these entities; The goal is to create a high-level
+representation of the organization data requirements.</p>
+<p>In contrast, in the logical model, we delve deeper into the specifics of how data
+will be organized and stored within the database; Creating detailed representations
+of tables, columns, primary-keys, foreign-keys and relationships between tables.</p>
+<p>Normalization contributes to these models by guiding us on how to best structure
+entities, attributes, and relationships; Eliminating anomalies of data, such as redundancy
+and ensuring a more organized data structure.</p>
+<p>Now, let us go ahead and look at some examples.</p>
+<p><strong>Initial Database structure</strong></p>
+<p>Student table:</p>
+<table>
+<thead>
+<tr>
+<th>StudentID{PK}</th>
+<th>StudentName</th>
+<th>Course</th>
+<th>Instructor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Alice</td>
+<td>Math</td>
+<td>Dr. Williams</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Bob</td>
+<td>Physics</td>
+<td>Dr. Louis</td>
+</tr>
+<tr>
+<td>103</td>
+<td>John</td>
+<td>Math</td>
+<td>Dr. Williams</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NOTE: &ldquo;PK&rdquo; means primary-key and &ldquo;FK&rdquo; is foreign-key.</p>
+</blockquote>
+<ul>
+<li>We have a &ldquo;Students&rdquo; table with attributes: StudentID, StudentName, Course and Instructor</li>
+<li>The table does not satisfy 1NF because the &ldquo;Course&rdquo; and &ldquo;Instructor&rdquo; columns are
+not atomic (indivisible) values.</li>
+</ul>
+<h3 id="1nf">1NF</h3>
+<p>In 1NF we ensure that each column contains only atomic values, we create separate tables for
+&ldquo;Course&rdquo; and &ldquo;Instructor&rdquo;. Now, the &ldquo;Student&rdquo; table contains a foreign-key reference
+to these tables.</p>
+<p>Course table:</p>
+<table>
+<thead>
+<tr>
+<th>CourseID{PK}</th>
+<th>CourseName</th>
+<th>CourseCredits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Math</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Physics</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Instructor table:</p>
+<table>
+<thead>
+<tr>
+<th>InstructorID{PK}</th>
+<th>IntructorName</th>
+<th>Acronym</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dr. Williams</td>
+<td>drw</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dr. Louis</td>
+<td>drl</td>
+</tr>
+</tbody>
+</table>
+<p>Student table (after 1NF):</p>
+<table>
+<thead>
+<tr>
+<th>StudentID{PK}</th>
+<th>StudentName</th>
+<th>CourseID{FK}</th>
+<th>InstructorID{FK}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Alice</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Bob</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>103</td>
+<td>John</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2nf">2NF</h3>
+<p>In 2NF, we ensure that non-primary-key attributes are fully functionally dependent
+on the primary-key. To help demonstrate 2NF, I will introduce a new relationship:
+&ldquo;CourseRegistration&rdquo; to handle the registration of students for specific courses.</p>
+<blockquote>
+<p>NOTE: In cases where you have a many-to-many association between tables, it is
+often necessary to create a new entity, known as a relationship entity in order to
+properly manage this association. This intermediate entity helps resolve many-to-many
+relationships in a relational database.</p>
+</blockquote>
+<p>CourseRegistration table:</p>
+<table>
+<thead>
+<tr>
+<th>StudentID{FK}</th>
+<th>CourseID{FK}</th>
+<th>RegistrationDate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>1</td>
+<td>2023-01-13</td>
+</tr>
+<tr>
+<td>102</td>
+<td>2</td>
+<td>2023-04-20</td>
+</tr>
+<tr>
+<td>103</td>
+<td>1</td>
+<td>2022-9-19</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3nf">3NF</h3>
+<p>In 3NF, we ensure that no non-primary-key attribute is transitively dependent on
+the primary key. To demonstrate this, let&rsquo;s introduce a new concept: &ldquo;Department&rdquo;
+to handle the department of each instructor.</p>
+<p>Department table:</p>
+<table>
+<thead>
+<tr>
+<th>DepartmentID{PK}</th>
+<th>DepartmentName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mathematics</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Physics</td>
+</tr>
+</tbody>
+</table>
+<p>Instructor table (after 3NF):</p>
+<table>
+<thead>
+<tr>
+<th>InstructorID{PK}</th>
+<th>InstructorName</th>
+<th>Acronym</th>
+<th>DepartmentID{FK}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dr. Williams</td>
+<td>drw</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dr. Louis</td>
+<td>drl</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>This arrangement satisfies 3NF as there are no transitive dependencies; each non-primary-key
+attribute (InstructorName, Acronym) depends directly on the primary key (InstructorID), and
+the department information is now separate.</p>
+<p>With this 3NF structure, our database is well-organized, and data integrity is maintained.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We have explored the evolution of information management, from outdated file-based
+systems to databases. The introduction of DBMS has revolutionized how we create, maintain
+and control access to data.</p>
+<p>Furthermore, we have also explored Database Design, covering Conceptual, Logical and
+Physical Models. However, the true star of the show was Normalization &ndash; a vital
+technique that ensures data efficiency and integrity by resolving functional
+dependencies and adhering to various normal forms.</p>
 <h4 id="references">References</h4>
 <p>Database Systems: A Practical Approach to Design, Implementation, and Management</p>
 
@@ -307,6 +574,14 @@ depends directly on the primary key.</p>
 
 		<div class="post-tags">
 			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/databases">databases</a></li>
+					
+				</ul>
+			</nav>
 			
 			
 		</div>
