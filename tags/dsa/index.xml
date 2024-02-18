@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dsa on jpnt&#39;s website</title>
+    <link>https://jpnt.github.io/tags/dsa/</link>
+    <description>Recent content in dsa on jpnt&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Tue, 31 Oct 2023 14:55:43 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/dsa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trees</title>
+      <link>https://jpnt.github.io/posts/trees/</link>
+      <pubDate>Tue, 31 Oct 2023 14:55:43 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/trees/</guid>
+      <description>Concepts A tree is a data structure which stores elements hierarchically; A tree is made out of a set of nodes connected by edges. Every tree has a single root node, which is a node without a parent node.&#xA;A parent node points to other nodes; Nodes pointed to are called children nodes.&#xA;Nodes with no children are called leaf nodes; Nodes with children are interior nodes.&#xA;Any node can be considered the root of a subtree.</description>
+    </item>
+  </channel>
+</rss>

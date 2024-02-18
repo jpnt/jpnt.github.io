@@ -7,51 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 21 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jpnt.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pointers</title>
       <link>https://jpnt.github.io/posts/pointers/</link>
       <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/pointers/</guid>
-      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).
-Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.
-In short, a pointer is: a variable that contains a memory address (as its value).
-We will see how they prove to be very useful and how to use them in the C programming language.</description>
+      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).&#xA;Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.&#xA;In short, a pointer is: a variable that contains a memory address (as its value).&#xA;We will see how they prove to be very useful and how to use them in the C programming language.</description>
     </item>
-    
     <item>
       <title>Why Most People Fail to Get I.T.</title>
       <link>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</link>
       <pubDate>Tue, 18 Jan 2022 14:56:45 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</guid>
-      <description>The Information Technology field is immensely vast, however, one can break it down in these core aspects.
-What is IT? Programming Computer Networking Databases Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.</description>
+      <description>The Information Technology field is immensely vast, however, one can break it down in these core aspects.&#xA;What is IT? Programming Computer Networking Databases Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.</description>
     </item>
-    
     <item>
       <title>Modern Software is a disaster</title>
       <link>https://jpnt.github.io/posts/modern-software/</link>
       <pubDate>Sat, 15 Jan 2022 21:02:39 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/modern-software/</guid>
-      <description>&amp;ldquo;Designing simple and elegant software is far more difficult than letting ad-hoc or over-ambitious features obscure the code over time.&amp;rdquo; &amp;ndash; suckless.org
-We live in a really agitated world where information flows much faster than anyone could ever grasp. Due to the agile technological advancements and the appearance of new technologies every day, the demand for people on the Information Technology sector is extremely high.
-However, because there is still so much software to write, there is no market pressure in the software space to ship high quality code.</description>
+      <description>&amp;ldquo;Designing simple and elegant software is far more difficult than letting ad-hoc or over-ambitious features obscure the code over time.&amp;rdquo; &amp;ndash; suckless.org&#xA;We live in a really agitated world where information flows much faster than anyone could ever grasp. Due to the agile technological advancements and the appearance of new technologies every day, the demand for people on the Information Technology sector is extremely high.&#xA;However, because there is still so much software to write, there is no market pressure in the software space to ship high quality code.</description>
     </item>
-    
     <item>
       <title>Rust Ownership</title>
       <link>https://jpnt.github.io/posts/rust-ownership/</link>
       <pubDate>Mon, 02 Aug 2021 15:44:10 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/rust-ownership/</guid>
-      <description>Understanding Ownership Ownership is what enables Rust to make memory safety guarantees without needing a garbage collector.
-What is a Garbage collector? Garbage collection (GC) is a form of automatic memory management.
-It attempts to reclaim memory which was allocated by the program, but is no longer used &amp;mdash; hence the name garbage.
-GC exists to relieve the programmer from manually managing memory, which can be susceptible to errors such as memory leaks.</description>
+      <description>Understanding Ownership Ownership is what enables Rust to make memory safety guarantees without needing a garbage collector.&#xA;What is a Garbage collector? Garbage collection (GC) is a form of automatic memory management.&#xA;It attempts to reclaim memory which was allocated by the program, but is no longer used &amp;mdash; hence the name garbage.&#xA;GC exists to relieve the programmer from manually managing memory, which can be susceptible to errors such as memory leaks.</description>
     </item>
-    
   </channel>
 </rss>

@@ -2,20 +2,23 @@
 <html><head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Virtual Memory - jpnt&#39;s website</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Virtual Memory This article was inspired by a book I have been reading by Igor Zhirkov, called &ldquo;Low-Level Programming&rdquo;. I will &ldquo;translate to my syntax&rdquo; his forth chapter which also talks about virtual memory.
-Motivation Virtual memory was created in order to abstract physical memory in a computer; But why was abstracting physical memory necessary?" />
+	<meta name="description" content="Concepts Physical memory is a list of bytes where each byte has an address.
+Virtual memory is an abstraction layer between the address space and physical memory. So when a program uses an address, that address does not correspond to the bytes in the actual physical location of memory; This means all addresses a program uses are virtual.
+Page table is a data structure used by the OS to map virtual addresses to the corresponding physical addresses in memory." />
 	<meta property="og:image" content=""/>
 	<meta property="og:title" content="Virtual Memory" />
-<meta property="og:description" content="Virtual Memory This article was inspired by a book I have been reading by Igor Zhirkov, called &ldquo;Low-Level Programming&rdquo;. I will &ldquo;translate to my syntax&rdquo; his forth chapter which also talks about virtual memory.
-Motivation Virtual memory was created in order to abstract physical memory in a computer; But why was abstracting physical memory necessary?" />
+<meta property="og:description" content="Concepts Physical memory is a list of bytes where each byte has an address.
+Virtual memory is an abstraction layer between the address space and physical memory. So when a program uses an address, that address does not correspond to the bytes in the actual physical location of memory; This means all addresses a program uses are virtual.
+Page table is a data structure used by the OS to map virtual addresses to the corresponding physical addresses in memory." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jpnt.github.io/posts/virtual-memory/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-26T15:02:46+00:00" />
 <meta property="article:modified_time" content="2023-07-26T15:02:46+00:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Virtual Memory"/>
-<meta name="twitter:description" content="Virtual Memory This article was inspired by a book I have been reading by Igor Zhirkov, called &ldquo;Low-Level Programming&rdquo;. I will &ldquo;translate to my syntax&rdquo; his forth chapter which also talks about virtual memory.
-Motivation Virtual memory was created in order to abstract physical memory in a computer; But why was abstracting physical memory necessary?"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Virtual Memory"/>
+<meta name="twitter:description" content="Concepts Physical memory is a list of bytes where each byte has an address.
+Virtual memory is an abstraction layer between the address space and physical memory. So when a program uses an address, that address does not correspond to the bytes in the actual physical location of memory; This means all addresses a program uses are virtual.
+Page table is a data structure used by the OS to map virtual addresses to the corresponding physical addresses in memory."/>
 <script src="https://jpnt.github.io/js/feather.min.js"></script>
 	
 	
@@ -40,7 +43,7 @@ Motivation Virtual memory was created in order to abstract physical memory in a 
 		
 		<a href="/posts">posts</a>
 		
-		<a href="/about">about me</a>
+		<a href="/about">about_me</a>
 		
 		<a href="/tags">tags</a>
 		
@@ -56,13 +59,24 @@ Motivation Virtual memory was created in order to abstract physical memory in a 
 		
 
 		<section class="body">
-			<h1 id="virtual-memory">Virtual Memory</h1>
-<p>This article was inspired by a book I have been reading by Igor Zhirkov, called
-&ldquo;Low-Level Programming&rdquo;. I will &ldquo;translate to my syntax&rdquo; his forth chapter
-which also talks about virtual memory.</p>
-<h1 id="motivation">Motivation</h1>
-<p>Virtual memory was created in order to abstract physical memory in a computer;
-But why was abstracting physical memory necessary?</p>
+			<h2 id="concepts">Concepts</h2>
+<p>Physical memory is a list of bytes where each byte has an address.</p>
+<p>Virtual memory is an abstraction layer between the <strong>address space</strong> and <strong>physical
+memory</strong>. So when a program uses an address, that address does not correspond to
+the bytes in the actual physical location of memory; This means all addresses
+a program uses are virtual.</p>
+<p>Page table is a data structure used by the OS to map virtual addresses to the
+corresponding physical addresses in memory.</p>
+<h2 id="x86_64-address-spaces">x86_64 address spaces</h2>
+<p>The x86_64 architecture is 64-bit, registers (and addresses) are 64 bits wide.</p>
+<p>But, virtual addresses on current x86_64 processors only have 48 meaningful bits.</p>
+<p>That is why, when you print an address, for example in C, you only get 12 digits
+after &ldquo;0x&rdquo; and not 16 as you should if you had 64 bit address spaces.</p>
+<h2 id="virtual-memory-layout">Virtual memory layout</h2>
+<p>Each process has the same view of memory, which is virtual address space.</p>
+<p><img src="/img/virtual-memory/virtual-memory-layout.jpg" alt=""></p>
+<h2 id="adress-spaces">Adress spaces</h2>
+<h2 id="addressing-mode">Addressing mode</h2>
 
 		</section>
 
@@ -74,7 +88,7 @@ But why was abstracting physical memory necessary?</p>
 					
 					<li><a href="/tags/programming">programming</a></li>
 					
-					<li><a href="/tags/memory">memory</a></li>
+					<li><a href="/tags/os">os</a></li>
 					
 				</ul>
 			</nav>
@@ -85,7 +99,7 @@ But why was abstracting physical memory necessary?</p>
 </main>
 <footer>
 <hr><a class="soc" href="https://github.com/jpnt" title="GitHub"><i data-feather="github"></i></a>|⚡️
-	2023  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+	2024  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
 </footer>
 
 

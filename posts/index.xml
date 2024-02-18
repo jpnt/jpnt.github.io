@@ -7,157 +7,105 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Tue, 26 Sep 2023 16:47:56 +0100</lastBuildDate><atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Feb 2024 23:30:45 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker to Podman</title>
+      <link>https://jpnt.github.io/posts/docker-to-podman/</link>
+      <pubDate>Sat, 17 Feb 2024 23:30:45 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/docker-to-podman/</guid>
+      <description>Motivation Containerization has become a common practise of modern software development; Docker has been a popular choice for container orchestration, however, as the field evolves, new tools emerge.&#xA;One of those is Podman; one of the premises of it is that it does not require a daemon, unlike docker (dockerd).&#xA;This is one of the many more reasons people are starting to migrate to podman.&#xA;For more information I recommend reading: https://docs.</description>
+    </item>
     <item>
       <title>Databases</title>
       <link>https://jpnt.github.io/posts/databases/</link>
       <pubDate>Tue, 26 Sep 2023 16:47:56 +0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/databases/</guid>
-      <description>Introductory Concepts A database (DB) is defined as a collection of related data; A database management system (DBMS) is the software that manages and controls access to the DB.
-A database application is a program which interacts with the database at some point in its execution; Database system is a term used for a collection of application programs that interact with the DB along with the DBMS.
-File-Based systems Before the database system there was the file-based system which is now obsolete.</description>
+      <description>Introductory Concepts A database (DB) is defined as a collection of related data; A database management system (DBMS) is the software that manages and controls access to the DB.&#xA;A database application is a program which interacts with the database at some point in its execution; Database system is a term used for a collection of application programs that interact with the DB along with the DBMS.&#xA;File-Based systems Before the database system there was the file-based system which is now obsolete.</description>
     </item>
-    
     <item>
       <title>Pointers</title>
       <link>https://jpnt.github.io/posts/pointers/</link>
       <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/pointers/</guid>
-      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).
-Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.
-In short, a pointer is: a variable that contains a memory address (as its value).
-We will see how they prove to be very useful and how to use them in the C programming language.</description>
+      <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).&#xA;Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.&#xA;In short, a pointer is: a variable that contains a memory address (as its value).&#xA;We will see how they prove to be very useful and how to use them in the C programming language.</description>
     </item>
-    
     <item>
       <title>Steam on Void Linux</title>
       <link>https://jpnt.github.io/posts/voidlinux-steam/</link>
       <pubDate>Mon, 30 May 2022 23:21:40 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/voidlinux-steam/</guid>
-      <description>How to install Steam on Void Linux 1. Non-free repositories To install Steam, you will need to enable the non-free repositories. To do so, install the non-free repository packages:
-# xbps-install -S void-repo-nonfree void-repo-multilib-nonfree 2. Install Steam Now, you should have the Steam package available. To install it:
-# xbps-install -S steam 3. Additional packages Unlike the Arch Linux steam package, in Void Linux this package does not contain the additional library packages.</description>
+      <description>How to install Steam on Void Linux 1. Non-free repositories To install Steam, you will need to enable the non-free repositories. To do so, install the non-free repository packages:&#xA;# xbps-install -S void-repo-nonfree void-repo-multilib-nonfree 2. Install Steam Now, you should have the Steam package available. To install it:&#xA;# xbps-install -S steam 3. Additional packages Unlike the Arch Linux steam package, in Void Linux this package does not contain the additional library packages.</description>
     </item>
-    
     <item>
       <title>Cloud Native</title>
       <link>https://jpnt.github.io/posts/cloud-native/</link>
       <pubDate>Fri, 28 Jan 2022 22:06:11 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/cloud-native/</guid>
-      <description>Cloud Native is a Modern Software approach that makes use of cloud computing to build and execute scalable programs.
-The goal of Cloud Native development Speed of software development.
-The concepts of Cloud Native Cloud Native development is divided into four aspects:
-DevOps
-Manage infrastructure as code Merge Developers and Operators Continuous integration/Continuous development (CI/CD)
-Always shipping software Automation of testing software Microservices
-Scaling of application components Communication between components via APIs Containers</description>
+      <description>Cloud Native is a Modern Software approach that makes use of cloud computing to build and execute scalable programs.&#xA;The goal of Cloud Native development Speed of software development.&#xA;The concepts of Cloud Native Cloud Native development is divided into four aspects:&#xA;DevOps&#xA;Manage infrastructure as code Merge Developers and Operators Continuous integration/Continuous development (CI/CD)&#xA;Always shipping software Automation of testing software Microservices&#xA;Scaling of application components Communication between components via APIs Containers</description>
     </item>
-    
     <item>
       <title>Take Notes in VIM</title>
       <link>https://jpnt.github.io/posts/vimwiki/</link>
       <pubDate>Fri, 28 Jan 2022 20:26:06 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/vimwiki/</guid>
-      <description>There are a lot of programs to take notes on, however, if you use VIM, why not take notes on your own text editor?
-Install a plugin manager Make sure you have some type of VIM plugin manager installed. Personally, I use ´vim-plug´.
-Install ´vim-plug´ for VIM, on Unix based systems:
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim Documentation is available at: https://github.com/junegunn/vim-plug
-Install vimwiki Edit ´~/.vimrc´ to configure VIM and make it use vimwiki:</description>
+      <description>There are a lot of programs to take notes on, however, if you use VIM, why not take notes on your own text editor?&#xA;Install a plugin manager Make sure you have some type of VIM plugin manager installed. Personally, I use ´vim-plug´.&#xA;Install ´vim-plug´ for VIM, on Unix based systems:&#xA;curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim Documentation is available at: https://github.com/junegunn/vim-plug&#xA;Install vimwiki Edit ´~/.vimrc´ to configure VIM and make it use vimwiki:</description>
     </item>
-    
     <item>
       <title>SSH Configuration</title>
       <link>https://jpnt.github.io/posts/ssh-config/</link>
       <pubDate>Fri, 28 Jan 2022 19:59:08 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/ssh-config/</guid>
-      <description>SSH Daemon (sshd) Configuration File The SSH daemon settings can be entirely configured through its configuration file located at /etc/ssh/sshd_config. Use a text editor to modify it.
-Recommended settings:
-PermitRootLogin no PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys PasswordAuthentication no How To Use SSH Keys The client creates a private key and sends a public key to the server.
-Private &amp;lt;-&amp;gt; Client
-Public &amp;lt;-&amp;gt; Server
-Create key pair in client $ ssh-keygen -b 4096 Copy public key to server $ ssh-copy-id -i ~/.</description>
+      <description>SSH Daemon (sshd) Configuration File The SSH daemon settings can be entirely configured through its configuration file located at /etc/ssh/sshd_config. Use a text editor to modify it.&#xA;Recommended settings:&#xA;PermitRootLogin no PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys PasswordAuthentication no How To Use SSH Keys The client creates a private key and sends a public key to the server.&#xA;Private &amp;lt;-&amp;gt; Client&#xA;Public &amp;lt;-&amp;gt; Server&#xA;Create key pair in client $ ssh-keygen -b 4096 Copy public key to server $ ssh-copy-id -i ~/.</description>
     </item>
-    
     <item>
       <title>Why Most People Fail to Get I.T.</title>
       <link>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</link>
       <pubDate>Tue, 18 Jan 2022 14:56:45 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</guid>
-      <description>The Information Technology field is immensely vast, however, one can break it down in these core aspects.
-What is IT? Programming Computer Networking Databases Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.</description>
+      <description>The Information Technology field is immensely vast, however, one can break it down in these core aspects.&#xA;What is IT? Programming Computer Networking Databases Operating Systems The problem The issue is that most people, even ones on the field, fail to grasp the core basics. They try to invent theories on what information technology is, and end up abstracting real problems with layers of garbage that just create new problems.</description>
     </item>
-    
     <item>
       <title>Modern Software is a disaster</title>
       <link>https://jpnt.github.io/posts/modern-software/</link>
       <pubDate>Sat, 15 Jan 2022 21:02:39 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/modern-software/</guid>
-      <description>&amp;ldquo;Designing simple and elegant software is far more difficult than letting ad-hoc or over-ambitious features obscure the code over time.&amp;rdquo; &amp;ndash; suckless.org
-We live in a really agitated world where information flows much faster than anyone could ever grasp. Due to the agile technological advancements and the appearance of new technologies every day, the demand for people on the Information Technology sector is extremely high.
-However, because there is still so much software to write, there is no market pressure in the software space to ship high quality code.</description>
+      <description>&amp;ldquo;Designing simple and elegant software is far more difficult than letting ad-hoc or over-ambitious features obscure the code over time.&amp;rdquo; &amp;ndash; suckless.org&#xA;We live in a really agitated world where information flows much faster than anyone could ever grasp. Due to the agile technological advancements and the appearance of new technologies every day, the demand for people on the Information Technology sector is extremely high.&#xA;However, because there is still so much software to write, there is no market pressure in the software space to ship high quality code.</description>
     </item>
-    
     <item>
       <title>LEARN LINUX THE RIGHT WAY</title>
       <link>https://jpnt.github.io/posts/learn-linux/</link>
       <pubDate>Thu, 06 Jan 2022 22:41:20 -0100</pubDate>
-      
       <guid>https://jpnt.github.io/posts/learn-linux/</guid>
       <description>WHAT IS LINUX? Concept of a kernel Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel Open source nature Worldwide development You can contribute to it WHAT IS A LINUX DISTRIBUTION OS based on monolithic Linux kernel WHAT MAKES A LINUX DISTRIBUTION Core: libc; Base: coreutils; Extras; Most Linux distros differ on Extras DIFFERENCE BETWEEN LINUX DISTROS User-friendly vs user-centric distros Rolling release vs fixed release Linux Mint vs Arch Binary vs Source based INSTALLING SOFTWARE ON A LINUX DISTRO A linux distro distributes packages Package manager: apt, pacman ´apt install firefox´ ´pacman -S firefox´ FLEXIBILITY OF LINUX Used on super computers 100% of top 500 Used on the server 96% of top 1,000,000 Used on personal computers INTRODUCTION TO THE TERMINAL Commands are programs ls, cd, cat, pwd, whoami, echo, ps Learn every command: ´man command´ Everything is a file Programs, devices and drivers are files ´ls /dev´, ´ls /bin´ AUTOMATION AND SCRIPTING Bash scripts Shell vs Terminal Variables: PATH, export, env ´#!</description>
     </item>
-    
     <item>
       <title>Save Battery on Linux</title>
       <link>https://jpnt.github.io/posts/battery-linux/</link>
       <pubDate>Wed, 04 Aug 2021 18:52:51 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/battery-linux/</guid>
-      <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.
-How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.
-However, I will install it from source code, since this way will work on most Linux distributions.
-Clone the git repository: $ git clone https://github.com/AdnanHodzic/auto-cpufreq.git Change the directory to the repository and execute the installer: $ cd auto-cpufreq &amp;amp;&amp;amp; sudo .</description>
+      <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.&#xA;How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.&#xA;However, I will install it from source code, since this way will work on most Linux distributions.&#xA;Clone the git repository: $ git clone https://github.com/AdnanHodzic/auto-cpufreq.git Change the directory to the repository and execute the installer: $ cd auto-cpufreq &amp;amp;&amp;amp; sudo .</description>
     </item>
-    
     <item>
       <title>Rust Ownership</title>
       <link>https://jpnt.github.io/posts/rust-ownership/</link>
       <pubDate>Mon, 02 Aug 2021 15:44:10 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/rust-ownership/</guid>
-      <description>Understanding Ownership Ownership is what enables Rust to make memory safety guarantees without needing a garbage collector.
-What is a Garbage collector? Garbage collection (GC) is a form of automatic memory management.
-It attempts to reclaim memory which was allocated by the program, but is no longer used &amp;mdash; hence the name garbage.
-GC exists to relieve the programmer from manually managing memory, which can be susceptible to errors such as memory leaks.</description>
+      <description>Understanding Ownership Ownership is what enables Rust to make memory safety guarantees without needing a garbage collector.&#xA;What is a Garbage collector? Garbage collection (GC) is a form of automatic memory management.&#xA;It attempts to reclaim memory which was allocated by the program, but is no longer used &amp;mdash; hence the name garbage.&#xA;GC exists to relieve the programmer from manually managing memory, which can be susceptible to errors such as memory leaks.</description>
     </item>
-    
     <item>
       <title>Pop!_OS Install</title>
       <link>https://jpnt.github.io/posts/popos-install/</link>
       <pubDate>Sat, 31 Jul 2021 19:06:06 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/popos-install/</guid>
-      <description>Pop!_OS is a free and open-source Linux distribution, based on Ubuntu, and it uses the GNOME desktop.
-It provides full support for AMD and Nvidia graphics cards out-of-the-box, which makes it an excellent choice for beginners.
-Download Pop!_OS Go to https://pop.system76.com/ and click on download.
-Pop!_OS comes in two versions: the latest, and the LTS (Long Term Support). I will choose the latest, since I want to use the latest features.</description>
+      <description>Pop!_OS is a free and open-source Linux distribution, based on Ubuntu, and it uses the GNOME desktop.&#xA;It provides full support for AMD and Nvidia graphics cards out-of-the-box, which makes it an excellent choice for beginners.&#xA;Download Pop!_OS Go to https://pop.system76.com/ and click on download.&#xA;Pop!_OS comes in two versions: the latest, and the LTS (Long Term Support). I will choose the latest, since I want to use the latest features.</description>
     </item>
-    
     <item>
       <title>Disable Suspend on Linux</title>
       <link>https://jpnt.github.io/posts/disable-suspend/</link>
       <pubDate>Fri, 30 Jul 2021 13:47:02 +0000</pubDate>
-      
       <guid>https://jpnt.github.io/posts/disable-suspend/</guid>
       <description>Disable / Mask services using systemctl sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target Edit &amp;ldquo;/etc/systemd/logind.conf&amp;rdquo; to avoid errors and high CPU usage HandleSuspendKey=ignore HandleHibernateKey=ignore HandleLidSwitch=ignore HandleLidSwitchExternalPower=ignore HandleLidSwitchDocked=ignore Restart systemd-logind sudo systemctl restart systemd-logind Check for errors journalctl -xe That&amp;rsquo;s it!</description>
     </item>
-    
   </channel>
 </rss>

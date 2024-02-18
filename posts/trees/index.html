@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Trees - jpnt&#39;s website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Solid introduction to trees" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Trees" />
+<meta property="og:description" content="Solid introduction to trees" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jpnt.github.io/posts/trees/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-31T14:55:43+00:00" />
+<meta property="article:modified_time" content="2023-10-31T14:55:43+00:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Trees"/>
+<meta name="twitter:description" content="Solid introduction to trees"/>
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.2f9b5946627215dc1ae7fa5f82bfc9cfcab000329136befeea5733f21e77d68f.css" />
+		<link rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt&#39;s website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about_me</a>
+		
+		<a href="/tags">tags</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Trees</h1>
+			<div class="meta">Posted on Oct 31, 2023 <span class="draft-label">DRAFT</span> </div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="concepts">Concepts</h2>
+<p>A tree is a data structure which stores elements hierarchically; A tree is made
+out of a set of nodes connected by edges. Every tree has a single root node, which
+is a node without a parent node.</p>
+<p>A parent node points to other nodes; Nodes pointed to are called children nodes.</p>
+<p>Nodes with no children are called leaf nodes; Nodes with children are interior nodes.</p>
+<p>Any node can be considered the root of a subtree.</p>
+<p>There is a single path from the root to any node; Path length equals number of
+edges traversed.</p>
+<h3 id="ascendants-and-descendants">Ascendants and Descendants</h3>
+<p><img src="/img/trees/ascdes.png" alt=""></p>
+<p>Ascendents of node 12: 50, 90, 75.</p>
+<p>Descendants of node 90: 50, 37, 12.</p>
+<h3 id="height-and-depth">Height and depth</h3>
+<p><img src="/img/trees/height-depth.png" alt=""></p>
+<p>Height of a node: maximum path length from node to a leaf.</p>
+<p>Depth of a node: path length from the root to that node.</p>
+<h3 id="degree">Degree</h3>
+<p>Degree of a node is equal the number of its children.</p>
+<h2 id="binary-trees">Binary Trees</h2>
+<p><img src="/img/trees/binary-tree.png" alt=""></p>
+<p>A binary tree is a tree whose nodes have only 2 child references; left and right.</p>
+<h3 id="full-bt-and-perfect-bt">Full BT and Perfect BT</h3>
+<p>A full binary tree is a binary tree in which every node is a leaf or has exactly
+two children.</p>
+<ul>
+<li>has n + 1 leaves, where n is internal nodes</li>
+</ul>
+<p>A perfect binary tree is a full binary tree in which all leaves have the same depth.</p>
+<ul>
+<li>has 2h + 1 - 1 nodes, where h is height</li>
+</ul>
+<h2 id="tree-traversals">Tree Traversals</h2>
+<p>Tree traversals are methods for visiting and exploring all the nodes of a tree data structure.</p>
+<p><img src="/img/trees/tree-traversals.png" alt=""></p>
+<h2 id="binary-search-tree-bst">Binary Search Tree (BST)</h2>
+<p>What&hellip;
+In-Order = Sorted Order</p>
+<h3 id="bst-search">BST Search</h3>
+<h3 id="bst-insertion">BST Insertion</h3>
+<h3 id="bst-deletion">BST Deletion</h3>
+<h3 id="bst-performance">BST Performance</h3>
+<h2 id="avl-tree-or-balanced-trees">AVL Tree or Balanced Trees</h2>
+<h3 id="balance-factor">Balance Factor</h3>
+<h3 id="balancing-the-tree">Balancing the Tree</h3>
+<p>Rotation: Simple, Double&hellip;</p>
+<h3 id="insertion-in-avl-tree">Insertion in AVL Tree</h3>
+<h3 id="deletion-in-avl-tree">Deletion in AVL Tree</h3>
+<h3 id="bst-vs-avl-tree">BST vs AVL Tree</h3>
+<h3 id="sorting-in-avl-tree">Sorting in AVL Tree</h3>
+<h2 id="kd-trees">Kd-trees</h2>
+<p>Kd-tree can be a &ldquo;2d-tree&rdquo;, where k is the number of dimensions.</p>
+<p>A Kd-tree is a binary tree that stores a finite set of points
+from a k-dimensional space.</p>
+<p>Kd-trees are useful for searches involving a
+multidimensional search key, like nearest neighbour
+searches or range searches.</p>
+<h3 id="2d-tree">2d-tree</h3>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/programming">programming</a></li>
+					
+					<li><a href="/tags/dsa">dsa</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/jpnt" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2024  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
+</html>
