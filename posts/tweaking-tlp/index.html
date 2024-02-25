@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Tweaking TLP - jpnt&#39;s website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Make your battery last longer on Linux" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Tweaking TLP" />
+<meta property="og:description" content="Make your battery last longer on Linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jpnt.github.io/posts/tweaking-tlp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-25T18:30:59+00:00" />
+<meta property="article:modified_time" content="2024-02-25T18:30:59+00:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Tweaking TLP"/>
+<meta name="twitter:description" content="Make your battery last longer on Linux"/>
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.2f9b5946627215dc1ae7fa5f82bfc9cfcab000329136befeea5733f21e77d68f.css" />
+		<link rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt&#39;s website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about_me</a>
+		
+		<a href="/tags">tags</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Tweaking TLP</h1>
+			<div class="meta">Posted on Feb 25, 2024</div>
+		</div>
+		
+
+		<section class="body">
+			<h3 id="problem">Problem</h3>
+<p>Linux battery life on laptops is known to not be great; If you are a student or
+travel frequently you will want that your machine lasts some time.</p>
+<h3 id="solution">Solution</h3>
+<p>There are many things one can do to improve battery life:</p>
+<ol>
+<li>Lower screen brightness</li>
+<li>Turn off keyboard backlight</li>
+<li>Turn off Bluetooth</li>
+<li>Turn off Wifi</li>
+<li>Use resource efficient software</li>
+<li>Use the appropriate drivers for your system</li>
+</ol>
+<p>But I am going to focus on <strong>TLP</strong>, a power management tool which will allow us
+to optimize the battery usage on Linux.</p>
+<h3 id="installation">Installation</h3>
+<p>Install <code>tlp</code>, <code>tlp-rdw</code> and <code>smartmontools</code> to get everything you need for tlp.
+For monitoring power consumption, I recommend <code>powertop</code>.</p>
+<p>Enable the tlp service and use <code>tlp-stat</code> to ensure everything is running OK.</p>
+<h3 id="tweaks">Tweaks</h3>
+<p>Now, onto the good stuff :)</p>
+<p>In the TLP settings documentation (<a href="https://linrunner.de/tlp/settings/introduction.html">https://linrunner.de/tlp/settings/introduction.html</a>)
+it is provided a healthy amount of information that we can use to configure a
+Linux machine to use the battery in the way that we wish.</p>
+<p>We are partircularly interested in optimizing the battery life of the machine
+(<a href="https://linrunner.de/tlp/support/optimizing.html)">https://linrunner.de/tlp/support/optimizing.html)</a>.</p>
+<p>Obviously I am not going to cover all of those configuration options; Rather I
+am focusing particular to my system, encouraging you to do the same (not just
+copy and paste settings). Remember: Always test the settings to check if they
+yield the desired results.</p>
+<p>An important aspect to know is your CPU, as this will affect some options; Use
+<code>lscpu</code> to check what you are using. Then you can search on the documentation
+about your specific case.</p>
+<p>Another tip is to check powertop&rsquo;s &ldquo;Tunables&rdquo; section (press TAB 4 times); Here
+you can find devices and settings which may not have been optimized by default
+using TLP. In my case I had: &ldquo;Bad   VM writeback timeout&rdquo;. This is a kernel
+parameter which can be set by <code>sysctl</code>, but TLP can do the same just by editing
+the config file (/etc/tlp.conf) and changing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>MAX_LOST_WORK_SECS_ON_BAT=15
+</span></span></code></pre></div><p>This is just an example to illustrate how we would proceed to optimize a machine.</p>
+<p>In the documentation there are some more concrete settings we can apply in TLP:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>CPU_ENERGY_PERF_POLICY_ON_BAT=power
+</span></span><span style="display:flex;"><span>PLATFORM_PROFILE_ON_BAT=low-power
+</span></span><span style="display:flex;"><span>CPU_BOOST_ON_BAT=0
+</span></span><span style="display:flex;"><span>CPU_HWP_DYN_BOOST_ON_BAT=0
+</span></span><span style="display:flex;"><span>CPU_MAX_PERF_ON_BAT=nn # intel_pstate driver; nn &lt; 100
+</span></span></code></pre></div><p>It is highly recommend to TEST EACH ONE, and see if the power consumption is
+affected (in powertop) and if it performs as expected; Also check if fans are
+running as intended and the CPU is not throttling.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/os">os</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/jpnt" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2024  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
+</html>

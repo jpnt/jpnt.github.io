@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 17 Feb 2024 23:30:45 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Feb 2024 18:30:59 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tweaking TLP</title>
+      <link>https://jpnt.github.io/posts/tweaking-tlp/</link>
+      <pubDate>Sun, 25 Feb 2024 18:30:59 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/tweaking-tlp/</guid>
+      <description>Problem Linux battery life on laptops is known to not be great; If you are a student or travel frequently you will want that your machine lasts some time.&#xA;Solution There are many things one can do to improve battery life:&#xA;Lower screen brightness Turn off keyboard backlight Turn off Bluetooth Turn off Wifi Use resource efficient software Use the appropriate drivers for your system But I am going to focus on TLP, a power management tool which will allow us to optimize the battery usage on Linux.</description>
+    </item>
     <item>
       <title>Docker to Podman</title>
       <link>https://jpnt.github.io/posts/docker-to-podman/</link>
