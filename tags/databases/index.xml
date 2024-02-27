@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Databases on jpnt&#39;s website</title>
-    <link>http://localhost:1313/tags/databases/</link>
+    <link>https://jpnt.github.io/tags/databases/</link>
     <description>Recent content in Databases on jpnt&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
     <lastBuildDate>Tue, 26 Sep 2023 16:47:56 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jpnt.github.io/tags/databases/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Databases</title>
-      <link>http://localhost:1313/posts/databases/</link>
+      <link>https://jpnt.github.io/posts/databases/</link>
       <pubDate>Tue, 26 Sep 2023 16:47:56 +0100</pubDate>
-      <guid>http://localhost:1313/posts/databases/</guid>
+      <guid>https://jpnt.github.io/posts/databases/</guid>
       <description>Introductory Concepts A database (DB) is defined as a collection of related data; A database management system (DBMS) is the software that manages and controls access to the DB.&#xA;A database application is a program which interacts with the database at some point in its execution; Database system is a term used for a collection of application programs that interact with the DB along with the DBMS.&#xA;File-Based systems Before the database system there was the file-based system which is now obsolete.</description>
     </item>
   </channel>
