@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 28 Jan 2022 19:59:08 -0100</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2023 19:09:04 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Iproute2</title>
+      <link>http://localhost:1313/posts/iproute2/</link>
+      <pubDate>Wed, 01 Nov 2023 19:09:04 +0000</pubDate>
+      <guid>http://localhost:1313/posts/iproute2/</guid>
+      <description>iproute2 is the Linux networking toolkit that replaced net-tools (ifconfig, route, arp etc.).&#xA;This post serves mostly to compare the old commands with the new standard ones. If you want a more detailed cheatsheet I encourage you to visit https://paulgorman.org/technical/linux-iproute2-cheatsheet.html&#xA;net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &amp;lt;iface&amp;gt; up/down ip link set &amp;lt;iface&amp;gt; up/down Bring an interface up or down arp -s &amp;lt;ip&amp;gt; &amp;lt;mac&amp;gt; ip neigh add &amp;lt;ip&amp;gt; lladdr &amp;lt;mac&amp;gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2?</description>
+    </item>
     <item>
       <title>SSH Configuration</title>
       <link>http://localhost:1313/posts/ssh-config/</link>
