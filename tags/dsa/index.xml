@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dsa on jpnt&#39;s website</title>
-    <link>https://jpnt.github.io/tags/dsa/</link>
-    <description>Recent content in dsa on jpnt&#39;s website</description>
+    <title>Dsa on jpnt&#39;s website</title>
+    <link>http://localhost:1313/tags/dsa/</link>
+    <description>Recent content in Dsa on jpnt&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Tue, 31 Oct 2023 14:55:43 +0000</lastBuildDate>
-    <atom:link href="https://jpnt.github.io/tags/dsa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/dsa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Trees</title>
-      <link>https://jpnt.github.io/posts/trees/</link>
-      <pubDate>Tue, 31 Oct 2023 14:55:43 +0000</pubDate>
-      <guid>https://jpnt.github.io/posts/trees/</guid>
-      <description>Concepts A tree is a data structure which stores elements hierarchically; A tree is made out of a set of nodes connected by edges. Every tree has a single root node, which is a node without a parent node.&#xA;A parent node points to other nodes; Nodes pointed to are called children nodes.&#xA;Nodes with no children are called leaf nodes; Nodes with children are interior nodes.&#xA;Any node can be considered the root of a subtree.</description>
+      <link>http://localhost:1313/posts/trees/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/trees/</guid>
+      <description>A tree is a hierarchical data structure composed of nodes connected by edges. The structure starts with a single root node and extends downwards, forming parent-child relationships among nodes. Each node, except the root, has exactly one parent, and nodes with no children are called leaf nodes. Various concepts and properties characterize trees.&#xA;Concepts Nodes and Edges&#xA;Node: Basic unit in a tree that contains data and may have zero or more child nodes.</description>
     </item>
   </channel>
 </rss>

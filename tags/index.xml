@@ -2,39 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on jpnt&#39;s website</title>
-    <link>https://jpnt.github.io/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on jpnt&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 25 Feb 2024 18:30:59 +0000</lastBuildDate>
-    <atom:link href="https://jpnt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>os</title>
-      <link>https://jpnt.github.io/tags/os/</link>
+      <title>Dsa</title>
+      <link>http://localhost:1313/tags/dsa/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/dsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>http://localhost:1313/tags/programming/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Os</title>
+      <link>http://localhost:1313/tags/os/</link>
       <pubDate>Sun, 25 Feb 2024 18:30:59 +0000</pubDate>
-      <guid>https://jpnt.github.io/tags/os/</guid>
+      <guid>http://localhost:1313/tags/os/</guid>
       <description></description>
     </item>
     <item>
-      <title>databases</title>
-      <link>https://jpnt.github.io/tags/databases/</link>
+      <title>Databases</title>
+      <link>http://localhost:1313/tags/databases/</link>
       <pubDate>Tue, 26 Sep 2023 16:47:56 +0100</pubDate>
-      <guid>https://jpnt.github.io/tags/databases/</guid>
+      <guid>http://localhost:1313/tags/databases/</guid>
       <description></description>
     </item>
     <item>
-      <title>programming</title>
-      <link>https://jpnt.github.io/tags/programming/</link>
-      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/tags/programming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>networks</title>
-      <link>https://jpnt.github.io/tags/networks/</link>
+      <title>Networks</title>
+      <link>http://localhost:1313/tags/networks/</link>
       <pubDate>Fri, 28 Jan 2022 19:59:08 -0100</pubDate>
-      <guid>https://jpnt.github.io/tags/networks/</guid>
+      <guid>http://localhost:1313/tags/networks/</guid>
       <description></description>
     </item>
   </channel>
