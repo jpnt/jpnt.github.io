@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Os on jpnt&#39;s website</title>
+    <title>Os on jpnt website</title>
     <link>https://jpnt.github.io/tags/os/</link>
-    <description>Recent content in Os on jpnt&#39;s website</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Os on jpnt website</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 25 Feb 2024 18:30:59 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 May 2024 18:34:47 +0100</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>inici(os)</title>
+      <link>https://jpnt.github.io/posts/inicios/</link>
+      <pubDate>Sun, 26 May 2024 18:34:47 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/inicios/</guid>
+      <description>Introduction: The Problem The growing complexity and size of modern software is a significant issue, which I have discussed previously here.&#xA;Today, software tends to be bloated, with enormous and complex codebases that can consist of tens of millions of lines of code and intricate dependency trees, often just to perform simple tasks.&#xA;It wasn&amp;rsquo;t always like this. In the past, when computers had limited processing power, developers had less freedom and were compelled to solve problems in more efficient ways.</description>
+    </item>
     <item>
       <title>Tweaking TLP</title>
       <link>https://jpnt.github.io/posts/tweaking-tlp/</link>

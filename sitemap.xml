@@ -2,26 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jpnt.github.io/tags/dsa/</loc>
-    <lastmod>2024-02-27T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/posts/inicios/</loc>
+    <lastmod>2024-05-26T18:34:47+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2024-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2024-05-26T18:34:47+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/os/</loc>
+    <lastmod>2024-05-26T18:34:47+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
+    <lastmod>2024-05-26T18:34:47+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/</loc>
+    <lastmod>2024-05-26T18:34:47+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/dsa/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/programming/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/</loc>
-    <lastmod>2024-02-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jpnt.github.io/posts/trees/</loc>
     <lastmod>2024-02-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/os/</loc>
-    <lastmod>2024-02-25T18:30:59+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/tweaking-tlp/</loc>
     <lastmod>2024-02-25T18:30:59+00:00</lastmod>

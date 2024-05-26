@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jpnt&#39;s website</title>
+    <title>jpnt website</title>
     <link>https://jpnt.github.io/</link>
-    <description>Recent content on jpnt&#39;s website</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content on jpnt website</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 May 2024 18:34:47 +0100</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>inici(os)</title>
+      <link>https://jpnt.github.io/posts/inicios/</link>
+      <pubDate>Sun, 26 May 2024 18:34:47 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/inicios/</guid>
+      <description>Introduction: The Problem The growing complexity and size of modern software is a significant issue, which I have discussed previously here.&#xA;Today, software tends to be bloated, with enormous and complex codebases that can consist of tens of millions of lines of code and intricate dependency trees, often just to perform simple tasks.&#xA;It wasn&amp;rsquo;t always like this. In the past, when computers had limited processing power, developers had less freedom and were compelled to solve problems in more efficient ways.</description>
+    </item>
     <item>
       <title>Trees</title>
       <link>https://jpnt.github.io/posts/trees/</link>
@@ -133,7 +140,7 @@
       <link>https://jpnt.github.io/about/</link>
       <pubDate>Fri, 30 Jul 2021 12:59:15 +0000</pubDate>
       <guid>https://jpnt.github.io/about/</guid>
-      <description>Welcome to my personal website! My name is João Pinto and my passions are Programming, Operating Systems, Low Level Computing and Computer Networking. Usually I will use the &amp;ldquo;jpnt&amp;rdquo; acronym because it sounds cool. At the moment, I am studying at ISEP. I code mostly with C, Java, Rust and Python. Check out my projects at https://github.com/jpnt </description>
+      <description>Welcome to my personal blog!&#xA;My name is João Pinto and my passions are Programming, Operating Systems, Low Level Computing and Computer Networking.&#xA;Usually I will use the &amp;ldquo;jpnt&amp;rdquo; acronym because it sounds cool.&#xA;At the moment, I am studying at ISEP.&#xA;I code mostly with C, Java, Rust and Python.&#xA;Check out my projects here</description>
     </item>
   </channel>
 </rss>
