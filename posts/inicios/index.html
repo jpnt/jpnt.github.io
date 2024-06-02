@@ -11,8 +11,8 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-05-26T18:34:47+01:00">
-    <meta property="article:modified_time" content="2024-05-26T18:34:47+01:00">
+    <meta property="article:published_time" content="2024-06-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-02T00:00:00+00:00">
     <meta property="article:tag" content="Os">
 
   <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
 	<article>
 		<div class="title">
 			<h1 class="title">inici(os)</h1>
-			<div class="meta">Posted on May 26, 2024</div>
+			<div class="meta">Posted on Jun 2, 2024</div>
 		</div>
 		
 
@@ -108,7 +108,8 @@ software projects.</p>
 tool available for that task. The same applies to editing a file, etc.</p>
 <h2 id="keeping-it-stupid-simple-kiss">Keeping It Stupid Simple (KISS)</h2>
 <p>A key principle in writing good software is to keep it simple. We should always
-seek the simplest way to achieve our goals.</p>
+seek the simplest way to achieve our goals. The philophy is: &ldquo;if something can
+be simplified, it will get simplied&rdquo;.</p>
 <p>This principle applies to both the design and implementation stages. For example,
 instead of performing extensive computations, we might pre-calculate and store
 data for quick access.</p>
@@ -117,14 +118,22 @@ unnecessary functionalities. This aligns with the original UNIX design principle
 <h2 id="how-many-loc-does-it-take-to-do-x">How Many LOC Does It Take to Do &ldquo;X&rdquo;</h2>
 <p>Another important consideration is achieving functionality with the fewest lines
 of code possible, without sacrificing readability or performance.</p>
-<h3 id="pre-emptive-multitasking-kernel-in-3000-assembly-loc">Pre-emptive multitasking kernel in 3000 assembly LOC</h3>
-<p>Can we design a pre-emptive multitasking kernel in just 3000 lines of assembly code?</p>
-<h3 id="virtual-memory">Virtual Memory</h3>
-<p>How can we simplify memory protection while maintaining efficiency?</p>
-<h3 id="video-display">Video display</h3>
-<p>Can we create a simpler display server than Xorg or Wayland?</p>
-<h3 id="usbnetio-etc">USB/Net/IO, etc.</h3>
-<p>Can we design a simple and efficient I/O stack?</p>
+<hr>
+<h1 id="os-specific">OS Specific</h1>
+<p>These design philosophies still apply to other software, but here I am talking
+specifically about Operating Systems.</p>
+<h2 id="bare-bones-bootloader">Bare-Bones Bootloader</h2>
+<p>Avoid multi-stage bootloaders and complex boot protocols (unless absolutely
+necessary).</p>
+<p>No initial ram disk or anything similar. The goal is to boot as fast as possible
+with as less drag as possible.</p>
+<h2 id="modular-design">Modular Design</h2>
+<p>This principle tells us to break the problem down in well-defined, independent
+modules each with a single responsability and communicate through simple and
+well-defined interfaces.</p>
+<p>We need to separate the kernel, filesystem, multitasking, hardware interaction,
+etc. Set as a goal: a ridiculous low amount of lines of code to do &ldquo;X&rdquo;. The less
+you write, the better (without sacrificing performance, of course).</p>
 <h2 id="zero-drivers">Zero Drivers</h2>
 <p>As previously mentioned, drivers are a major source of complexity in modern
 operating systems. We could look to embedded systems for inspiration on how to
@@ -140,12 +149,28 @@ For example, if I&rsquo;m using it on a desktop, I don&rsquo;t need it to functi
 OS. This specialization simplifies the entire OS stack.</p>
 <h2 id="small-os-layer">Small OS layer</h2>
 <p>The OS layer should be as minimal as possible. While POSIX provides a standard
-interface, it is too large for my needs. My system is not intended to be POSIX-compliant.</p>
+interface, it may be too large for what I intend.</p>
+<p>Only the essential features should be implemented in the kernel and non essential
+features should be moved to userspace. In theory this simplifies kernel development
+and improves security (which may be irrelevant considering other design choices).</p>
+<p>Use static linking for the kernel to avoid the complexity associated with dynamically
+linking a kernel.</p>
+<h2 id="single-user">Single User</h2>
+<p>Focus on single-user environment. This provides a great oportunity to simplify
+security and permission models.</p>
 <hr>
 <h1 id="conclusion-thoughts-and-moving-forward">Conclusion: thoughts and moving forward</h1>
 <h2 id="arm-and-risc-v-a-new-oportunity">ARM and RISC-V: a new oportunity</h2>
 <p>With the advent of new ARM SoCs and RISC-V processors, there is a tremendous
 opportunity to apply these principles and develop more efficient operating systems.</p>
+<p>If I am aiming for &ldquo;zero drivers&rdquo;, my OS will be dependant on a specific computer,
+which immediately removes thousands of esoteric hardware written in the kernel.</p>
+<p>If then a user wants to communicate with other external hardware, more software
+will be developed; I dont consider it a &ldquo;driver&rdquo; simply because it wont be written
+at the kernel space but instead at the user space.</p>
+<p>&ldquo;But what does that solve?&rdquo; You ask. Well, by writing this external modules outside
+of the kernel to communicate with your hardware it means the kernel will always
+remain slim with no extra driver bloat you dont need.</p>
 
 		</section>
 

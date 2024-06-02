@@ -7,12 +7,12 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 26 May 2024 18:34:47 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>inici(os)</title>
       <link>https://jpnt.github.io/posts/inicios/</link>
-      <pubDate>Sun, 26 May 2024 18:34:47 +0100</pubDate>
+      <pubDate>Sun, 02 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/inicios/</guid>
       <description>Introduction: The Problem The growing complexity and size of modern software is a significant issue, which I have discussed previously here.&#xA;Today, software tends to be bloated, with enormous and complex codebases that can consist of tens of millions of lines of code and intricate dependency trees, often just to perform simple tasks.&#xA;It wasn&amp;rsquo;t always like this. In the past, when computers had limited processing power, developers had less freedom and were compelled to solve problems in more efficient ways.</description>
     </item>
