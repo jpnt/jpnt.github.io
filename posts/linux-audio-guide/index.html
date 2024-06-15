@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Linux Audio Guide - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Simplifying Linux Audio Quality" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/linux-audio-guide/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Linux Audio Guide">
+  <meta property="og:description" content="Simplifying Linux Audio Quality">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-05-03T00:30:28+01:00">
+    <meta property="article:modified_time" content="2024-05-03T00:30:28+01:00">
+    <meta property="article:tag" content="Os">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux Audio Guide">
+  <meta name="twitter:description" content="Simplifying Linux Audio Quality">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"   />
+	
+
+	
+	
+
+	
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Linux Audio Guide</h1>
+			<div class="meta">Posted on May 3, 2024</div>
+		</div>
+		
+
+		<section class="body">
+			<h1 id="linux-audio-guide">Linux Audio Guide</h1>
+<p>Compared to other OSes, Linux can leave much to be desired when it comes to
+audio quality, because most of the time Linux just uses generic open-source
+drivers to handle audio, which may not be optimized for every device. However
+with a few tweaks, it is possible to significantly improve the sound quality.</p>
+<h2 id="pipewire-vs-pulseaudio">PipeWire vs PulseAudio</h2>
+<p>PipeWire aims to replace both PulseAudio and JACK by
+providing a unified solution for audio and video handling.</p>
+<p>It provides a handful of benefits such as:</p>
+<ol>
+<li>Low-latency audio</li>
+<li>Modular architecture</li>
+<li>JACK compatibility</li>
+<li>Simplified setup</li>
+<li>Bluetooth audio support</li>
+</ol>
+<p>Therefore, if you want the best possible experience, remove PulseAudio and
+install PipeWire.</p>
+<h2 id="pipewire-prerequisites">PipeWire prerequisites</h2>
+<p>PipeWire requires two things to work properly:</p>
+<ol>
+<li>D-Bus user session bus</li>
+</ol>
+<ul>
+<li>for inter-process communication and session management</li>
+</ul>
+<ol start="2">
+<li>XDG_RUNTIME_DIR environment variable</li>
+</ol>
+<ul>
+<li>for creating a runtime directory to store temporary files and session-specific data</li>
+</ul>
+<p>If your DE/WM/Wayland compositor is not configured to provide this, you have to
+run a dbus session alongside it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># .xinitrc
+</span></span><span style="display:flex;"><span>exec dbus-launch --exit-with-session spectrwm
+</span></span></code></pre></div><p>To automatically set <code>XDG_RUNTIME_DIR</code> install <code>(e)logind</code> (already comes with
+systemd distros) or <code>turnstile</code>. If not using (e)logind, user must be in <code>audio</code>
+and <code>video</code> group.</p>
+<p>For more info on turnstile:</p>
+<p><a href="https://docs.voidlinux.org/config/session-management.html#turnstile">https://docs.voidlinux.org/config/session-management.html#turnstile</a></p>
+<h2 id="pipewire-setup">PipeWire setup</h2>
+<p>Install <code>pipewire</code> and a PipeWire session manager <code>wireplumber</code>.</p>
+<h2 id="resources">Resources</h2>
+<p><a href="https://wiki.gentoo.org/wiki/PipeWire">https://wiki.gentoo.org/wiki/PipeWire</a>
+<a href="https://docs.voidlinux.org/config/media/pipewire.html">https://docs.voidlinux.org/config/media/pipewire.html</a>
+<a href="https://wiki.archlinux.org/title/PipeWire">https://wiki.archlinux.org/title/PipeWire</a>
+<a href="https://pipewire.org/">https://pipewire.org/</a></p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/os">os</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+  
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
