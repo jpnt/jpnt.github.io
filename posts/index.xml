@@ -7,21 +7,21 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 02 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Audio Guide</title>
+      <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
+      <description>Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device. However with a few tweaks, it is possible to significantly improve the sound quality.&#xA;PipeWire vs PulseAudio PipeWire aims to replace both PulseAudio and JACK by providing a unified solution for audio and video handling.</description>
+    </item>
     <item>
       <title>inici(os)</title>
       <link>https://jpnt.github.io/posts/inicios/</link>
       <pubDate>Sun, 02 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/inicios/</guid>
       <description>Introduction: The Problem The growing complexity and size of modern software is a significant issue, which I have discussed previously here.&#xA;Today, software tends to be bloated, with enormous and complex codebases that can consist of tens of millions of lines of code and intricate dependency trees, often just to perform simple tasks.&#xA;It wasn&amp;rsquo;t always like this. In the past, when computers had limited processing power, developers had less freedom and were compelled to solve problems in more efficient ways.</description>
-    </item>
-    <item>
-      <title>Linux Audio Guide</title>
-      <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
-      <pubDate>Fri, 03 May 2024 00:30:28 +0100</pubDate>
-      <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
-      <description>Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device. However with a few tweaks, it is possible to significantly improve the sound quality.&#xA;PipeWire vs PulseAudio PipeWire aims to replace both PulseAudio and JACK by providing a unified solution for audio and video handling.</description>
     </item>
     <item>
       <title>Trees</title>
