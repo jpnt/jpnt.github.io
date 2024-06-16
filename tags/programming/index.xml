@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2024 23:21:33 +0100</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slices</title>
+      <link>https://jpnt.github.io/posts/slices/</link>
+      <pubDate>Sat, 15 Jun 2024 23:21:33 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/slices/</guid>
+      <description>The Slice Concept If you already understand pointers, then understanding Slices will be much easier, the way I think about them in the most simple level is this:&#xA;Pointer := Memory Address + Data Type&#xA;Slice := Pointer + Length&#xA;This means a slice is a memory address with a data type and a length associated to it.&#xA;Problem of Pointers Alright, what I mean by this is the problems that arise from using pointers in languages such as C and C++, some of them include:</description>
+    </item>
     <item>
       <title>Trees</title>
       <link>https://jpnt.github.io/posts/trees/</link>
