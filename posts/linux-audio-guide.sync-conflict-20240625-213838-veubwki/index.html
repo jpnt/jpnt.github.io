@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Linux Audio Guide - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Simplifying Linux Audio Quality" />
 	<meta property="og:image" content=""/>
-	<meta property="og:url" content="https://jpnt.github.io/posts/linux-audio-guide/">
+	<meta property="og:url" content="https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/">
   <meta property="og:site_name" content="jpnt website">
   <meta property="og:title" content="Linux Audio Guide">
   <meta property="og:description" content="Simplifying Linux Audio Quality">
@@ -60,14 +60,12 @@
 	<article>
 		<div class="title">
 			<h1 class="title">Linux Audio Guide</h1>
-			<div class="meta">Posted on Jun 15, 2024 <span class="draft-label">DRAFT</span> </div>
+			<div class="meta">Posted on Jun 15, 2024</div>
 		</div>
 		
 
 		<section class="body">
-			<p>NOTE: I no longer recommed using Pipewire because of all of its coupling and needy dependecies,
-such as having dbus, a session manager and XDG_RUNTIME_DIR set, usually by logind.</p>
-<h1 id="linux-audio-guide">Linux Audio Guide</h1>
+			<h1 id="linux-audio-guide">Linux Audio Guide</h1>
 <p>Compared to other OSes, Linux can leave much to be desired when it comes to
 audio quality, because most of the time Linux just uses generic open-source
 drivers to handle audio, which may not be optimized for every device. However
@@ -102,7 +100,7 @@ install PipeWire.</p>
 <p>If your DE/WM/Wayland compositor is not configured to provide this, you have to
 run a dbus session alongside it.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># .xinitrc
-</span></span><span style="display:flex;"><span>exec dbus-run-session spectrwm
+</span></span><span style="display:flex;"><span>exec dbus-launch --exit-with-session spectrwm
 </span></span></code></pre></div><p>To automatically set <code>XDG_RUNTIME_DIR</code> install <code>(e)logind</code> (already comes with
 systemd distros) or <code>turnstile</code>. If not using (e)logind, user must be in <code>audio</code>
 and <code>video</code> group.</p>

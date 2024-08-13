@@ -7,8 +7,43 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 15 Jun 2024 23:21:33 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2024 01:39:53 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Suck-Less Audio</title>
+      <link>https://jpnt.github.io/posts/linux-suck-less-audio/</link>
+      <pubDate>Tue, 13 Aug 2024 01:39:53 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/linux-suck-less-audio/</guid>
+      <description>Understanding Current Audio Solutions There are three commonly discussed audio abstraction layers in Linux:&#xA;Pulseaudio Created as a modern replacement for Enlightenment Sound Daemon (ESD), it provides advanced features like per-application volume control and network audio streaming. Jack Designed as a professional audio server for Linux, it offers low-latency audi processing and precise control, making it suitable for professional audio work. Pipewire The newest abstraction layer, Pipewire integrates seamlessly with both Pulseaudio and Jack.</description>
+    </item>
+    <item>
+      <title>Libinput</title>
+      <link>https://jpnt.github.io/posts/libinput/</link>
+      <pubDate>Thu, 11 Jul 2024 21:44:12 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/libinput/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Osi Layer Linux Commands</title>
+      <link>https://jpnt.github.io/posts/osi-layer-linux-commands/</link>
+      <pubDate>Thu, 27 Jun 2024 21:40:20 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/osi-layer-linux-commands/</guid>
+      <description>https://www.youtube.com/watch?v=TsHfXGqI5lQ</description>
+    </item>
+    <item>
+      <title>Limits and Abstraction</title>
+      <link>https://jpnt.github.io/posts/limits-and-abstraction/</link>
+      <pubDate>Thu, 27 Jun 2024 18:45:27 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/limits-and-abstraction/</guid>
+      <description>The introduction of suitable abstractions is our only mental aid to organize and master complexity. —E. W. Dijkstra, 1930–2002</description>
+    </item>
+    <item>
+      <title>Simd</title>
+      <link>https://jpnt.github.io/posts/simd/</link>
+      <pubDate>Fri, 21 Jun 2024 02:16:49 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/simd/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Slices</title>
       <link>https://jpnt.github.io/posts/slices/</link>
@@ -21,6 +56,13 @@
       <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
+      <description>NOTE: I no longer recommed using Pipewire because of all of its coupling and needy dependecies, such as having dbus, a session manager and XDG_RUNTIME_DIR set, usually by logind.&#xA;Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device.</description>
+    </item>
+    <item>
+      <title>Linux Audio Guide</title>
+      <link>https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/</guid>
       <description>Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device. However with a few tweaks, it is possible to significantly improve the sound quality.&#xA;PipeWire vs PulseAudio PipeWire aims to replace both PulseAudio and JACK by providing a unified solution for audio and video handling.</description>
     </item>
     <item>
@@ -59,6 +101,20 @@
       <description>iproute2 is the Linux networking toolkit that replaced net-tools (ifconfig, route, arp etc.).&#xA;This post serves mostly to compare the old commands with the new standard ones. If you want a more detailed cheatsheet I encourage you to visit https://paulgorman.org/technical/linux-iproute2-cheatsheet.html&#xA;net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &amp;lt;iface&amp;gt; up/down ip link set &amp;lt;iface&amp;gt; up/down Bring an interface up or down arp -s &amp;lt;ip&amp;gt; &amp;lt;mac&amp;gt; ip neigh add &amp;lt;ip&amp;gt; lladdr &amp;lt;mac&amp;gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2?</description>
     </item>
     <item>
+      <title>Containers</title>
+      <link>https://jpnt.github.io/posts/containers/</link>
+      <pubDate>Wed, 01 Nov 2023 00:12:17 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/containers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chroot Jails</title>
+      <link>https://jpnt.github.io/posts/chroot-jails/</link>
+      <pubDate>Wed, 01 Nov 2023 00:11:30 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/chroot-jails/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Databases</title>
       <link>https://jpnt.github.io/posts/databases/</link>
       <pubDate>Tue, 26 Sep 2023 16:47:56 +0100</pubDate>
@@ -71,6 +127,13 @@
       <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/pointers/</guid>
       <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).&#xA;Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.&#xA;In short, a pointer is: a variable that contains a memory address (as its value).&#xA;We will see how they prove to be very useful and how to use them in the C programming language.</description>
+    </item>
+    <item>
+      <title>Cryptography</title>
+      <link>https://jpnt.github.io/posts/cryptography/</link>
+      <pubDate>Thu, 13 Jul 2023 18:41:47 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/cryptography/</guid>
+      <description>&amp;ldquo;Cryptography in practise is as prone to failure as any other aspect of a security system&amp;rdquo;&#xA;Encryption Main application of cryptography; Makes data incomprehensible to ensure its confidentiality.&#xA;Encryption uses an algorithm (cipher) and a secret value (key). If the key is unknown, you cannot decrypt, i.e. you cannot learn any information about the encrypted data.</description>
     </item>
     <item>
       <title>Steam on Void Linux</title>

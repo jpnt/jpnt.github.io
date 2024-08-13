@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Linux Suck-Less Audio - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="The lighest audio stack for Linux that does not suck" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/linux-suck-less-audio/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Linux Suck-Less Audio">
+  <meta property="og:description" content="The lighest audio stack for Linux that does not suck">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-13T01:39:53+00:00">
+    <meta property="article:modified_time" content="2024-08-13T01:39:53+00:00">
+    <meta property="article:tag" content="Os">
+    <meta property="article:tag" content="Programming">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux Suck-Less Audio">
+  <meta name="twitter:description" content="The lighest audio stack for Linux that does not suck">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"   />
+	
+
+	
+	
+
+	
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Linux Suck-Less Audio</h1>
+			<div class="meta">Posted on Aug 13, 2024</div>
+		</div>
+		
+
+		<section class="body">
+			<h1 id="understanding-current-audio-solutions">Understanding Current Audio Solutions</h1>
+<p>There are three commonly discussed audio abstraction layers in Linux:</p>
+<ol>
+<li>Pulseaudio</li>
+</ol>
+<ul>
+<li>Created as a modern replacement for Enlightenment Sound Daemon (ESD),
+it provides advanced features like per-application volume control and network audio streaming.</li>
+</ul>
+<ol start="2">
+<li>Jack</li>
+</ol>
+<ul>
+<li>Designed as a professional audio server for Linux, it offers low-latency audi
+processing and precise control, making it suitable for professional audio work.</li>
+</ul>
+<ol start="3">
+<li>Pipewire</li>
+</ol>
+<ul>
+<li>The newest abstraction layer, Pipewire integrates seamlessly with both
+Pulseaudio and Jack. It also includes built-in Bluetooth support, eliminating the
+need for separate tools like bluez (bluetoothctl).</li>
+</ul>
+<h1 id="understanding-the-stack">Understanding the Stack</h1>
+<ol>
+<li>Kernel layer</li>
+</ol>
+<p>The kernel layer provides hardware abstraction. Advanced Linux Sound Architecture (ALSA)
+is the primary component that interacts with sound cards and manages communication,
+replacing the older Open Sound System (OSS).</p>
+<ol start="2">
+<li>Middleware/Backend layer</li>
+</ol>
+<p>ALSA Library (libasound): Provides a userspace interface to interact with ALSA.</p>
+<p>Problem: ALSA is specific to Linux. What about other operating systems?</p>
+<p>Solution: The need for cross-platform support led to the creation of sound servers like Pulseaudio.</p>
+<p>Although these systems were created out of necessity, end users might not need an entire abstraction
+layer if they can use the kernel’s sound system directly.</p>
+<p>Key Point: For a more minimalistic setup, consider using ALSA directly to avoid the complexity of additional layers.</p>
+<h1 id="problems-frequently-associated-and-solutions">Problems Frequently Associated and Solutions</h1>
+<ol>
+<li>Software Compatibility with Pulseaudio</li>
+</ol>
+<p>Issue: Some software is designed specifically for Pulseaudio. How can you use it with ALSA?
+Solution: Use the apulse package, which emulates Pulseaudio on top of ALSA.</p>
+<p>Software designed to work directly with ALSA will function without issues.</p>
+<ol start="2">
+<li>Bluetooth Device Connectivity</li>
+</ol>
+<p>Issue: ALSA does not include built-in Bluetooth support.
+Solution: Install the bluez package along with its utilities, and use bluez-alsa to handle Bluetooth audio routing through ALSA.</p>
+<h1 id="proper-configuration">Proper configuration</h1>
+<p>Instead of dumping it all here, I will provide my ALSA configurations that are
+on my <code>.dotfiles</code> repo under <code>alsa</code> directory: <a href="https://github.com/jpnt/.dotfiles">https://github.com/jpnt/.dotfiles</a></p>
+<hr>
+<p>Note on Pipewire: I no longer recommend using Pipewire due to its high coupling and
+dependencies, such as requiring dbus, a session manager, and XDG_RUNTIME_DIR (usually set by logind).</p>
+<hr>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/os">os</a></li>
+					
+					<li><a href="/tags/programming">programming</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+  
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
