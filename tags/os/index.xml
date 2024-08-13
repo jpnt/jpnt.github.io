@@ -17,13 +17,6 @@
       <description>Understanding Current Audio Solutions There are three commonly discussed audio abstraction layers in Linux:&#xA;Pulseaudio Created as a modern replacement for Enlightenment Sound Daemon (ESD), it provides advanced features like per-application volume control and network audio streaming. Jack Designed as a professional audio server for Linux, it offers low-latency audi processing and precise control, making it suitable for professional audio work. Pipewire The newest abstraction layer, Pipewire integrates seamlessly with both Pulseaudio and Jack.</description>
     </item>
     <item>
-      <title>Linux Audio Guide</title>
-      <link>https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/</link>
-      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/</guid>
-      <description>Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device. However with a few tweaks, it is possible to significantly improve the sound quality.&#xA;PipeWire vs PulseAudio PipeWire aims to replace both PulseAudio and JACK by providing a unified solution for audio and video handling.</description>
-    </item>
-    <item>
       <title>inici(os)</title>
       <link>https://jpnt.github.io/posts/inicios/</link>
       <pubDate>Sun, 02 Jun 2024 00:00:00 +0000</pubDate>
