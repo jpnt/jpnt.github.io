@@ -18,13 +18,6 @@
     </item>
     <item>
       <title>Linux Audio Guide</title>
-      <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
-      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
-      <description>NOTE: I no longer recommed using Pipewire because of all of its coupling and needy dependecies, such as having dbus, a session manager and XDG_RUNTIME_DIR set, usually by logind.&#xA;Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device.</description>
-    </item>
-    <item>
-      <title>Linux Audio Guide</title>
       <link>https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/linux-audio-guide.sync-conflict-20240625-213838-veubwki/</guid>

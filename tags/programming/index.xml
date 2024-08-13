@@ -38,13 +38,6 @@
       <description>What are pointers? In programming, a pointer is a derived data type (like arrays, structs and unions).&#xA;Instead of storing values like normal types, pointers store memory addresses of another data objects. Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.&#xA;In short, a pointer is: a variable that contains a memory address (as its value).&#xA;We will see how they prove to be very useful and how to use them in the C programming language.</description>
     </item>
     <item>
-      <title>Cryptography</title>
-      <link>https://jpnt.github.io/posts/cryptography/</link>
-      <pubDate>Thu, 13 Jul 2023 18:41:47 +0100</pubDate>
-      <guid>https://jpnt.github.io/posts/cryptography/</guid>
-      <description>&amp;ldquo;Cryptography in practise is as prone to failure as any other aspect of a security system&amp;rdquo;&#xA;Encryption Main application of cryptography; Makes data incomprehensible to ensure its confidentiality.&#xA;Encryption uses an algorithm (cipher) and a secret value (key). If the key is unknown, you cannot decrypt, i.e. you cannot learn any information about the encrypted data.</description>
-    </item>
-    <item>
       <title>Why Most People Fail to Get I.T.</title>
       <link>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</link>
       <pubDate>Tue, 18 Jan 2022 14:56:45 -0100</pubDate>
