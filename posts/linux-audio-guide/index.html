@@ -108,7 +108,8 @@ previously refered must communicate with ALSA.</p>
 which works on UNIX like operating systems and even on Windows.</p>
 <h1 id="so-which-one-do-i-use">So which one do I use?</h1>
 <p>You might be asking if you really need sound servers/abtraction layers over ALSA
-to get audio working on Linux. The short answer is: <strong>no</strong> (but you shouldn&rsquo;t).</p>
+to get audio working on Linux. The short answer is: <strong>no</strong>. The correct answer
+is: <strong>you should use a sound server</strong> (spoiler: PipeWire).</p>
 <p>End users can directly use ALSA if they wish and even have pseudo-pulseaudio emulation
 with <code>apulse</code> software.</p>
 <p>But, and this is according to my personal experience, it is highly recommended
@@ -126,7 +127,7 @@ things such as bluetooth audio or want to re-route audio you will find yourself
 stuck with pulseaudio, because when it was initally designed it did not prioritize
 these things. If one wanted to do professional audio, one had to install JACK most
 likely with pulseaudio already installed, this was a mess.</p>
-<h1 id="here-comes-pipewire">Here comes PipeWire</h1>
+<h1 id="pipewire">PipeWire</h1>
 <p>PipeWire aims to replace both PulseAudio and JACK by providing a unified solution
 for audio and video handling.</p>
 <p>It provides a handful of benefits such as:</p>
