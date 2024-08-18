@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 15 Jun 2024 23:21:33 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Audio Guide</title>
+      <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
+      <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
+      <description>Understanding Current Audio Solutions There are three commonly discussed audio abstraction layers in Linux:&#xA;Pulseaudio Created as a modern replacement for Enlightenment Sound Daemon (ESD), it provides advanced features like per-application volume control and network audio streaming. Jack Designed as a professional audio server for Linux, it offers low-latency audio processing and precise control over audio inputs and outputs, making it suitable for professional audio work. Pipewire The newest abstraction layer, Pipewire integrates seamlessly with both Pulseaudio and Jack.</description>
+    </item>
     <item>
       <title>Slices</title>
       <link>https://jpnt.github.io/posts/slices/</link>
