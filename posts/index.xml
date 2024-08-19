@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abstraction</title>
+      <link>https://jpnt.github.io/posts/abstraction/</link>
+      <pubDate>Mon, 19 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/abstraction/</guid>
+      <description>&amp;ldquo;The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.&amp;rdquo; &amp;ndash; Edsger Dijkstra&#xA;&amp;ldquo;Abstraction enables designers to focus on a manageable subset of the system at a time.&amp;rdquo;&#xA;Abstraction and the reality of the &amp;ldquo;fullstack&amp;rdquo; spectrum in I.T. Abstraction is the core principle of information technology. It is how we in the field manage the immense complexity inherent in our systems.</description>
+    </item>
     <item>
       <title>Linux Audio Guide</title>
       <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
