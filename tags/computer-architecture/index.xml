@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer-Architecture on jpnt website</title>
+    <link>https://jpnt.github.io/tags/computer-architecture/</link>
+    <description>Recent content in Computer-Architecture on jpnt website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Thu, 22 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/computer-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CPU cache</title>
+      <link>https://jpnt.github.io/posts/cpu-cache/</link>
+      <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/cpu-cache/</guid>
+      <description>What is CPU cache CPU cache is a small, high-speed memory located on or near the processor core. Its primary purpose is to store frequently accessed data and instructions, reducing the time the CPU needs to retrieve this information from the main memory.&#xA;Cache memory is crucial to improve the efficiency and speed of modern processors by minimizing the latency associated with accessing data from slower main memory.&#xA;The memory hierarchy Memory hierarchy is a structured arrangement of storage systems in a computer, organized by speed, size and cost.</description>
+    </item>
+  </channel>
+</rss>

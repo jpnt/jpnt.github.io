@@ -52,13 +52,6 @@
       <description>WHAT IS LINUX? Concept of a kernel Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel Open source nature Worldwide development You can contribute to it WHAT IS A LINUX DISTRIBUTION OS based on monolithic Linux kernel WHAT MAKES A LINUX DISTRIBUTION Core: libc; Base: coreutils; Extras; Most Linux distros differ on Extras DIFFERENCE BETWEEN LINUX DISTROS User-friendly vs user-centric distros Rolling release vs fixed release Linux Mint vs Arch Binary vs Source based INSTALLING SOFTWARE ON A LINUX DISTRO A linux distro distributes packages Package manager: apt, pacman ´apt install firefox´ ´pacman -S firefox´ FLEXIBILITY OF LINUX Used on super computers 100% of top 500 Used on the server 96% of top 1,000,000 Used on personal computers INTRODUCTION TO THE TERMINAL Commands are programs ls, cd, cat, pwd, whoami, echo, ps Learn every command: ´man command´ Everything is a file Programs, devices and drivers are files ´ls /dev´, ´ls /bin´ AUTOMATION AND SCRIPTING Bash scripts Shell vs Terminal Variables: PATH, export, env ´#!</description>
     </item>
     <item>
-      <title>Save Battery on Linux</title>
-      <link>https://jpnt.github.io/posts/battery-linux/</link>
-      <pubDate>Wed, 04 Aug 2021 18:52:51 +0000</pubDate>
-      <guid>https://jpnt.github.io/posts/battery-linux/</guid>
-      <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.&#xA;How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.&#xA;However, I will install it from source code, since this way will work on most Linux distributions.&#xA;Clone the git repository: $ git clone https://github.com/AdnanHodzic/auto-cpufreq.git Change the directory to the repository and execute the installer: $ cd auto-cpufreq &amp;amp;&amp;amp; sudo .</description>
-    </item>
-    <item>
       <title>Pop!_OS Install</title>
       <link>https://jpnt.github.io/posts/popos-install/</link>
       <pubDate>Sat, 31 Jul 2021 19:06:06 +0000</pubDate>
