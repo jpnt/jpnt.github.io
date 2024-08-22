@@ -226,6 +226,35 @@ higher rate of conflict misses.</p>
 and each block of memory can map to any line within a particular set. This
 flexibility reduces the number of conflict misses compared to direct-mapped
 caches but can introduce additional complexity in cache management.</p>
+<h2 id="cpu-cache-address-and-tag">CPU Cache Address and Tag</h2>
+<p>When the CPU needs to access data, it first checks the cache to see if the
+required data is available. To do this, the CPU uses two key pieces of information:</p>
+<ol>
+<li>
+<p><strong>Cache Address</strong>: address within the cache where the data is potentially
+stored. The cache address is typically derived from the lower-order bits of the
+memory address requested by the CPU.</p>
+</li>
+<li>
+<p><strong>Cache Tag</strong>: The cache tag is the higher-order bits of the memory address that
+are stored alongside the data in the cache line. The tag is used to uniquely
+identify the cache line and verify that the data in the cache line matches the
+requested memory address.</p>
+</li>
+</ol>
+<p>When the CPU needs to access data, it follows these steps:</p>
+<ol>
+<li>CPU extracts the cache address from the lower-order bits of the requested memory address.</li>
+<li>CPU uses the cache address to locate the corresponding cache line in the cache.</li>
+<li>CPU compares the tag stored in the cache line with the higher-order bits of the requested memory address.
+<ul>
+<li>If tags match: it&rsquo;s a cache hit: data can be quickly retrieved from the cache.</li>
+<li>If tags do not match: it&rsquo;s a cache miss: data must be fetch from the slower main memory. Note that
+if the CPU has more layers of cache (e.g. L2, L3), it will do this exact same process for the other layers before
+going to main memory.</li>
+</ul>
+</li>
+</ol>
 <h1 id="references">References</h1>
 <ul>
 <li>Harris, S. L., &amp; Harris, D. M. (2021). Digital design and computer architecture: RISC-V edition. Morgan Kaufmann.</li>
