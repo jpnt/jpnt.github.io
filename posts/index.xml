@@ -14,7 +14,7 @@
       <link>https://jpnt.github.io/posts/cpu-cache/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/cpu-cache/</guid>
-      <description>What is CPU cache CPU cache is a small, high-speed memory located on or near the processor core. Its primary purpose is to store frequently accessed data and instructions, reducing the time the CPU needs to retrieve this information from the main memory.&#xA;Cache memory is crucial to improve the efficiency and speed of modern processors by minimizing the latency associated with accessing data from slower main memory.&#xA;The memory hierarchy Memory hierarchy is a structured arrangement of storage systems in a computer, organized by speed, size and cost.</description>
+      <description>What is CPU cache CPU cache is a high-speed but small memory located on or near the processor core.&#xA;Why CPU cache Its primary purpose is to store frequently accessed data and instructions, reducing the time the CPU needs to retrieve this information from the main memory, because the CPU can access cache much faster than main memory which reduces the latency associated with accessing data.&#xA;The memory hierarchy Memory hierarchy is a structured arrangement of storage systems in a computer, organized by speed, size and cost.</description>
     </item>
     <item>
       <title>Abstraction</title>

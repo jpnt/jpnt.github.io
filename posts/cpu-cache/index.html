@@ -68,11 +68,12 @@
 
 		<section class="body">
 			<h1 id="what-is-cpu-cache">What is CPU cache</h1>
-<p>CPU cache is a small, high-speed memory located on or near the processor core.
-Its primary purpose is to store frequently accessed data and instructions,
-reducing the time the CPU needs to retrieve this information from the main memory.</p>
-<p>Cache memory is crucial to improve the efficiency and speed of modern processors
-by minimizing the latency associated with accessing data from slower main memory.</p>
+<p>CPU cache is a high-speed but small memory located on or near the processor core.</p>
+<h1 id="why-cpu-cache">Why CPU cache</h1>
+<p>Its primary purpose is to store frequently accessed data and instructions,
+reducing the time the CPU needs to retrieve this information from the main memory,
+because the CPU can access cache much faster than main memory which reduces the
+latency associated with accessing data.</p>
 <h2 id="the-memory-hierarchy">The memory hierarchy</h2>
 <p>Memory hierarchy is a structured arrangement of storage
 systems in a computer, organized by speed, size and cost.</p>
@@ -99,7 +100,7 @@ use by the system.</li>
 </ul>
 </li>
 <li>
-<p><strong>Secondary storage (Flash, Traditional)</strong></p>
+<p><strong>Longterm storage (Flash, Spinning disk)</strong></p>
 <ul>
 <li>Non-volatile storage that holds data long-term, access is slower compared
 to RAM.</li>
@@ -173,10 +174,11 @@ hierarchy, note that this values are hardware dependant so this is just to give 
 <p>Cache memory provides much faster access times compared to main memory, which
 is why it is crucial for reducing latency and improving the performance of the CPU.</p>
 <h1 id="how-cpu-cache-works">How CPU cache works</h1>
+<h2 id="cache-lines-cache-hits-and-misses">Cache lines, cache hits and misses</h2>
 <p>CPU cache operates by storing copies of data from frequently accessed main
 memory locations. When the CPU needs to access data, it first checks whether
-the data is available in the cache. If the data is found (a &ldquo;cache hit&rdquo;),
-it is retrieved quickly. If the data is not found (a &ldquo;cache miss&rdquo;), the CPU must
+the data is available in the cache. If the data is found (<strong>cache hit</strong>),
+it is returned quickly. If the data is not found (<strong>cache miss</strong>), the CPU must
 fetch the data from the slower main memory.</p>
 <p>Modern CPUs don&rsquo;t just fetch the exact data needed for a particular instruction
 when accessing memory. Instead, they fetch an entire <strong>cache line</strong>.</p>
@@ -193,12 +195,12 @@ speeds up data retrieval.</p>
 <p>This strategy enhances the overall efficiency of the cache system by reducing
 the number of cache misses, particularly the compulsory misses (those that occur
 the first time a data item is accessed).</p>
-<h2 id="cache-locality-and-spaciality">Cache locality and spaciality</h2>
+<h2 id="cache-temporal-locality-and-spatial-locality">Cache temporal locality and spatial locality</h2>
 <p>Cache performance is heavily influenced by the principles of temporal locality
 and spatial locality:</p>
 <p><strong>Temporal Locality</strong>: recently accessed data is likely to be accessed again
 soon. Caches take advantage of temporal locality by storing recently accessed
-data, anticipating that the CPU will need it again</p>
+data, anticipating that the CPU will need it again.</p>
 <p><strong>Spatial Locality</strong>: data located near recently accessed data is likely to be
 accessed soon. Caches utilize spatial locality by storing blocks of data that
 include the requested information and adjacent memory addresses.</p>
@@ -217,44 +219,78 @@ by the CPU, leading to some data being evicted and causing misses.</p>
 multiple data items compete for the same cache line, leading to evictions and misses</p>
 </li>
 </ol>
-<h2 id="direct-mapped-vs-set-associative-cache">Direct-mapped vs Set-associative cache</h2>
-<p>Direct-mapped cache and set-associative cache are two common cache architectures:</p>
-<p><strong>Direct-mapped Cache</strong>: each block of main memory maps to exactly one cache
-line. This simplicity allows for fast cache operations but can lead to a
-higher rate of conflict misses.</p>
-<p><strong>Set-associative Cache</strong>: This type of cache divides the cache into several sets,
-and each block of memory can map to any line within a particular set. This
-flexibility reduces the number of conflict misses compared to direct-mapped
-caches but can introduce additional complexity in cache management.</p>
+<h2 id="replacement-algorithms">Replacement Algorithms</h2>
+<p>When the cache is full, something has to be trashed to make room for new data.
+The choice depends on which replacement algorithm is used:</p>
+<ol>
+<li>
+<p><strong>FIFO</strong>: The oldest data gets replaced. Not very good.</p>
+</li>
+<li>
+<p><strong>LRU</strong>: The data that hasn&rsquo;t been used for the longest time gets replaced. Most
+commonly used in multitasking environments.</p>
+</li>
+<li>
+<p><strong>LFU</strong>: The least accessed data gets replaced. Can be useful in some embedded scenarios
+where a computer is frequently doing something.</p>
+</li>
+<li>
+<p><strong>Random</strong>: A random block is replaced, which is the simplest and cheaper to implement.</p>
+</li>
+</ol>
 <h2 id="cpu-cache-address-and-tag">CPU Cache Address and Tag</h2>
-<p>When the CPU needs to access data, it first checks the cache to see if the
-required data is available. To do this, the CPU uses two key pieces of information:</p>
+<p>The cache address and tag system is used to quickly determine whether the data
+the CPU needs is available (or not) in the cache. This process is fundamental to how
+caches operate, and it works differently depending on the type of cache
+organization algorithm (fully associative, direct mapped, or set-associative).</p>
+<h2 id="fully-associative-vs-direct-mapped-vs-set-associative-cache">Fully Associative vs Direct Mapped vs Set-Associative Cache</h2>
+<p>Caches manage how data is stored and retrieved using three main algorithms:</p>
 <ol>
-<li>
-<p><strong>Cache Address</strong>: address within the cache where the data is potentially
-stored. The cache address is typically derived from the lower-order bits of the
-memory address requested by the CPU.</p>
-</li>
-<li>
-<p><strong>Cache Tag</strong>: The cache tag is the higher-order bits of the memory address that
-are stored alongside the data in the cache line. The tag is used to uniquely
-identify the cache line and verify that the data in the cache line matches the
-requested memory address.</p>
-</li>
+<li><strong>Fully Associative Cache</strong></li>
 </ol>
-<p>When the CPU needs to access data, it follows these steps:</p>
-<ol>
-<li>CPU extracts the cache address from the lower-order bits of the requested memory address.</li>
-<li>CPU uses the cache address to locate the corresponding cache line in the cache.</li>
-<li>CPU compares the tag stored in the cache line with the higher-order bits of the requested memory address.
-<ul>
-<li>If tags match: it&rsquo;s a cache hit: data can be quickly retrieved from the cache.</li>
-<li>If tags do not match: it&rsquo;s a cache miss: data must be fetch from the slower main memory. Note that
-if the CPU has more layers of cache (e.g. L2, L3), it will do this exact same process for the other layers before
-going to main memory.</li>
-</ul>
-</li>
+<p>How it works: any block of data from memory can be stored in any cache
+line. There are no restrictions on placement within the cache.</p>
+<p>Tag comparison: CPU compares the tag (Block ID in the memory address)
+stored in every cache line to find a match. This involves comparing many
+bits of data, making the process complex.</p>
+<p>Circuit complexity: Since the CPU has to check every line, the circuit is
+more complex, leading to higher costs in both design and implementation.</p>
+<p>Use case: Fully associative caches are usually found in small, specialized
+caches where flexibility and minimizing cache misses are critical.</p>
+<ol start="2">
+<li><strong>Direct Mapped Cache</strong></li>
 </ol>
+<p>How it works: each block of memory has only one possible location in the
+cache, determined by the lower bits of the memory address (Line ID).</p>
+<p>Tag comparison: CPU only needs to compare the tag of the requested data
+with the tag of the cache line it is mapped to, making the comparison simple and fast.</p>
+<p>Circuit complexity: The design is more straightforward, which makes direct
+mapped caches fast and cheap to build.</p>
+<p>Trashing: When two or more memory blocks frequently access the same cache
+line, they keep evicting each other. This continuous eviction is called
+trashing, and it significantly degrades performance because the CPU spends
+more time fetching data from slower memory.</p>
+<p>Use case: Direct mapped caches are used in cost-sensitive designs where
+simplicity and speed are prioritized, but they can suffer from trashing.</p>
+<ol start="3">
+<li><strong>Set-Associative Cache</strong></li>
+</ol>
+<p>How it works: set-associative cache is a middle ground between fully
+associative and direct mapped caches. The cache is divided into sets, and
+each block of memory can be stored in any cache line within its designated
+set. The set is determined by the lower bits of the memory address (Set ID),
+while the data can go into any line within that set.</p>
+<p>Tag comparison: CPU compares the tag of the requested data with the tags of
+all cache lines within the set. This reduces the chance of trashing compared
+to direct mapped caches, as data has more placement options.</p>
+<p>Circuit complexity: The circuit is more complex than in a direct mapped
+cache but simpler than in a fully associative cache.</p>
+<p>Use case: Set-associative caches are common in modern CPUs because they
+balance the need to avoid trashing with reasonable hardware complexity.</p>
+<p>At the hardware level, cache misses can be reduced by changing capacity, block size,
+and/or associativity.</p>
+<h2 id="cache-write-policies-flag-bits-and-split-caches">Cache Write Policies, Flag Bits, and Split Caches</h2>
+<p>TODO</p>
 <h1 id="references">References</h1>
 <ul>
 <li>Harris, S. L., &amp; Harris, D. M. (2021). Digital design and computer architecture: RISC-V edition. Morgan Kaufmann.</li>
