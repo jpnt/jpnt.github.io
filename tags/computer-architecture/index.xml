@@ -14,7 +14,14 @@
       <link>https://jpnt.github.io/posts/cpu-cache/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/cpu-cache/</guid>
-      <description>What is CPU cache CPU cache is a high-speed but small memory located on or near the processor core.&#xA;Why CPU cache Its primary purpose is to store frequently accessed data and instructions, reducing the time the CPU needs to retrieve this information from the main memory, because the CPU can access cache much faster than main memory which reduces the latency associated with accessing data.&#xA;The memory hierarchy Memory hierarchy is a structured arrangement of storage systems in a computer, organized by speed, size and cost.</description>
+      <description>&lt;h1 id=&#34;what-is-cpu-cache&#34;&gt;What is CPU cache&lt;/h1&gt;&#xA;&lt;p&gt;CPU cache is a small, high-speed memory located on or near the processor core.&#xA;Its primary purpose is to store frequently accessed data and instructions,&#xA;reducing the time the CPU needs to retrieve this information from the main memory.&lt;/p&gt;&#xA;&lt;p&gt;Cache memory is crucial to improve the efficiency and speed of modern processors&#xA;by minimizing the latency associated with accessing data from slower main memory.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-memory-hierarchy&#34;&gt;The memory hierarchy&lt;/h2&gt;&#xA;&lt;p&gt;Memory hierarchy is a structured arrangement of storage&#xA;systems in a computer, organized by speed, size and cost.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CPU cache</title>
+      <link>https://jpnt.github.io/posts/cpu-cache.sync-conflict-20240925-181059-veubwki/</link>
+      <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/cpu-cache.sync-conflict-20240925-181059-veubwki/</guid>
+      <description>&lt;h1 id=&#34;what-is-cpu-cache&#34;&gt;What is CPU cache&lt;/h1&gt;&#xA;&lt;p&gt;CPU cache is a high-speed but small memory located on or near the processor core.&lt;/p&gt;&#xA;&lt;h1 id=&#34;why-cpu-cache&#34;&gt;Why CPU cache&lt;/h1&gt;&#xA;&lt;p&gt;Its primary purpose is to store frequently accessed data and instructions,&#xA;reducing the time the CPU needs to retrieve this information from the main memory,&#xA;because the CPU can access cache much faster than main memory which reduces the&#xA;latency associated with accessing data.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-memory-hierarchy&#34;&gt;The memory hierarchy&lt;/h2&gt;&#xA;&lt;p&gt;Memory hierarchy is a structured arrangement of storage&#xA;systems in a computer, organized by speed, size and cost.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

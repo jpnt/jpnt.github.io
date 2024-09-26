@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Socket Activation - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="What is Socket Activation?
+Socket activation is a method used to start services in response to incoming network connections rather than starting all services at boot time. It helps conserve resources by only starting services when they&rsquo;re needed.
+Historical Context
+inetd: This was a traditional way of handling incoming connections on Unix/Linux systems. It would listen on behalf of multiple services and start the appropriate service when a connection was received. However, this approach could be slow because each service had to be initialized for every connection." />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="http://localhost:1313/posts/socket-activation/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Socket Activation">
+  <meta property="og:description" content="What is Socket Activation? Socket activation is a method used to start services in response to incoming network connections rather than starting all services at boot time. It helps conserve resources by only starting services when they’re needed.
+Historical Context inetd: This was a traditional way of handling incoming connections on Unix/Linux systems. It would listen on behalf of multiple services and start the appropriate service when a connection was received. However, this approach could be slow because each service had to be initialized for every connection.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-21T21:16:59+01:00">
+    <meta property="article:modified_time" content="2024-09-21T21:16:59+01:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Socket Activation">
+  <meta name="twitter:description" content="What is Socket Activation? Socket activation is a method used to start services in response to incoming network connections rather than starting all services at boot time. It helps conserve resources by only starting services when they’re needed.
+Historical Context inetd: This was a traditional way of handling incoming connections on Unix/Linux systems. It would listen on behalf of multiple services and start the appropriate service when a connection was received. However, this approach could be slow because each service had to be initialized for every connection.">
+<script src="http://localhost:1313/js/feather.min.js"></script>
+	
+	
+        <link href="http://localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://localhost:1313/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Socket Activation</h1>
+			<div class="meta">Posted on Sep 21, 2024 <span class="draft-label">DRAFT</span> </div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="what-is-socket-activation">What is Socket Activation?</h1>
+<p>Socket activation is a method used to start services in response to incoming network connections rather than starting all services at boot time. It helps conserve resources by only starting services when they&rsquo;re needed.</p>
+<h1 id="historical-context">Historical Context</h1>
+<p>inetd: This was a traditional way of handling incoming connections on Unix/Linux systems. It would listen on behalf of multiple services and start the appropriate service when a connection was received. However, this approach could be slow because each service had to be initialized for every connection.</p>
+<p>xinetd: A more modern version of inetd, it introduced additional features but faced similar performance issues.</p>
+<h1 id="improvement-with-launchd-and-systemd">Improvement with Launchd and Systemd</h1>
+<p>Apple’s launchd improved upon the inetd model by not only focusing on network sockets but also allowing for efficient startup of local services, which contributed to faster boot times on macOS.</p>
+<p>systemd adopted and expanded on this concept, allowing it to manage services more efficiently, not just for network connections but for local service activation as well.</p>
+<h1 id="benefits-of-socket-activation">Benefits of Socket Activation</h1>
+<p>Resource Efficiency: Instead of starting all services at boot, which consumes memory and CPU, services are only started when needed.</p>
+<p>Faster Startup: Since services are not all running at once, the system can boot faster. The first connection may take longer to respond (as the service is started), but subsequent connections are handled quickly by already-running services.</p>
+<h1 id="dependency-management">Dependency Management</h1>
+<p>In traditional systems, starting services could lead to long delays due to dependencies. For example, if Syslog must start before D-Bus, and D-Bus before Avahi, they must be started sequentially, slowing down the entire startup process.</p>
+<p>With socket activation, dependencies can be managed more dynamically, allowing multiple services to start in parallel as soon as their required sockets are active.</p>
+<h1 id="how-socket-activation-works">How Socket Activation Works</h1>
+<p>With socket activation, a service&rsquo;s socket (e.g., a network port) is opened and managed by an external tool like socat or systemd. When a connection is made to that socket, the external tool starts the actual service (e.g., <code>cupsd</code>) and hands over the connection to it. This avoids having the service running when no connections are present.</p>
+<h2 id="socket-activation-using-socat-and-runit">Socket Activation Using Socat and Runit</h2>
+<p>While systemd natively supports socket activation, this concept can also be implemented with simple tools like <code>socat</code> and <code>runit</code>. In this setup, <code>socat</code> listens on the desired port (e.g., 631 for <code>cupsd</code>), and when a connection is detected, it starts <code>cupsd</code> through Runit, hands off the connection, and then exits, conserving system resources.</p>
+<h2 id="challenges-with-signal-handling">Challenges with Signal Handling</h2>
+<p>Proper signal handling is crucial for clean service shutdowns and restarts. A fragile implementation may not properly manage signals, leading to lingering processes or unclean exits. Tools like <code>socat</code> and <code>runit</code> require careful handling to ensure that signals (like <code>SIGTERM</code>) are propagated to all related processes.</p>
+<h2 id="comparison-with-systemd">Comparison with Systemd</h2>
+<p>While systemd provides a built-in and more feature-rich approach to socket activation, it can be over-complicated for minimal systems. With <code>socat</code> and <code>runit</code>, the concept of &ldquo;doing one thing and doing it well&rdquo; remains intact, resulting in a lighter footprint and simpler system.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

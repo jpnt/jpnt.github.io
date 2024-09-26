@@ -7,14 +7,14 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux Audio Guide</title>
       <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
-      <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
-      <description>Understanding Current Audio Solutions There are three commonly discussed audio abstraction layers in Linux:&#xA;Pulseaudio Created as a modern replacement for Enlightenment Sound Daemon (ESD), it provides advanced features like per-application volume control and network audio streaming. Jack Designed as a professional audio server for Linux, it offers low-latency audio processing and precise control over audio inputs and outputs, making it suitable for professional audio work. Pipewire The newest abstraction layer, Pipewire integrates seamlessly with both Pulseaudio and Jack.</description>
+      <description>Linux Audio Guide Compared to other OSes, Linux can leave much to be desired when it comes to audio quality, because most of the time Linux just uses generic open-source drivers to handle audio, which may not be optimized for every device. However with a few tweaks, it is possible to significantly improve the sound quality.&#xA;PipeWire vs PulseAudio PipeWire aims to replace both PulseAudio and JACK by providing a unified solution for audio and video handling.</description>
     </item>
     <item>
       <title>inici(os)</title>
@@ -50,6 +50,13 @@
       <pubDate>Thu, 06 Jan 2022 22:41:20 -0100</pubDate>
       <guid>https://jpnt.github.io/posts/learn-linux/</guid>
       <description>WHAT IS LINUX? Concept of a kernel Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel Open source nature Worldwide development You can contribute to it WHAT IS A LINUX DISTRIBUTION OS based on monolithic Linux kernel WHAT MAKES A LINUX DISTRIBUTION Core: libc; Base: coreutils; Extras; Most Linux distros differ on Extras DIFFERENCE BETWEEN LINUX DISTROS User-friendly vs user-centric distros Rolling release vs fixed release Linux Mint vs Arch Binary vs Source based INSTALLING SOFTWARE ON A LINUX DISTRO A linux distro distributes packages Package manager: apt, pacman ´apt install firefox´ ´pacman -S firefox´ FLEXIBILITY OF LINUX Used on super computers 100% of top 500 Used on the server 96% of top 1,000,000 Used on personal computers INTRODUCTION TO THE TERMINAL Commands are programs ls, cd, cat, pwd, whoami, echo, ps Learn every command: ´man command´ Everything is a file Programs, devices and drivers are files ´ls /dev´, ´ls /bin´ AUTOMATION AND SCRIPTING Bash scripts Shell vs Terminal Variables: PATH, export, env ´#!</description>
+    </item>
+    <item>
+      <title>Save Battery on Linux</title>
+      <link>https://jpnt.github.io/posts/battery-linux/</link>
+      <pubDate>Wed, 04 Aug 2021 18:52:51 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/battery-linux/</guid>
+      <description>Linux on laptops The downside of Linux when it comes to laptops is that it&amp;rsquo;s very power hungry, however we can fix this by installing a power saving program called auto-cpufreq.&#xA;How to install auto-cpufreq There are many ways of installing auto-cpufreq provided at https://github.com/AdnanHodzic/auto-cpufreq.&#xA;However, I will install it from source code, since this way will work on most Linux distributions.&#xA;Clone the git repository: $ git clone https://github.com/AdnanHodzic/auto-cpufreq.git Change the directory to the repository and execute the installer: $ cd auto-cpufreq &amp;amp;&amp;amp; sudo .</description>
     </item>
     <item>
       <title>Pop!_OS Install</title>

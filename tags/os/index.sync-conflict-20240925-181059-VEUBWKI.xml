@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Os on jpnt website</title>
+    <link>https://jpnt.github.io/tags/os/</link>
+    <description>Recent content in Os on jpnt website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Audio Guide</title>
+      <link>https://jpnt.github.io/posts/linux-audio-guide/</link>
+      <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/linux-audio-guide/</guid>
+      <description>Understanding Current Audio Solutions There are three commonly discussed audio abstraction layers in Linux:&#xA;Pulseaudio Created as a modern replacement for Enlightenment Sound Daemon (ESD), it provides advanced features like per-application volume control and network audio streaming. Jack Designed as a professional audio server for Linux, it offers low-latency audio processing and precise control over audio inputs and outputs, making it suitable for professional audio work. Pipewire The newest abstraction layer, Pipewire integrates seamlessly with both Pulseaudio and Jack.</description>
+    </item>
+    <item>
+      <title>inici(os)</title>
+      <link>https://jpnt.github.io/posts/inicios/</link>
+      <pubDate>Sun, 02 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/inicios/</guid>
+      <description>Introduction: The Problem The growing complexity and size of modern software is a significant issue, which I have discussed previously here.&#xA;Today, software tends to be bloated, with enormous and complex codebases that can consist of tens of millions of lines of code and intricate dependency trees, often just to perform simple tasks.&#xA;It wasn&amp;rsquo;t always like this. In the past, when computers had limited processing power, developers had less freedom and were compelled to solve problems in more efficient ways.</description>
+    </item>
+    <item>
+      <title>Tweaking TLP</title>
+      <link>https://jpnt.github.io/posts/tweaking-tlp/</link>
+      <pubDate>Sun, 25 Feb 2024 18:30:59 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/tweaking-tlp/</guid>
+      <description>Problem Linux battery life on laptops is known to not be great; If you are a student or travel frequently you will want that your machine lasts some time.&#xA;Solution There are many things one can do to improve battery life:&#xA;Lower screen brightness Turn off keyboard backlight Turn off Bluetooth Turn off Wifi Use resource efficient software Use the appropriate drivers for your system But I am going to focus on TLP, a power management tool which will allow us to optimize the battery usage on Linux.</description>
+    </item>
+    <item>
+      <title>Docker to Podman</title>
+      <link>https://jpnt.github.io/posts/docker-to-podman/</link>
+      <pubDate>Sat, 17 Feb 2024 23:30:45 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/docker-to-podman/</guid>
+      <description>Motivation Containerization has become a common practise of modern software development; Docker has been a popular choice for container orchestration, however, as the field evolves, new tools emerge.&#xA;One of those is Podman; one of the premises of it is that it does not require a daemon, unlike docker (dockerd).&#xA;This is one of the many more reasons people are starting to migrate to podman.&#xA;For more information I recommend reading: https://docs.</description>
+    </item>
+    <item>
+      <title>Steam on Void Linux</title>
+      <link>https://jpnt.github.io/posts/voidlinux-steam/</link>
+      <pubDate>Mon, 30 May 2022 23:21:40 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/voidlinux-steam/</guid>
+      <description>How to install Steam on Void Linux 1. Non-free repositories To install Steam, you will need to enable the non-free repositories. To do so, install the non-free repository packages:&#xA;# xbps-install -S void-repo-nonfree void-repo-multilib-nonfree 2. Install Steam Now, you should have the Steam package available. To install it:&#xA;# xbps-install -S steam 3. Additional packages Unlike the Arch Linux steam package, in Void Linux this package does not contain the additional library packages.</description>
+    </item>
+    <item>
+      <title>LEARN LINUX THE RIGHT WAY</title>
+      <link>https://jpnt.github.io/posts/learn-linux/</link>
+      <pubDate>Thu, 06 Jan 2022 22:41:20 -0100</pubDate>
+      <guid>https://jpnt.github.io/posts/learn-linux/</guid>
+      <description>WHAT IS LINUX? Concept of a kernel Hardware &amp;lt;-&amp;gt; Kernel &amp;lt;-&amp;gt; Software Monolithic kernel vs Microkernel Open source nature Worldwide development You can contribute to it WHAT IS A LINUX DISTRIBUTION OS based on monolithic Linux kernel WHAT MAKES A LINUX DISTRIBUTION Core: libc; Base: coreutils; Extras; Most Linux distros differ on Extras DIFFERENCE BETWEEN LINUX DISTROS User-friendly vs user-centric distros Rolling release vs fixed release Linux Mint vs Arch Binary vs Source based INSTALLING SOFTWARE ON A LINUX DISTRO A linux distro distributes packages Package manager: apt, pacman ´apt install firefox´ ´pacman -S firefox´ FLEXIBILITY OF LINUX Used on super computers 100% of top 500 Used on the server 96% of top 1,000,000 Used on personal computers INTRODUCTION TO THE TERMINAL Commands are programs ls, cd, cat, pwd, whoami, echo, ps Learn every command: ´man command´ Everything is a file Programs, devices and drivers are files ´ls /dev´, ´ls /bin´ AUTOMATION AND SCRIPTING Bash scripts Shell vs Terminal Variables: PATH, export, env ´#!</description>
+    </item>
+    <item>
+      <title>Pop!_OS Install</title>
+      <link>https://jpnt.github.io/posts/popos-install/</link>
+      <pubDate>Sat, 31 Jul 2021 19:06:06 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/popos-install/</guid>
+      <description>Pop!_OS is a free and open-source Linux distribution, based on Ubuntu, and it uses the GNOME desktop.&#xA;It provides full support for AMD and Nvidia graphics cards out-of-the-box, which makes it an excellent choice for beginners.&#xA;Download Pop!_OS Go to https://pop.system76.com/ and click on download.&#xA;Pop!_OS comes in two versions: the latest, and the LTS (Long Term Support). I will choose the latest, since I want to use the latest features.</description>
+    </item>
+    <item>
+      <title>Disable Suspend on Linux</title>
+      <link>https://jpnt.github.io/posts/disable-suspend/</link>
+      <pubDate>Fri, 30 Jul 2021 13:47:02 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/disable-suspend/</guid>
+      <description>Disable / Mask services using systemctl sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target Edit &amp;ldquo;/etc/systemd/logind.conf&amp;rdquo; to avoid errors and high CPU usage HandleSuspendKey=ignore HandleHibernateKey=ignore HandleLidSwitch=ignore HandleLidSwitchExternalPower=ignore HandleLidSwitchDocked=ignore Restart systemd-logind sudo systemctl restart systemd-logind Check for errors journalctl -xe That&amp;rsquo;s it!</description>
+    </item>
+  </channel>
+</rss>
