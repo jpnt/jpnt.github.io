@@ -14,7 +14,7 @@
       <link>https://jpnt.github.io/posts/trees/</link>
       <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/trees/</guid>
-      <description>A tree is a hierarchical data structure composed of nodes connected by edges. The structure starts with a single root node and extends downwards, forming parent-child relationships among nodes. Each node, except the root, has exactly one parent, and nodes with no children are called leaf nodes. Various concepts and properties characterize trees.&#xA;Concepts Nodes and Edges&#xA;Node: Basic unit in a tree that contains data and may have zero or more child nodes.</description>
+      <description>&lt;p&gt;A tree is a hierarchical data structure composed of nodes connected by edges.&#xA;The structure starts with a single root node and extends downwards, forming&#xA;parent-child relationships among nodes. Each node, except the root, has exactly&#xA;one parent, and nodes with no children are called leaf nodes. Various concepts&#xA;and properties characterize trees.&lt;/p&gt;&#xA;&lt;h2 id=&#34;concepts&#34;&gt;Concepts&lt;/h2&gt;&#xA;&lt;p&gt;Nodes and Edges&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Node: Basic unit in a tree that contains data and may have zero or more child nodes.&lt;/li&gt;&#xA;&lt;li&gt;Edge: Connection between nodes that represents relationships.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Root, Parent, Child, and Leaf&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
