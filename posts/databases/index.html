@@ -76,11 +76,13 @@ of application programs that interact with the DB along with the DBMS.</p>
 <h2 id="file-based-systems">File-Based systems</h2>
 <p>Before the database system there was the <strong>file-based system</strong> which is now obsolete.</p>
 <table>
-<thead>
-<tr>
-<th>File-based system</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">File-based system</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>A collection of application programs that perform services for the
@@ -146,11 +148,13 @@ by the application programs.</p>
 <p>A new, more efficient approach was required. Then the Database and the
 DBMS emerged.</p>
 <table>
-<thead>
-<tr>
-<th>Database</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">Database</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>A shared collection of logically related data and its description,
@@ -168,11 +172,13 @@ program-data independence.</p>
 we need to identify <strong>entities</strong>, <strong>attributes</strong> and <strong>relationships</strong>; Attributes
 are the properties of entities and a relationship is an association between entities.</p>
 <table>
-<thead>
-<tr>
-<th>DBMS</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">DBMS</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>A software system that enables users to define, create, maintain, and
@@ -199,11 +205,13 @@ user-accessible catalog, which contain descriptions of the data in the database.
 </li>
 </ol>
 <table>
-<thead>
-<tr>
-<th>Application Programs</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">Application Programs</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>A computer program that interacts with the database by issuing
@@ -213,11 +221,13 @@ an appropriate request (typically an SQL statement) to the DBMS.</p>
 to create and maintain the database and to generate information.</p>
 <h2 id="database-design">Database Design</h2>
 <table>
-<thead>
-<tr>
-<th>Database Design</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">Database Design</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>The process of creating a design that will support the enterprise’s mission
@@ -259,11 +269,13 @@ examining the relationships (<strong>functional dependencies</strong>) between a
 a series of steps called <strong>normal forms</strong> to ensure the data is structured efficiently
 while minimizing redundancy and maintaining data integrity.</p>
 <table>
-<thead>
-<tr>
-<th>Normalization</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">Normalization</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>A technique for producing a set of relations with desirable properties,
@@ -276,11 +288,13 @@ describes the relationship between attributes.</p>
 </span></span></code></pre></div><p>This representation of a functional dependency means: B is functionally dependent
 on A (or A functionally determines B). In this case, A is called the determinant.</p>
 <table>
-<thead>
-<tr>
-<th>Functional Dependency</th>
-</tr>
-</thead>
+  <thead>
+      <tr>
+          <th style="text-align: left">Functional Dependency</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 <blockquote>
 <p>Describes the relationship between attributes in a relation.
@@ -298,30 +312,30 @@ relation such that if A &ndash;&gt; B and B &ndash;&gt; C, then C is transitivel
 (if A is not functionally dependent on B or C).</p>
 <h3 id="functional-dependency-examples">Functional Dependency Examples</h3>
 <table>
-<thead>
-<tr>
-<th>Dependency Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Functional Dependency</td>
-<td>In a relation &ldquo;Employees&rdquo; with attributes (EmployeeID, FirstName, LastName, Department), &ldquo;Department&rdquo; is functionally dependent on &ldquo;EmployeeID&rdquo; if each EmployeeID corresponds to exactly one Department. In this case, EmployeeID is the determinant, and Department is the dependent attribute.</td>
-</tr>
-<tr>
-<td>Full Functional Dependency</td>
-<td>In the &ldquo;Employees&rdquo; relation, if both &ldquo;FirstName&rdquo; and &ldquo;LastName&rdquo; depend on &ldquo;EmployeeID,&rdquo; it&rsquo;s a full functional dependency. For instance, if EmployeeID 101 corresponds to FirstName &ldquo;John&rdquo; and LastName &ldquo;Smith,&rdquo; and no other EmployeeID has &ldquo;John&rdquo; as the FirstName, then FirstName and LastName are fully functionally dependent on EmployeeID.</td>
-</tr>
-<tr>
-<td>Partial Dependency</td>
-<td>Imagine that in the &ldquo;Employees&rdquo; relation, &ldquo;Department&rdquo; depends on &ldquo;EmployeeID,&rdquo; but &ldquo;PhoneNumber&rdquo; depends only on &ldquo;Department.&rdquo; In this case, &ldquo;PhoneNumber&rdquo; partially depends on the primary key &ldquo;EmployeeID&rdquo; because it indirectly depends on it through &ldquo;Department.&rdquo;</td>
-</tr>
-<tr>
-<td>Transitive Dependency</td>
-<td>Suppose you have a &ldquo;Courses&rdquo; relation with attributes (CourseID, Professor, Department). If &ldquo;Professor&rdquo; depends on &ldquo;Department,&rdquo; and &ldquo;Department&rdquo; depends on &ldquo;CourseID,&rdquo; then &ldquo;Professor&rdquo; is transitively dependent on &ldquo;CourseID&rdquo; via &ldquo;Department.&rdquo;</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Dependency Type</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Functional Dependency</td>
+          <td style="text-align: left">In a relation &ldquo;Employees&rdquo; with attributes (EmployeeID, FirstName, LastName, Department), &ldquo;Department&rdquo; is functionally dependent on &ldquo;EmployeeID&rdquo; if each EmployeeID corresponds to exactly one Department. In this case, EmployeeID is the determinant, and Department is the dependent attribute.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Full Functional Dependency</td>
+          <td style="text-align: left">In the &ldquo;Employees&rdquo; relation, if both &ldquo;FirstName&rdquo; and &ldquo;LastName&rdquo; depend on &ldquo;EmployeeID,&rdquo; it&rsquo;s a full functional dependency. For instance, if EmployeeID 101 corresponds to FirstName &ldquo;John&rdquo; and LastName &ldquo;Smith,&rdquo; and no other EmployeeID has &ldquo;John&rdquo; as the FirstName, then FirstName and LastName are fully functionally dependent on EmployeeID.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Partial Dependency</td>
+          <td style="text-align: left">Imagine that in the &ldquo;Employees&rdquo; relation, &ldquo;Department&rdquo; depends on &ldquo;EmployeeID,&rdquo; but &ldquo;PhoneNumber&rdquo; depends only on &ldquo;Department.&rdquo; In this case, &ldquo;PhoneNumber&rdquo; partially depends on the primary key &ldquo;EmployeeID&rdquo; because it indirectly depends on it through &ldquo;Department.&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Transitive Dependency</td>
+          <td style="text-align: left">Suppose you have a &ldquo;Courses&rdquo; relation with attributes (CourseID, Professor, Department). If &ldquo;Professor&rdquo; depends on &ldquo;Department,&rdquo; and &ldquo;Department&rdquo; depends on &ldquo;CourseID,&rdquo; then &ldquo;Professor&rdquo; is transitively dependent on &ldquo;CourseID&rdquo; via &ldquo;Department.&rdquo;</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="first-normal-form-1nf">First Normal Form (1NF)</h2>
 <ol>
@@ -368,34 +382,34 @@ and ensuring a more organized data structure.</p>
 <p><strong>Initial Database structure</strong></p>
 <p>Student table:</p>
 <table>
-<thead>
-<tr>
-<th>StudentID{PK}</th>
-<th>StudentName</th>
-<th>Course</th>
-<th>Instructor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>101</td>
-<td>Alice</td>
-<td>Math</td>
-<td>Dr. Williams</td>
-</tr>
-<tr>
-<td>102</td>
-<td>Bob</td>
-<td>Physics</td>
-<td>Dr. Louis</td>
-</tr>
-<tr>
-<td>103</td>
-<td>John</td>
-<td>Math</td>
-<td>Dr. Williams</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">StudentID{PK}</th>
+          <th style="text-align: left">StudentName</th>
+          <th style="text-align: left">Course</th>
+          <th style="text-align: left">Instructor</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">101</td>
+          <td style="text-align: left">Alice</td>
+          <td style="text-align: left">Math</td>
+          <td style="text-align: left">Dr. Williams</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">102</td>
+          <td style="text-align: left">Bob</td>
+          <td style="text-align: left">Physics</td>
+          <td style="text-align: left">Dr. Louis</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">103</td>
+          <td style="text-align: left">John</td>
+          <td style="text-align: left">Math</td>
+          <td style="text-align: left">Dr. Williams</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>NOTE: &ldquo;PK&rdquo; means primary-key and &ldquo;FK&rdquo; is foreign-key.</p>
@@ -411,78 +425,78 @@ not atomic (indivisible) values.</li>
 to these tables.</p>
 <p>Course table:</p>
 <table>
-<thead>
-<tr>
-<th>CourseID{PK}</th>
-<th>CourseName</th>
-<th>CourseCredits</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Math</td>
-<td>6</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Physics</td>
-<td>4</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">CourseID{PK}</th>
+          <th style="text-align: left">CourseName</th>
+          <th style="text-align: left">CourseCredits</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Math</td>
+          <td style="text-align: left">6</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">Physics</td>
+          <td style="text-align: left">4</td>
+      </tr>
+  </tbody>
 </table>
 <p>Instructor table:</p>
 <table>
-<thead>
-<tr>
-<th>InstructorID{PK}</th>
-<th>IntructorName</th>
-<th>Acronym</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Dr. Williams</td>
-<td>drw</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Dr. Louis</td>
-<td>drl</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">InstructorID{PK}</th>
+          <th style="text-align: left">IntructorName</th>
+          <th style="text-align: left">Acronym</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Dr. Williams</td>
+          <td style="text-align: left">drw</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">Dr. Louis</td>
+          <td style="text-align: left">drl</td>
+      </tr>
+  </tbody>
 </table>
 <p>Student table (after 1NF):</p>
 <table>
-<thead>
-<tr>
-<th>StudentID{PK}</th>
-<th>StudentName</th>
-<th>CourseID{FK}</th>
-<th>InstructorID{FK}</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>101</td>
-<td>Alice</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>102</td>
-<td>Bob</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr>
-<td>103</td>
-<td>John</td>
-<td>1</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">StudentID{PK}</th>
+          <th style="text-align: left">StudentName</th>
+          <th style="text-align: left">CourseID{FK}</th>
+          <th style="text-align: left">InstructorID{FK}</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">101</td>
+          <td style="text-align: left">Alice</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">102</td>
+          <td style="text-align: left">Bob</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">103</td>
+          <td style="text-align: left">John</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="2nf">2NF</h3>
 <p>In 2NF, we ensure that non-primary-key attributes are fully functionally dependent
@@ -496,30 +510,30 @@ relationships in a relational database.</p>
 </blockquote>
 <p>CourseRegistration table:</p>
 <table>
-<thead>
-<tr>
-<th>StudentID{FK}</th>
-<th>CourseID{FK}</th>
-<th>RegistrationDate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>101</td>
-<td>1</td>
-<td>2023-01-13</td>
-</tr>
-<tr>
-<td>102</td>
-<td>2</td>
-<td>2023-04-20</td>
-</tr>
-<tr>
-<td>103</td>
-<td>1</td>
-<td>2022-9-19</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">StudentID{FK}</th>
+          <th style="text-align: left">CourseID{FK}</th>
+          <th style="text-align: left">RegistrationDate</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">101</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">2023-01-13</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">102</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">2023-04-20</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">103</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">2022-9-19</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="3nf">3NF</h3>
 <p>In 3NF, we ensure that no non-primary-key attribute is transitively dependent on
@@ -527,47 +541,47 @@ the primary key. To demonstrate this, let&rsquo;s introduce a new concept: &ldqu
 to handle the department of each instructor.</p>
 <p>Department table:</p>
 <table>
-<thead>
-<tr>
-<th>DepartmentID{PK}</th>
-<th>DepartmentName</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Mathematics</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Physics</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">DepartmentID{PK}</th>
+          <th style="text-align: left">DepartmentName</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Mathematics</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">Physics</td>
+      </tr>
+  </tbody>
 </table>
 <p>Instructor table (after 3NF):</p>
 <table>
-<thead>
-<tr>
-<th>InstructorID{PK}</th>
-<th>InstructorName</th>
-<th>Acronym</th>
-<th>DepartmentID{FK}</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Dr. Williams</td>
-<td>drw</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Dr. Louis</td>
-<td>drl</td>
-<td>2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">InstructorID{PK}</th>
+          <th style="text-align: left">InstructorName</th>
+          <th style="text-align: left">Acronym</th>
+          <th style="text-align: left">DepartmentID{FK}</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Dr. Williams</td>
+          <td style="text-align: left">drw</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">Dr. Louis</td>
+          <td style="text-align: left">drl</td>
+          <td style="text-align: left">2</td>
+      </tr>
+  </tbody>
 </table>
 <p>This arrangement satisfies 3NF as there are no transitive dependencies; each non-primary-key
 attribute (InstructorName, Acronym) depends directly on the primary key (InstructorID), and
@@ -610,9 +624,6 @@ dependencies and adhering to various normal forms.</p>
       href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>
-
-
-  
 
 
 <script>

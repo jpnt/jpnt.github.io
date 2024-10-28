@@ -2,16 +2,103 @@
 <html><head lang="en">
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Iproute2 - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="iproute2 is the Linux networking toolkit that replaced net-tools (ifconfig, route, arp etc.).
-This post serves mostly to compare the old commands with the new standard ones. If you want a more detailed cheatsheet I encourage you to visit https://paulgorman.org/technical/linux-iproute2-cheatsheet.html
-net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &lt;iface&gt; up/down ip link set &lt;iface&gt; up/down Bring an interface up or down arp -s &lt;ip&gt; &lt;mac&gt; ip neigh add &lt;ip&gt; lladdr &lt;mac&gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2?" />
+	<meta name="description" content="iproute2 is the Linux networking toolkit that replaced net-tools (ifconfig,
+route, arp etc.).
+This post serves mostly to compare the old commands with the new standard ones.
+If you want a more detailed cheatsheet I encourage you to visit
+https://paulgorman.org/technical/linux-iproute2-cheatsheet.html
+net-tools vs iproute2 table
+
+  
+      
+          Net-tools Command
+          iproute2 Command
+          Description
+      
+  
+  
+      
+          ifconfig
+          ip addr
+          Show or manipulate network interfaces
+      
+      
+          route
+          ip route
+          Display or manipulate the IP routing table
+      
+      
+          arp
+          ip neigh or ip -4 neigh
+          Show or manipulate the ARP cache
+      
+      
+          netstat
+          ss or ip -s
+          Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+      
+      
+          hostname
+          hostnamectl
+          Query and change the system hostname and related settings
+      
+      
+          dnsdomainname
+          hostnamectl --transient
+          Query and change the system transient hostname and related settings
+      
+      
+          domainname
+          hostnamectl --static
+          Query and change the system static hostname and related settings
+      
+      
+          nisdomainname
+          hostnamectl --pretty
+          Query and change the system pretty hostname and related settings
+      
+      
+          ifconfig -a
+          ip addr show
+          Show information about all network interfaces, including those that are down
+      
+      
+          route -n
+          ip route show
+          Display the routing table in numeric format
+      
+      
+          ifconfig &lt;iface&gt; up/down
+          ip link set &lt;iface&gt; up/down
+          Bring an interface up or down
+      
+      
+          arp -s &lt;ip&gt; &lt;mac&gt;
+          ip neigh add &lt;ip&gt; lladdr &lt;mac&gt;
+          Add a static ARP entry
+      
+      
+          netstat -tuln
+          ss -tuln
+          Display listening sockets for TCP and UDP
+      
+      
+          netstat -rn
+          ip route show
+          Display the routing table
+      
+  
+
+Why iproute2?
+Unlike its predecessor net-tools, iproute2 offers a comprehensive set of networking
+utilities that go beyond the basic functionalities of net-tools." />
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content="https://jpnt.github.io/posts/iproute2/">
   <meta property="og:site_name" content="jpnt website">
   <meta property="og:title" content="Iproute2">
   <meta property="og:description" content="iproute2 is the Linux networking toolkit that replaced net-tools (ifconfig, route, arp etc.).
 This post serves mostly to compare the old commands with the new standard ones. If you want a more detailed cheatsheet I encourage you to visit https://paulgorman.org/technical/linux-iproute2-cheatsheet.html
-net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &lt;iface&gt; up/down ip link set &lt;iface&gt; up/down Bring an interface up or down arp -s &lt;ip&gt; &lt;mac&gt; ip neigh add &lt;ip&gt; lladdr &lt;mac&gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2?">
+net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &lt;iface&gt; up/down ip link set &lt;iface&gt; up/down Bring an interface up or down arp -s &lt;ip&gt; &lt;mac&gt; ip neigh add &lt;ip&gt; lladdr &lt;mac&gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2? Unlike its predecessor net-tools, iproute2 offers a comprehensive set of networking utilities that go beyond the basic functionalities of net-tools.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -23,7 +110,7 @@ net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifcon
   <meta name="twitter:title" content="Iproute2">
   <meta name="twitter:description" content="iproute2 is the Linux networking toolkit that replaced net-tools (ifconfig, route, arp etc.).
 This post serves mostly to compare the old commands with the new standard ones. If you want a more detailed cheatsheet I encourage you to visit https://paulgorman.org/technical/linux-iproute2-cheatsheet.html
-net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &lt;iface&gt; up/down ip link set &lt;iface&gt; up/down Bring an interface up or down arp -s &lt;ip&gt; &lt;mac&gt; ip neigh add &lt;ip&gt; lladdr &lt;mac&gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2?">
+net-tools vs iproute2 table Net-tools Command iproute2 Command Description ifconfig ip addr Show or manipulate network interfaces route ip route Display or manipulate the IP routing table arp ip neigh or ip -4 neigh Show or manipulate the ARP cache netstat ss or ip -s Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships hostname hostnamectl Query and change the system hostname and related settings dnsdomainname hostnamectl --transient Query and change the system transient hostname and related settings domainname hostnamectl --static Query and change the system static hostname and related settings nisdomainname hostnamectl --pretty Query and change the system pretty hostname and related settings ifconfig -a ip addr show Show information about all network interfaces, including those that are down route -n ip route show Display the routing table in numeric format ifconfig &lt;iface&gt; up/down ip link set &lt;iface&gt; up/down Bring an interface up or down arp -s &lt;ip&gt; &lt;mac&gt; ip neigh add &lt;ip&gt; lladdr &lt;mac&gt; Add a static ARP entry netstat -tuln ss -tuln Display listening sockets for TCP and UDP netstat -rn ip route show Display the routing table Why iproute2? Unlike its predecessor net-tools, iproute2 offers a comprehensive set of networking utilities that go beyond the basic functionalities of net-tools.">
 <script src="https://jpnt.github.io/js/feather.min.js"></script>
 	
 	
@@ -80,85 +167,85 @@ If you want a more detailed cheatsheet I encourage you to visit
 <a href="https://paulgorman.org/technical/linux-iproute2-cheatsheet.html">https://paulgorman.org/technical/linux-iproute2-cheatsheet.html</a></p>
 <h2 id="net-tools-vs-iproute2-table">net-tools vs iproute2 table</h2>
 <table>
-<thead>
-<tr>
-<th>Net-tools Command</th>
-<th>iproute2 Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ifconfig</code></td>
-<td><code>ip addr</code></td>
-<td>Show or manipulate network interfaces</td>
-</tr>
-<tr>
-<td><code>route</code></td>
-<td><code>ip route</code></td>
-<td>Display or manipulate the IP routing table</td>
-</tr>
-<tr>
-<td><code>arp</code></td>
-<td><code>ip neigh</code> or <code>ip -4 neigh</code></td>
-<td>Show or manipulate the ARP cache</td>
-</tr>
-<tr>
-<td><code>netstat</code></td>
-<td><code>ss</code> or <code>ip -s</code></td>
-<td>Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships</td>
-</tr>
-<tr>
-<td><code>hostname</code></td>
-<td><code>hostnamectl</code></td>
-<td>Query and change the system hostname and related settings</td>
-</tr>
-<tr>
-<td><code>dnsdomainname</code></td>
-<td><code>hostnamectl --transient</code></td>
-<td>Query and change the system transient hostname and related settings</td>
-</tr>
-<tr>
-<td><code>domainname</code></td>
-<td><code>hostnamectl --static</code></td>
-<td>Query and change the system static hostname and related settings</td>
-</tr>
-<tr>
-<td><code>nisdomainname</code></td>
-<td><code>hostnamectl --pretty</code></td>
-<td>Query and change the system pretty hostname and related settings</td>
-</tr>
-<tr>
-<td><code>ifconfig -a</code></td>
-<td><code>ip addr show</code></td>
-<td>Show information about all network interfaces, including those that are down</td>
-</tr>
-<tr>
-<td><code>route -n</code></td>
-<td><code>ip route show</code></td>
-<td>Display the routing table in numeric format</td>
-</tr>
-<tr>
-<td><code>ifconfig &lt;iface&gt; up/down</code></td>
-<td><code>ip link set &lt;iface&gt; up/down</code></td>
-<td>Bring an interface up or down</td>
-</tr>
-<tr>
-<td><code>arp -s &lt;ip&gt; &lt;mac&gt;</code></td>
-<td><code>ip neigh add &lt;ip&gt; lladdr &lt;mac&gt;</code></td>
-<td>Add a static ARP entry</td>
-</tr>
-<tr>
-<td><code>netstat -tuln</code></td>
-<td><code>ss -tuln</code></td>
-<td>Display listening sockets for TCP and UDP</td>
-</tr>
-<tr>
-<td><code>netstat -rn</code></td>
-<td><code>ip route show</code></td>
-<td>Display the routing table</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Net-tools Command</th>
+          <th style="text-align: left">iproute2 Command</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>ifconfig</code></td>
+          <td style="text-align: left"><code>ip addr</code></td>
+          <td style="text-align: left">Show or manipulate network interfaces</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>route</code></td>
+          <td style="text-align: left"><code>ip route</code></td>
+          <td style="text-align: left">Display or manipulate the IP routing table</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>arp</code></td>
+          <td style="text-align: left"><code>ip neigh</code> or <code>ip -4 neigh</code></td>
+          <td style="text-align: left">Show or manipulate the ARP cache</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>netstat</code></td>
+          <td style="text-align: left"><code>ss</code> or <code>ip -s</code></td>
+          <td style="text-align: left">Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>hostname</code></td>
+          <td style="text-align: left"><code>hostnamectl</code></td>
+          <td style="text-align: left">Query and change the system hostname and related settings</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>dnsdomainname</code></td>
+          <td style="text-align: left"><code>hostnamectl --transient</code></td>
+          <td style="text-align: left">Query and change the system transient hostname and related settings</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>domainname</code></td>
+          <td style="text-align: left"><code>hostnamectl --static</code></td>
+          <td style="text-align: left">Query and change the system static hostname and related settings</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>nisdomainname</code></td>
+          <td style="text-align: left"><code>hostnamectl --pretty</code></td>
+          <td style="text-align: left">Query and change the system pretty hostname and related settings</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>ifconfig -a</code></td>
+          <td style="text-align: left"><code>ip addr show</code></td>
+          <td style="text-align: left">Show information about all network interfaces, including those that are down</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>route -n</code></td>
+          <td style="text-align: left"><code>ip route show</code></td>
+          <td style="text-align: left">Display the routing table in numeric format</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>ifconfig &lt;iface&gt; up/down</code></td>
+          <td style="text-align: left"><code>ip link set &lt;iface&gt; up/down</code></td>
+          <td style="text-align: left">Bring an interface up or down</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>arp -s &lt;ip&gt; &lt;mac&gt;</code></td>
+          <td style="text-align: left"><code>ip neigh add &lt;ip&gt; lladdr &lt;mac&gt;</code></td>
+          <td style="text-align: left">Add a static ARP entry</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>netstat -tuln</code></td>
+          <td style="text-align: left"><code>ss -tuln</code></td>
+          <td style="text-align: left">Display listening sockets for TCP and UDP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>netstat -rn</code></td>
+          <td style="text-align: left"><code>ip route show</code></td>
+          <td style="text-align: left">Display the routing table</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="why-iproute2">Why iproute2?</h2>
 <p>Unlike its predecessor net-tools, iproute2 offers a comprehensive set of networking
@@ -198,9 +285,6 @@ to network management on Linux.</p>
       href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>
-
-
-  
 
 
 <script>
