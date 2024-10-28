@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 15 Jun 2024 23:21:33 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.NET 8 Clean Architecture Setup</title>
+      <link>https://jpnt.github.io/posts/dotnet8-clean-architecture-setup/</link>
+      <pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/dotnet8-clean-architecture-setup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://jpnt.github.io/img/dotnet8-clean-architecture-setup/clean_architecture.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;clean-architecture-overview&#34;&gt;Clean Architecture Overview&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Opinionated way of structuring code.&lt;/li&gt;&#xA;&lt;li&gt;Emphasizes separating the application into layers (Domain,&#xA;Application, Infrastructure and Presentation) and ensuring dependencies flow inward.&lt;/li&gt;&#xA;&lt;li&gt;Each layer only knows about the inner layers.&lt;/li&gt;&#xA;&lt;li&gt;Architecture enforces design policies.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;clean-architecture-vs-onion-architecture&#34;&gt;Clean Architecture vs Onion Architecture&lt;/h2&gt;&#xA;&lt;p&gt;Both emphasize layer separation and the direction of dependencies, but Clean&#xA;Architecture makes a stronger distinction between use cases (Application layer)&#xA;and technical concerns (Infrastructure).&lt;/p&gt;&#xA;&lt;h2 id=&#34;domain-driven-design-ddd-101&#34;&gt;Domain Driven Design (DDD) 101&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Focuses on creating a model of the business domain.&lt;/li&gt;&#xA;&lt;li&gt;Concepts such as Entities, Value Objects, Aggregates, Repositories and Services.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;solid-principles-101&#34;&gt;SOLID Principles 101&lt;/h2&gt;&#xA;&lt;p&gt;The SOLID principles are a set of design guidelines that promote maintainable, scalable, and flexible software systems.&#xA;They provide a foundation that Clean Architecture builds upon. Lets take a quick look how each principle aligns with&#xA;Clean Architecture:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Slices</title>
       <link>https://jpnt.github.io/posts/slices/</link>
