@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jpnt.github.io/posts/divine-simplicity/</loc>
+    <lastmod>2024-11-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2024-10-28T01:53:15+00:00</lastmod>
+    <lastmod>2024-11-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2024-10-28T01:53:15+00:00</lastmod>
+    <lastmod>2024-11-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/about/</loc>
+    <lastmod>2024-10-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/computer-architecture/</loc>
     <lastmod>2024-10-28T00:00:00+00:00</lastmod>
@@ -25,9 +31,6 @@
   </url><url>
     <loc>https://jpnt.github.io/posts/abstraction/</loc>
     <lastmod>2024-08-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/about/</loc>
-    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/linux-audio-guide/</loc>
     <lastmod>2024-08-18T00:00:00+00:00</lastmod>

@@ -78,7 +78,7 @@ of application programs that interact with the DB along with the DBMS.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">File-based system</th>
+          <th>File-based system</th>
       </tr>
   </thead>
   <tbody>
@@ -150,7 +150,7 @@ DBMS emerged.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Database</th>
+          <th>Database</th>
       </tr>
   </thead>
   <tbody>
@@ -174,7 +174,7 @@ are the properties of entities and a relationship is an association between enti
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">DBMS</th>
+          <th>DBMS</th>
       </tr>
   </thead>
   <tbody>
@@ -207,7 +207,7 @@ user-accessible catalog, which contain descriptions of the data in the database.
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Application Programs</th>
+          <th>Application Programs</th>
       </tr>
   </thead>
   <tbody>
@@ -223,7 +223,7 @@ to create and maintain the database and to generate information.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Database Design</th>
+          <th>Database Design</th>
       </tr>
   </thead>
   <tbody>
@@ -271,7 +271,7 @@ while minimizing redundancy and maintaining data integrity.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Normalization</th>
+          <th>Normalization</th>
       </tr>
   </thead>
   <tbody>
@@ -290,7 +290,7 @@ on A (or A functionally determines B). In this case, A is called the determinant
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Functional Dependency</th>
+          <th>Functional Dependency</th>
       </tr>
   </thead>
   <tbody>
@@ -314,26 +314,26 @@ relation such that if A &ndash;&gt; B and B &ndash;&gt; C, then C is transitivel
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Dependency Type</th>
-          <th style="text-align: left">Description</th>
+          <th>Dependency Type</th>
+          <th>Description</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Functional Dependency</td>
-          <td style="text-align: left">In a relation &ldquo;Employees&rdquo; with attributes (EmployeeID, FirstName, LastName, Department), &ldquo;Department&rdquo; is functionally dependent on &ldquo;EmployeeID&rdquo; if each EmployeeID corresponds to exactly one Department. In this case, EmployeeID is the determinant, and Department is the dependent attribute.</td>
+          <td>Functional Dependency</td>
+          <td>In a relation &ldquo;Employees&rdquo; with attributes (EmployeeID, FirstName, LastName, Department), &ldquo;Department&rdquo; is functionally dependent on &ldquo;EmployeeID&rdquo; if each EmployeeID corresponds to exactly one Department. In this case, EmployeeID is the determinant, and Department is the dependent attribute.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Full Functional Dependency</td>
-          <td style="text-align: left">In the &ldquo;Employees&rdquo; relation, if both &ldquo;FirstName&rdquo; and &ldquo;LastName&rdquo; depend on &ldquo;EmployeeID,&rdquo; it&rsquo;s a full functional dependency. For instance, if EmployeeID 101 corresponds to FirstName &ldquo;John&rdquo; and LastName &ldquo;Smith,&rdquo; and no other EmployeeID has &ldquo;John&rdquo; as the FirstName, then FirstName and LastName are fully functionally dependent on EmployeeID.</td>
+          <td>Full Functional Dependency</td>
+          <td>In the &ldquo;Employees&rdquo; relation, if both &ldquo;FirstName&rdquo; and &ldquo;LastName&rdquo; depend on &ldquo;EmployeeID,&rdquo; it&rsquo;s a full functional dependency. For instance, if EmployeeID 101 corresponds to FirstName &ldquo;John&rdquo; and LastName &ldquo;Smith,&rdquo; and no other EmployeeID has &ldquo;John&rdquo; as the FirstName, then FirstName and LastName are fully functionally dependent on EmployeeID.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Partial Dependency</td>
-          <td style="text-align: left">Imagine that in the &ldquo;Employees&rdquo; relation, &ldquo;Department&rdquo; depends on &ldquo;EmployeeID,&rdquo; but &ldquo;PhoneNumber&rdquo; depends only on &ldquo;Department.&rdquo; In this case, &ldquo;PhoneNumber&rdquo; partially depends on the primary key &ldquo;EmployeeID&rdquo; because it indirectly depends on it through &ldquo;Department.&rdquo;</td>
+          <td>Partial Dependency</td>
+          <td>Imagine that in the &ldquo;Employees&rdquo; relation, &ldquo;Department&rdquo; depends on &ldquo;EmployeeID,&rdquo; but &ldquo;PhoneNumber&rdquo; depends only on &ldquo;Department.&rdquo; In this case, &ldquo;PhoneNumber&rdquo; partially depends on the primary key &ldquo;EmployeeID&rdquo; because it indirectly depends on it through &ldquo;Department.&rdquo;</td>
       </tr>
       <tr>
-          <td style="text-align: left">Transitive Dependency</td>
-          <td style="text-align: left">Suppose you have a &ldquo;Courses&rdquo; relation with attributes (CourseID, Professor, Department). If &ldquo;Professor&rdquo; depends on &ldquo;Department,&rdquo; and &ldquo;Department&rdquo; depends on &ldquo;CourseID,&rdquo; then &ldquo;Professor&rdquo; is transitively dependent on &ldquo;CourseID&rdquo; via &ldquo;Department.&rdquo;</td>
+          <td>Transitive Dependency</td>
+          <td>Suppose you have a &ldquo;Courses&rdquo; relation with attributes (CourseID, Professor, Department). If &ldquo;Professor&rdquo; depends on &ldquo;Department,&rdquo; and &ldquo;Department&rdquo; depends on &ldquo;CourseID,&rdquo; then &ldquo;Professor&rdquo; is transitively dependent on &ldquo;CourseID&rdquo; via &ldquo;Department.&rdquo;</td>
       </tr>
   </tbody>
 </table>
@@ -384,30 +384,30 @@ and ensuring a more organized data structure.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">StudentID{PK}</th>
-          <th style="text-align: left">StudentName</th>
-          <th style="text-align: left">Course</th>
-          <th style="text-align: left">Instructor</th>
+          <th>StudentID{PK}</th>
+          <th>StudentName</th>
+          <th>Course</th>
+          <th>Instructor</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">101</td>
-          <td style="text-align: left">Alice</td>
-          <td style="text-align: left">Math</td>
-          <td style="text-align: left">Dr. Williams</td>
+          <td>101</td>
+          <td>Alice</td>
+          <td>Math</td>
+          <td>Dr. Williams</td>
       </tr>
       <tr>
-          <td style="text-align: left">102</td>
-          <td style="text-align: left">Bob</td>
-          <td style="text-align: left">Physics</td>
-          <td style="text-align: left">Dr. Louis</td>
+          <td>102</td>
+          <td>Bob</td>
+          <td>Physics</td>
+          <td>Dr. Louis</td>
       </tr>
       <tr>
-          <td style="text-align: left">103</td>
-          <td style="text-align: left">John</td>
-          <td style="text-align: left">Math</td>
-          <td style="text-align: left">Dr. Williams</td>
+          <td>103</td>
+          <td>John</td>
+          <td>Math</td>
+          <td>Dr. Williams</td>
       </tr>
   </tbody>
 </table>
@@ -427,21 +427,21 @@ to these tables.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">CourseID{PK}</th>
-          <th style="text-align: left">CourseName</th>
-          <th style="text-align: left">CourseCredits</th>
+          <th>CourseID{PK}</th>
+          <th>CourseName</th>
+          <th>CourseCredits</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">Math</td>
-          <td style="text-align: left">6</td>
+          <td>1</td>
+          <td>Math</td>
+          <td>6</td>
       </tr>
       <tr>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">Physics</td>
-          <td style="text-align: left">4</td>
+          <td>2</td>
+          <td>Physics</td>
+          <td>4</td>
       </tr>
   </tbody>
 </table>
@@ -449,21 +449,21 @@ to these tables.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">InstructorID{PK}</th>
-          <th style="text-align: left">IntructorName</th>
-          <th style="text-align: left">Acronym</th>
+          <th>InstructorID{PK}</th>
+          <th>IntructorName</th>
+          <th>Acronym</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">Dr. Williams</td>
-          <td style="text-align: left">drw</td>
+          <td>1</td>
+          <td>Dr. Williams</td>
+          <td>drw</td>
       </tr>
       <tr>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">Dr. Louis</td>
-          <td style="text-align: left">drl</td>
+          <td>2</td>
+          <td>Dr. Louis</td>
+          <td>drl</td>
       </tr>
   </tbody>
 </table>
@@ -471,30 +471,30 @@ to these tables.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">StudentID{PK}</th>
-          <th style="text-align: left">StudentName</th>
-          <th style="text-align: left">CourseID{FK}</th>
-          <th style="text-align: left">InstructorID{FK}</th>
+          <th>StudentID{PK}</th>
+          <th>StudentName</th>
+          <th>CourseID{FK}</th>
+          <th>InstructorID{FK}</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">101</td>
-          <td style="text-align: left">Alice</td>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">1</td>
+          <td>101</td>
+          <td>Alice</td>
+          <td>1</td>
+          <td>1</td>
       </tr>
       <tr>
-          <td style="text-align: left">102</td>
-          <td style="text-align: left">Bob</td>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">2</td>
+          <td>102</td>
+          <td>Bob</td>
+          <td>2</td>
+          <td>2</td>
       </tr>
       <tr>
-          <td style="text-align: left">103</td>
-          <td style="text-align: left">John</td>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">1</td>
+          <td>103</td>
+          <td>John</td>
+          <td>1</td>
+          <td>1</td>
       </tr>
   </tbody>
 </table>
@@ -512,26 +512,26 @@ relationships in a relational database.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">StudentID{FK}</th>
-          <th style="text-align: left">CourseID{FK}</th>
-          <th style="text-align: left">RegistrationDate</th>
+          <th>StudentID{FK}</th>
+          <th>CourseID{FK}</th>
+          <th>RegistrationDate</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">101</td>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">2023-01-13</td>
+          <td>101</td>
+          <td>1</td>
+          <td>2023-01-13</td>
       </tr>
       <tr>
-          <td style="text-align: left">102</td>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">2023-04-20</td>
+          <td>102</td>
+          <td>2</td>
+          <td>2023-04-20</td>
       </tr>
       <tr>
-          <td style="text-align: left">103</td>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">2022-9-19</td>
+          <td>103</td>
+          <td>1</td>
+          <td>2022-9-19</td>
       </tr>
   </tbody>
 </table>
@@ -543,18 +543,18 @@ to handle the department of each instructor.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">DepartmentID{PK}</th>
-          <th style="text-align: left">DepartmentName</th>
+          <th>DepartmentID{PK}</th>
+          <th>DepartmentName</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">Mathematics</td>
+          <td>1</td>
+          <td>Mathematics</td>
       </tr>
       <tr>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">Physics</td>
+          <td>2</td>
+          <td>Physics</td>
       </tr>
   </tbody>
 </table>
@@ -562,24 +562,24 @@ to handle the department of each instructor.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">InstructorID{PK}</th>
-          <th style="text-align: left">InstructorName</th>
-          <th style="text-align: left">Acronym</th>
-          <th style="text-align: left">DepartmentID{FK}</th>
+          <th>InstructorID{PK}</th>
+          <th>InstructorName</th>
+          <th>Acronym</th>
+          <th>DepartmentID{FK}</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">Dr. Williams</td>
-          <td style="text-align: left">drw</td>
-          <td style="text-align: left">1</td>
+          <td>1</td>
+          <td>Dr. Williams</td>
+          <td>drw</td>
+          <td>1</td>
       </tr>
       <tr>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">Dr. Louis</td>
-          <td style="text-align: left">drl</td>
-          <td style="text-align: left">2</td>
+          <td>2</td>
+          <td>Dr. Louis</td>
+          <td>drl</td>
+          <td>2</td>
       </tr>
   </tbody>
 </table>

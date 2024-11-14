@@ -169,81 +169,81 @@ If you want a more detailed cheatsheet I encourage you to visit
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Net-tools Command</th>
-          <th style="text-align: left">iproute2 Command</th>
-          <th style="text-align: left">Description</th>
+          <th>Net-tools Command</th>
+          <th>iproute2 Command</th>
+          <th>Description</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><code>ifconfig</code></td>
-          <td style="text-align: left"><code>ip addr</code></td>
-          <td style="text-align: left">Show or manipulate network interfaces</td>
+          <td><code>ifconfig</code></td>
+          <td><code>ip addr</code></td>
+          <td>Show or manipulate network interfaces</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>route</code></td>
-          <td style="text-align: left"><code>ip route</code></td>
-          <td style="text-align: left">Display or manipulate the IP routing table</td>
+          <td><code>route</code></td>
+          <td><code>ip route</code></td>
+          <td>Display or manipulate the IP routing table</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>arp</code></td>
-          <td style="text-align: left"><code>ip neigh</code> or <code>ip -4 neigh</code></td>
-          <td style="text-align: left">Show or manipulate the ARP cache</td>
+          <td><code>arp</code></td>
+          <td><code>ip neigh</code> or <code>ip -4 neigh</code></td>
+          <td>Show or manipulate the ARP cache</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>netstat</code></td>
-          <td style="text-align: left"><code>ss</code> or <code>ip -s</code></td>
-          <td style="text-align: left">Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships</td>
+          <td><code>netstat</code></td>
+          <td><code>ss</code> or <code>ip -s</code></td>
+          <td>Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>hostname</code></td>
-          <td style="text-align: left"><code>hostnamectl</code></td>
-          <td style="text-align: left">Query and change the system hostname and related settings</td>
+          <td><code>hostname</code></td>
+          <td><code>hostnamectl</code></td>
+          <td>Query and change the system hostname and related settings</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>dnsdomainname</code></td>
-          <td style="text-align: left"><code>hostnamectl --transient</code></td>
-          <td style="text-align: left">Query and change the system transient hostname and related settings</td>
+          <td><code>dnsdomainname</code></td>
+          <td><code>hostnamectl --transient</code></td>
+          <td>Query and change the system transient hostname and related settings</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>domainname</code></td>
-          <td style="text-align: left"><code>hostnamectl --static</code></td>
-          <td style="text-align: left">Query and change the system static hostname and related settings</td>
+          <td><code>domainname</code></td>
+          <td><code>hostnamectl --static</code></td>
+          <td>Query and change the system static hostname and related settings</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>nisdomainname</code></td>
-          <td style="text-align: left"><code>hostnamectl --pretty</code></td>
-          <td style="text-align: left">Query and change the system pretty hostname and related settings</td>
+          <td><code>nisdomainname</code></td>
+          <td><code>hostnamectl --pretty</code></td>
+          <td>Query and change the system pretty hostname and related settings</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>ifconfig -a</code></td>
-          <td style="text-align: left"><code>ip addr show</code></td>
-          <td style="text-align: left">Show information about all network interfaces, including those that are down</td>
+          <td><code>ifconfig -a</code></td>
+          <td><code>ip addr show</code></td>
+          <td>Show information about all network interfaces, including those that are down</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>route -n</code></td>
-          <td style="text-align: left"><code>ip route show</code></td>
-          <td style="text-align: left">Display the routing table in numeric format</td>
+          <td><code>route -n</code></td>
+          <td><code>ip route show</code></td>
+          <td>Display the routing table in numeric format</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>ifconfig &lt;iface&gt; up/down</code></td>
-          <td style="text-align: left"><code>ip link set &lt;iface&gt; up/down</code></td>
-          <td style="text-align: left">Bring an interface up or down</td>
+          <td><code>ifconfig &lt;iface&gt; up/down</code></td>
+          <td><code>ip link set &lt;iface&gt; up/down</code></td>
+          <td>Bring an interface up or down</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>arp -s &lt;ip&gt; &lt;mac&gt;</code></td>
-          <td style="text-align: left"><code>ip neigh add &lt;ip&gt; lladdr &lt;mac&gt;</code></td>
-          <td style="text-align: left">Add a static ARP entry</td>
+          <td><code>arp -s &lt;ip&gt; &lt;mac&gt;</code></td>
+          <td><code>ip neigh add &lt;ip&gt; lladdr &lt;mac&gt;</code></td>
+          <td>Add a static ARP entry</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>netstat -tuln</code></td>
-          <td style="text-align: left"><code>ss -tuln</code></td>
-          <td style="text-align: left">Display listening sockets for TCP and UDP</td>
+          <td><code>netstat -tuln</code></td>
+          <td><code>ss -tuln</code></td>
+          <td>Display listening sockets for TCP and UDP</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>netstat -rn</code></td>
-          <td style="text-align: left"><code>ip route show</code></td>
-          <td style="text-align: left">Display the routing table</td>
+          <td><code>netstat -rn</code></td>
+          <td><code>ip route show</code></td>
+          <td>Display the routing table</td>
       </tr>
   </tbody>
 </table>
