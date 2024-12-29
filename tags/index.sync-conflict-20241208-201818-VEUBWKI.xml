@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Networks</title>
-      <link>https://jpnt.github.io/tags/networks/</link>
-      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/tags/networks/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Computer-Architecture</title>
       <link>https://jpnt.github.io/tags/computer-architecture/</link>
@@ -42,6 +35,13 @@
       <link>https://jpnt.github.io/tags/dsa/</link>
       <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/tags/dsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networks</title>
+      <link>https://jpnt.github.io/tags/networks/</link>
+      <pubDate>Wed, 01 Nov 2023 19:09:04 +0000</pubDate>
+      <guid>https://jpnt.github.io/tags/networks/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on jpnt website</title>
+    <link>https://jpnt.github.io/tags/programming/</link>
+    <description>Recent content in Programming on jpnt website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Thu, 26 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.NET 8 Clean Architecture Setup</title>
+      <link>https://jpnt.github.io/posts/dotnet8-clean-architecture-setup/</link>
+      <pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/dotnet8-clean-architecture-setup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://jpnt.github.io/img/dotnet8-clean-architecture-setup/clean_architecture.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;clean-architecture-overview&#34;&gt;Clean Architecture Overview&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Opinionated way of structuring code.&lt;/li&gt;&#xA;&lt;li&gt;Emphasizes separating the application into layers (Domain,&#xA;Application, Infrastructure and Presentation) and ensuring dependencies flow inward.&lt;/li&gt;&#xA;&lt;li&gt;Each layer only knows about the inner layers.&lt;/li&gt;&#xA;&lt;li&gt;Architecture enforces design policies.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;clean-architecture-vs-onion-architecture&#34;&gt;Clean Architecture vs Onion Architecture&lt;/h2&gt;&#xA;&lt;p&gt;Both emphasize layer separation and the direction of dependencies, but Clean&#xA;Architecture makes a stronger distinction between use cases (Application layer)&#xA;and technical concerns (Infrastructure).&lt;/p&gt;&#xA;&lt;h2 id=&#34;domain-driven-design-ddd-101&#34;&gt;Domain Driven Design (DDD) 101&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Focuses on creating a model of the business domain.&lt;/li&gt;&#xA;&lt;li&gt;Concepts such as Entities, Value Objects, Aggregates, Repositories and Services.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;solid-principles-101&#34;&gt;SOLID Principles 101&lt;/h2&gt;&#xA;&lt;p&gt;The SOLID principles are a set of design guidelines that promote maintainable, scalable, and flexible software systems.&#xA;They provide a foundation that Clean Architecture builds upon. Lets take a quick look how each principle aligns with&#xA;Clean Architecture:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Slices</title>
+      <link>https://jpnt.github.io/posts/slices/</link>
+      <pubDate>Sat, 15 Jun 2024 23:21:33 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/slices/</guid>
+      <description>&lt;h1 id=&#34;the-slice-concept&#34;&gt;The Slice Concept&lt;/h1&gt;&#xA;&lt;p&gt;If you already understand pointers, then understanding Slices will be much easier,&#xA;the way I think about them in the most simple level is this:&lt;/p&gt;&#xA;&lt;p&gt;Pointer := Memory Address + Data Type&lt;/p&gt;&#xA;&lt;p&gt;Slice := Pointer + Length&lt;/p&gt;&#xA;&lt;p&gt;This means a slice is a memory address with a data type and a length associated to it.&lt;/p&gt;&#xA;&lt;h2 id=&#34;problem-of-pointers&#34;&gt;Problem of Pointers&lt;/h2&gt;&#xA;&lt;p&gt;Alright, what I mean by this is the problems that arise from using pointers in&#xA;languages such as C and C++, some of them include:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trees</title>
+      <link>https://jpnt.github.io/posts/trees/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/trees/</guid>
+      <description>&lt;p&gt;A tree is a hierarchical data structure composed of nodes connected by edges.&#xA;The structure starts with a single root node and extends downwards, forming&#xA;parent-child relationships among nodes. Each node, except the root, has exactly&#xA;one parent, and nodes with no children are called leaf nodes. Various concepts&#xA;and properties characterize trees.&lt;/p&gt;&#xA;&lt;h2 id=&#34;concepts&#34;&gt;Concepts&lt;/h2&gt;&#xA;&lt;p&gt;Nodes and Edges&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Node: Basic unit in a tree that contains data and may have zero or more child nodes.&lt;/li&gt;&#xA;&lt;li&gt;Edge: Connection between nodes that represents relationships.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Root, Parent, Child, and Leaf&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pointers</title>
+      <link>https://jpnt.github.io/posts/pointers/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/pointers/</guid>
+      <description>&lt;h2 id=&#34;what-are-pointers&#34;&gt;What are pointers?&lt;/h2&gt;&#xA;&lt;p&gt;In programming, a pointer is a derived data type (like arrays, structs and unions).&lt;/p&gt;&#xA;&lt;p&gt;Instead of storing values like normal types, pointers store memory addresses&#xA;of another data objects.&#xA;Hence the name pointer, because these addresses &amp;ldquo;point&amp;rdquo; to some data.&lt;/p&gt;&#xA;&lt;p&gt;In short, a pointer is: &lt;strong&gt;a variable that contains a memory address (as its value).&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;We will see how they prove to be very useful and how to use them in the C&#xA;programming language.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why Most People Fail to Get I.T.</title>
+      <link>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</link>
+      <pubDate>Tue, 18 Jan 2022 14:56:45 -0100</pubDate>
+      <guid>https://jpnt.github.io/posts/why-most-people-fail-to-get-it/</guid>
+      <description>&lt;p&gt;The Information Technology field is immensely vast, however, one can break it down in these core aspects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-it&#34;&gt;What is IT?&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Programming&lt;/li&gt;&#xA;&lt;li&gt;Computer Networking&lt;/li&gt;&#xA;&lt;li&gt;Databases&lt;/li&gt;&#xA;&lt;li&gt;Operating Systems&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;&#xA;&lt;p&gt;The issue is that most people, even ones on the field, fail to grasp the core basics. They try&#xA;to invent theories on what information technology is, and end up abstracting real problems with layers&#xA;of garbage that just create new &lt;a href=&#34;https://jpnt.github.io/posts/modern-software/&#34;&gt;problems&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;IT is not social studies and humanities, it is all about engineering and math, knowing how to approach&#xA;a problem and solve it in the most optimal and correct way, it involves logic reasoning without&#xA;a place for ambiguities.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Modern Software is a disaster</title>
+      <link>https://jpnt.github.io/posts/modern-software/</link>
+      <pubDate>Sat, 15 Jan 2022 21:02:39 -0100</pubDate>
+      <guid>https://jpnt.github.io/posts/modern-software/</guid>
+      <description>&lt;p&gt;&amp;ldquo;Designing simple and elegant software is far more difficult than letting ad-hoc or over-ambitious features&#xA;obscure the code over time.&amp;rdquo;&#xA;&amp;ndash; suckless.org&lt;/p&gt;&#xA;&lt;p&gt;We live in a really agitated world where information flows much faster than anyone could ever grasp.&#xA;Due to the agile technological advancements and the appearance of new technologies every day, the&#xA;demand for people on the Information Technology sector is extremely high.&lt;/p&gt;&#xA;&lt;p&gt;However, because there is still so much software to write, there is no market pressure in the software&#xA;space to ship high quality code. The trend is fast, agile software development that is buggy, bloated,&#xA;insecure and fails to even do its own thing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rust Ownership</title>
+      <link>https://jpnt.github.io/posts/rust-ownership/</link>
+      <pubDate>Mon, 02 Aug 2021 15:44:10 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/rust-ownership/</guid>
+      <description>&lt;h1 id=&#34;understanding-ownership&#34;&gt;Understanding Ownership&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Ownership&lt;/strong&gt; is what enables Rust to make &lt;strong&gt;memory safety guarantees without needing a garbage collector.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-a-garbage-collector&#34;&gt;What is a Garbage collector?&lt;/h2&gt;&#xA;&lt;p&gt;Garbage collection (GC) is a form of &lt;strong&gt;automatic memory management&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;It attempts to &lt;strong&gt;reclaim memory&lt;/strong&gt; which was allocated by the program, but is &lt;strong&gt;no longer used&lt;/strong&gt; &amp;mdash; hence the name garbage.&lt;/p&gt;&#xA;&lt;p&gt;GC exists to &lt;strong&gt;relieve&lt;/strong&gt; the programmer from &lt;strong&gt;manually managing memory&lt;/strong&gt;, which can be &lt;strong&gt;susceptible to errors&lt;/strong&gt; such as &lt;strong&gt;memory leaks&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

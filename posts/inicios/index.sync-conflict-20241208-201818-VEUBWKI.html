@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>inici(os) - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Ideas for the next OS" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/inicios/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="inici(os)">
+  <meta property="og:description" content="Ideas for the next OS">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-02T00:00:00+00:00">
+    <meta property="article:tag" content="Os">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="inici(os)">
+  <meta name="twitter:description" content="Ideas for the next OS">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">inici(os)</h1>
+			<div class="meta">Posted on Jun 2, 2024</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="introduction-the-problem">Introduction: The Problem</h1>
+<p>The growing complexity and size of modern software is a significant issue, which
+I have discussed previously <a href="https://jpnt.github.io/posts/modern-software/">here</a>.</p>
+<p>Today, software tends to be bloated, with enormous and complex codebases that can
+consist of tens of millions of lines of code and intricate dependency trees, often
+just to perform simple tasks.</p>
+<p>It wasn&rsquo;t always like this. In the past, when computers had limited processing
+power, developers had less freedom and were compelled to solve problems in more
+efficient ways.</p>
+<h2 id="modern-software-design">Modern Software Design</h2>
+<p>Modern software design is fundamentally flawed. Theories such as Object-Oriented
+Design and Domain-Driven Design often fail in practice because they do not align
+with how computers actually work. The domain should be the memory, and the design
+should focus on code and data structures.</p>
+<p>These theories often introduce new problems, including maintainability issues,
+poor performance, lack of security, and degraded user experience.</p>
+<h2 id="kernel-design-drivers">Kernel Design: Drivers</h2>
+<p>Whether developing monolithic or microkernels, much of the focus seems to be on
+driver development rather than actual innovation.</p>
+<p>When something doesn’t work, the solution is often to write a new driver. This
+approach creates a bottomless pit of complexity, as there will always be new
+hardware to support, leading to more and more lines of code.</p>
+<hr>
+<h1 id="rationale-how-to-solve-it">Rationale: How to Solve it</h1>
+<h2 id="proper-design-bottom-up-approach">Proper Design: Bottom-up Approach</h2>
+<p>Many developers have the mindset of adding layers on top of existing systems to
+fix problems. This approach is not inherently wrong but cannot be applied universally.</p>
+<p>An analogy is when something breaks, you have two choices: patch it up with duct
+tape and hope it holds (and add more tape if it doesn’t), or evaluate why it broke
+in the first place. Maybe the materials were unsuitable, or it was used incorrectly.
+We might need to create a new component to handle the task properly.</p>
+<p>While this may seem simplistic, it illustrates that modern software often uses
+tools that are not ideal for the job, leading to suboptimal solutions.</p>
+<p>To effectively solve these issues, we must evaluate our choices from the ground
+up, avoiding unnecessary bloat.</p>
+<h2 id="if-a-does-x-better-than-b-use-a">If &ldquo;A&rdquo; does &ldquo;X&rdquo; better than &ldquo;B&rdquo;, use &ldquo;A&rdquo;</h2>
+<p>This principle is self-explanatory: we should use the best tool for the job. By
+doing so, productivity is increased, and we avoid relying on multiple suboptimal
+software projects.</p>
+<p>For example, if I want to display the contents of a file, I should use the best
+tool available for that task. The same applies to editing a file, etc.</p>
+<h2 id="keeping-it-stupid-simple-kiss">Keeping It Stupid Simple (KISS)</h2>
+<p>A key principle in writing good software is to keep it simple. We should always
+seek the simplest way to achieve our goals. The philophy is: &ldquo;if something can
+be simplified, it will get simplied&rdquo;.</p>
+<p>This principle applies to both the design and implementation stages. For example,
+instead of performing extensive computations, we might pre-calculate and store
+data for quick access.</p>
+<p>It&rsquo;s also crucial to stay focused when developing a feature and avoid adding
+unnecessary functionalities. This aligns with the original UNIX design principles.</p>
+<h2 id="how-many-loc-does-it-take-to-do-x">How Many LOC Does It Take to Do &ldquo;X&rdquo;</h2>
+<p>Another important consideration is achieving functionality with the fewest lines
+of code possible, without sacrificing readability or performance.</p>
+<hr>
+<h1 id="os-specific">OS Specific</h1>
+<p>These design philosophies still apply to other software, but here I am talking
+specifically about Operating Systems.</p>
+<h2 id="bare-bones-bootloader">Bare-Bones Bootloader</h2>
+<p>Avoid multi-stage bootloaders and complex boot protocols (unless absolutely
+necessary).</p>
+<p>No initial ram disk or anything similar. The goal is to boot as fast as possible
+with as less drag as possible.</p>
+<h2 id="modular-design">Modular Design</h2>
+<p>This principle tells us to break the problem down in well-defined, independent
+modules each with a single responsability and communicate through simple and
+well-defined interfaces.</p>
+<p>We need to separate the kernel, filesystem, multitasking, hardware interaction,
+etc. Set as a goal: a ridiculous low amount of lines of code to do &ldquo;X&rdquo;. The less
+you write, the better (without sacrificing performance, of course).</p>
+<h2 id="zero-drivers">Zero Drivers</h2>
+<p>As previously mentioned, drivers are a major source of complexity in modern
+operating systems. We could look to embedded systems for inspiration on how to
+build an OS with zero drivers.</p>
+<h2 id="restrictive-multitasking">&ldquo;Restrictive&rdquo; multitasking</h2>
+<p>Multitasking is not inherently bad, but modern operating systems often run too
+many tasks simultaneously. For a consumer/desktop OS, I might only want to run
+2 or 3 tasks at a time. This allows us to simplify the pre-emptive multitasking
+algorithm while still supporting multiple tasks when necessary.</p>
+<h2 id="different-os-for-different-purposes">Different OS for different purposes</h2>
+<p>I don&rsquo;t want a general-purpose OS; I want an OS tailored to my specific use case.
+For example, if I&rsquo;m using it on a desktop, I don&rsquo;t need it to function as a server
+OS. This specialization simplifies the entire OS stack.</p>
+<h2 id="small-os-layer">Small OS layer</h2>
+<p>The OS layer should be as minimal as possible. While POSIX provides a standard
+interface, it may be too large for what I intend.</p>
+<p>Only the essential features should be implemented in the kernel and non essential
+features should be moved to userspace. In theory this simplifies kernel development
+and improves security (which may be irrelevant considering other design choices).</p>
+<p>Use static linking for the kernel to avoid the complexity associated with dynamically
+linking a kernel.</p>
+<h2 id="single-user">Single User</h2>
+<p>Focus on single-user environment. This provides a great oportunity to simplify
+security and permission models.</p>
+<hr>
+<h1 id="conclusion-thoughts-and-moving-forward">Conclusion: thoughts and moving forward</h1>
+<h2 id="arm-and-risc-v-a-new-oportunity">ARM and RISC-V: a new oportunity</h2>
+<p>With the advent of new ARM SoCs and RISC-V processors, there is a tremendous
+opportunity to apply these principles and develop more efficient operating systems.</p>
+<p>If I am aiming for &ldquo;zero drivers&rdquo;, my OS will be dependant on a specific computer,
+which immediately removes thousands of esoteric hardware written in the kernel.</p>
+<p>If then a user wants to communicate with other external hardware, more software
+will be developed; I dont consider it a &ldquo;driver&rdquo; simply because it wont be written
+at the kernel space but instead at the user space.</p>
+<p>&ldquo;But what does that solve?&rdquo; You ask. Well, by writing this external modules outside
+of the kernel to communicate with your hardware it means the kernel will always
+remain slim with no extra driver bloat you dont need.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/os">os</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

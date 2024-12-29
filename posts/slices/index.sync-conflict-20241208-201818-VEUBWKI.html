@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Slices - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Introduction and problems they solve" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/slices/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Slices">
+  <meta property="og:description" content="Introduction and problems they solve">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-15T23:21:33+01:00">
+    <meta property="article:modified_time" content="2024-06-15T23:21:33+01:00">
+    <meta property="article:tag" content="Programming">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Slices">
+  <meta name="twitter:description" content="Introduction and problems they solve">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Slices</h1>
+			<div class="meta">Posted on Jun 15, 2024</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="the-slice-concept">The Slice Concept</h1>
+<p>If you already understand pointers, then understanding Slices will be much easier,
+the way I think about them in the most simple level is this:</p>
+<p>Pointer := Memory Address + Data Type</p>
+<p>Slice := Pointer + Length</p>
+<p>This means a slice is a memory address with a data type and a length associated to it.</p>
+<h2 id="problem-of-pointers">Problem of Pointers</h2>
+<p>Alright, what I mean by this is the problems that arise from using pointers in
+languages such as C and C++, some of them include:</p>
+<ol>
+<li>Memory Management (allocation, deallocation)</li>
+<li>(Dereferencing) Null Pointers</li>
+<li>Dangling Pointers (pointers that point to data that has already been freed)</li>
+<li>Pointer Arithmetic (acessing invalid memory regions)</li>
+</ol>
+<p>There are a multitude of solutions to these problems, most of them debatable
+if they are any better, mostly because they just create new problems.</p>
+<p>Some of these solutions are: garbage colletion, smart pointers, bounds checking, RAII,
+compiler pointer safety warnings, etc.</p>
+<h2 id="here-come-slices">Here come Slices</h2>
+<p>Slices can offer a middle-ground solution to many of the problems associated with
+pointers, providing a little more safety while retaining the power and control that
+programmers require.</p>
+<p>Here are a few cases where Slices can help:</p>
+<ol>
+<li>Prevent buffer overflow and out-of-bounds errors</li>
+</ol>
+<ul>
+<li>because Slices ensure that access to elements is within the valid range</li>
+</ul>
+<ol start="2">
+<li>Reduced risk of dangling pointers</li>
+</ol>
+<ul>
+<li>Slices can help manage the lifespan of memory regions more safely</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://zig-by-example.com/slices">https://zig-by-example.com/slices</a></li>
+<li><a href="https://ziglang.org/documentation/master/#Slices">https://ziglang.org/documentation/master/#Slices</a></li>
+<li><a href="http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/ch04-03-slices.html">http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/ch04-03-slices.html</a></li>
+<li><a href="https://github.com/jpnt/csds/blob/main/tests/test_slice.c">https://github.com/jpnt/csds/blob/main/tests/test_slice.c</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/programming">programming</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

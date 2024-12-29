@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Databases - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Introduction, Design and Normalization" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/databases/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Databases">
+  <meta property="og:description" content="Introduction, Design and Normalization">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-09-26T16:47:56+01:00">
+    <meta property="article:modified_time" content="2023-09-26T16:47:56+01:00">
+    <meta property="article:tag" content="Databases">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Databases">
+  <meta name="twitter:description" content="Introduction, Design and Normalization">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Databases</h1>
+			<div class="meta">Posted on Sep 26, 2023</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h2 id="introductory-concepts">Introductory Concepts</h2>
+<p>A <strong>database</strong> (DB) is defined as a collection of related data; A <strong>database management
+system</strong> (DBMS) is the software that manages and controls access to the DB.</p>
+<p>A <strong>database application</strong> is a program which interacts with the database at
+some point in its execution; <strong>Database system</strong> is a term used for a collection
+of application programs that interact with the DB along with the DBMS.</p>
+<h2 id="file-based-systems">File-Based systems</h2>
+<p>Before the database system there was the <strong>file-based system</strong> which is now obsolete.</p>
+<table>
+  <thead>
+      <tr>
+          <th>File-based system</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>A collection of application programs that perform services for the
+end-users. Each program defines and manages its own data.</p>
+</blockquote>
+<p>The database system emerged due to <strong>problems</strong> inherent in file-based systems;
+Understanding these problems is critical and may prevent us from repeating them in
+database systems.</p>
+<ol>
+<li>
+<p>Separation and isolation of data</p>
+<ul>
+<li>When data is isolated in separate files, it is harder to access data that
+should be available.</li>
+</ul>
+</li>
+<li>
+<p>Duplication of data</p>
+<ul>
+<li>File-based systems encouraged and needed the uncontrolled duplication of data.</li>
+<li>Duplication costs time and money to enter the data more than once.</li>
+<li>It takes up additional storage space to have duplicated data.</li>
+<li>More importantly, duplication leads to <strong>loss of data integrity</strong> i.e. data
+is no longer consistent.</li>
+</ul>
+</li>
+<li>
+<p>Data dependence</p>
+<ul>
+<li>The physical structure and storage of the data files and records are defined
+in the application code; Meaning that changing an already existing structure
+difficult.</li>
+</ul>
+</li>
+<li>
+<p>Incompatible file formats</p>
+<ul>
+<li>The structure of files is embedded in the application programs, making them
+dependent on the application programming language.</li>
+</ul>
+</li>
+<li>
+<p>Fixed queries/proliferation of application programs</p>
+<ul>
+<li>File-based systems are very dependent upon the application developer, who
+has to write any queries that are required; There was no facility for asking
+unplanned or <em>ad hoc</em> queries about the data.</li>
+</ul>
+</li>
+</ol>
+<h2 id="the-database-approach">The Database Approach</h2>
+<p>These limitations of the file-based approach can be attributed to two reasons:</p>
+<ol>
+<li>
+<p>The definition of data is embedded into the application programs; It should be
+stored separately and independently.</p>
+</li>
+<li>
+<p>There is no control over the access and manipulation of data beyond that dictated
+by the application programs.</p>
+</li>
+</ol>
+<p>A new, more efficient approach was required. Then the Database and the
+DBMS emerged.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Database</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>A shared collection of logically related data and its description,
+designed to meet the information needs of an organization.</p>
+</blockquote>
+<p>The database is no longer owned by one department but is a shared corporate
+resource. It is a single repository of data that can be used simultaneously by
+many departments and users.</p>
+<p>A database is also defined as a <em>self-describing
+collection of integrated records</em> because it contains the description of the data,
+known as system catalog (or metadata); This nature of the database is what provides
+program-data independence.</p>
+<p>Another very important aspect in the definition of a database is the concept of
+<em>logically related</em>. When analyzing the information needs of an organization,
+we need to identify <strong>entities</strong>, <strong>attributes</strong> and <strong>relationships</strong>; Attributes
+are the properties of entities and a relationship is an association between entities.</p>
+<table>
+  <thead>
+      <tr>
+          <th>DBMS</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>A software system that enables users to define, create, maintain, and
+control access to the database.</p>
+</blockquote>
+<p>A Database Management System provides the following facilities:</p>
+<ol>
+<li>
+<p>Allow users to define the database, through a Data Definition Language (DDL);
+Specifying data types and structures and the restrictions on the data to be stored.</p>
+</li>
+<li>
+<p>Allow users to insert, update, delete and retrieve data through a Data
+Manipulation Language (DML); The primary language for performing DML operations is
+Structured Query Language (SQL) which provides specific commands like INSERT,
+UPDATE, DELETE and SELECT which perform the corresponding DML actions on the data
+stored in a database.</p>
+</li>
+<li>
+<p>Provide controlled access to the database; For example a security system which
+prevents unauthorized access to the DB, an integrity system to maintain the consistency
+of stored data, a concurrency control system, a recovery control system and a
+user-accessible catalog, which contain descriptions of the data in the database.</p>
+</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Application Programs</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>A computer program that interacts with the database by issuing
+an appropriate request (typically an SQL statement) to the DBMS.</p>
+</blockquote>
+<p>Users may interact with the database through application programs that are used
+to create and maintain the database and to generate information.</p>
+<h2 id="database-design">Database Design</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Database Design</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>The process of creating a design that will support the enterprise’s mission
+statement and mission objectives for the required database system.</p>
+</blockquote>
+<p>There are three models of database design, from top to down:</p>
+<ol>
+<li>
+<p>Conceptual Model</p>
+<ul>
+<li>Represents the domain model of the data used in the organization, independent
+of all physical considerations.</li>
+<li>Defines entity relationships.</li>
+</ul>
+</li>
+<li>
+<p>Logical Model</p>
+<ul>
+<li>Utilizes the Relational Model (common in SQL databases).</li>
+<li>Specifies entity associations.</li>
+<li>Bridge between the high-level conceptual model and the physical implementation
+of the database.</li>
+</ul>
+</li>
+<li>
+<p>Physical Model</p>
+<ul>
+<li>Describes the implementation of the database on secondary storage, including
+relations, file organizations and indexes to efficiently access data.</li>
+</ul>
+</li>
+</ol>
+<h2 id="normalization">Normalization</h2>
+<p>When designing a database for an enterprise, the main goal is to create an accurate
+representation of the data; Relationships between the data and restrictions on the
+data.</p>
+<p>Normalization is a database design technique that focuses on organizing data by
+examining the relationships (<strong>functional dependencies</strong>) between attributes; It involves
+a series of steps called <strong>normal forms</strong> to ensure the data is structured efficiently
+while minimizing redundancy and maintaining data integrity.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Normalization</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>A technique for producing a set of relations with desirable properties,
+given the data requirements of an enterprise.</p>
+</blockquote>
+<h2 id="functional-dependencies">Functional Dependencies</h2>
+<p>A functional dependency is a very important concept associated with normalization which
+describes the relationship between attributes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>A --&gt; B
+</span></span></code></pre></div><p>This representation of a functional dependency means: B is functionally dependent
+on A (or A functionally determines B). In this case, A is called the determinant.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Functional Dependency</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<blockquote>
+<p>Describes the relationship between attributes in a relation.
+If A and B are attributes of a relation, B is functionally
+dependent on A, if each value of A is associated with exactly one value of B.
+(A and B may each consist of one o more attributes.)</p>
+</blockquote>
+<p>Additionally, if the determinants have the minimal number of attributes to maintain
+the functional dependency with the attribute(s) on the righthand side, it is called
+a <strong>full functional dependency</strong>.</p>
+<p>A <strong>partial dependency</strong> means that there is some attribute that can be removed from
+A and yet the dependency still holds.</p>
+<p>Now a <strong>transitive dependency</strong> is another condition where A, B and C are attributes of a
+relation such that if A &ndash;&gt; B and B &ndash;&gt; C, then C is transitively dependent on A via B
+(if A is not functionally dependent on B or C).</p>
+<h3 id="functional-dependency-examples">Functional Dependency Examples</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Dependency Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Functional Dependency</td>
+          <td>In a relation &ldquo;Employees&rdquo; with attributes (EmployeeID, FirstName, LastName, Department), &ldquo;Department&rdquo; is functionally dependent on &ldquo;EmployeeID&rdquo; if each EmployeeID corresponds to exactly one Department. In this case, EmployeeID is the determinant, and Department is the dependent attribute.</td>
+      </tr>
+      <tr>
+          <td>Full Functional Dependency</td>
+          <td>In the &ldquo;Employees&rdquo; relation, if both &ldquo;FirstName&rdquo; and &ldquo;LastName&rdquo; depend on &ldquo;EmployeeID,&rdquo; it&rsquo;s a full functional dependency. For instance, if EmployeeID 101 corresponds to FirstName &ldquo;John&rdquo; and LastName &ldquo;Smith,&rdquo; and no other EmployeeID has &ldquo;John&rdquo; as the FirstName, then FirstName and LastName are fully functionally dependent on EmployeeID.</td>
+      </tr>
+      <tr>
+          <td>Partial Dependency</td>
+          <td>Imagine that in the &ldquo;Employees&rdquo; relation, &ldquo;Department&rdquo; depends on &ldquo;EmployeeID,&rdquo; but &ldquo;PhoneNumber&rdquo; depends only on &ldquo;Department.&rdquo; In this case, &ldquo;PhoneNumber&rdquo; partially depends on the primary key &ldquo;EmployeeID&rdquo; because it indirectly depends on it through &ldquo;Department.&rdquo;</td>
+      </tr>
+      <tr>
+          <td>Transitive Dependency</td>
+          <td>Suppose you have a &ldquo;Courses&rdquo; relation with attributes (CourseID, Professor, Department). If &ldquo;Professor&rdquo; depends on &ldquo;Department,&rdquo; and &ldquo;Department&rdquo; depends on &ldquo;CourseID,&rdquo; then &ldquo;Professor&rdquo; is transitively dependent on &ldquo;CourseID&rdquo; via &ldquo;Department.&rdquo;</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="first-normal-form-1nf">First Normal Form (1NF)</h2>
+<ol>
+<li>Contains only atomic (indivisible) values</li>
+<li>Each row must have a unique identifier (primary-key)</li>
+<li>The order of data storage is irrelevant</li>
+</ol>
+<p>1NF ensures that each column contains indivisible values, and it requires a unique
+identifier (primary-key) for each row to distinguish them from one another.</p>
+<h2 id="second-normal-form-2nf">Second Normal Form (2NF)</h2>
+<ol>
+<li>Satisfies 1NF</li>
+<li>Every non-primary-key attribute is fully functionally dependent on the entire primary-key</li>
+</ol>
+<p>2NF eliminates partial dependencies, ensuring that each non-primary-key attribute
+depends on the entire composite primary-key, if applicable.</p>
+<h2 id="third-normal-form-3nf">Third Normal Form (3NF)</h2>
+<ol>
+<li>Satisfies 2NF</li>
+<li>No non-primary-key attribute is transitively dependent on the primary-key</li>
+</ol>
+<p>3NF eliminates transitive dependencies, ensuring that each non-primary-key attribute
+depends directly on the primary key. Furthermore, it is worth noting that we do not
+remove candidate keys.</p>
+<h2 id="forth-and-fifth-normal-forms-4nf-and-5nf">Forth and Fifth Normal Forms (4NF and 5NF)</h2>
+<p>While the concepts of Fourth Normal Form (4NF) and Fifth Normal Form (5NF) exist,
+their practical application is quite limited, and they are rarely used in the industry.
+Typically, database designs are considered to be adequately normalized when they achieve
+the Third Normal Form (3NF).</p>
+<hr>
+<h2 id="normalization-example">Normalization Example</h2>
+<p>After comprehending these abstract concepts, it is essential to grasp how normalization
+translates into the conceptual and logical models.</p>
+<p>In the conceptual model, we focus on defining the essential entities and their attributes,
+as well as the relationships between these entities; The goal is to create a high-level
+representation of the organization data requirements.</p>
+<p>In contrast, in the logical model, we delve deeper into the specifics of how data
+will be organized and stored within the database; Creating detailed representations
+of tables, columns, primary-keys, foreign-keys and relationships between tables.</p>
+<p>Normalization contributes to these models by guiding us on how to best structure
+entities, attributes, and relationships; Eliminating anomalies of data, such as redundancy
+and ensuring a more organized data structure.</p>
+<p>Now, let us go ahead and look at some examples.</p>
+<p><strong>Initial Database structure</strong></p>
+<p>Student table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>StudentID{PK}</th>
+          <th>StudentName</th>
+          <th>Course</th>
+          <th>Instructor</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>101</td>
+          <td>Alice</td>
+          <td>Math</td>
+          <td>Dr. Williams</td>
+      </tr>
+      <tr>
+          <td>102</td>
+          <td>Bob</td>
+          <td>Physics</td>
+          <td>Dr. Louis</td>
+      </tr>
+      <tr>
+          <td>103</td>
+          <td>John</td>
+          <td>Math</td>
+          <td>Dr. Williams</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>NOTE: &ldquo;PK&rdquo; means primary-key and &ldquo;FK&rdquo; is foreign-key.</p>
+</blockquote>
+<ul>
+<li>We have a &ldquo;Students&rdquo; table with attributes: StudentID, StudentName, Course and Instructor</li>
+<li>The table does not satisfy 1NF because the &ldquo;Course&rdquo; and &ldquo;Instructor&rdquo; columns are
+not atomic (indivisible) values.</li>
+</ul>
+<h3 id="1nf">1NF</h3>
+<p>In 1NF we ensure that each column contains only atomic values, we create separate tables for
+&ldquo;Course&rdquo; and &ldquo;Instructor&rdquo;. Now, the &ldquo;Student&rdquo; table contains a foreign-key reference
+to these tables.</p>
+<p>Course table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>CourseID{PK}</th>
+          <th>CourseName</th>
+          <th>CourseCredits</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Math</td>
+          <td>6</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Physics</td>
+          <td>4</td>
+      </tr>
+  </tbody>
+</table>
+<p>Instructor table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>InstructorID{PK}</th>
+          <th>IntructorName</th>
+          <th>Acronym</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Dr. Williams</td>
+          <td>drw</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Dr. Louis</td>
+          <td>drl</td>
+      </tr>
+  </tbody>
+</table>
+<p>Student table (after 1NF):</p>
+<table>
+  <thead>
+      <tr>
+          <th>StudentID{PK}</th>
+          <th>StudentName</th>
+          <th>CourseID{FK}</th>
+          <th>InstructorID{FK}</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>101</td>
+          <td>Alice</td>
+          <td>1</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>102</td>
+          <td>Bob</td>
+          <td>2</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>103</td>
+          <td>John</td>
+          <td>1</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2nf">2NF</h3>
+<p>In 2NF, we ensure that non-primary-key attributes are fully functionally dependent
+on the primary-key. To help demonstrate 2NF, I will introduce a new relationship:
+&ldquo;CourseRegistration&rdquo; to handle the registration of students for specific courses.</p>
+<blockquote>
+<p>NOTE: In cases where you have a many-to-many association between tables, it is
+often necessary to create a new entity, known as a relationship entity in order to
+properly manage this association. This intermediate entity helps resolve many-to-many
+relationships in a relational database.</p>
+</blockquote>
+<p>CourseRegistration table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>StudentID{FK}</th>
+          <th>CourseID{FK}</th>
+          <th>RegistrationDate</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>101</td>
+          <td>1</td>
+          <td>2023-01-13</td>
+      </tr>
+      <tr>
+          <td>102</td>
+          <td>2</td>
+          <td>2023-04-20</td>
+      </tr>
+      <tr>
+          <td>103</td>
+          <td>1</td>
+          <td>2022-9-19</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3nf">3NF</h3>
+<p>In 3NF, we ensure that no non-primary-key attribute is transitively dependent on
+the primary key. To demonstrate this, let&rsquo;s introduce a new concept: &ldquo;Department&rdquo;
+to handle the department of each instructor.</p>
+<p>Department table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>DepartmentID{PK}</th>
+          <th>DepartmentName</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Mathematics</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Physics</td>
+      </tr>
+  </tbody>
+</table>
+<p>Instructor table (after 3NF):</p>
+<table>
+  <thead>
+      <tr>
+          <th>InstructorID{PK}</th>
+          <th>InstructorName</th>
+          <th>Acronym</th>
+          <th>DepartmentID{FK}</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Dr. Williams</td>
+          <td>drw</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Dr. Louis</td>
+          <td>drl</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+<p>This arrangement satisfies 3NF as there are no transitive dependencies; each non-primary-key
+attribute (InstructorName, Acronym) depends directly on the primary key (InstructorID), and
+the department information is now separate.</p>
+<p>With this 3NF structure, our database is well-organized, and data integrity is maintained.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We have explored the evolution of information management, from outdated file-based
+systems to databases. The introduction of DBMS has revolutionized how we create, maintain
+and control access to data.</p>
+<p>Furthermore, we have also explored Database Design, covering Conceptual, Logical and
+Physical Models. However, the true star of the show was Normalization &ndash; a vital
+technique that ensures data efficiency and integrity by resolving functional
+dependencies and adhering to various normal forms.</p>
+<h4 id="references">References</h4>
+<p>Database Systems: A Practical Approach to Design, Implementation, and Management</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/databases">databases</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

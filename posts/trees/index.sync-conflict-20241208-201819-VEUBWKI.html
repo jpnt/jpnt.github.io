@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Trees - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Solid introduction to trees" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/trees/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Trees">
+  <meta property="og:description" content="Solid introduction to trees">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-02-27T00:00:00+00:00">
+    <meta property="article:tag" content="Programming">
+    <meta property="article:tag" content="Dsa">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Trees">
+  <meta name="twitter:description" content="Solid introduction to trees">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Trees</h1>
+			<div class="meta">Posted on Feb 27, 2024</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<p>A tree is a hierarchical data structure composed of nodes connected by edges.
+The structure starts with a single root node and extends downwards, forming
+parent-child relationships among nodes. Each node, except the root, has exactly
+one parent, and nodes with no children are called leaf nodes. Various concepts
+and properties characterize trees.</p>
+<h2 id="concepts">Concepts</h2>
+<p>Nodes and Edges</p>
+<ul>
+<li>Node: Basic unit in a tree that contains data and may have zero or more child nodes.</li>
+<li>Edge: Connection between nodes that represents relationships.</li>
+</ul>
+<p>Root, Parent, Child, and Leaf</p>
+<ul>
+<li>Root Node: The topmost node in a tree, without a parent.</li>
+<li>Parent Node: A node that has one or more child nodes.</li>
+<li>Child Node: A node connected to another node, known as its parent.</li>
+<li>Leaf Node: A node without children.</li>
+</ul>
+<p>Subtrees and Paths</p>
+<ul>
+<li>Subtree: Any node in a tree can be considered the root of a subtree.</li>
+<li>Path: The sequence of nodes connected by edges from the root to a specific node.</li>
+</ul>
+<p>Ascendants and Descendants</p>
+<ul>
+<li>Ascendants: Nodes on the path from the root to a specific node.</li>
+<li>Descendants: Nodes reachable from a specific node by following edges.</li>
+</ul>
+<p>Height and Depth</p>
+<ul>
+<li>Height of a Node: Maximum path length from the node to a leaf.</li>
+<li>Depth of a Node: Path length from the root to the node.</li>
+</ul>
+<p>Degree</p>
+<ul>
+<li>Degree of a Node: Number of children a node has.</li>
+</ul>
+<h3 id="ascendants-and-descendants">Ascendants and Descendants</h3>
+<p><img src="/img/trees/ascdes.png" alt=""></p>
+<p>Ascendents of node 12:</p>
+<ul>
+<li>50, 90, 75.</li>
+</ul>
+<p>Descendants of node 90:</p>
+<ul>
+<li>50, 37, 12.</li>
+</ul>
+<h3 id="height-and-depth">Height and depth</h3>
+<p><img src="/img/trees/height-depth.png" alt=""></p>
+<h2 id="binary-trees">Binary Trees</h2>
+<p><img src="/img/trees/binary-tree.png" alt=""></p>
+<p>A binary tree is a specific type of tree where each node has at most two children:
+a left child and a right child.</p>
+<h3 id="full-and-perfect-binary-trees">Full and Perfect Binary Trees</h3>
+<p>Full Binary Tree: Every node is a leaf or has exactly two children.</p>
+<ul>
+<li>It has n + 1 leaves, where n is the number of internal nodes.</li>
+</ul>
+<p>Perfect Binary Tree: A full binary tree where all leaves have the same depth.</p>
+<ul>
+<li>It has 2^(h + 1) - 1 nodes, where h is the height.</li>
+</ul>
+<h2 id="tree-traversals">Tree Traversals</h2>
+<p>Tree traversals are methods for visiting and exploring all nodes in a tree.</p>
+<p><img src="/img/trees/tree-traversals.png" alt=""></p>
+<h3 id="types-of-traversals">Types of Traversals:</h3>
+<ul>
+<li>In-Order: Visit left subtree, visit the root, visit right subtree.</li>
+<li>Pre-Order: Visit the root, visit the left subtree, visit the right subtree.</li>
+<li>Post-Order: Visit left subtree, visit right subtree, visit the root.</li>
+<li>Level-Order: Visit nodes level by level, starting from the root and moving
+left to right across each level.</li>
+</ul>
+<h2 id="binary-search-tree-bst">Binary Search Tree (BST)</h2>
+<p><img src="/img/trees/bst.png" alt=""></p>
+<p>A Binary Search Tree is a binary tree with the property that for each node, all
+nodes in its left subtree have values less than the node, and all nodes in its
+right subtree have values greater than the node.</p>
+<h3 id="operations-on-bst">Operations on BST</h3>
+<ul>
+<li>Search: Locate a node with a given key efficiently.</li>
+<li>Insertion: Add a new node while maintaining the BST property.</li>
+<li>Deletion: Remove a node while preserving the BST property.</li>
+<li>Performance: Search, insertion, deletion have an average time complexity of O(log n).</li>
+</ul>
+<h2 id="avl-tree-or-balanced-trees">AVL Tree or Balanced Trees</h2>
+<p>AVL trees are a type of self-balancing binary search tree where the height
+difference between the left and right subtrees (balance factor) of any node is at most 1.</p>
+<p><img src="/img/trees/avl.jpg" alt=""></p>
+<h3 id="avl-tree-operations">AVL Tree Operations</h3>
+<ul>
+<li>Balance Factor: The height difference between the left and right subtrees.</li>
+<li>Balancing the Tree: Ensuring the balance factor is maintained.</li>
+<li>Rotation: Simple and double rotations to maintain balance.</li>
+<li>Insertion: Rebalance the tree after insertion to maintain AVL property.</li>
+<li>Deletion: Rebalance the tree after deletion to maintain AVL property.</li>
+<li>BST vs AVL Tree: Comparison of binary search trees and AVL trees.</li>
+<li>Sorting in AVL Tree: Utilizing the in-order traversal for sorted order.</li>
+</ul>
+<h2 id="kd-trees">Kd-trees</h2>
+<p>A Kd-tree, or k-dimensional tree, is a binary tree used for multidimensional
+searches, such as nearest neighbor or range searches.</p>
+<p><img src="/img/trees/kdtree.jpg" alt=""></p>
+<h3 id="2d-tree">2d-tree</h3>
+<p>A 2d-tree is a specific instance of a Kd-tree where k is 2, representing points
+in a 2-dimensional space.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/programming">programming</a></li>
+					
+					<li><a href="/tags/dsa">dsa</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
