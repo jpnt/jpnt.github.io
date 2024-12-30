@@ -73,18 +73,7 @@ designed for secure communication over an unsecured network. It is
 widely used for remote login and command-line execution, replacing
 older, insecure protocols like Telnet and rsh. This guide will explain
 how to configure SSH, manage keys, and integrate SSH with GitHub Actions.</p>
-<h2 id="ssh-daemon-sshd-configuration-file">SSH Daemon (sshd) Configuration File</h2>
-<p>The SSH daemon settings can be fully configured through its file located
-at /etc/ssh/sshd_config. Open it with a text editor:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># vi /etc/ssh/sshd_config</span>
-</span></span></code></pre></div><p>Recommended settings:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>PermitRootLogin no
-</span></span><span style="display:flex;"><span>PubkeyAuthentication yes
-</span></span><span style="display:flex;"><span>AuthorizedKeysFile .ssh/authorized_keys
-</span></span><span style="display:flex;"><span>PasswordAuthentication no
-</span></span></code></pre></div><p>After modifying the configuration, restart the SSH daemon to apply changes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># systemctl restart sshd</span>
-</span></span></code></pre></div><h2 id="how-to-use-ssh-keys">How To Use SSH Keys</h2>
+<h2 id="how-to-use-ssh-keys">How To Use SSH Keys</h2>
 <p>SSH key-based authentication is more secure and convenient than passwords.
 The client creates a private key and sends a public key to the server.</p>
 <ol>
@@ -117,8 +106,19 @@ The client creates a private key and sends a public key to the server.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-add ~/.ssh/id_ed25519
 </span></span></code></pre></div><p>Verify that the key has been added:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-add -l
+</span></span></code></pre></div><h2 id="ssh-daemon-sshd-configuration-file">SSH Daemon (sshd) Configuration File</h2>
+<p>The SSH daemon settings can be fully configured through its file located
+at /etc/ssh/sshd_config. Open it with a text editor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># vi /etc/ssh/sshd_config</span>
+</span></span></code></pre></div><p>Recommended settings:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>PermitRootLogin no
+</span></span><span style="display:flex;"><span>PubkeyAuthentication yes
+</span></span><span style="display:flex;"><span>AuthorizedKeysFile .ssh/authorized_keys
+</span></span><span style="display:flex;"><span>PasswordAuthentication no
+</span></span></code></pre></div><p>After modifying the configuration, restart the SSH daemon to apply changes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># systemctl restart sshd</span>
 </span></span></code></pre></div><h2 id="verify-ssh-connection">Verify SSH Connection</h2>
-<p>After setting up your keys, test your connection to the server:</p>
+<p>After setting up your keys and configuration, test your connection to the server:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh user@server_ip
 </span></span></code></pre></div><h2 id="troubleshooting-common-issues">Troubleshooting Common Issues</h2>
 <ol>

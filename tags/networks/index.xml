@@ -14,7 +14,7 @@
       <link>https://jpnt.github.io/posts/ssh-config/</link>
       <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/ssh-config/</guid>
-      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;The Secure Shell (SSH) protocol is a cryptographic network protocol&#xA;designed for secure communication over an unsecured network. It is&#xA;widely used for remote login and command-line execution, replacing&#xA;older, insecure protocols like Telnet and rsh. This guide will explain&#xA;how to configure SSH, manage keys, and integrate SSH with GitHub Actions.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ssh-daemon-sshd-configuration-file&#34;&gt;SSH Daemon (sshd) Configuration File&lt;/h2&gt;&#xA;&lt;p&gt;The SSH daemon settings can be fully configured through its file located&#xA;at /etc/ssh/sshd_config. Open it with a text editor:&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;The Secure Shell (SSH) protocol is a cryptographic network protocol&#xA;designed for secure communication over an unsecured network. It is&#xA;widely used for remote login and command-line execution, replacing&#xA;older, insecure protocols like Telnet and rsh. This guide will explain&#xA;how to configure SSH, manage keys, and integrate SSH with GitHub Actions.&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-to-use-ssh-keys&#34;&gt;How To Use SSH Keys&lt;/h2&gt;&#xA;&lt;p&gt;SSH key-based authentication is more secure and convenient than passwords.&#xA;The client creates a private key and sends a public key to the server.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Iproute2</title>
