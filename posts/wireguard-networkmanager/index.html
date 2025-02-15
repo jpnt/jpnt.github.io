@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Using WireGuard in NetworkManager - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Quick overview how to use it" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/wireguard-networkmanager/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Using WireGuard in NetworkManager">
+  <meta property="og:description" content="Quick overview how to use it">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:tag" content="Networking">
+    <meta property="article:tag" content="Os">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Using WireGuard in NetworkManager">
+  <meta name="twitter:description" content="Quick overview how to use it">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Using WireGuard in NetworkManager</h1>
+			<div class="meta">Posted on Feb 15, 2025</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="what-is-wireguard">What is WireGuard</h1>
+<p>WireGuard is a FOSS that implements encrypted VPN tunnels using UDP. It aims
+to be faster and lighter than IPsec and OpenVPN.</p>
+<h1 id="why-configure-with-networkmanager">Why configure with NetworkManager?</h1>
+<ul>
+<li>DNS and firewalld integration</li>
+<li>Simple profile management</li>
+</ul>
+<h1 id="support">Support</h1>
+<ul>
+<li>NetworkManager &gt;= 1.16 (native support)</li>
+<li>Linux &gt; 5.6 (built-in module)</li>
+</ul>
+<h1 id="importing-a-existing-wireguard-profile">Importing a existing WireGuard profile</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ nmcli connection import type wireguard file <span style="color:#e6db74">&#34;</span>$CFG_FILE<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h1 id="create-a-new-connection">Create a new connection</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection add type wireguard con-name wg0 ifname wg0
+</span></span></code></pre></div><h1 id="edit-connection">Edit connection</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection modify wg0 wireguard.private-key &lt;private_key&gt;
+</span></span><span style="display:flex;"><span>nmcli connection modify wg0 wireguard.addresses &lt;IP/CIDR&gt;
+</span></span></code></pre></div><h1 id="bring-up-the-connection">Bring up the connection</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection up wg0
+</span></span></code></pre></div><h1 id="removing-interface">Removing interface</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ nmcli con del <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/">https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/networking">networking</a></li>
+					
+					<li><a href="/tags/os">os</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2025  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

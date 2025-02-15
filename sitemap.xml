@@ -3,18 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2025-01-01T14:01:01-01:00</lastmod>
+    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/networking/</loc>
+    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/os/</loc>
+    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2025-01-01T14:01:01-01:00</lastmod>
+    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/</loc>
+    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/wireguard-networkmanager/</loc>
+    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/ssh-config/</loc>
     <lastmod>2024-12-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/networks/</loc>
-    <lastmod>2024-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/</loc>
     <lastmod>2024-12-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/divine-simplicity/</loc>
@@ -39,9 +48,6 @@
     <lastmod>2024-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/linux-audio-guide/</loc>
-    <lastmod>2024-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/os/</loc>
     <lastmod>2024-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/slices/</loc>

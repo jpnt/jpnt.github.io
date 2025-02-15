@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Networking</title>
+      <link>https://jpnt.github.io/tags/networking/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Os</title>
+      <link>https://jpnt.github.io/tags/os/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/tags/os/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Networks</title>
       <link>https://jpnt.github.io/tags/networks/</link>
@@ -28,13 +42,6 @@
       <link>https://jpnt.github.io/tags/programming/</link>
       <pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/tags/programming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Os</title>
-      <link>https://jpnt.github.io/tags/os/</link>
-      <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/tags/os/</guid>
       <description></description>
     </item>
     <item>
