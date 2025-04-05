@@ -7,8 +7,22 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 15 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Apr 2025 14:51:16 +0100</lastBuildDate>
     <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS Basics</title>
+      <link>https://jpnt.github.io/posts/dns-config-basics/</link>
+      <pubDate>Fri, 04 Apr 2025 14:51:16 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/dns-config-basics/</guid>
+      <description>&lt;h1 id=&#34;concepts&#34;&gt;Concepts&lt;/h1&gt;&#xA;&lt;p&gt;DNS (Domain Name System) translates human-readable domain&#xA;names into IP addresses. Without it, we would have to memorize&#xA;raw IP addresses everytime we wanted to locate computers&#xA;on a network.&lt;/p&gt;&#xA;&lt;p&gt;DNS records are used to map a domain to an IP or other data. Common&#xA;DNS records include: A (IPv4), AAAA (IPv6), MX (Email),&#xA;CNAME (Alias for another domain), NS (specifies which server is authoritative&#xA;for the domain).&lt;/p&gt;&#xA;&lt;p&gt;Recursive DNS: Finds answers by querying others (e.g. ISP&amp;rsquo;s DNS).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>UNIX, Plan9 and Linux Containers</title>
+      <link>https://jpnt.github.io/posts/unix-plan9-and-linux-containers/</link>
+      <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/unix-plan9-and-linux-containers/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;The history of operating systems is a story of solving isolation &amp;ndash; of processes, resources, and users.&lt;/p&gt;&#xA;&lt;p&gt;From UNIX&amp;rsquo;s monolithic simplicity to Plan 9&amp;rsquo;s radical reimagining of distributed computing, each&#xA;step laid groundwork for today&amp;rsquo;s modern Operating Systems infrastructure and in my opinion by learning these&#xA;concept we can get a broader understanding of Linux containers.&lt;/p&gt;&#xA;&lt;h1 id=&#34;unix-the-birth-of-modular-design&#34;&gt;UNIX: The Birth of Modular Design&lt;/h1&gt;&#xA;&lt;p&gt;Born at Bell Labs in 1969, UNIX introduced a philosophy: everything is a file.&#xA;Devices, pipes, and even network sockets were files in a single global namespace.&#xA;Users interacted via &amp;ldquo;dumb terminals&amp;rdquo; while computation happened on centralized mainframes.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Using WireGuard in NetworkManager</title>
       <link>https://jpnt.github.io/posts/wireguard-networkmanager/</link>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>DNS Basics - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="DNS tools and configuration" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/dns-config-basics/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="DNS Basics">
+  <meta property="og:description" content="DNS tools and configuration">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-04T14:51:16+01:00">
+    <meta property="article:modified_time" content="2025-04-04T14:51:16+01:00">
+    <meta property="article:tag" content="Networks">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DNS Basics">
+  <meta name="twitter:description" content="DNS tools and configuration">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">DNS Basics</h1>
+			<div class="meta">Posted on Apr 4, 2025</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="concepts">Concepts</h1>
+<p>DNS (Domain Name System) translates human-readable domain
+names into IP addresses. Without it, we would have to memorize
+raw IP addresses everytime we wanted to locate computers
+on a network.</p>
+<p>DNS records are used to map a domain to an IP or other data. Common
+DNS records include: A (IPv4), AAAA (IPv6), MX (Email),
+CNAME (Alias for another domain), NS (specifies which server is authoritative
+for the domain).</p>
+<p>Recursive DNS: Finds answers by querying others (e.g. ISP&rsquo;s DNS).</p>
+<p>Authoritative: Stores actual records (e.g. Cloudflare DNS).</p>
+<p>Caching: Saves responses for speed (e.g., browser cache).</p>
+<p>Configuring DNS in Linux can be done in multiple ways, depending on the purpose:</p>
+<ul>
+<li>Client-side DNS: for resolving domain names</li>
+<li>Local DNS caching: to improve performance</li>
+<li>DNS Server: for managing domain names in a network</li>
+</ul>
+<p>On most Linux systems, /etc/resolv.conf is used by programs and libraries
+(e.g., ping, curl, glibc resolver, or musl&rsquo;s resolver) to perform
+DNS lookups. It contains DNS server addresses and other configuration
+settings. On some systems, tools like systemd-resolved, NetworkManager,
+or dnsmasq may manage or modify it. Editing this file manually is not
+recommended because it might get overwritten by other programs.</p>
+<p>The Name Service Switch (NSS) in glibc allows system databases (like DNS)
+to be handled by different services, with the search order configured in
+/etc/nsswitch.conf. For domain name resolution, the two main services are:</p>
+<ul>
+<li>files: Uses /etc/hosts for hostname resolution.</li>
+<li>dns: Uses /etc/resolv.conf for DNS resolution.</li>
+</ul>
+<p>DNSSEC, or Domain Name System Security Extensions, is a set of specifications that adds
+security to the Domain Name System (DNS) by using cryptographic digital signatures
+to authenticate DNS queries and responses.</p>
+<p>DNSCrypt is a protocol that encrypts and authenticates DNS traffic between
+your computer and a DNS resolver. It prevents DNS spoofing and tampering by
+using cryptographic signatures to verify that responses come from the intended resolver.</p>
+<p>DNSSEC vs DNSCrypt:</p>
+<ul>
+<li>DNSSEC allows a resolver to verify the records received from authoritative servers. Ensures
+these records are identical to what whoever controls the zone actually configured.</li>
+<li>DNSCrypt allows a client to verify the records received from a resolver Ensures that these
+records are identical to what the resolver sent.</li>
+</ul>
+<h1 id="how-to">How to</h1>
+<p>We will see how to properly configure DNS on a Linux system, covering
+the NetworkManager way and another using dnscrypt-proxy for more security.</p>
+<p>My prefered method of configuring networking on Linux tends to be using
+NetworkManager as it  unifies all network configuration, offering a simple
+CLI, TUI, or GUI for simple management of connections, altough I find myself
+mostly using CLI or TUI.</p>
+<p>For example, configuring a DNS server using NetworkManager CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli con mod <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span> ipv4.dns <span style="color:#e6db74">&#34;185.222.222.222 45.11.45.11&#34;</span>
+</span></span><span style="display:flex;"><span>nmcli con mod <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span> ipv4.ignore-auto-dns yes
+</span></span><span style="display:flex;"><span>nmcli con up <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;&amp;</span> nmcli con up <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>As you can see, DNS in NetworkManager CLI is a per-connection configuration.</p>
+<p>If you want to set it globally for all connections you may alter /etc/resolv.conf
+but dont forget to lock the file using chattr so NetworkManager does not alter it.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo chattr -i /etc/resolv.conf
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;nameserver 185.222.222.222\nnameserver 45.11.45.11&#34;</span> | sudo tee /etc/resolv.conf
+</span></span><span style="display:flex;"><span>sudo chattr +i /etc/resolv.conf
+</span></span></code></pre></div><p>If you have the possibility, you may also configure the DNS server directly in the router.</p>
+<p>If you need to remove DNS settigns from NetworkManager connection:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli con mod <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span> ipv4.dns <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div><hr>
+<h1 id="how-to-secure-dns">How to: <strong>Secure DNS</strong></h1>
+<p>The DNSCrypt implementation most commonly used is <strong>dnscrypt-proxy</strong>.</p>
+<p>Lets fully hand off DNS to dnscrypt-proxy (instead of NetworkManager):</p>
+<ol>
+<li>Stop NetworkManager from setting DNS</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo mkdir -p /etc/NetworkManager/conf.d
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;[main]\ndns=none&#34;</span> | sudo tee /etc/NetworkManager/conf.d/01-dns.conf
+</span></span></code></pre></div><ol start="2">
+<li>Configure dnscrypt-proxy</li>
+</ol>
+<p>Configuration is located and well documented at: /etc/dnscrypt-proxy/dnscrypt-proxy.toml</p>
+<p>Some notable options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">server_names</span> = [<span style="color:#e6db74">&#39;cloudflare&#39;</span>] <span style="color:#75715e"># https://dnscrypt.info/public-servers</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listen_addresses</span> = [<span style="color:#e6db74">&#39;127.0.0.1:53&#39;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dnscrypt_servers</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">doh_servers</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">require_dnssec</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cache</span> = <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>Test it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>dnscrypt-proxy -resolve example.com -config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+</span></span></code></pre></div><ol start="3">
+<li>Configure resolv.conf</li>
+</ol>
+<p>NOTE: the developer mentions edns0 as a micro-optimization. It refers to Extension Mechanisms for DNS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo chattr -i /etc/resolv.conf
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;nameserver 127.0.0.1\noptions edns0&#34;</span> | sudo tee /etc/resolv.conf
+</span></span><span style="display:flex;"><span>sudo chattr +i /etc/resolv.conf
+</span></span></code></pre></div><ol start="4">
+<li>Enable dnscrypt-proxy system service</li>
+</ol>
+<p>(systemd)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo systemctl enable --now dnscrypt-proxy
+</span></span><span style="display:flex;"><span>sudo systemctl status dnscrypt-proxy
+</span></span></code></pre></div><p>(runit)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo ln -s /etc/sv/dnscrypt-proxy /var/service
+</span></span><span style="display:flex;"><span>sudo sv status dnscrypt-proxy
+</span></span></code></pre></div><p>Test it:</p>
+<p><a href="https://dnsleaktest.com/">https://dnsleaktest.com/</a> -&gt; Extended Text</p>
+<p>If the results show servers that you have set in the configuration files it means that dnscrypt-proxy is working.</p>
+<hr>
+<h1 id="troubleshooting">Troubleshooting</h1>
+<p>Inspect DNS server settings with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli con show <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span> | grep -i dns
+</span></span><span style="display:flex;"><span>cat /etc/resolv.conf
+</span></span></code></pre></div><p>Stop dnsmasq:</p>
+<p>(systemd)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo systemctl stop dnsmasq
+</span></span></code></pre></div><p>(runit)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo sv stop dnsmasq
+</span></span></code></pre></div><p>Test with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>drill example.com
+</span></span><span style="display:flex;"><span>dig example.com
+</span></span><span style="display:flex;"><span>nslookup example.com
+</span></span></code></pre></div><h1 id="best-practices">Best practices</h1>
+<ol>
+<li>Use Trusted Resolvers: Opt for privacy-focused services</li>
+<li>Avoid Manual /etc/resolv.conf Edits: Let NetworkManager handle it to prevent conflicts.</li>
+<li>Secure DNS: Enable DNS-over-TLS in NetworkManager or use dnscrypt-proxy</li>
+<li>Monitor: Use sudo tcpdump -n port 53 to inspect raw DNS traffic.</li>
+<li>Always make backup of files in case something fails. A simple copy like file to file.orig works 99% of times.</li>
+<li>&ldquo;drill if you can, dig if you have to, nslookup if you must&rdquo;</li>
+</ol>
+<h1 id="next-steps">Next steps</h1>
+<ul>
+<li>Local DNS Server.</li>
+<li>Use Ansible (or another infrastructure tool) to deploy DNS settings across servers.</li>
+<li>Explore more about DNSSEC, zone files, and reverse DNS.</li>
+</ul>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="http://www.steves-internet-guide.com/dns-guide-beginners/">http://www.steves-internet-guide.com/dns-guide-beginners/</a></li>
+<li><a href="https://wiki.archlinux.org/title/Domain_name_resolution">https://wiki.archlinux.org/title/Domain_name_resolution</a></li>
+<li><a href="https://wiki.gentoo.org/wiki/Resolv.conf">https://wiki.gentoo.org/wiki/Resolv.conf</a></li>
+<li><a href="https://wiki.archlinux.org/title/Dnscrypt-proxy">https://wiki.archlinux.org/title/Dnscrypt-proxy</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/networks">networks</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2025  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

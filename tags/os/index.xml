@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 15 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UNIX, Plan9 and Linux Containers</title>
+      <link>https://jpnt.github.io/posts/unix-plan9-and-linux-containers/</link>
+      <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/unix-plan9-and-linux-containers/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;The history of operating systems is a story of solving isolation &amp;ndash; of processes, resources, and users.&lt;/p&gt;&#xA;&lt;p&gt;From UNIX&amp;rsquo;s monolithic simplicity to Plan 9&amp;rsquo;s radical reimagining of distributed computing, each&#xA;step laid groundwork for today&amp;rsquo;s modern Operating Systems infrastructure and in my opinion by learning these&#xA;concept we can get a broader understanding of Linux containers.&lt;/p&gt;&#xA;&lt;h1 id=&#34;unix-the-birth-of-modular-design&#34;&gt;UNIX: The Birth of Modular Design&lt;/h1&gt;&#xA;&lt;p&gt;Born at Bell Labs in 1969, UNIX introduced a philosophy: everything is a file.&#xA;Devices, pipes, and even network sockets were files in a single global namespace.&#xA;Users interacted via &amp;ldquo;dumb terminals&amp;rdquo; while computation happened on centralized mainframes.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Using WireGuard in NetworkManager</title>
       <link>https://jpnt.github.io/posts/wireguard-networkmanager/</link>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>UNIX, Plan9 and Linux Containers - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Introduction
+The history of operating systems is a story of solving isolation &ndash; of processes, resources, and users.
+From UNIX&rsquo;s monolithic simplicity to Plan 9&rsquo;s radical reimagining of distributed computing, each
+step laid groundwork for today&rsquo;s modern Operating Systems infrastructure and in my opinion by learning these
+concept we can get a broader understanding of Linux containers.
+UNIX: The Birth of Modular Design
+Born at Bell Labs in 1969, UNIX introduced a philosophy: everything is a file.
+Devices, pipes, and even network sockets were files in a single global namespace.
+Users interacted via &ldquo;dumb terminals&rdquo; while computation happened on centralized mainframes." />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/unix-plan9-and-linux-containers/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="UNIX, Plan9 and Linux Containers">
+  <meta property="og:description" content="Introduction The history of operating systems is a story of solving isolation – of processes, resources, and users.
+From UNIX’s monolithic simplicity to Plan 9’s radical reimagining of distributed computing, each step laid groundwork for today’s modern Operating Systems infrastructure and in my opinion by learning these concept we can get a broader understanding of Linux containers.
+UNIX: The Birth of Modular Design Born at Bell Labs in 1969, UNIX introduced a philosophy: everything is a file. Devices, pipes, and even network sockets were files in a single global namespace. Users interacted via “dumb terminals” while computation happened on centralized mainframes.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-04T00:00:00+00:00">
+    <meta property="article:tag" content="Os">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="UNIX, Plan9 and Linux Containers">
+  <meta name="twitter:description" content="Introduction The history of operating systems is a story of solving isolation – of processes, resources, and users.
+From UNIX’s monolithic simplicity to Plan 9’s radical reimagining of distributed computing, each step laid groundwork for today’s modern Operating Systems infrastructure and in my opinion by learning these concept we can get a broader understanding of Linux containers.
+UNIX: The Birth of Modular Design Born at Bell Labs in 1969, UNIX introduced a philosophy: everything is a file. Devices, pipes, and even network sockets were files in a single global namespace. Users interacted via “dumb terminals” while computation happened on centralized mainframes.">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">UNIX, Plan9 and Linux Containers</h1>
+			<div class="meta">Posted on Apr 4, 2025</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="introduction">Introduction</h1>
+<p>The history of operating systems is a story of solving isolation &ndash; of processes, resources, and users.</p>
+<p>From UNIX&rsquo;s monolithic simplicity to Plan 9&rsquo;s radical reimagining of distributed computing, each
+step laid groundwork for today&rsquo;s modern Operating Systems infrastructure and in my opinion by learning these
+concept we can get a broader understanding of Linux containers.</p>
+<h1 id="unix-the-birth-of-modular-design">UNIX: The Birth of Modular Design</h1>
+<p>Born at Bell Labs in 1969, UNIX introduced a philosophy: everything is a file.
+Devices, pipes, and even network sockets were files in a single global namespace.
+Users interacted via &ldquo;dumb terminals&rdquo; while computation happened on centralized mainframes.</p>
+<p>Limitations:</p>
+<ul>
+<li>No isolation: Processes shared PIDs, filesystems, and devices.</li>
+<li>Network opacity: Remote resources required clunky protocols (NFS).</li>
+<li>Monolithic: Tight coupling made scaling complex.</li>
+</ul>
+<p>UNIX was revolutionary, but its flaws demanded rethinking.</p>
+<h1 id="plan-9-what-unix-could-have-been">Plan 9: What UNIX Could Have Been</h1>
+<p>By the 1980s, Bell Labs saw UNIX&rsquo;s limits. Plan 9 emerged as a distributed OS where every component was a service.</p>
+<p>Key Innovations:</p>
+<ol>
+<li>
+<p>Per-Process Namespaces
+Each process had a private view of the system. /bin could be local or a remote server, /dev dynamically mounted.</p>
+</li>
+<li>
+<p>9p Protocol
+Resources (even hardware) were files accessible over a lightweight network protocol.</p>
+</li>
+<li>
+<p>Microservices Before Their Time
+Authentication, storage, and UIs were decoupled services. A window manager was just a filesystem mount.</p>
+</li>
+</ol>
+<p>Why It Failed:</p>
+<ul>
+<li>Required specialized hardware.</li>
+<li>Arrived too early &ndash; networks were slow, ecosystems fragmented.</li>
+</ul>
+<p>Yet Plan 9&rsquo;s ideas such as namespaces and network transparency lived on.</p>
+<h1 id="linux-from-hobby-project-to-container-host">Linux: From Hobby Project to Container Host</h1>
+<p>Linux began in 1991 as a UNIX clone but evolved into something more.
+Its monolithic kernel prioritized performance, while adopting
+Plan 9&rsquo;s /proc and namespaces.</p>
+<p>The Internet Era:
+Apache on Linux powered the web, but scaling demanded better isolation.
+Virtual machines were heavy; developers craved lightweight solutions.</p>
+<h1 id="linux-containers-plan-9s-legacy-realized">Linux Containers: Plan 9&rsquo;s Legacy Realized</h1>
+<p>Containers solved two problems: isolation (preventing processes
+from colliding) and resource control (limiting CPU/memory).</p>
+<p>Kernel Tools:</p>
+<ul>
+<li>Namespaces (PID, network, mount): Isolate a process&rsquo;s view of the system.
+Example: A container thinks it&rsquo;s alone because its PID namespace hides host processes.</li>
+<li>cgroups: Allocate CPU/memory per process group.</li>
+<li>seccomp: Restrict syscalls (e.g., block mount() in a container).</li>
+</ul>
+<p>From chroot to Docker:</p>
+<ul>
+<li>chroot (1979) jailed filesystems but lacked resource controls.<!-- raw HTML omitted --></li>
+<li>LXC (2008) combined namespaces and cgroups for full OS containers.</li>
+<li>Docker (2013) popularized portable images and microservices.</li>
+</ul>
+<p>And Docker will not be the last, I believe better solutions like Podman exist and
+many more will come as this technology improves and new security and performance
+requirements surge.</p>
+<h1 id="old-lessons-new-tools">Old Lessons, New Tools</h1>
+<p>Plan 9&rsquo;s vision &ndash; of namespaces, modular services, and network
+transparency &ndash; found belated success in Linux containers. What once
+required a niche OS now underpins cloud-native ecosystems. Containers
+are Plan 9&rsquo;s quiet victory, proving that good ideas resurface when
+the world catches up.</p>
+<p>As Plan 9’s creators noted: &ldquo;Old tools are used for new purposes.&rdquo; Containers
+are those tools, reimagined.</p>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Unix_architecture">https://en.wikipedia.org/wiki/Unix_architecture</a></li>
+<li><a href="https://ondoc.logand.com/d/5736/pdf">https://ondoc.logand.com/d/5736/pdf</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Linux_kernel">https://en.wikipedia.org/wiki/Linux_kernel</a></li>
+<li><a href="https://www.redhat.com/en/topics/containers">https://www.redhat.com/en/topics/containers</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/os">os</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2025  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

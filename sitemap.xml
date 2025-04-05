@@ -3,27 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/networking/</loc>
-    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/os/</loc>
-    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T19:28:11+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2025-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T19:28:11+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/dns-config-basics/</loc>
+    <lastmod>2025-04-04T14:51:16+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/networks/</loc>
+    <lastmod>2025-04-04T14:51:16+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/</loc>
+    <lastmod>2025-04-04T14:51:16+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/os/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/unix-plan9-and-linux-containers/</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/networking/</loc>
     <lastmod>2025-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/wireguard-networkmanager/</loc>
     <lastmod>2025-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/ssh-config/</loc>
-    <lastmod>2024-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/networks/</loc>
     <lastmod>2024-12-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/divine-simplicity/</loc>
@@ -71,10 +77,10 @@
     <loc>https://jpnt.github.io/posts/iproute2/</loc>
     <lastmod>2023-11-01T19:09:04+00:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/databases/</loc>
+    <loc>https://jpnt.github.io/posts/databases/</loc>
     <lastmod>2023-09-26T16:47:56+01:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/posts/databases/</loc>
+    <loc>https://jpnt.github.io/tags/databases/</loc>
     <lastmod>2023-09-26T16:47:56+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/pointers/</loc>
