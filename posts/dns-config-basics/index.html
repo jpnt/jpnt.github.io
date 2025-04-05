@@ -11,8 +11,8 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-04T14:51:16+01:00">
-    <meta property="article:modified_time" content="2025-04-04T14:51:16+01:00">
+    <meta property="article:published_time" content="2025-04-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-05T00:00:00+00:00">
     <meta property="article:tag" content="Networks">
 
   <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
 	<article>
 		<div class="title">
 			<h1 class="title">DNS Basics</h1>
-			<div class="meta">Posted on Apr 4, 2025</div>
+			<div class="meta">Posted on Apr 5, 2025</div>
 		</div>
 		
 
@@ -127,7 +127,12 @@ mostly using CLI or TUI.</p>
 but dont forget to lock the file using chattr so NetworkManager does not alter it.</p>
 <p>For example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo chattr -i /etc/resolv.conf
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;nameserver 185.222.222.222\nnameserver 45.11.45.11&#34;</span> | sudo tee /etc/resolv.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/resolv.conf <span style="color:#e6db74">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nameserver 185.222.222.222
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nameserver 45.11.45.11
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo chattr +i /etc/resolv.conf
 </span></span></code></pre></div><p>If you have the possibility, you may also configure the DNS server directly in the router.</p>
 <p>If you need to remove DNS settigns from NetworkManager connection:</p>
@@ -136,18 +141,27 @@ but dont forget to lock the file using chattr so NetworkManager does not alter i
 <h1 id="how-to-secure-dns">How to: <strong>Secure DNS</strong></h1>
 <p>The DNSCrypt implementation most commonly used is <strong>dnscrypt-proxy</strong>.</p>
 <p>Lets fully hand off DNS to dnscrypt-proxy (instead of NetworkManager):</p>
+<p>NOTE: This tutorial ommits IPv6 configuration for simplicity.</p>
 <ol>
-<li>Stop NetworkManager from setting DNS</li>
+<li>Stop NetworkManager from setting DNS from DHCP, instead use dnscrypt-proxy as the DNS server</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo mkdir -p /etc/NetworkManager/conf.d
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;[main]\ndns=none&#34;</span> | sudo tee /etc/NetworkManager/conf.d/01-dns.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/NetworkManager/conf.d/00-dnscrypt-proxy.conf <span style="color:#e6db74">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[connection]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Set static DNS for all connections
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ipv4.dns=127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Ignore DNS servers from DHCP
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ipv4.ignore-auto-dns=true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span></code></pre></div><ol start="2">
 <li>Configure dnscrypt-proxy</li>
 </ol>
 <p>Configuration is located and well documented at: /etc/dnscrypt-proxy/dnscrypt-proxy.toml</p>
 <p>Some notable options:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">server_names</span> = [<span style="color:#e6db74">&#39;cloudflare&#39;</span>] <span style="color:#75715e"># https://dnscrypt.info/public-servers</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listen_addresses</span> = [<span style="color:#e6db74">&#39;127.0.0.1:53&#39;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">listen_addresses</span> = [<span style="color:#e6db74">&#39;127.0.0.1:53&#39;</span>] <span style="color:#75715e"># Same as we configured for NetworkManager</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">dnscrypt_servers</span> = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">doh_servers</span> = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">require_dnssec</span> = <span style="color:#66d9ef">true</span>
@@ -159,17 +173,28 @@ but dont forget to lock the file using chattr so NetworkManager does not alter i
 </ol>
 <p>NOTE: the developer mentions edns0 as a micro-optimization. It refers to Extension Mechanisms for DNS.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo chattr -i /etc/resolv.conf
-</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;nameserver 127.0.0.1\noptions edns0&#34;</span> | sudo tee /etc/resolv.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/resolv.conf <span style="color:#e6db74">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nameserver 127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">options edns0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo chattr +i /etc/resolv.conf
 </span></span></code></pre></div><ol start="4">
-<li>Enable dnscrypt-proxy system service</li>
+<li>Enable dnscrypt-proxy system service and restart NetworkManager</li>
 </ol>
 <p>(systemd)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo systemctl enable --now dnscrypt-proxy
 </span></span><span style="display:flex;"><span>sudo systemctl status dnscrypt-proxy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo systemctl restart NetworkManager
+</span></span><span style="display:flex;"><span>sudo systemctl status NetworkManager
 </span></span></code></pre></div><p>(runit)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo ln -s /etc/sv/dnscrypt-proxy /var/service
 </span></span><span style="display:flex;"><span>sudo sv status dnscrypt-proxy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo sv restart NetworkManager
+</span></span><span style="display:flex;"><span>sudo sv status NetworkManager
 </span></span></code></pre></div><p>Test it:</p>
 <p><a href="https://dnsleaktest.com/">https://dnsleaktest.com/</a> -&gt; Extended Text</p>
 <p>If the results show servers that you have set in the configuration files it means that dnscrypt-proxy is working.</p>

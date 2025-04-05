@@ -7,12 +7,12 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 04 Apr 2025 14:51:16 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DNS Basics</title>
       <link>https://jpnt.github.io/posts/dns-config-basics/</link>
-      <pubDate>Fri, 04 Apr 2025 14:51:16 +0100</pubDate>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/dns-config-basics/</guid>
       <description>&lt;h1 id=&#34;concepts&#34;&gt;Concepts&lt;/h1&gt;&#xA;&lt;p&gt;DNS (Domain Name System) translates human-readable domain&#xA;names into IP addresses. Without it, we would have to memorize&#xA;raw IP addresses everytime we wanted to locate computers&#xA;on a network.&lt;/p&gt;&#xA;&lt;p&gt;DNS records are used to map a domain to an IP or other data. Common&#xA;DNS records include: A (IPv4), AAAA (IPv6), MX (Email),&#xA;CNAME (Alias for another domain), NS (specifies which server is authoritative&#xA;for the domain).&lt;/p&gt;&#xA;&lt;p&gt;Recursive DNS: Finds answers by querying others (e.g. ISP&amp;rsquo;s DNS).&lt;/p&gt;</description>
     </item>
