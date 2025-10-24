@@ -7,14 +7,28 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DNS Basics</title>
-      <link>https://jpnt.github.io/posts/dns-config-basics/</link>
-      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/posts/dns-config-basics/</guid>
-      <description>&lt;h1 id=&#34;concepts&#34;&gt;Concepts&lt;/h1&gt;&#xA;&lt;p&gt;DNS (Domain Name System) translates human-readable domain&#xA;names into IP addresses. Without it, we would have to memorize&#xA;raw IP addresses everytime we wanted to locate computers&#xA;on a network.&lt;/p&gt;&#xA;&lt;p&gt;DNS records are used to map a domain to an IP or other data. Common&#xA;DNS records include: A (IPv4), AAAA (IPv6), MX (Email),&#xA;CNAME (Alias for another domain), NS (specifies which server is authoritative&#xA;for the domain).&lt;/p&gt;&#xA;&lt;p&gt;Recursive DNS: Finds answers by querying others (e.g. ISP&amp;rsquo;s DNS).&lt;/p&gt;</description>
+      <title>About me</title>
+      <link>https://jpnt.github.io/about/</link>
+      <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/about/</guid>
+      <description>&lt;p&gt;Welcome to my personal blog :-)&lt;/p&gt;&#xA;&lt;p&gt;Usually I use the &amp;ldquo;jpnt&amp;rdquo; acronym because it sounds cool, but my&#xA;real name is João Pinto.&lt;/p&gt;&#xA;&lt;p&gt;Born in the Azores, I&amp;rsquo;ve always been curious about how things work under the hood. That&#xA;curiosity brought me to Porto, where I completed my Bachelor&amp;rsquo;s in Informatics Engineering&#xA;at ISEP and I&amp;rsquo;m now pursuing a Master&amp;rsquo;s in Critical Computer Systems, focusing on real-time&#xA;operating systems, embedded systems, and systems-level programming.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>https://jpnt.github.io/cv/</link>
+      <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/cv/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://jpnt.github.io/cv/cv.pdf&#34;&gt;Download CV&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;embed src=&#34;https://jpnt.github.io/cv/cv.pdf&#34; type=&#34;application/pdf&#34; width=&#34;100%&#34; height=&#34;800px&#34; /&gt;</description>
+    </item>
+    <item>
+      <title>Focus: Pointing Your Heart to What Matters</title>
+      <link>https://jpnt.github.io/posts/focus/</link>
+      <pubDate>Thu, 23 Oct 2025 23:55:55 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/focus/</guid>
+      <description>&lt;p&gt;I spent years drowning in self-help motivational books and productivity videos. They all promised the same&#xA;thing: if I just optimized myself enough, I&amp;rsquo;d find fulfillment. But I never did. The more I focused on myself, the emptier I felt.&lt;/p&gt;&#xA;&lt;p&gt;Then I found the address to the meaning of life. And it wasn&amp;rsquo;t in another productivity hack.&lt;/p&gt;&#xA;&lt;p&gt;The problem wasn&amp;rsquo;t that I lacked discipline. The problem was that I was pointing all my effort&#xA;toward the wrong destination. I was trying to build a better me when I was meant to be building something for God.&lt;/p&gt;</description>
     </item>
     <item>
       <title>UNIX, Plan9 and Linux Containers</title>
@@ -43,13 +57,6 @@
       <pubDate>Thu, 14 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/divine-simplicity/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://jpnt.github.io/img/divine-simplicity/ai.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;introduction-to-divine-simplicity&#34;&gt;Introduction to Divine Simplicity&lt;/h1&gt;&#xA;&lt;p&gt;Divine simplicity is the doctrine that God is &lt;strong&gt;not composed of parts&lt;/strong&gt;,&#xA;if that was the case then that would indicate incompleteness and a&#xA;imperfection (God must be absolutely simple to be absolutely perfect).&lt;/p&gt;&#xA;&lt;p&gt;Unlike humans, whose attributes are separate and finite, God&amp;rsquo;s attributes&#xA;such as wisdom, love and power are not parts of Him but are fully and entirely&#xA;unified within His essence. God is not a collection of qualities but exists in&#xA;complete unity. Each attribute is not something God merely posesses &amp;ndash; He is His&#xA;wisdom, love and power in a way that reflects His indivisible, unchangeable, and&#xA;perfect nature.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About</title>
-      <link>https://jpnt.github.io/about/</link>
-      <pubDate>Thu, 31 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://jpnt.github.io/about/</guid>
-      <description>&lt;p&gt;Welcome to my personal blog :-)&lt;/p&gt;&#xA;&lt;p&gt;Usually I use the &amp;ldquo;jpnt&amp;rdquo; acronym because it sounds cool, but my&#xA;real name is João Pinto.&lt;/p&gt;&#xA;&lt;p&gt;I enjoy Application Programming, Design Patterns,&#xA;DevOps, Operating Systems, Embedded Systems, IoT, Computer&#xA;Architecture and so on.&lt;/p&gt;&#xA;&lt;p&gt;I have a preference to developing software at a lower level in&#xA;order to have the most efficient solution to the problem at hand.&lt;/p&gt;&#xA;&lt;p&gt;At the moment, I am studying at ISEP (Polytechnic Instute of Engineering of Porto),&#xA;Where I have written many applications in Java, ANSI C, C# (.NET 8), Javascript (React),&#xA;and I am open to work on anything.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CPU Cache</title>

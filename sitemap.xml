@@ -2,20 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jpnt.github.io/about/</loc>
+    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/cv/</loc>
+    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2025-04-05T12:18:38+01:00</lastmod>
+    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/faith/</loc>
+    <lastmod>2025-10-23T23:55:55+01:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/focus/</loc>
+    <lastmod>2025-10-23T23:55:55+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2025-04-05T12:18:38+01:00</lastmod>
+    <lastmod>2025-10-23T23:55:55+01:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/posts/dns-config-basics/</loc>
-    <lastmod>2025-04-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/networks/</loc>
-    <lastmod>2025-04-05T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/tags/productivity/</loc>
+    <lastmod>2025-10-23T23:55:55+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/</loc>
-    <lastmod>2025-04-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-23T23:55:55+01:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/os/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
@@ -32,11 +41,11 @@
     <loc>https://jpnt.github.io/posts/ssh-config/</loc>
     <lastmod>2024-12-29T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://jpnt.github.io/tags/networks/</loc>
+    <lastmod>2024-12-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/posts/divine-simplicity/</loc>
     <lastmod>2024-11-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/about/</loc>
-    <lastmod>2024-10-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/computer-architecture/</loc>
     <lastmod>2024-10-28T00:00:00+00:00</lastmod>

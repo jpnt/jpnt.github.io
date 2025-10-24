@@ -50,6 +50,8 @@
 		
 		<a href="/about">about</a>
 		
+		<a href="/cv">cv</a>
+		
 		<a href="/tags">tags</a>
 		
 		
@@ -99,7 +101,7 @@
 </span></span><span style="display:flex;"><span>}					<span style="color:#75715e">// the scope ends here, x is not valid anymore.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">print_x</span>(){
-</span></span><span style="display:flex;"><span>	println!(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, x);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>If we try to run this we will get the following <strong>error</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>error<span style="color:#f92672">[</span>E0425<span style="color:#f92672">]</span>: cannot find value <span style="color:#e6db74">`</span>x<span style="color:#e6db74">`</span> in this scope
@@ -143,8 +145,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">									      a copy is not created because the ownership of
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">										  heap_string is transferred to heap_string_2,
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">								   	      and heap_string gets destroyed (out of scope) */</span>
-</span></span><span style="display:flex;"><span>	println!(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, heap_string);
-</span></span><span style="display:flex;"><span>	println!(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, heap_string_2);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, heap_string);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">println!</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, heap_string_2);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This will print an <strong>error</strong> because <strong>heap_string</strong> Ownership is moved to <strong>heap_string_2</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>error<span style="color:#f92672">[</span>E0382<span style="color:#f92672">]</span>: borrow of moved value: <span style="color:#e6db74">`</span>heap_string<span style="color:#e6db74">`</span>                                           
@@ -193,6 +195,7 @@
 <footer>
   <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
     <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
     2025  © João Pinto |  <a

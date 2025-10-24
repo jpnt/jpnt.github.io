@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Containers on jpnt website</title>
+    <link>https://jpnt.github.io/tags/containers/</link>
+    <description>Recent content in Containers on jpnt website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Sat, 05 Apr 2025 12:16:03 +0100</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Container Image Basics</title>
+      <link>https://jpnt.github.io/posts/container-image-basics/</link>
+      <pubDate>Sat, 05 Apr 2025 12:16:03 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/container-image-basics/</guid>
+      <description>&lt;h1 id=&#34;concepts&#34;&gt;Concepts&lt;/h1&gt;&#xA;&lt;h1 id=&#34;how-to-security&#34;&gt;How to: Security&lt;/h1&gt;&#xA;&lt;h1 id=&#34;how-to-layer-optimization&#34;&gt;How to: Layer optimization&lt;/h1&gt;&#xA;&lt;h1 id=&#34;resources&#34;&gt;Resources&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=sXALKVdbVPY&#34;&gt;https://www.youtube.com/watch?v=sXALKVdbVPY&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=t779DVjCKCs&#34;&gt;https://www.youtube.com/watch?v=t779DVjCKCs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=vHBHxQfK6cM&#34;&gt;https://www.youtube.com/watch?v=vHBHxQfK6cM&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=saSJa9YVroA&#34;&gt;https://www.youtube.com/watch?v=saSJa9YVroA&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
