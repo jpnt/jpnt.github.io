@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jpnt.github.io/</loc>
+    <lastmod>2025-10-27T13:42:16+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/quotes/</loc>
+    <lastmod>2025-10-27T13:42:16+00:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/about/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/cv/</loc>
-    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/</loc>
     <lastmod>2025-10-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/faith/</loc>

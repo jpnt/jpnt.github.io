@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Fri, 24 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Oct 2025 13:42:16 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quotes</title>
+      <link>https://jpnt.github.io/quotes/</link>
+      <pubDate>Mon, 27 Oct 2025 13:42:16 +0000</pubDate>
+      <guid>https://jpnt.github.io/quotes/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;God wills, man dreams, the work is born.&amp;rdquo;&#xA;&amp;ndash; Fernando Pessoa&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;If thou knewest the whole Bible by heart, and the sayings of all the philosophers, what would it profit thee without the love of God and without grace?&amp;rdquo;&#xA;&amp;ndash; Thomas à Kempis&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;If you want to build a ship, don’t drum up the men to gather wood. Teach them to long for the endless immensity of the sea.&amp;rdquo;&#xA;&amp;ndash; Antoine de Saint-Exupery&lt;/p&gt;</description>
+    </item>
     <item>
       <title>About me</title>
       <link>https://jpnt.github.io/about/</link>
