@@ -2,11 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jpnt.github.io/tags/concurrency/</loc>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
+  </url><url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2025-11-03T16:40:28+00:00</lastmod>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/linux/</loc>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/os/</loc>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2025-11-03T16:40:28+00:00</lastmod>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/systems/</loc>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/</loc>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/threads/</loc>
+    <lastmod>2025-11-06T00:55:09+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/quotes/</loc>
     <lastmod>2025-10-27T13:42:16+00:00</lastmod>
@@ -25,12 +43,6 @@
   </url><url>
     <loc>https://jpnt.github.io/tags/productivity/</loc>
     <lastmod>2025-10-23T23:55:55+01:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/</loc>
-    <lastmod>2025-10-23T23:55:55+01:00</lastmod>
-  </url><url>
-    <loc>https://jpnt.github.io/tags/os/</loc>
-    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/unix-plan9-and-linux-containers/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
