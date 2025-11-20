@@ -7,21 +7,21 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Thu, 06 Nov 2025 00:55:09 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jpnt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Focus</title>
+      <link>https://jpnt.github.io/posts/focus/</link>
+      <pubDate>Thu, 20 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/focus/</guid>
+      <description>&lt;p&gt;What is focus? I like this definition: pointing your heart to what matters. Do now what you have to do right now.&lt;/p&gt;&#xA;&lt;p&gt;And to be completely honest I am terrible at it. I get frustrated with myself for wasting time.&lt;/p&gt;&#xA;&lt;p&gt;This is mostly because I either block on something that is actually important or because instead of doing what I have to do right&#xA;now I do another thing completely unrelated. That does not mean I am unproductive, I am consistently learning&#xA;a lot of stuff, I never take things for granted. And I tend to see multiple things at once.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Threads</title>
       <link>https://jpnt.github.io/posts/threads/</link>
       <pubDate>Thu, 06 Nov 2025 00:55:09 +0000</pubDate>
       <guid>https://jpnt.github.io/posts/threads/</guid>
       <description>&lt;h1 id=&#34;context-and-brief-history&#34;&gt;Context and brief history&lt;/h1&gt;&#xA;&lt;p&gt;Before threads as we know them today, operating systems already supported concurrency using multiple processes and hardware interrupts.&#xA;We’re talking roughly about the period from the late 1950s to the 1980s, before the standardization of POSIX Threads (pthreads) in the 1990s.&lt;/p&gt;&#xA;&lt;p&gt;Early systems like IBM OS/360 (1967), MULTICS (1969), and later UNIX Version 6 (1975) implemented multiprogramming: several independent processes could appear to run at once by time-slicing the CPU.&#xA;Each process had its own address space and execution context. The kernel saved and restored the CPU state when switching between them. This gave the illusion of parallelism on a single-core CPU.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Focus: Pointing Your Heart to What Matters</title>
-      <link>https://jpnt.github.io/posts/focus/</link>
-      <pubDate>Thu, 23 Oct 2025 23:55:55 +0100</pubDate>
-      <guid>https://jpnt.github.io/posts/focus/</guid>
-      <description>&lt;p&gt;I spent years drowning in self-help motivational books and productivity videos. They all promised the same&#xA;thing: if I just optimized myself enough, I&amp;rsquo;d find fulfillment. But I never did. The more I focused on myself, the emptier I felt.&lt;/p&gt;&#xA;&lt;p&gt;Then I found the address to the meaning of life. And it wasn&amp;rsquo;t in another productivity hack.&lt;/p&gt;&#xA;&lt;p&gt;The problem wasn&amp;rsquo;t that I lacked discipline. The problem was that I was pointing all my effort&#xA;toward the wrong destination. I was trying to build a better me when I was meant to be building something for God.&lt;/p&gt;</description>
     </item>
     <item>
       <title>UNIX, Plan9 and Linux Containers</title>
