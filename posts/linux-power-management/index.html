@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Linux Power Management - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Context
+History of Linux Power Management.
+The importance of it, especially in modern times, emergence of RISC processors.
+Concepts
+Linux:
+Power:
+Management:
+Linux driver API
+UPower API
+References:
+
+https://docs.kernel.org/power/index.html
+https://docs.kernel.org/driver-api/pm/devices.html
+https://static.linaro.org/connect/yvr18/presentations/yvr18-221.pdf
+https://www.youtube.com/watch?v=_Ae94bujJoQ
+https://www.youtube.com/watch?v=_jb6U40ZCZk
+https://www.youtube.com/watch?v=DJDrfsSgqO0
+https://www.researchgate.net/profile/Rik-Riel/publication/2865223_Towards_an_O1_VM/links/0c96053c6ca982dc51000000/Towards-an-O1-VM.pdf
+https://ieeexplore.ieee.org/abstract/document/10449312
+https://ieeexplore.ieee.org/abstract/document/7312712
+https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.3476
+" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/linux-power-management/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Linux Power Management">
+  <meta property="og:description" content="Context History of Linux Power Management.
+The importance of it, especially in modern times, emergence of RISC processors.
+Concepts Linux: Power: Management:
+Linux driver API UPower API References: https://docs.kernel.org/power/index.html https://docs.kernel.org/driver-api/pm/devices.html https://static.linaro.org/connect/yvr18/presentations/yvr18-221.pdf https://www.youtube.com/watch?v=_Ae94bujJoQ https://www.youtube.com/watch?v=_jb6U40ZCZk https://www.youtube.com/watch?v=DJDrfsSgqO0 https://www.researchgate.net/profile/Rik-Riel/publication/2865223_Towards_an_O1_VM/links/0c96053c6ca982dc51000000/Towards-an-O1-VM.pdf https://ieeexplore.ieee.org/abstract/document/10449312 https://ieeexplore.ieee.org/abstract/document/7312712 https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.3476">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-01T18:14:13+00:00">
+    <meta property="article:modified_time" content="2025-11-01T18:14:13+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux Power Management">
+  <meta name="twitter:description" content="Context History of Linux Power Management.
+The importance of it, especially in modern times, emergence of RISC processors.
+Concepts Linux: Power: Management:
+Linux driver API UPower API References: https://docs.kernel.org/power/index.html https://docs.kernel.org/driver-api/pm/devices.html https://static.linaro.org/connect/yvr18/presentations/yvr18-221.pdf https://www.youtube.com/watch?v=_Ae94bujJoQ https://www.youtube.com/watch?v=_jb6U40ZCZk https://www.youtube.com/watch?v=DJDrfsSgqO0 https://www.researchgate.net/profile/Rik-Riel/publication/2865223_Towards_an_O1_VM/links/0c96053c6ca982dc51000000/Towards-an-O1-VM.pdf https://ieeexplore.ieee.org/abstract/document/10449312 https://ieeexplore.ieee.org/abstract/document/7312712 https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.3476">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/cv">cv</a>
+		
+		<a href="/quotes">quotes</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Linux Power Management</h1>
+			<div class="meta">Posted on Nov 1, 2025 <span class="draft-label">DRAFT</span> </div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<h1 id="context">Context</h1>
+<p>History of Linux Power Management.</p>
+<p>The importance of it, especially in modern times, emergence of RISC processors.</p>
+<h1 id="concepts">Concepts</h1>
+<p>Linux:
+Power:
+Management:</p>
+<h1 id="linux-driver-api">Linux driver API</h1>
+<h1 id="upower-api">UPower API</h1>
+<h2 id="references">References:</h2>
+<ul>
+<li><a href="https://docs.kernel.org/power/index.html">https://docs.kernel.org/power/index.html</a></li>
+<li><a href="https://docs.kernel.org/driver-api/pm/devices.html">https://docs.kernel.org/driver-api/pm/devices.html</a></li>
+<li><a href="https://static.linaro.org/connect/yvr18/presentations/yvr18-221.pdf">https://static.linaro.org/connect/yvr18/presentations/yvr18-221.pdf</a></li>
+<li><a href="https://www.youtube.com/watch?v=_Ae94bujJoQ">https://www.youtube.com/watch?v=_Ae94bujJoQ</a></li>
+<li><a href="https://www.youtube.com/watch?v=_jb6U40ZCZk">https://www.youtube.com/watch?v=_jb6U40ZCZk</a></li>
+<li><a href="https://www.youtube.com/watch?v=DJDrfsSgqO0">https://www.youtube.com/watch?v=DJDrfsSgqO0</a></li>
+<li><a href="https://www.researchgate.net/profile/Rik-Riel/publication/2865223_Towards_an_O1_VM/links/0c96053c6ca982dc51000000/Towards-an-O1-VM.pdf">https://www.researchgate.net/profile/Rik-Riel/publication/2865223_Towards_an_O1_VM/links/0c96053c6ca982dc51000000/Towards-an-O1-VM.pdf</a></li>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/10449312">https://ieeexplore.ieee.org/abstract/document/10449312</a></li>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/7312712">https://ieeexplore.ieee.org/abstract/document/7312712</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.3476">https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.3476</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2025  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

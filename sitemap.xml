@@ -2,23 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jpnt.github.io/tags/faith/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/posts/architecture/</loc>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/posts/focus/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/tags/architecture/</loc>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/posts/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jpnt.github.io/tags/productivity/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <loc>https://jpnt.github.io/tags/software-design/</loc>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/systems-thinking/</loc>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/</loc>
-    <lastmod>2025-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/faith/</loc>
+    <lastmod>2025-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/posts/focus/</loc>
+    <lastmod>2025-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jpnt.github.io/tags/productivity/</loc>
+    <lastmod>2025-12-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jpnt.github.io/tags/concurrency/</loc>
     <lastmod>2025-11-06T00:55:09+00:00</lastmod>

@@ -1,41 +1,53 @@
 <!DOCTYPE html>
-<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html><head lang="en">
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Virtual Memory - jpnt&#39;s website</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Concepts Physical memory is a list of bytes where each byte has an address.
-Virtual memory is an abstraction layer between the address space and physical memory. So when a program uses an address, that address does not correspond to the bytes in the actual physical location of memory; This means all addresses a program uses are virtual.
-Page table is a data structure used by the OS to map virtual addresses to the corresponding physical addresses in memory." />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Memory Management Unit - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Cache
+HW memory
+SW memory
+Pointers
+MMU
+TLB
+Page
+Shared memory
+&hellip;" />
 	<meta property="og:image" content=""/>
-	<meta property="og:title" content="Virtual Memory" />
-<meta property="og:description" content="Concepts Physical memory is a list of bytes where each byte has an address.
-Virtual memory is an abstraction layer between the address space and physical memory. So when a program uses an address, that address does not correspond to the bytes in the actual physical location of memory; This means all addresses a program uses are virtual.
-Page table is a data structure used by the OS to map virtual addresses to the corresponding physical addresses in memory." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/virtual-memory/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-07-26T15:02:46+00:00" />
-<meta property="article:modified_time" content="2023-07-26T15:02:46+00:00" />
+	<meta property="og:url" content="https://jpnt.github.io/posts/virtual-memory/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Memory Management Unit">
+  <meta property="og:description" content="Cache HW memory SW memory Pointers MMU TLB Page Shared memory …">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-20T15:01:04+01:00">
+    <meta property="article:modified_time" content="2025-10-20T15:01:04+01:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Virtual Memory"/>
-<meta name="twitter:description" content="Concepts Physical memory is a list of bytes where each byte has an address.
-Virtual memory is an abstraction layer between the address space and physical memory. So when a program uses an address, that address does not correspond to the bytes in the actual physical location of memory; This means all addresses a program uses are virtual.
-Page table is a data structure used by the OS to map virtual addresses to the corresponding physical addresses in memory."/>
-<script src="http://localhost:1313/js/feather.min.js"></script>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Memory Management Unit">
+  <meta name="twitter:description" content="Cache HW memory SW memory Pointers MMU TLB Page Shared memory …">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
 	
 	
-        <link href="http://localhost:1313/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
 	
 
 	
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.2f9b5946627215dc1ae7fa5f82bfc9cfcab000329136befeea5733f21e77d68f.css" />
-		<link rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
 	
 	
+
+	
+	
+
 	
 </head>
 <body>
         <div class="content"><header>
 	<div class="main">
-		<a href="http://localhost:1313/">jpnt&#39;s website</a>
+		<a href="https://jpnt.github.io/">jpnt website</a>
 	</div>
 	<nav>
 		
@@ -43,9 +55,14 @@ Page table is a data structure used by the OS to map virtual addresses to the co
 		
 		<a href="/posts">posts</a>
 		
-		<a href="/about">about_me</a>
+		<a href="/about">about</a>
+		
+		<a href="/cv">cv</a>
+		
+		<a href="/quotes">quotes</a>
 		
 		<a href="/tags">tags</a>
+		
 		
 	</nav>
 </header>
@@ -53,56 +70,47 @@ Page table is a data structure used by the OS to map virtual addresses to the co
 <main>
 	<article>
 		<div class="title">
-			<h1 class="title">Virtual Memory</h1>
-			<div class="meta">Posted on Jul 26, 2023 <span class="draft-label">DRAFT</span> </div>
+			<h1 class="title">Memory Management Unit</h1>
+			<div class="meta">Posted on Oct 20, 2025 <span class="draft-label">DRAFT</span> </div>
 		</div>
 		
 
+		
+
 		<section class="body">
-			<h2 id="concepts">Concepts</h2>
-<p>Physical memory is a list of bytes where each byte has an address.</p>
-<p>Virtual memory is an abstraction layer between the <strong>address space</strong> and <strong>physical
-memory</strong>. So when a program uses an address, that address does not correspond to
-the bytes in the actual physical location of memory; This means all addresses
-a program uses are virtual.</p>
-<p>Page table is a data structure used by the OS to map virtual addresses to the
-corresponding physical addresses in memory.</p>
-<h2 id="x86_64-address-spaces">x86_64 address spaces</h2>
-<p>The x86_64 architecture is 64-bit, registers (and addresses) are 64 bits wide.</p>
-<p>But, virtual addresses on current x86_64 processors only have 48 meaningful bits.</p>
-<p>That is why, when you print an address, for example in C, you only get 12 digits
-after &ldquo;0x&rdquo; and not 16 as you should if you had 64 bit address spaces.</p>
-<h2 id="virtual-memory-layout">Virtual memory layout</h2>
-<p>Each process has the same view of memory, which is virtual address space.</p>
-<p><img src="/img/virtual-memory/virtual-memory-layout.jpg" alt=""></p>
-<h2 id="adress-spaces">Adress spaces</h2>
-<h2 id="addressing-mode">Addressing mode</h2>
+			<p>Cache
+HW memory
+SW memory
+Pointers
+MMU
+TLB
+Page
+Shared memory
+&hellip;</p>
 
 		</section>
 
 		<div class="post-tags">
 			
 			
-			<nav class="nav tags">
-				<ul class="tags">
-					
-					<li><a href="/tags/programming">programming</a></li>
-					
-					<li><a href="/tags/os">os</a></li>
-					
-				</ul>
-			</nav>
-			
 			
 		</div>
-	</article>
+		</article>
 </main>
 <footer>
-<hr><a class="soc" href="https://github.com/jpnt" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="https://jpnt.github.io/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
-	2024  © João Pinto |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2025  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
 </footer>
+
+
 <script>
-      feather.replace()
+  feather.replace()
 </script></div>
     </body>
 </html>

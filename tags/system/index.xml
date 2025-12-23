@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>System on jpnt website</title>
+    <link>https://jpnt.github.io/tags/system/</link>
+    <description>Recent content in System on jpnt website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© João Pinto</copyright>
+    <lastBuildDate>Thu, 06 Nov 2025 12:32:31 +0000</lastBuildDate>
+    <atom:link href="https://jpnt.github.io/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xdg Desktop Portals</title>
+      <link>https://jpnt.github.io/posts/xdg-desktop-portals/</link>
+      <pubDate>Thu, 06 Nov 2025 12:32:31 +0000</pubDate>
+      <guid>https://jpnt.github.io/posts/xdg-desktop-portals/</guid>
+      <description>&lt;p&gt;TODO: keep it simple, what, why and how.&lt;/p&gt;&#xA;&lt;p&gt;Still a lot todo!&lt;/p&gt;&#xA;&lt;h1 id=&#34;xdg&#34;&gt;XDG&lt;/h1&gt;&#xA;&lt;p&gt;TODO: write in plain english. formal&lt;/p&gt;&#xA;&lt;p&gt;XDG: X desktop group. Now known as freedesktop.&lt;/p&gt;&#xA;&lt;p&gt;project to work on interoperability and shared base technology for free-software desktop environments for the X Window System (X11) and Wayland on Linux and other Unix-like operating systems&lt;/p&gt;&#xA;&lt;p&gt;not a formal standards body&lt;/p&gt;&#xA;&lt;p&gt;founded by Havoc Pennington, a GNOME developer working for Red Hat in March 2000. Widely used open-source Desktop projects, such as GNOME, KDE&amp;rsquo;s Plasma Desktop, and Xfce, are collaborating with the freedesktop.org project&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
