@@ -138,17 +138,17 @@ It has:</p>
 </ul>
 <p>After a fork(), the parent and child each have their own independent copy of every variable.
 Modifying a global variable in the child does not affect the parent, because they live in separate address spaces.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fork</span>() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>    counter<span style="color:#f92672">++</span>; <span style="color:#75715e">// child changes its own copy
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">else</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
 </span></span><span style="display:flex;"><span>    counter<span style="color:#f92672">--</span>; <span style="color:#75715e">// parent changes its own copy
 </span></span></span></code></pre></div><ul>
 <li>In threads, all globals are shared.</li>
 </ul>
 <p>Changing a global variable from one thread is visible to all threads in that process immediately.</p>
 <p>int counter = 0;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">worker</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> arg) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">worker</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> arg) {
 </span></span><span style="display:flex;"><span>    counter<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
 </span></span><span style="display:flex;"><span>}
@@ -158,7 +158,7 @@ Modifying a global variable in the child does not affect the parent, because the
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pthread_create</span>(<span style="color:#f92672">&amp;</span>t, NULL, worker, NULL);
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pthread_join</span>(t, NULL);
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, counter); <span style="color:#75715e">// will print 1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Because both the main thread and the worker thread share the same address space, counter is common to both.</p>
 <p>This is why threads require synchronization primitives like:</p>
 <ul>
@@ -171,7 +171,7 @@ Modifying a global variable in the child does not affect the parent, because the
 <p>A deadlock occurs when two or more threads are waiting indefinitely for each other to release resources.
 The key property: cyclic waiting. Once a cycle exists, no thread can proceed.</p>
 <p>For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">pthread_mutex_t</span> a <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">pthread_mutex_t</span> a <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">pthread_mutex_t</span> b <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">t1</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>) {
@@ -202,7 +202,7 @@ This wastes CPU cycles but avoids context-switch overhead, so it’s useful when
 <p>The lock is used inside the kernel, where sleeping isn’t allowed (e.g., interrupt handlers).</p>
 <p>In pthreads: pthread_spin_lock() / pthread_spin_unlock().</p>
 <p>Typical kernel spinlock implementation pattern:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">__atomic_test_and_set</span>(<span style="color:#f92672">&amp;</span>lock, __ATOMIC_ACQUIRE))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">__atomic_test_and_set</span>(<span style="color:#f92672">&amp;</span>lock, __ATOMIC_ACQUIRE))
 </span></span><span style="display:flex;"><span>    ; <span style="color:#75715e">// busy-wait
 </span></span></span></code></pre></div><p>TL;DR: Use spinlocks only for very short, non-blocking critical sections; Otherwise, they degrade throughput.</p>
 <h1 id="readerwriter-locks">Reader/Writer Locks</h1>
@@ -213,11 +213,11 @@ This wastes CPU cycles but avoids context-switch overhead, so it’s useful when
 </ul>
 <p>Useful when reads are frequent and writes are rare, e.g., configuration tables, routing caches, metadata lookups.</p>
 <p>POSIX provides pthread_rwlock_t:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">pthread_rwlock_t</span> rw <span style="color:#f92672">=</span> PTHREAD_RWLOCK_INITIALIZER;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">pthread_rwlock_t</span> rw <span style="color:#f92672">=</span> PTHREAD_RWLOCK_INITIALIZER;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">pthread_rwlock_rdlock</span>(<span style="color:#f92672">&amp;</span>rw);  <span style="color:#75715e">// shared read access
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">pthread_rwlock_wrlock</span>(<span style="color:#f92672">&amp;</span>rw);  <span style="color:#75715e">// exclusive write access
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">pthread_rwlock_unlock</span>(<span style="color:#f92672">&amp;</span>rw);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">pthread_rwlock_wrlock</span>(<span style="color:#f92672">&amp;</span>rw);  <span style="color:#75715e">// exclusive write access
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">pthread_rwlock_unlock</span>(<span style="color:#f92672">&amp;</span>rw);
 </span></span></code></pre></div><p>Internally, the implementation tracks reader counts and a pending writer flag.
 Writers typically have priority to avoid starvation.</p>
 <p>TL;DR: Use reader/writer locks to improve read-heavy workloads; Do not use them if writes are frequent — they’ll serialize anyway.</p>
@@ -229,8 +229,8 @@ Every real system (time correct) uses all three — depending on the performance
 From user space, we control threads primarily through the POSIX Threads (pthreads) API.
 Let’s cover their full lifecycle and map each function to what the kernel actually does.</p>
 <p>Creating threads API:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;pthread.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;pthread.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pthread_create</span>(<span style="color:#66d9ef">pthread_t</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">restrict</span> <span style="color:#66d9ef">thread</span>,
 </span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">pthread_attr_t</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">restrict</span> attr,
 </span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>start_routine)(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>),
@@ -251,7 +251,7 @@ Let’s cover their full lifecycle and map each function to what the kernel actu
 <p>It blocks until the target thread terminates, then copies its exit status (if any).
 The joining thread is responsible for cleanup; detached threads (see below) are auto-cleaned by the runtime.</p>
 <p>A detached thread cleans up automatically when it exits — no need for pthread_join().</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">pthread_detach</span>(tid);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">pthread_detach</span>(tid);
 </span></span></code></pre></div><p>Internally, this sets the thread’s joinable flag to false. When it terminates, the runtime frees all resources immediately.
 Once detached, you can’t join it later — the handle becomes meaningless after exit.</p>
 <p>For cancellation: pthread_cancel() requests another thread to exit</p>
@@ -261,7 +261,7 @@ Once detached, you can’t join it later — the handle becomes meaningless afte
 <p>getpid() returns the same value for all threads in a process (because its the same process).</p>
 <p>gettid() returns a unique kernel ID per thread — used by the scheduler and visible in ps -eLf.</p>
 <p>Scheduling and Priorities: Threads are scheduled the same way as processes. The kernel scheduler treats every thread as a task with its own priority and timeslice.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">pthread_setschedparam</span>(<span style="color:#a6e22e">pthread_self</span>(), SCHED_FIFO, <span style="color:#f92672">&amp;</span>param);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">pthread_setschedparam</span>(<span style="color:#a6e22e">pthread_self</span>(), SCHED_FIFO, <span style="color:#f92672">&amp;</span>param);
 </span></span></code></pre></div><p>TL;DR: A thread’s lifetime is managed entirely in user space via pthread_* APIs, but its existence and scheduling are handled by the kernel as a normal task.
 Threads are cheap to create, but not free — each one still has a kernel stack, scheduler entry, and system call overhead.</p>
 <h1 id="linux-kernel-context">Linux kernel context</h1>
@@ -270,7 +270,7 @@ Threads are cheap to create, but not free — each one still has a kernel stack,
 <a href="https://elixir.bootlin.com/linux/v6.17.7/source/include/linux/sched.h#L816">struct task_struct</a></p>
 <p>The task_struct is the central kernel representation of a schedulable entity — process or thread.
 Below is a reduced version showing only the fields relevant to user-space threads.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> task_struct {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> task_struct {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* scheduling / execution context */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pid_t</span>           pid;        <span style="color:#75715e">/* unique kernel thread ID */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pid_t</span>           tgid;       <span style="color:#75715e">/* thread group ID (process ID) */</span>
@@ -367,7 +367,7 @@ There&rsquo;s no universally perfect model. Choose the best tool for the job bas
     <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
-    2025  © João Pinto |  <a
+    2026  © João Pinto |  <a
       href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>

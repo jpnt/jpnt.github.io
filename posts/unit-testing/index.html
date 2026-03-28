@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Unit Testing - jpnt website</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Deep dive on writing unit tests" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://jpnt.github.io/posts/unit-testing/">
+  <meta property="og:site_name" content="jpnt website">
+  <meta property="og:title" content="Unit Testing">
+  <meta property="og:description" content="Deep dive on writing unit tests">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-27T23:56:00+00:00">
+    <meta property="article:modified_time" content="2025-12-27T23:56:00+00:00">
+    <meta property="article:tag" content="Testing">
+    <meta property="article:tag" content="Rust">
+    <meta property="article:tag" content="Programming">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Unit Testing">
+  <meta name="twitter:description" content="Deep dive on writing unit tests">
+<script src="https://jpnt.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://jpnt.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jpnt.github.io/css/main.5cebd7d4fb2b97856af8d32a6def16164fcf7d844e98e236fcb3559655020373.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jpnt.github.io/css/dark.d22e2a2879d933a4b781535fc4c4c716e9f9d35ea4986dd0cbabda82effc4bdd.css"   />
+	
+
+	
+	
+
+	
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jpnt.github.io/">jpnt website</a>
+	</div>
+	<nav>
+		
+		<a href="/">~/</a>
+		
+		<a href="/posts">posts</a>
+		
+		<a href="/about">about</a>
+		
+		<a href="/cv">cv</a>
+		
+		<a href="/quotes">quotes</a>
+		
+		<a href="/tags">tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Unit Testing</h1>
+			<div class="meta">Posted on Dec 27, 2025 <span class="draft-label">DRAFT</span> </div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<p>Unit testing should focus on validating units of behavior, not units of code glued together by abstract interfaces and mocking frameworks.</p>
+<p>For the final user, it does not matter whether the system has 95% coverage if it still fails in production. Coverage is a means to an end, not the goal itself. What matters is that observable behavior is correct under realistic inputs.</p>
+<p>Testing implementation details instead of behavior leads to brittle tests that pass while the system is broken.</p>
+<h1 id="functional-core-pattern">Functional Core Pattern</h1>
+<p>The most effective way to write unit tests without mocks is to separate the system into:</p>
+<ol>
+<li>Functional core: pure decision-making logic</li>
+<li>Mutable shell: I/O, side effects, integration code</li>
+</ol>
+<p>Pure functions have:</p>
+<ul>
+<li>no hidden inputs</li>
+<li>no side effects</li>
+<li>deterministic output</li>
+</ul>
+<p>This makes them easy to test using simple input/output assertions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Naive design (hard to test)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">handle_card_scan</span>(card_id: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> user <span style="color:#f92672">=</span> db_lookup(card_id);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> user.is_authorized {
+</span></span><span style="display:flex;"><span>        unlock_door();
+</span></span><span style="display:flex;"><span>        log_event(<span style="color:#e6db74">&#34;access granted&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        trigger_alarm();
+</span></span><span style="display:flex;"><span>        log_event(<span style="color:#e6db74">&#34;access denied&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Functional core + mutable shell
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">AccessDecision</span> {
+</span></span><span style="display:flex;"><span>    Grant,
+</span></span><span style="display:flex;"><span>    Deny,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">decide_access</span>(
+</span></span><span style="display:flex;"><span>    authorized: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>    within_time_window: <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>) -&gt; <span style="color:#a6e22e">AccessDecision</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">match</span> (authorized, within_time_window) {
+</span></span><span style="display:flex;"><span>        (<span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">true</span>) <span style="color:#f92672">=&gt;</span> AccessDecision::Grant,
+</span></span><span style="display:flex;"><span>        _ <span style="color:#f92672">=&gt;</span> AccessDecision::Deny,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Simple unit tests
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">grants_access_when_authorized_and_on_time</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert_eq!</span>(
+</span></span><span style="display:flex;"><span>        decide_access(<span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">true</span>),
+</span></span><span style="display:flex;"><span>        AccessDecision::Grant
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">denies_access_when_not_authorized</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert_eq!</span>(
+</span></span><span style="display:flex;"><span>        decide_access(<span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>),
+</span></span><span style="display:flex;"><span>        AccessDecision::Deny
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Mutable shell (thin and boring)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">handle_card_scan</span>(card_id: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> authorized <span style="color:#f92672">=</span> db_lookup(card_id).is_authorized;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> on_time <span style="color:#f92672">=</span> check_schedule(card_id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">match</span> decide_access(authorized, on_time) {
+</span></span><span style="display:flex;"><span>        AccessDecision::Grant <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>            unlock_door();
+</span></span><span style="display:flex;"><span>            log_event(<span style="color:#e6db74">&#34;access granted&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        AccessDecision::Deny <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>            trigger_alarm();
+</span></span><span style="display:flex;"><span>            log_event(<span style="color:#e6db74">&#34;access denied&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="why-not-just-use-interfaces-and-then-mock">Why not just use interfaces and then mock?</h1>
+<p>Interfaces (traits) with a single implementation are often a smell when introduced solely for testability.</p>
+<p>They:</p>
+<ul>
+<li>add indirection</li>
+<li>hide data flow</li>
+<li>require mocking frameworks</li>
+<li>increase cognitive load</li>
+</ul>
+<p>Most interfaces exist only to make testing possible which is a design smell.</p>
+<h1 id="functional-injection-via-closures">Functional Injection via Closures</h1>
+<p>When you need to test logic that sometimes performs an effect (email, log, write, publish)
+you can still do it without defining a interface.</p>
+<p>Instead of defining a full trait and mocking it, inject behavior, not structure.</p>
+<p>In Rust, you do this via:</p>
+<ul>
+<li>closures</li>
+<li>function pointers</li>
+<li>generics over functions</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Interface + mock approach
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Notifier {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(<span style="color:#f92672">&amp;</span>self, msg: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">EmailNotifier</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Notifier <span style="color:#66d9ef">for</span> EmailNotifier {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(<span style="color:#f92672">&amp;</span>self, msg: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) {
+</span></span><span style="display:flex;"><span>        send_email(msg);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">process_event</span>(n: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">dyn</span> Notifier, critical: <span style="color:#66d9ef">bool</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> critical {
+</span></span><span style="display:flex;"><span>        n.notify(<span style="color:#e6db74">&#34;alert!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MockNotifier</span> {
+</span></span><span style="display:flex;"><span>    called: <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> Notifier <span style="color:#66d9ef">for</span> MockNotifier {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">notify</span>(<span style="color:#f92672">&amp;</span>self, _: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>) {
+</span></span><span style="display:flex;"><span>        self.called.set(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">test_alert_is_sent</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> mock <span style="color:#f92672">=</span> MockNotifier { called: <span style="color:#a6e22e">RefCell</span>::new(<span style="color:#66d9ef">false</span>) };
+</span></span><span style="display:flex;"><span>    process_event(<span style="color:#f92672">&amp;</span>mock, <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert!</span>(mock.called.get());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Functional injection via closures
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">process_event</span><span style="color:#f92672">&lt;</span>F<span style="color:#f92672">&gt;</span>(critical: <span style="color:#66d9ef">bool</span>, notify: <span style="color:#a6e22e">F</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span>    F: Fn(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">str</span>),
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> critical {
+</span></span><span style="display:flex;"><span>        notify(<span style="color:#e6db74">&#34;alert!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">test_alert_is_sent</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> captured <span style="color:#f92672">=</span> None;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    process_event(<span style="color:#66d9ef">true</span>, <span style="color:#f92672">|</span>msg<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>        captured <span style="color:#f92672">=</span> Some(msg.to_string());
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert_eq!</span>(captured.unwrap(), <span style="color:#e6db74">&#34;alert!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This does not replace traits everywhere. This is best when behavior is small and local.</p>
+<p>Traits are still valid when behavior is shared across modules, multiple real implementations exist and the boundary is I/O, hardware, protocol, etc.
+For async or long-lived boundaries, traits remain the correct abstraction.</p>
+<p>Key takeaway: If an interface exists only so you can mock it, it should probably be a closure.</p>
+<h1 id="testing-with-real-managed-dependencies">Testing with Real Managed Dependencies</h1>
+<p>You should not mock managed dependencies, things you control, such as database, message broker, SQL queries.</p>
+<p>Mocking these gives false confidence. Mocks do not fail on schema drift, serialization bugs, etc.</p>
+<p>Use real instances in integration tests. Run local temporary database container. Spin up Postgres via Podman in CI and run migrations before tests.</p>
+<p>Yes, tests and setup will be slower. But these catch real regressions.</p>
+<h1 id="data-driven-polymorphism-with-enums">Data-Driven Polymorphism with Enums</h1>
+<p>Yes, even though this is a unit testing post its fundamental to understand this point to write better code.</p>
+<p>Prefer enums + match over traits for polymorphism inside your system.</p>
+<p>This keeps the world closed, explicit and traceable.</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Message</span> {
+</span></span><span style="display:flex;"><span>    Email { body: String },
+</span></span><span style="display:flex;"><span>    Sms { text: String },
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">route</span>(msg: <span style="color:#a6e22e">Message</span>) -&gt; <span style="color:#66d9ef">&amp;</span>&#39;static <span style="color:#66d9ef">str</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">match</span> msg {
+</span></span><span style="display:flex;"><span>        Message::Email { <span style="color:#f92672">..</span> } <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Routing to SMTP&#34;</span>,
+</span></span><span style="display:flex;"><span>        Message::Sms { <span style="color:#f92672">..</span> } <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Routing to Gateway&#34;</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[test]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">test_routing</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> msg <span style="color:#f92672">=</span> Message::Sms { text: <span style="color:#e6db74">&#34;Hi&#34;</span>.into() };
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assert_eq!</span>(route(msg), <span style="color:#e6db74">&#34;Routing to Gateway&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This avoids pointer chasing, exhaustive testing, and explicit behavior.</p>
+<p>Enums are ideal when you own all variants. If downstream users need to extend behavior then traits are the correct tool.</p>
+<h1 id="analogy">Analogy</h1>
+<p>Testing with interfaces and mocks is like hiring actors to perform a play about a factory to see if the factory works.</p>
+<p>Testing with a functional core and concrete data is like taking a real component off the assembly line, putting it on a test bench, and measuring exactly how it reacts to real electricity.</p>
+<h1 id="what-to-do-when-i-have-interfacestraits">What to do when I have interfaces/traits?</h1>
+<p>Traits are still valid when:</p>
+<ul>
+<li>the world is genuinely open</li>
+<li>implementations are multiple and independent</li>
+<li>the boundary is external (I/O, hardware, network)</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>MQTT client</li>
+<li>database driver</li>
+<li>filesystem abstraction</li>
+<li>hardware interface</li>
+</ul>
+<p>To test them correctly:</p>
+<ol>
+<li>unit-test the functional core behind the trait</li>
+<li>integration-test the real implementation</li>
+<li>avoid mocking the trait itself</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Publisher {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">publish</span>(<span style="color:#f92672">&amp;</span>self, topic: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span>, payload: <span style="color:#66d9ef">&amp;</span>[<span style="color:#66d9ef">u8</span>]) -&gt; Result<span style="color:#f92672">&lt;</span>(), Error<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Bad test: mock Publisher and assert it was called.
+Good tests: test message construction as a pure function, test MqttPublisher against a real broker.</p>
+<p>Traits should be thin, at the edge of the system and rarely mocked.</p>
+<p>Good unit tests are a consequence of good design.</p>
+<h1 id="tldr">TL;DR</h1>
+<ul>
+<li>Pure logic =&gt; unit tests</li>
+<li>Effects =&gt; integration tests</li>
+<li>Behavior injection =&gt; closures</li>
+<li>Open world =&gt; traits</li>
+<li>Closed world =&gt; enums</li>
+<li>If a trait exists only for mocks =&gt; redesign</li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/testing">testing</a></li>
+					
+					<li><a href="/tags/rust">rust</a></li>
+					
+					<li><a href="/tags/programming">programming</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jpnt" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://jpnt.github.io/index.xml" rel="me" title="RSS Feed"><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2026  © João Pinto |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

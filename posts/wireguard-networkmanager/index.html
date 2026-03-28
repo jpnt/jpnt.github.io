@@ -86,16 +86,16 @@ to be faster and lighter than IPsec and OpenVPN.</p>
 <li>Linux &gt; 5.6 (built-in module)</li>
 </ul>
 <h1 id="importing-a-existing-wireguard-profile">Importing a existing WireGuard profile</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ nmcli connection import type wireguard file <span style="color:#e6db74">&#34;</span>$CFG_FILE<span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ nmcli connection import type wireguard file <span style="color:#e6db74">&#34;</span>$CFG_FILE<span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div><h1 id="create-a-new-connection">Create a new connection</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection add type wireguard con-name wg0 ifname wg0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection add type wireguard con-name wg0 ifname wg0
 </span></span></code></pre></div><h1 id="edit-connection">Edit connection</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection modify wg0 wireguard.private-key &lt;private_key&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection modify wg0 wireguard.private-key &lt;private_key&gt;
 </span></span><span style="display:flex;"><span>nmcli connection modify wg0 wireguard.addresses &lt;IP/CIDR&gt;
 </span></span></code></pre></div><h1 id="bring-up-the-connection">Bring up the connection</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection up wg0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmcli connection up wg0
 </span></span></code></pre></div><h1 id="removing-interface">Removing interface</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ nmcli con del <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ nmcli con del <span style="color:#e6db74">&#34;</span>$CON<span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div><h2 id="resources">Resources</h2>
 <ul>
 <li><a href="https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/">https://blogs.gnome.org/thaller/2019/03/15/wireguard-in-networkmanager/</a></li>
@@ -126,7 +126,7 @@ to be faster and lighter than IPsec and OpenVPN.</p>
     <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
-    2025  © João Pinto |  <a
+    2026  © João Pinto |  <a
       href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>

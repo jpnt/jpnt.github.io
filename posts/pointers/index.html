@@ -188,7 +188,7 @@ something new in your own. You will only learn by doing.</p>
 <ul>
 <li><strong>DECLARING POINTERS</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>That is all you need!</p>
@@ -197,7 +197,7 @@ variable.</p>
 <ul>
 <li><strong>INITIALIZING POINTERS</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_value <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>value;
 </span></span><span style="display:flex;"><span>}
@@ -211,21 +211,21 @@ For that we must dereference the pointer.</p>
 <ul>
 <li><strong>DEREFERENCING POINTERS</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_value <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>value;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value2 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>ptr_value;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;value2 = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, value2); <span style="color:#75715e">// value2 = 13
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>In order to dereference a pointer I use the star operator (*) on
 ptr_value, creating a pointer to a pointer, which just equals to the value
 variable.</p>
 <ul>
 <li><strong>PRINTING A POINTER OR MEMORY ADDRESS</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> <span style="color:#ae81ff">48</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_value <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>value;
 </span></span><span style="display:flex;"><span>    
@@ -237,10 +237,10 @@ am in fact trying to print a pointer variable. <code>\n</code> is new line.</p>
 <p>For now, you have covered the basics of pointers, but there is more to
 explore!</p>
 <h2 id="null-pointers">Null pointers</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr; <span style="color:#75715e">// dont do this
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_null <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">// do this
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_null <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">// do this
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>In this example, I declared two pointer variables <code>ptr</code> and <code>ptr_null</code>.
 <code>ptr_null</code> is initialized with
 the value <code>NULL</code>. This is called a null pointer.</p>
@@ -260,18 +260,18 @@ indicating the compiler that the pointer does not point to any valid memory
 address. Later in the
 program you may assign it the address of a valid memory location (variable).</p>
 <h2 id="pointer-arithmetic">Pointer arithmetic</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> array_numbers[] <span style="color:#f92672">=</span> { <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span> };
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_number <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>array_numbers;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>ptr_number); <span style="color:#75715e">// 10
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    ptr<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>ptr_number); <span style="color:#75715e">// 20
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 30
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// 50
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 20
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 30
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// 50
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 20
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>When we set the <code>ptr_number</code> variable to point to the address of <code>array_numbers</code>
 we are assign the
 number pointer to point to the first element of the number array, i.e.,
@@ -293,19 +293,19 @@ address will be the first element.</p>
 <p>Each position of an array can be manipulated not only through the built-in array
 square brackets notation but
 also with pointers since they represent the same thing.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> array_numbers[] <span style="color:#f92672">=</span> { <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">20</span> };
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr_number <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>array_numbers;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, array_numbers[<span style="color:#ae81ff">0</span>]); <span style="color:#75715e">// this is the same as...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>ptr_number); <span style="color:#75715e">// ...this, which is 5
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>ptr_number); <span style="color:#75715e">// ...this, which is 5
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, array_numbers[<span style="color:#ae81ff">1</span>]); <span style="color:#75715e">// 10
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 10
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, array_numbers[<span style="color:#ae81ff">3</span>]); <span style="color:#75715e">// 20
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// 20
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>(ptr_number <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// 20
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="char-str-vs-char-str">char* str vs char str[]</h2>
 <p>A question I had when learning about pointers in C was: what is the difference
 between <code>char* str</code> and <code>char str[]</code>?</p>
@@ -329,7 +329,7 @@ the array. Either by providing a number of
 characters during initialization or by define it in the declaration. This
 declaration allocates memory for the string
 and copies the provided characters into that memory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> str[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> other_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;World!&#34;</span>;
@@ -368,7 +368,7 @@ multidimensional arrays.</p>
 <p>Pointers to functions allow a pointer variable to store the memory address of a
 function. This provides flexibility to call different functions dynamically at
 runtime.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">numbers_add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">numbers_add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -386,12 +386,12 @@ runtime.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> result2 <span style="color:#f92672">=</span> <span style="color:#a6e22e">ptr_fn</span>(<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">5</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Result 1: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result1); <span style="color:#75715e">// 12
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Result 2: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result2); <span style="color:#75715e">// 6
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Result 2: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result2); <span style="color:#75715e">// 6
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="pointers-to-structures">Pointers to structures</h2>
 <p>Pointers to structures allow you to work with structures indirectly by using their
 memory addresses.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">20</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age;
 </span></span><span style="display:flex;"><span>} Human;
@@ -404,7 +404,7 @@ memory addresses.</p>
 </span></span><span style="display:flex;"><span>    ptr_h1<span style="color:#f92672">-&gt;</span>age <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Age: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ptr<span style="color:#f92672">-&gt;</span>age); <span style="color:#75715e">// 25
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="memory-allocation-and-deallocation">Memory allocation and deallocation</h2>
 <p>Memory allocation means reserving a block of memory for storing data.
 Memory deallocation means releasing previously allocated memory so that it can
@@ -464,7 +464,7 @@ preserving other bits.</p>
 <h2 id="pointer-casting">Pointer casting</h2>
 <p>Pointer casting is when you change the type of a pointer to another type.
 It allows to treat a memory location as if it stored a different type of data.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>num;
 </span></span><span style="display:flex;"><span>
@@ -494,7 +494,7 @@ It allows to treat a memory location as if it stored a different type of data.</
     <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/jpgpinto/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
-    2025  © João Pinto |  <a
+    2026  © João Pinto |  <a
       href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
   </div>
 </footer>
