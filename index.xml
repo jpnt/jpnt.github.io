@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© João Pinto</copyright>
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2026 15:06:28 +0100</lastBuildDate>
     <atom:link href="https://jpnt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes is not a deployment tool</title>
+      <link>https://jpnt.github.io/posts/kubernetes/</link>
+      <pubDate>Mon, 30 Mar 2026 15:06:28 +0100</pubDate>
+      <guid>https://jpnt.github.io/posts/kubernetes/</guid>
+      <description>&lt;p&gt;It is a distributed state machine.&lt;/p&gt;&#xA;&lt;p&gt;You declare what you want and the system reconciles toward it, forever.&lt;/p&gt;&#xA;&lt;p&gt;That is the whole thing.&lt;/p&gt;&#xA;&lt;h1 id=&#34;the-mental-model-for-k8s&#34;&gt;The mental model for k8s&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;read desired state&lt;/li&gt;&#xA;&lt;li&gt;read actual state&lt;/li&gt;&#xA;&lt;li&gt;if different, close gap&lt;/li&gt;&#xA;&lt;li&gt;goto 1&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;That is what every controller does in Kubernetes.&lt;/p&gt;&#xA;&lt;p&gt;The desired state is read from API server, which is just a database with a&#xA;HTTP frontend and pub/sub system (the watch mechanism). etcd is the actual storage.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>One abstraction to rule them all</title>
       <link>https://jpnt.github.io/posts/one-abstraction-to-rule-them-all/</link>
