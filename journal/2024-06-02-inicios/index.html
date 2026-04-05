@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; inici(os)</title>
+    <meta name="description" content="Ideas for the next OS"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-06-15-slices/",
+    higher: "https://jpnt.github.io/journal/2024-02-27-trees/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+inici(os)
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#introduction-the-problem">Introduction: The Problem</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#modern-software-design">Modern Software Design</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#kernel-design-drivers">Kernel Design: Drivers</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#rationale-how-to-solve-it">Rationale: How to Solve it</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#proper-design-bottom-up-approach">Proper Design: Bottom-up Approach</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#if-a-does-x-better-than-b-use-a">If &quot;A&quot; does &quot;X&quot; better than &quot;B&quot;, use &quot;A&quot;</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#keeping-it-stupid-simple-kiss">Keeping It Stupid Simple (KISS)</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#how-many-loc-does-it-take-to-do-x">How Many LOC Does It Take to Do &quot;X&quot;</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#os-specific">OS Specific</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#bare-bones-bootloader">Bare-Bones Bootloader</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#modular-design">Modular Design</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#zero-drivers">Zero Drivers</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#restrictive-multitasking">&quot;Restrictive&quot; multitasking</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#different-os-for-different-purposes">Different OS for different purposes</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#small-os-layer">Small OS layer</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#single-user">Single User</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#conclusion-thoughts-and-moving-forward">Conclusion: thoughts and moving forward</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#arm-and-risc-v-a-new-oportunity">ARM and RISC-V: a new oportunity</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-02-inicios/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+<div id="olivine-forward-links">
+<h3>Forward links</h3>
+<ul id="olivine-forward-link-lists">
+</ul>
+</div>
+<script>
+forward_list = [
+ "/posts/modern-software/", 
+];
+hydrateForward("olivine-forward-link-lists", forward_list,
+"https://jpnt.github.io/olivine-internal-sitemap/");
+</script>
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Slices" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-06-15-slices&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Ideas for the next OS">inici(os)</span><a title="Trees" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-02-27-trees&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<h1 id="introduction-the-problem">Introduction: The Problem</h1>
+<p>The growing complexity and size of modern software is a significant issue, which
+I have discussed previously <a rel="noopener external" target="_blank" href="https://jpnt.github.io/posts/modern-software/">here</a>.</p>
+<p>Today, software tends to be bloated, with enormous and complex codebases that can
+consist of tens of millions of lines of code and intricate dependency trees, often
+just to perform simple tasks.</p>
+<p>It wasn't always like this. In the past, when computers had limited processing
+power, developers had less freedom and were compelled to solve problems in more
+efficient ways.</p>
+<h2 id="modern-software-design">Modern Software Design</h2>
+<p>Modern software design is fundamentally flawed. Theories such as Object-Oriented
+Design and Domain-Driven Design often fail in practice because they do not align
+with how computers actually work. The domain should be the memory, and the design
+should focus on code and data structures.</p>
+<p>These theories often introduce new problems, including maintainability issues,
+poor performance, lack of security, and degraded user experience.</p>
+<h2 id="kernel-design-drivers">Kernel Design: Drivers</h2>
+<p>Whether developing monolithic or microkernels, much of the focus seems to be on
+driver development rather than actual innovation.</p>
+<p>When something doesn’t work, the solution is often to write a new driver. This
+approach creates a bottomless pit of complexity, as there will always be new
+hardware to support, leading to more and more lines of code.</p>
+<hr />
+<h1 id="rationale-how-to-solve-it">Rationale: How to Solve it</h1>
+<h2 id="proper-design-bottom-up-approach">Proper Design: Bottom-up Approach</h2>
+<p>Many developers have the mindset of adding layers on top of existing systems to
+fix problems. This approach is not inherently wrong but cannot be applied universally.</p>
+<p>An analogy is when something breaks, you have two choices: patch it up with duct
+tape and hope it holds (and add more tape if it doesn’t), or evaluate why it broke
+in the first place. Maybe the materials were unsuitable, or it was used incorrectly.
+We might need to create a new component to handle the task properly.</p>
+<p>While this may seem simplistic, it illustrates that modern software often uses
+tools that are not ideal for the job, leading to suboptimal solutions.</p>
+<p>To effectively solve these issues, we must evaluate our choices from the ground
+up, avoiding unnecessary bloat.</p>
+<h2 id="if-a-does-x-better-than-b-use-a">If "A" does "X" better than "B", use "A"</h2>
+<p>This principle is self-explanatory: we should use the best tool for the job. By
+doing so, productivity is increased, and we avoid relying on multiple suboptimal
+software projects.</p>
+<p>For example, if I want to display the contents of a file, I should use the best
+tool available for that task. The same applies to editing a file, etc.</p>
+<h2 id="keeping-it-stupid-simple-kiss">Keeping It Stupid Simple (KISS)</h2>
+<p>A key principle in writing good software is to keep it simple. We should always
+seek the simplest way to achieve our goals. The philophy is: "if something can
+be simplified, it will get simplied".</p>
+<p>This principle applies to both the design and implementation stages. For example,
+instead of performing extensive computations, we might pre-calculate and store
+data for quick access.</p>
+<p>It's also crucial to stay focused when developing a feature and avoid adding
+unnecessary functionalities. This aligns with the original UNIX design principles.</p>
+<h2 id="how-many-loc-does-it-take-to-do-x">How Many LOC Does It Take to Do "X"</h2>
+<p>Another important consideration is achieving functionality with the fewest lines
+of code possible, without sacrificing readability or performance.</p>
+<hr />
+<h1 id="os-specific">OS Specific</h1>
+<p>These design philosophies still apply to other software, but here I am talking
+specifically about Operating Systems.</p>
+<h2 id="bare-bones-bootloader">Bare-Bones Bootloader</h2>
+<p>Avoid multi-stage bootloaders and complex boot protocols (unless absolutely
+necessary).</p>
+<p>No initial ram disk or anything similar. The goal is to boot as fast as possible
+with as less drag as possible.</p>
+<h2 id="modular-design">Modular Design</h2>
+<p>This principle tells us to break the problem down in well-defined, independent
+modules each with a single responsability and communicate through simple and
+well-defined interfaces.</p>
+<p>We need to separate the kernel, filesystem, multitasking, hardware interaction,
+etc. Set as a goal: a ridiculous low amount of lines of code to do "X". The less
+you write, the better (without sacrificing performance, of course).</p>
+<h2 id="zero-drivers">Zero Drivers</h2>
+<p>As previously mentioned, drivers are a major source of complexity in modern
+operating systems. We could look to embedded systems for inspiration on how to
+build an OS with zero drivers.</p>
+<h2 id="restrictive-multitasking">"Restrictive" multitasking</h2>
+<p>Multitasking is not inherently bad, but modern operating systems often run too
+many tasks simultaneously. For a consumer/desktop OS, I might only want to run
+2 or 3 tasks at a time. This allows us to simplify the pre-emptive multitasking
+algorithm while still supporting multiple tasks when necessary.</p>
+<h2 id="different-os-for-different-purposes">Different OS for different purposes</h2>
+<p>I don't want a general-purpose OS; I want an OS tailored to my specific use case.
+For example, if I'm using it on a desktop, I don't need it to function as a server
+OS. This specialization simplifies the entire OS stack.</p>
+<h2 id="small-os-layer">Small OS layer</h2>
+<p>The OS layer should be as minimal as possible. While POSIX provides a standard
+interface, it may be too large for what I intend.</p>
+<p>Only the essential features should be implemented in the kernel and non essential
+features should be moved to userspace. In theory this simplifies kernel development
+and improves security (which may be irrelevant considering other design choices).</p>
+<p>Use static linking for the kernel to avoid the complexity associated with dynamically
+linking a kernel.</p>
+<h2 id="single-user">Single User</h2>
+<p>Focus on single-user environment. This provides a great oportunity to simplify
+security and permission models.</p>
+<hr />
+<h1 id="conclusion-thoughts-and-moving-forward">Conclusion: thoughts and moving forward</h1>
+<h2 id="arm-and-risc-v-a-new-oportunity">ARM and RISC-V: a new oportunity</h2>
+<p>With the advent of new ARM SoCs and RISC-V processors, there is a tremendous
+opportunity to apply these principles and develop more efficient operating systems.</p>
+<p>If I am aiming for "zero drivers", my OS will be dependant on a specific computer,
+which immediately removes thousands of esoteric hardware written in the kernel.</p>
+<p>If then a user wants to communicate with other external hardware, more software
+will be developed; I dont consider it a "driver" simply because it wont be written
+at the kernel space but instead at the user space.</p>
+<p>"But what does that solve?" You ask. Well, by writing this external modules outside
+of the kernel to communicate with your hardware it means the kernel will always
+remain slim with no extra driver bloat you dont need.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2022-01-15-modern-software/">Modern Software is a disaster</a></strong>: Both critique complexity in software</li>
+<li><strong><a href="/journal/2025-04-04-unix-plan9-and-linux-containers/">UNIX, Plan9 and Linux Containers</a></strong>: OS design principles</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

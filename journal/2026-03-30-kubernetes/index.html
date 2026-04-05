@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Kubernetes is not a deployment tool</title>
+    <meta name="description" content="Kubernetes is not a deployment tool - It is a distributed state machine.
+You declare what you want and the system reconciles toward it, forever.
+That is the w…"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    
+    higher: "https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Kubernetes is not a deployment tool
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#the-mental-model-for-k8s">The mental model for k8s</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#api-request-lifecycle">API request lifecycle</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#architecture">Architecture</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#workloads">Workloads</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#configuration-and-secrets">Configuration and Secrets</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#storage-and-csi">Storage and CSI</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#access-modes">Access modes</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#csi">CSI</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#networking-it-is-just-routing">Networking: it is just routing</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#services-stable-endpoints-in-front-of-pods">Services: stable endpoints in front of pods</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#dns">DNS</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#ingress">Ingress</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#networkpolicy">NetworkPolicy</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#scheduling-autoscaling-and-reliability">Scheduling, autoscaling and reliability</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#controlling-where-pods-land">Controlling where pods land</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#autoscaling">Autoscaling</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#reliability-primitives">Reliability primitives</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#security">Security</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#authentication-vs-authorization">Authentication vs authorization</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#rbac-four-objects">RBAC — four objects</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#serviceaccount">ServiceAccount</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#admission-the-last-gate-before-etcd">Admission — the last gate before etcd</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#runtime-security-essentials">Runtime security essentials</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#extensibility-and-the-operator-pattern">Extensibility and the operator pattern</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#crd-custom-resource-definition">CRD — Custom Resource Definition</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#the-operator-pattern">The operator pattern</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#server-side-apply">Server-side apply</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#observability">Observability</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#metrics-three-layers">Metrics: three layers</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#logs">Logs</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#events">Events</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#cluster-operations">Cluster operations</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#node-lifecycle">Node lifecycle</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#etcd-backup-or-cry">etcd: backup or cry</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#package-management">Package management</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#node-and-runtime-internals">Node and runtime internals</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#cgroups-how-limits-are-actually-enforced">cgroups — how limits are actually enforced</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#linux-namespaces-isolation-per-pod">Linux namespaces — isolation per pod</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#device-plugins-gpus-and-other-hardware">Device plugins — GPUs and other hardware</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-30-kubernetes/#kubelet-eviction">Kubelet eviction</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><span>Kubernetes is not a deployment tool</span><a title="One abstraction to rule them all" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2026-03-28-one-abstraction-to-rule-them-all&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/infrastructure/">#infrastructure</a></span>
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<p>It is a distributed state machine.</p>
+<p>You declare what you want and the system reconciles toward it, forever.</p>
+<p>That is the whole thing.</p>
+<h1 id="the-mental-model-for-k8s">The mental model for k8s</h1>
+<ol>
+<li>read desired state</li>
+<li>read actual state</li>
+<li>if different, close gap</li>
+<li>goto 1</li>
+</ol>
+<p>That is what every controller does in Kubernetes.</p>
+<p>The desired state is read from API server, which is just a database with a
+HTTP frontend and pub/sub system (the watch mechanism). etcd is the actual storage.</p>
+<p>Every component: scheduler, kubelet, kube-controller-manager; is just a controller
+doing this loop agaisnt different resources.</p>
+<p>You never tell Kubernetes <strong>how</strong> to do something. You declare <strong>what</strong> you want. The
+diff if the system's problem.</p>
+<p>When something is broken, ask: what controller owns this resource? What is it reconciling
+agaisnt? That always points to the bug.</p>
+<h2 id="api-request-lifecycle">API request lifecycle</h2>
+<ol>
+<li>kubectl apply</li>
+<li>authn</li>
+<li>authz (RBAC)</li>
+<li>admission webhooks</li>
+<li>validation</li>
+<li>etcd</li>
+</ol>
+<p>Once it hits etcd, every watching controller gets a MODIFIED event and starts reconciling.</p>
+<h3 id="key-api-concepts">Key API concepts</h3>
+<ul>
+<li>resourceVersion
+<ul>
+<li>Optimistic concurrency. If yours doesn't match, your write fails. Prevents races.</li>
+</ul>
+</li>
+<li>generation / observedGeneration
+<ul>
+<li>generation bumps on spec change. observedGeneration is what the controller has actually processed. If they differ, the controller is behind.</li>
+</ul>
+</li>
+<li>finalizers
+<ul>
+<li>String list on an object. Deletion is blocked until all finalizers are removed. How controllers do cleanup before an object dies.</li>
+</ul>
+</li>
+<li>ownerReferences
+<ul>
+<li>Garbage collection. When the owner is deleted, owned objects are deleted too. A ReplicaSet owns its Pods.</li>
+</ul>
+</li>
+</ul>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/overview/working-with-objects/</li>
+<li>https://kubernetes.io/docs/reference/kubernetes-api/</li>
+</ul>
+<h1 id="architecture">Architecture</h1>
+<p>Two planes. Control plane tells the cluster what to do. Data plane does it.</p>
+<ol>
+<li>Control plane (usually 1-3 nodes)
+<ul>
+<li>kube-apiserver</li>
+<li>etcd</li>
+<li>kube-scheduler</li>
+<li>kube-controller-manager</li>
+<li>cloud-controller-manager</li>
+</ul>
+</li>
+<li>Data plane (every worker node)
+<ul>
+<li>kubelet</li>
+<li>kube-proxy</li>
+<li>container runtime (e.g. containerd, cri-o, etc)</li>
+<li>CNI plugin</li>
+</ul>
+</li>
+</ol>
+<table><thead><tr><th>Component</th><th>What It Does</th></tr></thead><tbody>
+<tr><td><strong>kube-apiserver</strong></td><td>The only thing that talks to etcd. All state reads/writes go through here. Provides REST + watch API.</td></tr>
+<tr><td><strong>etcd</strong></td><td>Distributed KV store using Raft consensus. Source of truth. Back it up. If it dies, the cluster is blind.</td></tr>
+<tr><td><strong>kube-scheduler</strong></td><td>Watches for unscheduled pods. Runs filter plugins (can this node run this pod?) then score plugins (which node is best?). Writes the node name to the pod spec. Kubelet does the rest.</td></tr>
+<tr><td><strong>kube-controller-manager</strong></td><td>Runs ~30 controllers in one process (ReplicaSet, Deployment, Job, etc.), all doing the reconcile loop.</td></tr>
+<tr><td><strong>cloud-controller-manager</strong></td><td>Cloud-specific controllers: provision a load balancer for Services of type LoadBalancer, assign node IPs, etc.</td></tr>
+<tr><td><strong>kubelet</strong></td><td>Runs on every node. Watches assigned pods via API, calls CRI to start/stop containers, reports node/pod status.</td></tr>
+<tr><td><strong>kube-proxy</strong></td><td>Maintains iptables (or IPVS) rules on each node so Service IPs route to pod IPs. Not a traditional proxy.</td></tr>
+<tr><td><strong>container runtime</strong></td><td>containerd or CRI-O. Pulls images, creates containers via OCI spec. Kubelet talks to it via the CRI gRPC API.</td></tr>
+</tbody></table>
+<p>Misconception: kube-proxy does not proxy traffic. It programs the kernel's netfilter rules so the kernel routes packets directly. The name is historical.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/architecture/</li>
+</ul>
+<h1 id="workloads">Workloads</h1>
+<p>The pod is the unit of scheduling. One or more containers, one IP, one set of volumes, one lifecycle. You almost never create pods directly, instead you use a controller that manages pods for you.</p>
+<p>Pod spec essentials:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="yaml"><span class="giallo-l"><span style="color: #8EC07C;">spec</span><span style="color: #A89984;">:</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">  containers</span><span style="color: #A89984;">:</span></span>
+<span class="giallo-l"><span style="color: #A89984;">  -</span><span style="color: #8EC07C;"> name</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> app</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">    image</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> nginx:1.25</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">    resources</span><span style="color: #A89984;">:</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">      requests</span><span style="color: #A89984;">:</span><span style="color: #928374;font-style: italic;"> # what scheduler uses for bin-packing</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">        cpu</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> 100m</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">        memory</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> 128Mi</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">      limits</span><span style="color: #A89984;">:</span><span style="color: #928374;font-style: italic;">   # kernel enforces this via cgroups</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">        cpu</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> 500m</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">        memory</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> 256Mi</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">    readinessProbe</span><span style="color: #A89984;">:</span><span style="color: #928374;font-style: italic;"> # controls traffic routing</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">      httpGet</span><span style="color: #A89984;">: {</span><span style="color: #8EC07C;">path</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> /healthz</span><span style="color: #A89984;">,</span><span style="color: #8EC07C;"> port</span><span style="color: #A89984;">:</span><span style="color: #D3869B;"> 8080</span><span style="color: #A89984;">}</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">    livenessProbe</span><span style="color: #A89984;">:</span><span style="color: #928374;font-style: italic;">  # controls restart</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">      httpGet</span><span style="color: #A89984;">: {</span><span style="color: #8EC07C;">path</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> /healthz</span><span style="color: #A89984;">,</span><span style="color: #8EC07C;"> port</span><span style="color: #A89984;">:</span><span style="color: #D3869B;"> 8080</span><span style="color: #A89984;">}</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">  initContainers</span><span style="color: #A89984;">:</span><span style="color: #928374;font-style: italic;"> # run to completion before app containers start</span></span>
+<span class="giallo-l"><span style="color: #A89984;">  -</span><span style="color: #8EC07C;"> name</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> migrate</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">    image</span><span style="color: #A89984;">:</span><span style="color: #B8BB26;"> migrate-tool:latest</span></span></code></pre>
+<p>Tip: Always set requests and limits, No requests = scheduler schedules blind. No limits = one container can OOM the whole node. QoS class is determined by this: Guaranteed (requests == limits), Burstable (requests set, limits higher), BestEffort (neither set, evicted first).</p>
+<table><thead><tr><th>Controller</th><th>Use When</th><th>Key Fields</th></tr></thead><tbody>
+<tr><td><strong>Deployment</strong></td><td>Stateless apps, rolling updates</td><td>replicas, strategy (RollingUpdate/Recreate), maxSurge, maxUnavailable</td></tr>
+<tr><td><strong>StatefulSet</strong></td><td>Databases, anything needing stable identity or ordered rollout</td><td>serviceName (headless), volumeClaimTemplates, podManagementPolicy</td></tr>
+<tr><td><strong>DaemonSet</strong></td><td>One pod per node (log agents, monitoring, CNI)</td><td>updateStrategy, node targeting via tolerations</td></tr>
+<tr><td><strong>Job</strong></td><td>Run-to-completion tasks</td><td>completions, parallelism, backoffLimit, completionMode: Indexed</td></tr>
+<tr><td><strong>CronJob</strong></td><td>Scheduled jobs</td><td>schedule (cron), concurrencyPolicy, startingDeadlineSeconds</td></tr>
+</tbody></table>
+<p>Multi-container pod patterns:</p>
+<ul>
+<li>sidecar
+<ul>
+<li>Extends the main container. Log shipper, service mesh proxy (Envoy). Runs alongside, same lifecycle.</li>
+</ul>
+</li>
+<li>init container
+<ul>
+<li>Runs before app containers. DB migrations, config fetching, wait-for-dependency. Must exit 0.</li>
+</ul>
+</li>
+<li>ephemeral container
+<ul>
+<li>Debug-only. Injected into a running pod with kubectl debug. Not in the spec by default.</li>
+</ul>
+</li>
+</ul>
+<p>Graceful shutdown: K8s sends SIGTERM, waits terminationGracePeriodSeconds (default 30s), then SIGKILL. Use a preStop hook to delay shutdown if your app needs it. Handle SIGTERM in your app.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/workloads/</li>
+</ul>
+<h1 id="configuration-and-secrets">Configuration and Secrets</h1>
+<p>Two objects. ConfigMap for non-sensitive config. Secret for sensitive data (base64 encoded by default which means it is not encrypted).</p>
+<table><thead><tr><th>How to Consume</th><th>Works With</th><th>Note</th></tr></thead><tbody>
+<tr><td><strong>env var</strong></td><td>ConfigMap, Secret</td><td>Snapshot at pod start — changes don’t propagate</td></tr>
+<tr><td><strong>envFrom</strong></td><td>ConfigMap, Secret</td><td>Inject all keys as environment variables at once</td></tr>
+<tr><td><strong>volume mount</strong></td><td>ConfigMap, Secret</td><td>Files in a directory — live updates (with ~60s delay)</td></tr>
+<tr><td><strong>projected volume</strong></td><td>serviceAccountToken, ConfigMap, Secret, downwardAPI</td><td>Combine multiple sources into one mount path</td></tr>
+</tbody></table>
+<p>Downward API: expose pod metadata to the container</p>
+<p>Pod name, namespace, labels, resource limits: available as env vars or files. No API call needed from inside the container.</p>
+<p>Secrets are not encrypted by default: They're base64. Anyone with etcd access or the right RBAC can read them. To actually encrypt: configure EncryptionConfiguration on the API server, or use an external secrets operator (ESO + Vault/AWS Secrets Manager). For production, use external secrets.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/configuration/</li>
+<li>https://external-secrets.io/latest/</li>
+</ul>
+<h1 id="storage-and-csi">Storage and CSI</h1>
+<table><thead><tr><th>Object</th><th>What It Is</th></tr></thead><tbody>
+<tr><td><strong>PersistentVolume (PV)</strong></td><td>A piece of storage in the cluster. Created by an admin or dynamically by a provisioner. Has a lifecycle independent of any pod.</td></tr>
+<tr><td><strong>PersistentVolumeClaim (PVC)</strong></td><td>A request for storage by a user. "I need 10Gi, ReadWriteOnce." Binds to a matching PV.</td></tr>
+<tr><td><strong>StorageClass</strong></td><td>Defines a provisioner + parameters. PVC references it → provisioner creates the PV automatically (dynamic provisioning).</td></tr>
+</tbody></table>
+<p>Tip: volumeBindingMode: WaitForFirstConsumer. Default is Immediate; PV is provisioned in a random AZ before the pod is scheduled. This causes pod-PV AZ mismatches. Always use WaitForFirstConsumer so provisioning waits until the pod is scheduled and we know which AZ to use.</p>
+<h2 id="access-modes">Access modes</h2>
+<ul>
+<li>RWO
+<ul>
+<li>ReadWriteOnce. One node mounts read/write. Standard for block storage (EBS, PD).</li>
+</ul>
+</li>
+<li>ROX
+<ul>
+<li>ReadOnlyMany. Many nodes read. Rare.</li>
+</ul>
+</li>
+<li>RWX
+<ul>
+<li>ReadWriteMany. Many nodes read/write. Needs NFS or a distributed filesystem.</li>
+</ul>
+</li>
+<li>RWOP
+<ul>
+<li>ReadWriteOncePod. Only one pod (not just node) mounts read/write. Strongest isolation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="csi">CSI</h2>
+<p>CSI (Container Storage Interface) is the plugin system. Every cloud volume, NFS driver, or Ceph plugin implements this spec. You almost never implement it, but knowing the pieces explains every stuck-volume bug you'll ever hit.</p>
+<ol>
+<li>controller plugin
+<ul>
+<li>One instance (Deployment). Talks to the storage backend API. Creates/deletes/attaches/detaches volumes.</li>
+</ul>
+</li>
+<li>node plugin
+<ul>
+<li>DaemonSet — runs on every node. Mounts/unmounts the volume on the node. Calls NodeStageVolume, NodePublishVolume.</li>
+</ul>
+</li>
+<li>external-provisioner
+<ul>
+<li>Sidecar. Watches PVCs, calls CreateVolume on the driver when a new PVC appears.</li>
+</ul>
+</li>
+<li>external-attacher
+<ul>
+<li>Sidecar. Watches VolumeAttachment objects, calls ControllerPublishVolume to attach to the node.</li>
+</ul>
+</li>
+<li>external-resizer
+<ul>
+<li>Sidecar. Watches PVCs for capacity changes, triggers ControllerExpandVolume.</li>
+</ul>
+</li>
+<li>external-snapshotter
+<ul>
+<li>Sidecar. Handles VolumeSnapshot CRDs → calls CreateSnapshot on the driver.</li>
+</ul>
+</li>
+</ol>
+<p>Debugging stuck volumes: Pod stuck in ContainerCreating with a volume error → check VolumeAttachment (external-attacher), then check the node plugin logs (NodeStageVolume/NodePublishVolume). PV stuck Released → check the reclaim policy and whether a finalizer is blocking deletion.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/storage/</li>
+<li>https://kubernetes-csi.github.io/docs/</li>
+</ul>
+<h1 id="networking-it-is-just-routing">Networking: it is just routing</h1>
+<p>Three rules define the whole model:</p>
+<ol>
+<li>Every pod gets a unique IP across the entire cluster</li>
+<li>Any pod can reach any other pod by IP, no NAT</li>
+<li>Containers in the same pod share a network namespace (same IP, same port space)</li>
+</ol>
+<p>How this is implemented is the CNI plugin's problem (Calico, Cilium, Flannel, etc). Kubernetes doesn't care; it just requires the above contract.</p>
+<h2 id="services-stable-endpoints-in-front-of-pods">Services: stable endpoints in front of pods</h2>
+<p>Pods die and get new IPs. A Service is a stable virtual IP (ClusterIP) with a DNS name that always routes to healthy pods matching its selector.</p>
+<table><thead><tr><th>Type</th><th>Reachable From</th><th>Use Case</th></tr></thead><tbody>
+<tr><td><strong>ClusterIP</strong></td><td>Inside cluster only</td><td>Default. Internal service-to-service communication.</td></tr>
+<tr><td><strong>NodePort</strong></td><td>Outside cluster via node IP:port</td><td>Dev/testing. Exposes a port on every node.</td></tr>
+<tr><td><strong>LoadBalancer</strong></td><td>Outside cluster via cloud LB IP</td><td>Production external traffic. Cloud-controller-manager provisions the LB.</td></tr>
+<tr><td><strong>ExternalName</strong></td><td>Inside cluster</td><td>CNAME alias for an external DNS name. No proxying.</td></tr>
+<tr><td><strong>Headless (ClusterIP: None)</strong></td><td>Inside cluster</td><td>DNS returns pod IPs directly. Required for StatefulSets. No virtual IP.</td></tr>
+</tbody></table>
+<p>How ClusterIP actually works: The ClusterIP is not assigned to any interface. kube-proxy programs iptables/IPVS rules on every node: packets destined to the ClusterIP get DNAT'd to a real pod IP by the kernel. There's no userspace proxy involved.</p>
+<h2 id="dns">DNS</h2>
+<p>CoreDNS runs in the cluster.</p>
+<p>Every Service gets a DNS name: service-name.namespace.svc.cluster.local.</p>
+<p>Pods in the same namespace can just use service-name.</p>
+<p>StatefulSet pods get stable DNS per-pod: pod-name.service-name.namespace.svc.cluster.local.</p>
+<p>Note: ndots:5 gotcha: Default resolv.conf has ndots:5. Any name with fewer than 5 dots triggers a search domain walk before going to the root. api.github.com → tries api.github.com.default.svc.cluster.local first. Adds latency. For external FQDNs, add a trailing dot or tune dnsConfig.options.ndots.</p>
+<h2 id="ingress">Ingress</h2>
+<p>L7 routing in front of Services.</p>
+<p>Rules match on hostname and path, route to a Service backend.</p>
+<p>An IngressController (nginx, Traefik, etc.) implements the actual proxying — Ingress is just config.</p>
+<p>Gateway API is the replacement. It's GA. More expressive, supports TCP/gRPC routes, splits roles between infra (Gateway) and app (HTTPRoute). Start here for new clusters.</p>
+<h2 id="networkpolicy">NetworkPolicy</h2>
+<p>Firewall rules for pods.</p>
+<p>Default: all traffic allowed. A NetworkPolicy with a podSelector creates a whitelist — only matching ingress/egress is allowed.</p>
+<p>Policies are additive (union). Enforced by the CNI plugin (not kube-proxy).</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/services-networking/</li>
+<li>https://gateway-api.sigs.k8s.io/</li>
+<li>https://www.youtube.com/watch?v=Mj04QOqAaJ8</li>
+</ul>
+<h1 id="scheduling-autoscaling-and-reliability">Scheduling, autoscaling and reliability</h1>
+<h2 id="controlling-where-pods-land">Controlling where pods land</h2>
+<table><thead><tr><th>Mechanism</th><th>Use</th></tr></thead><tbody>
+<tr><td><strong>nodeSelector</strong></td><td>Simple label match. Pod goes to nodes with this label.</td></tr>
+<tr><td><strong>nodeAffinity</strong></td><td>Same idea but with required/preferred rules and richer expressions.</td></tr>
+<tr><td><strong>podAffinity / anti-affinity</strong></td><td>Co-locate or spread pods relative to other pods. Anti-affinity for HA (avoid same node).</td></tr>
+<tr><td><strong>taints + tolerations</strong></td><td>Taints repel pods from nodes. Tolerations allow pods to ignore a taint. Used to dedicate nodes (GPU, spot).</td></tr>
+<tr><td><strong>topology spread constraints</strong></td><td>Spread pods evenly across zones/nodes. Preferred over anti-affinity for large-scale distribution.</td></tr>
+</tbody></table>
+<h2 id="autoscaling">Autoscaling</h2>
+<ul>
+<li>HPA
+<ul>
+<li>Horizontal Pod Autoscaler. Scales replicas based on CPU, memory, or custom metrics. Checks every 15s.</li>
+</ul>
+</li>
+<li>VPA
+<ul>
+<li>Vertical Pod Autoscaler. Adjusts resource requests. In Auto mode it restarts pods. Use Off mode to just get recommendations first.</li>
+</ul>
+</li>
+<li>KEDA
+<ul>
+<li>Event-driven autoscaling. Scale on Kafka lag, queue depth, cron schedule, HTTP request rate. More flexible than HPA.</li>
+</ul>
+</li>
+<li>Cluster Autoscaler
+<ul>
+<li>Adds/removes nodes. Triggers when pods are unschedulable (scale up) or nodes are underutilized (scale down).</li>
+</ul>
+</li>
+</ul>
+<h2 id="reliability-primitives">Reliability primitives</h2>
+<table><thead><tr><th>Object</th><th>What It Does</th></tr></thead><tbody>
+<tr><td><strong>PodDisruptionBudget</strong></td><td>Limits voluntary disruptions. During a drain, K8s won't evict pods if it would violate the PDB. Use this so drains don't take down your whole service.</td></tr>
+<tr><td><strong>ResourceQuota</strong></td><td>Per-namespace cap on total CPU, memory, and object count. Prevents one team from starving another.</td></tr>
+<tr><td><strong>LimitRange</strong></td><td>Per-namespace default requests/limits and min/max enforcement. Prevents pods with no resources set from being scheduled.</td></tr>
+<tr><td><strong>PriorityClass</strong></td><td>Higher priority pods preempt lower priority pods if the cluster is full. Use for critical workloads.</td></tr>
+</tbody></table>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/scheduling-eviction/</li>
+<li>https://keda.sh/</li>
+</ul>
+<h1 id="security">Security</h1>
+<h2 id="authentication-vs-authorization">Authentication vs authorization</h2>
+<p>Authn: who are you? K8s supports x509 certs, bearer tokens, OIDC (standard), webhook. No internal user database — users exist only in credentials.</p>
+<p>Authz: what can you do? RBAC is the answer.</p>
+<h2 id="rbac-four-objects">RBAC — four objects</h2>
+<ol>
+<li>Role
+<ul>
+<li>Permissions within a namespace. verbs (get, list, watch, create, update, patch, delete) on resources.</li>
+</ul>
+</li>
+<li>ClusterRole
+<ul>
+<li>Same but cluster-scoped. Also used for non-namespaced resources (nodes, PVs).</li>
+</ul>
+</li>
+<li>RoleBinding
+<ul>
+<li>Grants a Role to a subject (user, group, ServiceAccount) in a namespace.</li>
+</ul>
+</li>
+<li>ClusterRoleBinding
+<ul>
+<li>Grants a ClusterRole cluster-wide.</li>
+</ul>
+</li>
+</ol>
+<h2 id="serviceaccount">ServiceAccount</h2>
+<p>Identity for pods. A pod runs as a ServiceAccount — its token is a projected volume mounted at /var/run/secrets/kubernetes.io/serviceaccount/token. This token is used to authenticate against the API server. IRSA (AWS) and Workload Identity (GCP) use this mechanism to grant pods cloud IAM permissions.</p>
+<h2 id="admission-the-last-gate-before-etcd">Admission — the last gate before etcd</h2>
+<p>After authz, admission webhooks can mutate or reject requests. Order matters. The built-in controllers run first (NamespaceLifecycle, LimitRanger, ResourceQuota…), then your webhooks.</p>
+<ul>
+<li>MutatingAdmissionWebhook
+<ul>
+<li>Can modify the object. Used by service mesh injectors (inject Envoy sidecar), secret injectors, defaulters.</li>
+</ul>
+</li>
+<li>ValidatingAdmissionWebhook
+<ul>
+<li>Can only allow or reject. Used for policy enforcement.</li>
+</ul>
+</li>
+<li>ValidatingAdmissionPolicy
+<ul>
+<li>CEL-based in-tree validation. No webhook required. GA in 1.30. Prefer this over webhooks for simple rules.</li>
+</ul>
+</li>
+<li>PodSecurity admission
+<ul>
+<li>Enforces Pod Security Standards (privileged / baseline / restricted) per namespace. Replaced PodSecurityPolicy.</li>
+</ul>
+</li>
+</ul>
+<h2 id="runtime-security-essentials">Runtime security essentials</h2>
+<p>Set on securityContext: runAsNonRoot: true, readOnlyRootFilesystem: true, allowPrivilegeEscalation: false, drop all Linux capabilities then add only what you need.</p>
+<p>Use seccompProfile: RuntimeDefault as a baseline.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/security/</li>
+<li>https://kubernetes.io/docs/concepts/security/pod-security-standards/</li>
+</ul>
+<h1 id="extensibility-and-the-operator-pattern">Extensibility and the operator pattern</h1>
+<p>Kubernetes is designed to be extended.</p>
+<p>The mechanism is: add your own API types (CRDs), then write a controller that reconciles them. That's an operator.</p>
+<h2 id="crd-custom-resource-definition">CRD — Custom Resource Definition</h2>
+<p>Register a new API type (e.g. Postgres in group databases.example.com).</p>
+<p>From that point it behaves like any built-in type — you can kubectl apply it, watch it, RBAC it.</p>
+<p>The CRD defines the schema (validated via OpenAPI/CEL).</p>
+<h2 id="the-operator-pattern">The operator pattern</h2>
+<blockquote>
+<p>operator = CRD + controller</p>
+</blockquote>
+<blockquote>
+<p>You define: "what does a Postgres cluster look like" (CRD)</p>
+</blockquote>
+<blockquote>
+<p>Controller does: "when I see a Postgres object, reconcile the actual StatefulSets,</p>
+</blockquote>
+<blockquote>
+<p>Services, Secrets, and backups toward what the spec says</p>
+</blockquote>
+<p>The controller uses an informer cache (local copy of API objects, kept in sync via watch) so it never hammers the API server.</p>
+<p>Work is queued in a rate-limited queue. On leader election, only one replica of the controller acts at a time.</p>
+<h2 id="server-side-apply">Server-side apply</h2>
+<p>Instead of client-side three-way merge, the API server tracks field ownership.</p>
+<p>Two controllers can manage the same object if they own different fields. Conflicts are explicit.</p>
+<p>Use this for operators — it prevents the "last-write-wins" problem.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/extend-kubernetes/</li>
+<li>https://book.kubebuilder.io/</li>
+<li>https://operatorframework.io/</li>
+</ul>
+<h1 id="observability">Observability</h1>
+<h2 id="metrics-three-layers">Metrics: three layers</h2>
+<table><thead><tr><th>Tool</th><th>What It Gives You</th></tr></thead><tbody>
+<tr><td><strong>metrics-server</strong></td><td>CPU/memory per pod/node in real time. Powers HPA and <code>kubectl top</code>. In-memory only — no history.</td></tr>
+<tr><td><strong>kube-state-metrics</strong></td><td>Object state metrics: deployment replicas, pod phase, job completions. Not resource usage.</td></tr>
+<tr><td><strong>node-exporter</strong></td><td>Host-level metrics: disk, network, filesystem, CPU steal. Typically runs as a DaemonSet.</td></tr>
+</tbody></table>
+<p>Prometheus scrapes all three. Prometheus Operator makes this declarative with ServiceMonitor and PodMonitor CRDs.</p>
+<h2 id="logs">Logs</h2>
+<p>kubectl logs reads from the container runtime log files on the node; --previous gets the logs of the last crashed container.</p>
+<p>For aggregation: run Fluentbit as a DaemonSet, ship to Loki/Elastic/CloudWatch. Don't log to files inside the container — log to stdout/stderr.</p>
+<h2 id="events">Events</h2>
+<p>The most underused debugging tool.</p>
+<p>kubectl describe pod foo shows Events. They have a reason, a message, a count, and they reference the involved object.</p>
+<p>Everything that happened to an object is there. They expire after ~1 hour by default — if you want history, ship them to a persistent store.</p>
+<p>Debugging checklist:</p>
+<ol>
+<li>kubectl describe pod <pod> — events tell you what happened</li>
+<li>kubectl logs <pod> --previous — last crash</li>
+<li>kubectl debug -it <pod> --image=busybox — ephemeral container in the pod's network namespace</li>
+<li>Check controller logs (deployment controller, etc.) if the pod never got created</li>
+</ol>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/tasks/debug/</li>
+<li>https://prometheus-operator.dev/</li>
+</ul>
+<h1 id="cluster-operations">Cluster operations</h1>
+<h2 id="node-lifecycle">Node lifecycle</h2>
+<p>cordon -&gt; marks node unschedulable (no new pods)
+drain -&gt; evicts all pods (respects PDBs)
+uncordon -&gt; node back in rotation</p>
+<h2 id="etcd-backup-or-cry">etcd: backup or cry</h2>
+<p>etcd is the cluster. If it's gone, so is everything. Snapshot: etcdctl snapshot save.</p>
+<p>Restore: etcdctl snapshot restore then reconfigure the API server to point at the restored data dir.</p>
+<p>Test your restore procedure before you need it.</p>
+<h2 id="package-management">Package management</h2>
+<ul>
+<li>Helm
+<ul>
+<li>Templated YAML packaged as charts. Values override defaults. Hooks for lifecycle. The standard for distributing third-party software.</li>
+</ul>
+</li>
+<li>kustomize
+<ul>
+<li>Overlay patches on base YAML. No templating — pure structural patching. Built into kubectl. Better for your own app configs.</li>
+</ul>
+</li>
+<li>GitOps (ArgoCD/Flux)
+<ul>
+<li>Git is the source of truth. Controller syncs cluster to whatever's in the repo. Drift detection, auto-sync, rollback by reverting git commit.</li>
+</ul>
+</li>
+</ul>
+<p>Version skew policy: kubelet can be at most 2 minor versions behind the API server. kubectl can be ±1. During upgrades: upgrade control plane first, then nodes. Never skip minor versions.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/tasks/administer-cluster/</li>
+<li>https://argo-cd.readthedocs.io/en/stable/</li>
+<li>https://fluxcd.io/flux/</li>
+</ul>
+<h1 id="node-and-runtime-internals">Node and runtime internals</h1>
+<p>This section explains why production problems that aren't K8s bugs happen. Useful to know before going on-call.</p>
+<p>You often hear "kubernetes is just Linux", and that is correct, fundamentally kubernetes relies on Linux kernel
+to give the majority of its functionality.</p>
+<h2 id="cgroups-how-limits-are-actually-enforced">cgroups — how limits are actually enforced</h2>
+<p>CPU limit → cpu.cfs_quota_us / cpu.cfs_period_us.</p>
+<p>If your container uses its entire quota in the first part of a period, it's throttled for the rest — even if the node has idle CPUs.</p>
+<p>This is the source of latency spikes on CPU-limited pods with no visible CPU saturation.</p>
+<p>Memory limit → memory.limit_in_bytes.</p>
+<p>Exceed it → OOM killed by the kernel. No warning. OOMKilled exit code in pod status.</p>
+<p>cgroups v1 vs v2: cgroups v2 (unified hierarchy) is default on modern kernels (&gt;= kernel 5.8, most distros now). Memory accounting is more accurate. CPU throttling behavior differs slightly. Know which one your nodes are running.</p>
+<h2 id="linux-namespaces-isolation-per-pod">Linux namespaces — isolation per pod</h2>
+<p>Each pod gets its own: net (network stack, IP), pid (process tree), mnt (filesystem), uts (hostname), ipc.</p>
+<p>Containers in the same pod share the net and ipc namespaces — they can talk on localhost and see each other's processes if shareProcessNamespace: true.</p>
+<h2 id="device-plugins-gpus-and-other-hardware">Device plugins — GPUs and other hardware</h2>
+<p>Hardware that isn't CPU/memory is exposed via device plugins.</p>
+<p>Plugin registers with kubelet, advertises capacity (e.g. nvidia.com/gpu: 4). Pod requests it in resources. Kubelet allocates it. The plugin handles the actual device assignment to the container.</p>
+<p>Dynamic Resource Allocation (DRA) is the next-gen version, GA in 1.32 — more flexible, structured parameters, not just counts.</p>
+<h2 id="kubelet-eviction">Kubelet eviction</h2>
+<p>When a node is under memory/disk pressure, kubelet evicts pods.</p>
+<p>Order: BestEffort first, then Burstable (those exceeding requests), then Guaranteed. This is why you always set resource requests: it determines your eviction priority.</p>
+<p>References:</p>
+<ul>
+<li>https://kubernetes.io/docs/concepts/architecture/cgroups/</li>
+<li>https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/</li>
+<li>https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

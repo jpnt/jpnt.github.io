@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; One abstraction to rule them all</title>
+    <meta name="description" content="One abstraction to rule them all - I have been trying to fit all of software engineering in my head at once.
+Not memorize it, but just have one idea that m…"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2026-03-30-kubernetes/",
+    higher: "https://jpnt.github.io/journal/2025-12-23-architecture/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+One abstraction to rule them all
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#boundary">Boundary</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#invariant">Invariant</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#interface">Interface</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#everything-maps-to-these-concepts">Everything maps to these concepts</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#ok-what-can-i-do-with-this">Ok... What can I do with this?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#where-this-all-goes-down">Where this all goes down</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Kubernetes is not a deployment tool" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2026-03-30-kubernetes&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span>One abstraction to rule them all</span><a title="Architecture" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2025-12-23-architecture&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<p>I have been trying to fit all of software engineering in my head at once.
+Not memorize it, but just have one idea that makes everything click a bit
+more.</p>
+<p>I am not saying this is the answer to everything, but it has been useful enough
+that it made me want to write it down.</p>
+<blockquote>
+<p>"Everything is a boundary with invariants, exposed through an interface."</p>
+</blockquote>
+<p>Thats it. I am going to try to explain these 3 concepts: boundary, invariants and interface
+a bit better.</p>
+<hr />
+<h1 id="boundary">Boundary</h1>
+<p>A boundary is just a line that says: this is mine, that is yours.</p>
+<p>Inside the boundary, a system owns its stuff. Lets say for example
+its memory, its files, its state, etc. Nothing outside can touch it
+directly. That is the whole point of boundaries.</p>
+<p>A Linux process has its own memory space, meaning code cannot accidentally
+(or intentionally) read another process memory.</p>
+<p>A database transaction has a boundary, changes inside it are invisible to
+everyone else until you commit.</p>
+<p>A container has its own filesystem, its own network, its own process table.</p>
+<p>When you violate a boundary, things break in ways that are really hard to
+debug, because now two systems are sharing state.</p>
+<h1 id="invariant">Invariant</h1>
+<p>An invariant is a rule that must always be true in order to keep the system integry
+otherwise the system is broken.</p>
+<p>A database has invariants: a foreign key must point to something that exists,
+a NOT NULL column must have a value, a balance cannot go below zero.</p>
+<p>A cache has invariants: it can only hold N items, items expire after T seconds.</p>
+<p>A real-time system has a deadline as an invariant: if this task does not finish
+by 10ms, then it is consired wrong.</p>
+<p>The interesting thing is that deadlines are invariants too. Most people think of
+deadlines as a project management thing but they show up everywhere: TCP retransmit
+timeouts, HTTP request timeouts, Kubernetes liveness probes, scheduler time slices.
+A hard deadline means: if you miss it, the output is worthless. A soft deadline means:
+if you miss it, the output degrades. Both are invariants, just with different consequences for violation.</p>
+<h1 id="interface">Interface</h1>
+<p>An interface is the contract between a system and the outside world.</p>
+<p>It says: here's what you can ask me to do, here's what I need from you, here's what I'll give back, and here's what I'll tell you when something goes wrong.</p>
+<p>Everything else, how it is done, what internal data structures are used, what language it is
+written in, is hidden hidden behind the boundary and none of your business.</p>
+<p>A REST API is an interface. A syscall is an interface. A function signature is an interface. An SQL schema is an interface. A USB port is an interface.</p>
+<p>The reason interfaces matter is that they let you swap the implementation without breaking anything that depends on it. If you change internals but keep the interface identical, callers don't care. If you change the interface, every caller breaks. This is why breaking changes in APIs are such a big deal, the contract was broken.</p>
+<hr />
+<h1 id="everything-maps-to-these-concepts">Everything maps to these concepts</h1>
+<p>While this is associated more with software patterns or architecture, you can see it in everything.</p>
+<p>Take the OSI model, that describes how network communication works, from physical cables up to the apps you use. It has 7 layers. Each layer is a bounded system. Each layer only talks to the layers directly above and below it (that is the invariant).</p>
+<p>Each layer communicates through a defined format, Ethernet frames, IP Packets, TCP segments, HTTP messages (those are the interfaces). You can swap out WiFi for Ethernet at layer 1 and HTTP does not care, because the boundary held.</p>
+<p>Take a Linux process. Its boundary is the virtual address space, meaning it thinks it owns all the memory even though it's sharing the physical machine with other processes, the OS handles the illusion. Its invariants are the resource limits: how much CPU time, how much memory, how many open file handles. Its interface is the syscall ABI, meaning the set of calls it can make to the kernel: open a file, write to stdout, spawn a process, allocate memory.</p>
+<p>Take a pure function, a function with no side effects, meaning it doesn't touch anything outside itself, does not modify global state, does not do I/O and given the same input always returns the same output. Its boundary is the stack frame, meaning it has its own local variables and nothing else. Its invariant is exactly that: no side effects. Its interface is just the type signature, what goes in, what comes out.</p>
+<p>Take authentication and authorization. Authentication is the question: who is crossing this boundary? Authorization is the question: does this identity's invariants (its permissions) allow this interface call? IAM roles, RBAC, JWT tokens, all of these are just ways to encode "who you are" and "what you're allowed to do" in a form that can be checked every time something tries to cross a boundary.</p>
+<h1 id="ok-what-can-i-do-with-this">Ok... What can I do with this?</h1>
+<p>Once you see the pattern, things become mechanical.</p>
+<ol>
+<li><strong>Decompose anything</strong></li>
+</ol>
+<p>When you encounter a system you do not understand, ask three questions: what does it own exclusively (boundary)? what rules must it never break (invariants)? what is its published contract (interface)? You do not need to read the source code. You do not need to understand the internals. Answer those three questions and you have a working mental model.</p>
+<ol start="2">
+<li><strong>Compose systems correctly</strong></li>
+</ol>
+<p>Every architecture decision is really just: can I connect system A to system B without either of them breaking their invariants? If system A needs to call system B, it has to go through B's interface. If it reaches inside B's boundary directly, you have created a hidden dependency that will bite you later. Microservices, module boundaries, database schemas, API versioning, all of this is just the same question asked in different contexts.</p>
+<ol start="3">
+<li><strong>Schedule like a computer</strong></li>
+</ol>
+<p>Every decision about what to do next, whether you are a CPU, a tech lead, or a person with a todo list, is a scheduling problem. You have bounded resources (time, CPU, money) and tasks with invariants (deadlines, dependencies). The right order is the one that minimizes the harm from missing constraints. In practice: do the thing whose failure would cause the most damage first. This sounds obvious but most people do not actually do it. They do the easiest thing, or the most recent request, or whatever is loudest.</p>
+<h1 id="where-this-all-goes-down">Where this all goes down</h1>
+<p>I want to be transparent and say that this is not a universal hammer, there are cases where this model does not work.</p>
+<p>It does not explain emergent failures. Sometimes every single system is behaving correctly, honoring its boundary, not violating its invariants, responding properly to interface calls, and the whole thing still falls over. Cascading failures, thundering herd problems (where many systems simultaneously hammer one system that just came back online), distributed deadlocks. These happen between systems, not inside them. The model describes structure. It does not describe dynamics.</p>
+<p>It does not tell you where to draw the boundaries. This is the actually hard part of software design, and this model gives you nothing. Should user profiles and authentication be one service or two? Should this be a method or a module? Should this database schema have one table or three? Two engineers using this exact mental model will give you completely different answers. The model tells you how to reason about a system once it exists. It does not tell you how to design one from scratch.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2023-09-26-databases/">Databases</a></strong>: Database design exemplifies pattern</li>
+<li><strong><a href="/journal/2025-04-04-unix-plan9-and-linux-containers/">UNIX, Plan9 and Linux Containers</a></strong>: Container namespaces exemplify boundaries</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

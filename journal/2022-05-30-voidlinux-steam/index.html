@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Steam on Void Linux</title>
+    <meta name="description" content="How to install the Steam gaming platform on Void"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2023-07-21-pointers/",
+    higher: "https://jpnt.github.io/journal/2022-01-18-why-most-people-fail-to-get-it/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Steam on Void Linux
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/#how-to-install-steam-on-void-linux">How to install Steam on Void Linux</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/#1-non-free-repositories">1. Non-free repositories</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/#2-install-steam">2. Install Steam</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/#3-additional-packages">3. Additional packages</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/#3-1-nvidia-packages">3.1. Nvidia packages</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/#extra-void-linux-tip">Extra: Void Linux tip</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Pointers" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2023-07-21-pointers&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="How to install the Steam gaming platform on Void">Steam on Void Linux</span><a title="Why Most People Fail to Get I.T." href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2022-01-18-why-most-people-fail-to-get-it&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<h1 id="how-to-install-steam-on-void-linux">How to install Steam on Void Linux</h1>
+<h2 id="1-non-free-repositories">1. Non-free repositories</h2>
+<p>To install Steam, you will need to enable the non-free repositories.
+To do so, install the non-free repository packages:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># xbps-install -S void-repo-nonfree void-repo-multilib-nonfree</span></span></code></pre><h2 id="2-install-steam">2. Install Steam</h2>
+<p>Now, you should have the Steam package available.
+To install it:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># xbps-install -S steam</span></span></code></pre><h2 id="3-additional-packages">3. Additional packages</h2>
+<p>Unlike the Arch Linux <code>steam</code> package, in Void Linux this package
+does not contain the additional library packages.
+To install them:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit</span></span></code></pre><h2 id="3-1-nvidia-packages">3.1. Nvidia packages</h2>
+<p>Nvidia users will need driver packages for Nvidia GPU's.
+To install them:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># xbps-install -S nvidia nvidia-libs-32bit</span></span></code></pre>
+<p>The <code>nvidia-libs-32bit</code> package is used for 32-bit program support.</p>
+<h2 id="extra-void-linux-tip">Extra: Void Linux tip</h2>
+<p>Instead of typing <code>xbps-install -S</code> to install a package, use <code>xi</code>.</p>
+<p>To do so, install <code>xtools</code> a collection of helpers to work with <code>xbps</code>:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># xbps-install -S xtools</span></span></code></pre>
+<p>For more commands: <code>man xtools</code></p>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

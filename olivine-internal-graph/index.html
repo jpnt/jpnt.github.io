@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Graph</title>
+    <meta name="description" content="Graph"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    
+    
+  };
+</script>
+
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3/dist/cytoscape.min.js"></script>
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+Graph
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main>
+<h1>Graph view</h1>
+<div id="olivine-graph" style="width:100%; height:30em; display:block; border: 1px solid var(--body-text);">
+</div>
+<script>
+let cy_elements = [
+{ data: { id: '/tags/databases/', type: 'tag', name: '#databases' } },
+{ data: { source: '/journal/2023-09-26-databases/', target: '/tags/databases/' } },
+{ data: { id: '/tags/infrastructure/', type: 'tag', name: '#infrastructure' } },
+{ data: { source: '/journal/2026-03-30-kubernetes/', target: '/tags/infrastructure/' } },
+{ data: { source: '/journal/2025-11-06-threads/', target: '/tags/infrastructure/' } },
+{ data: { id: '/tags/networks/', type: 'tag', name: '#networks' } },
+{ data: { source: '/journal/2025-02-15-wireguard-networkmanager/', target: '/tags/networks/' } },
+{ data: { source: '/journal/2024-12-29-ssh-config/', target: '/tags/networks/' } },
+{ data: { source: '/journal/2023-11-01-iproute2/', target: '/tags/networks/' } },
+{ data: { id: '/tags/philosophy/', type: 'tag', name: '#philosophy' } },
+{ data: { source: '/journal/2025-12-12-focus/', target: '/tags/philosophy/' } },
+{ data: { source: '/journal/2024-11-14-divine-simplicity/', target: '/tags/philosophy/' } },
+{ data: { id: '/tags/productivity/', type: 'tag', name: '#productivity' } },
+{ data: { source: '/journal/2025-12-12-focus/', target: '/tags/productivity/' } },
+{ data: { source: '/journal/2024-11-14-divine-simplicity/', target: '/tags/productivity/' } },
+{ data: { id: '/tags/programming/', type: 'tag', name: '#programming' } },
+{ data: { source: '/journal/2026-03-30-kubernetes/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2026-03-28-one-abstraction-to-rule-them-all/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2025-11-06-threads/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2024-09-26-dotnet8-clean-architecture-setup/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2024-08-19-abstraction/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2024-06-15-slices/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2024-02-27-trees/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2023-07-21-pointers/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2022-01-18-why-most-people-fail-to-get-it/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2022-01-15-modern-software/', target: '/tags/programming/' } },
+{ data: { source: '/journal/2021-08-02-rust-ownership/', target: '/tags/programming/' } },
+{ data: { id: '/tags/systems/', type: 'tag', name: '#systems' } },
+{ data: { source: '/journal/2026-03-28-one-abstraction-to-rule-them-all/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2025-12-23-architecture/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2025-11-06-threads/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2025-04-04-unix-plan9-and-linux-containers/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2025-02-15-wireguard-networkmanager/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2024-10-28-cpu-cache/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2024-08-19-abstraction/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2024-08-18-linux-audio-guide/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2024-06-02-inicios/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2024-02-25-tweaking-tlp/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2024-02-17-docker-to-podman/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2022-05-30-voidlinux-steam/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2022-01-06-learn-linux/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2021-07-31-popos-install/', target: '/tags/systems/' } },
+{ data: { source: '/journal/2021-07-30-disable-suspend/', target: '/tags/systems/' } },
+{ data: { id: '/', type: 'section', name: 'jpnt blog' } },
+{ data: { id: '/olivine-internal-sitemap/', type: 'page', name: 'Sitemap' } },
+{ data: { source: '/olivine-internal-sitemap/', target: '/' } },
+{ data: { id: '/olivine-internal-graph/', type: 'page', name: 'Graph' } },
+{ data: { source: '/olivine-internal-graph/', target: '/' } },
+{ data: { id: '/quotes/', type: 'section', name: 'Quotes' } },
+{ data: { source: '/', target: '/quotes/' } },
+{ data: { source: '/quotes/', target: '/' } },
+{ data: { id: '/cv/', type: 'section', name: 'Curriculum Vitae' } },
+{ data: { source: '/', target: '/cv/' } },
+{ data: { source: '/cv/', target: '/' } },
+{ data: { id: '/journal/', type: 'section', name: 'Journal' } },
+{ data: { source: '/', target: '/journal/' } },
+{ data: { id: '/journal/2026-03-30-kubernetes/', type: 'page', name: 'Kubernetes is not a …' } },
+{ data: { source: '/journal/2026-03-30-kubernetes/', target: '/journal/' } },
+{ data: { id: '/journal/2026-03-28-one-abstraction-to-rule-them-all/', type: 'page', name: 'One abstraction to r…' } },
+{ data: { source: '/journal/2026-03-28-one-abstraction-to-rule-them-all/', target: '/journal/' } },
+{ data: { id: '/journal/2025-12-23-architecture/', type: 'page', name: 'Architecture' } },
+{ data: { source: '/journal/2025-12-23-architecture/', target: '/journal/' } },
+{ data: { id: '/journal/2025-12-12-focus/', type: 'page', name: 'Focus' } },
+{ data: { source: '/journal/2025-12-12-focus/', target: '/journal/' } },
+{ data: { id: '/journal/2025-11-06-threads/', type: 'page', name: 'Threads' } },
+{ data: { source: '/journal/2025-11-06-threads/', target: '/journal/' } },
+{ data: { id: '/journal/2025-04-04-unix-plan9-and-linux-containers/', type: 'page', name: 'UNIX, Plan9 and Linu…' } },
+{ data: { source: '/journal/2025-04-04-unix-plan9-and-linux-containers/', target: '/journal/' } },
+{ data: { id: '/journal/2025-02-15-wireguard-networkmanager/', type: 'page', name: 'Using WireGuard in N…' } },
+{ data: { source: '/journal/2025-02-15-wireguard-networkmanager/', target: '/journal/' } },
+{ data: { id: '/journal/2024-12-29-ssh-config/', type: 'page', name: 'Comprehensive SSH Co…' } },
+{ data: { source: '/journal/2024-12-29-ssh-config/', target: '/journal/' } },
+{ data: { id: '/journal/2024-11-14-divine-simplicity/', type: 'page', name: 'Divine Simplicity' } },
+{ data: { source: '/journal/2024-11-14-divine-simplicity/', target: '/journal/' } },
+{ data: { id: '/journal/2024-10-28-cpu-cache/', type: 'page', name: 'CPU Cache' } },
+{ data: { source: '/journal/2024-10-28-cpu-cache/', target: '/journal/' } },
+{ data: { id: '/journal/2024-09-26-dotnet8-clean-architecture-setup/', type: 'page', name: '.NET 8 Clean Archite…' } },
+{ data: { source: '/journal/2024-09-26-dotnet8-clean-architecture-setup/', target: '/journal/' } },
+{ data: { id: '/journal/2024-08-19-abstraction/', type: 'page', name: 'Abstraction' } },
+{ data: { source: '/journal/2024-08-19-abstraction/', target: '/journal/' } },
+{ data: { id: '/journal/2024-08-18-linux-audio-guide/', type: 'page', name: 'Linux Audio Guide' } },
+{ data: { source: '/journal/2024-08-18-linux-audio-guide/', target: '/journal/' } },
+{ data: { id: '/journal/2024-06-15-slices/', type: 'page', name: 'Slices' } },
+{ data: { source: '/journal/2024-06-15-slices/', target: '/journal/' } },
+{ data: { id: '/journal/2024-06-02-inicios/', type: 'page', name: 'inici(os)' } },
+{ data: { source: '/journal/2024-06-02-inicios/', target: '/journal/' } },
+{ data: { id: '/journal/2024-02-27-trees/', type: 'page', name: 'Trees' } },
+{ data: { source: '/journal/2024-02-27-trees/', target: '/journal/' } },
+{ data: { id: '/journal/2024-02-25-tweaking-tlp/', type: 'page', name: 'Tweaking TLP' } },
+{ data: { source: '/journal/2024-02-25-tweaking-tlp/', target: '/journal/' } },
+{ data: { id: '/journal/2024-02-17-docker-to-podman/', type: 'page', name: 'Docker to Podman' } },
+{ data: { source: '/journal/2024-02-17-docker-to-podman/', target: '/journal/' } },
+{ data: { id: '/journal/2023-11-01-iproute2/', type: 'page', name: 'Iproute2' } },
+{ data: { source: '/journal/2023-11-01-iproute2/', target: '/journal/' } },
+{ data: { id: '/journal/2023-09-26-databases/', type: 'page', name: 'Databases' } },
+{ data: { source: '/journal/2023-09-26-databases/', target: '/journal/' } },
+{ data: { id: '/journal/2023-07-21-pointers/', type: 'page', name: 'Pointers' } },
+{ data: { source: '/journal/2023-07-21-pointers/', target: '/journal/' } },
+{ data: { id: '/journal/2022-05-30-voidlinux-steam/', type: 'page', name: 'Steam on Void Linux' } },
+{ data: { source: '/journal/2022-05-30-voidlinux-steam/', target: '/journal/' } },
+{ data: { id: '/journal/2022-01-18-why-most-people-fail-to-get-it/', type: 'page', name: 'Why Most People Fail…' } },
+{ data: { source: '/journal/2022-01-18-why-most-people-fail-to-get-it/', target: '/journal/' } },
+{ data: { id: '/journal/2022-01-15-modern-software/', type: 'page', name: 'Modern Software is a…' } },
+{ data: { source: '/journal/2022-01-15-modern-software/', target: '/journal/' } },
+{ data: { id: '/journal/2022-01-06-learn-linux/', type: 'page', name: 'LEARN LINUX THE RIGH…' } },
+{ data: { source: '/journal/2022-01-06-learn-linux/', target: '/journal/' } },
+{ data: { id: '/journal/2021-08-02-rust-ownership/', type: 'page', name: 'Rust Ownership' } },
+{ data: { source: '/journal/2021-08-02-rust-ownership/', target: '/journal/' } },
+{ data: { id: '/journal/2021-07-31-popos-install/', type: 'page', name: 'Pop!_OS Install' } },
+{ data: { source: '/journal/2021-07-31-popos-install/', target: '/journal/' } },
+{ data: { id: '/journal/2021-07-30-disable-suspend/', type: 'page', name: 'Disable Suspend on L…' } },
+{ data: { source: '/journal/2021-07-30-disable-suspend/', target: '/journal/' } },
+{ data: { source: '/journal/', target: '/' } },
+];
+
+// Clean up data
+function bad_id(id) {
+  return id.startsWith("/olivine-internal");
+}
+
+// Track section IDs
+const section_ids = new Set();
+cy_elements.forEach(item => {
+  if (item.data.type === 'section') {
+    section_ids.add(item.data.id);
+  }
+});
+
+cy_elements = cy_elements.filter(item => {
+  if (item.data.id === undefined) {
+    // This is an edge - filter out edges to sections
+    return (item.data.source !== item.data.target) && !bad_id(item.data.source)
+      && !bad_id(item.data.target) && !section_ids.has(item.data.target);
+  } else {
+    return !bad_id(item.data.id);
+  }
+});
+
+const cy = cytoscape({
+  container: document.getElementById('olivine-graph'),
+  elements: cy_elements,
+  layout: {
+    name: 'cose',
+  },
+  style: [{
+    selector: "node",
+    style: {
+      label: "data(name)",
+      width: 7,
+      height: 7,
+      "text-valign": "bottom",
+      "text-halign": "center",
+      "color": "#777",
+      "background-color": "#7a4",
+      "opacity": 0.4,
+      "font-size": 7,
+      "min-zoomed-font-size": 7,
+    }}, {
+    selector: "edge",
+    style: {
+      "width": 1,
+      "curve-style": "straight",
+      "color": "#777",
+      "opacity": 0.4,
+    }},
+  ],
+  autoungrabify: true,
+  autounselectify: true,
+});
+
+cy.on('mouseover touchstart', 'node', function(evt){
+  cy.elements().style("opacity", 0.1);
+  evt.target.style("opacity", 1);
+  evt.target.connectedEdges().style("opacity", 1);
+});
+
+cy.on('mouseout touchend', 'node', function(evt){
+  cy.elements().style("opacity", 0.4);
+});
+
+cy.on('click', 'node', function(evt){
+  const id = evt.target.data('id');
+  if (id && !id.startsWith("/olivine-internal")) {
+    window.location.href = olivine.base_url + id;
+  }
+});
+</script>
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

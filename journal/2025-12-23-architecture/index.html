@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Architecture</title>
+    <meta name="description" content="A pragmatic approach to think about and solve problems"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/",
+    higher: "https://jpnt.github.io/journal/2025-12-12-focus/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Architecture
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#what-is-architecture">What is architecture?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#where-to-start-requirements-and-use-cases">Where to start: Requirements and use cases</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#functionalities-what-does-the-system-need-to-do">Functionalities: What does the system need to do?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#logical-boundaries-who-does-what">Logical boundaries: Who does what?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#development-organizing-the-code">Development: Organizing the code</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#deployment-how-does-it-run">Deployment: How does it run</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#diagrams-are-tools-not-architecture">Diagrams are tools, not architecture</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#what-lisp-taught-me">What Lisp taught me</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#risk-driven-design">Risk-driven design</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#proof-of-concepts-build-to-understand">Proof of Concepts: Build to understand</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#trade-offs-multiple-solutions-exist">Trade-offs: Multiple solutions exist</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#rest-take-breaks">REST! Take breaks</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#books-that-helped">Books that helped</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#the-paradox-i-lived-in">The paradox I lived in</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2025-12-23-architecture/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="One abstraction to rule them all" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2026-03-28-one-abstraction-to-rule-them-all&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="A pragmatic approach to think about and solve problems">Architecture</span><a title="Focus" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2025-12-12-focus&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<ol>
+<li>No problem, no requirements.</li>
+<li>No requirements, no use cases.</li>
+<li>No use cases, no logical boundaries.</li>
+<li>No logical boundaries, no architecture.</li>
+<li>No architecture, no efficient solution.</li>
+<li>No efficient solution, the system falls apart.</li>
+</ol>
+<h1 id="what-is-architecture">What is architecture?</h1>
+<p>Software architecture is how you organize a system so it can change safely and meet its goals. That's it.</p>
+<p>Most writing on architecture falls into two extremes. Either it's abstract frameworks with diagrams that obscure more than they clarify. Or it's "just build it bro" with no structure at all, leaving you to figure things out as you go. Both fail when the system needs to evolve.</p>
+<p>Architecture must reduce the cost of future change. It must keep coupling under control so modifying one part doesn't break everything else. It must make failure predictable and deployments safe.</p>
+<h1 id="where-to-start-requirements-and-use-cases">Where to start: Requirements and use cases</h1>
+<p>Start here. Not with diagrams. Not with layers. Start with what the system is supposed to do.</p>
+<p>Requirements define the problem. Use cases show how actors interact with the system to accomplish goals. An actor can be a user, an external system, a scheduled job - anything that triggers behavior.</p>
+<p>If you skip this, you're building based on guesses. Requirements and use cases ground everything in reality.</p>
+<h1 id="functionalities-what-does-the-system-need-to-do">Functionalities: What does the system need to do?</h1>
+<p>Once you know the requirements and use cases, list the functionalities. These are the things the system must actually do.</p>
+<p>For a web service that processes orders, functionalities might be:</p>
+<ul>
+<li>Accept HTTP requests</li>
+<li>Validate input</li>
+<li>Check inventory</li>
+<li>Calculate pricing</li>
+<li>Process payment</li>
+<li>Update database</li>
+<li>Send confirmation email</li>
+<li>Return response</li>
+</ul>
+<p>Don't organize these yet. Just list them. Get them out of your head and into writing. This is the "what."</p>
+<h1 id="logical-boundaries-who-does-what">Logical boundaries: Who does what?</h1>
+<p>Now group functionalities into logical boundaries. A boundary is a responsibility assignment. Which functionalities belong together? Which should be separate?</p>
+<p>The key question: who does what?</p>
+<p>For the order processing service:</p>
+<ul>
+<li>HTTP Handler: accept requests, return responses</li>
+<li>Core Logic: validate input, check inventory, calculate pricing</li>
+<li>Database Client: update database</li>
+<li>Payment Service: process payment</li>
+<li>Email Service: send confirmation email</li>
+</ul>
+<p>Each boundary has a job. Boundaries should be cohesive - related things stay together. They should minimize coupling - a boundary shouldn't need to know about internals of other boundaries.</p>
+<p>This is where diagrams help. Draw boxes and arrows. Show who talks to whom. Not for documentation, but to see if your boundaries make sense. If the diagram is a mess, your thinking is a mess.</p>
+<h1 id="development-organizing-the-code">Development: Organizing the code</h1>
+<p>Now translate boundaries into code. Modules, components, subsystems - these are different granularity levels of the same concept. A module is a small unit of code. A subsystem is a collection of modules. An API is the interface between them.</p>
+<p>What matters is that each logical boundary has a home in the codebase.</p>
+<p>Each boundary should have:</p>
+<ul>
+<li>A clear interface</li>
+<li>Internal implementation hidden</li>
+<li>Minimal surface area</li>
+<li>Stable contract</li>
+</ul>
+<p>Deep modules are better than shallow ones. A deep module does a lot behind a small interface. <code>open()</code>, <code>read()</code>, <code>write()</code>, <code>close()</code> is the classic example. Shallow modules expose internal complexity and force you to understand it.</p>
+<p>The UNIX generalization principle exemplifies deep abstraction. "Everything is a file" reduces diverse operations—disk, network, terminals, pipes—to a unified interface. This hides substantial complexity behind a minimal surface, enabling composition and reducing cognitive load. A shallow alternative would expose separate APIs for each resource type, increasing complexity and reducing composability.</p>
+<p>Dependencies should flow one way. If A depends on B, B shouldn't depend on A. Cycles are coupling traps.</p>
+<p>How you organize the code depends on use cases and requirements.</p>
+<h1 id="deployment-how-does-it-run">Deployment: How does it run</h1>
+<p>Architecture isn't just code structure. It's also how the system runs in reality.</p>
+<p>Single process. Multi-threaded. Multi-process. Distributed. Each adds complexity. Each adds capability.</p>
+<p>Start simple. A single process with a thread pool is enough for most small to medium services. Add processes or services only when you have a clear reason: isolation, independent scaling, different deployment cycles.</p>
+<p>Distributed systems are an order of magnitude harder. Don't go there until you have to.</p>
+<h1 id="diagrams-are-tools-not-architecture">Diagrams are tools, not architecture</h1>
+<p>MBSE (Model-Based Systems Engineering) has a lot of formalism. Activity diagrams. Internal block diagrams. Sequence diagrams. State machines. Some of this is useful. Most is overkill.</p>
+<p>What's useful:</p>
+<ul>
+<li>Understanding the system</li>
+<li>Seeing communication paths</li>
+<li>Identifying actors and use cases</li>
+<li>Exploring logical boundaries</li>
+<li>Checking if your design makes sense</li>
+</ul>
+<p>What's not useful:</p>
+<ul>
+<li>Treating diagrams as the deliverable</li>
+<li>Formalism for its own sake</li>
+<li>Every possible diagram type</li>
+<li>Analysis paralysis</li>
+</ul>
+<p>Draw diagrams to think. Then write code.</p>
+<h1 id="what-lisp-taught-me">What Lisp taught me</h1>
+<p>When I discovered Lisp it changed how I think about systems for the better.</p>
+<p>Lisp has code-as-data. Your code is a data structure you can manipulate. Macros let you extend the language itself. You're not stuck with what the language gives you - you can adapt it to your problem.</p>
+<p>This made me realize: rigid architectures exist because languages are rigid. If you can shape the language to your domain, boundaries become more fluid. You can build DSLs that express your problem directly.</p>
+<p>I'm not saying "rewrite everything in Lisp." I'm saying: the right abstraction level makes architecture simpler. Sometimes that's a module. Sometimes that's a language feature. Sometimes that's a DSL.</p>
+<h1 id="risk-driven-design">Risk-driven design</h1>
+<p>How much design upfront? Risk-driven architecture says: design enough to address the main risks, then start building.</p>
+<p>Big Design Up Front is waste. No design at all is technical debt. The middle ground is "just enough."</p>
+<p>Just enough means:</p>
+<ul>
+<li>Requirements are clear</li>
+<li>Use cases are defined</li>
+<li>Functionalities are listed</li>
+<li>Logical boundaries make sense</li>
+<li>Major risks are addressed</li>
+</ul>
+<p>Then build. Adjust as you learn.</p>
+<h1 id="proof-of-concepts-build-to-understand">Proof of Concepts: Build to understand</h1>
+<p>Don't design everything in your head. Build small, throwaway versions to validate assumptions.</p>
+<p>PoCs answer questions: Is this approach feasible? Does this library work as advertised? Is this performance achievable? Do these boundaries actually make sense?</p>
+<p>Get something working first. A single process. A simple version. Understand the problem by solving it poorly, then refine.</p>
+<p>Design decisions that look good on paper often break in reality. PoCs reveal the truth before you commit.</p>
+<p>Work in sprints. Focus on one PoC per sprint. Validate assumptions, get feedback, iterate. Don't spend months designing. Build, measure, learn. Adjust architecture based on what you discover.</p>
+<h1 id="trade-offs-multiple-solutions-exist">Trade-offs: Multiple solutions exist</h1>
+<p>For any architectural problem, there are multiple valid solutions. Single process vs multi-process. SQL vs NoSQL. Monolith vs microservices. Sync vs async.</p>
+<p>The question isn't "which is best?" The question is "what are the trade-offs?"</p>
+<p>Build a trade-off matrix. List options. Identify criteria: complexity, performance, operational cost, team capability, time to market. Score each option. Make the trade-offs explicit.</p>
+<p>No solution is free. Every choice has costs. Architecture is about choosing which costs you're willing to pay.</p>
+<h1 id="rest-take-breaks">REST! Take breaks</h1>
+<p>When your brain is tired, it's impossible to discern good solutions from bad ones.</p>
+<p>Architecture requires clear thinking. If you're stuck, step away. Sleep on it. Go for a walk. Come back fresh.</p>
+<p>The best architecture insights often come when you're not staring at the problem.</p>
+<h1 id="books-that-helped">Books that helped</h1>
+<p><strong>Design It!</strong> by Michael Keeling taught me collaborative design and risk-driven architecture. Architecture isn't a solo activity. It presents as a survey a lot of material I've learned through the years in a concise manner.</p>
+<p><strong>Release It!</strong> by Michael Nygard taught me that production reality is harsh. Circuit breakers, bulkheads, timeouts, these are not an after thought. Your software will be under attack from the moment you deploy.</p>
+<p><strong>A Philosophy of Software Design</strong> by John Ousterhout taught me about deep modules and complexity hiding.</p>
+<p><strong>The Art of UNIX Programming</strong> taught me a lot about the great ideas from the creators of Unix.</p>
+<p><strong>Designing Data-Intensive Applications</strong> by Martin Kleppmann taught me about reliability and trade-offs in data systems.</p>
+<h1 id="the-paradox-i-lived-in">The paradox I lived in</h1>
+<p>I spent a lot of time confused. MBSE says to model everything with diagrams. Pragmatic programmers say to just build. Lisp showed me that flexibility comes from the right tools, not more diagrams.</p>
+<p>Here's what I've landed on:</p>
+<ul>
+<li>Requirements and use cases are non-negotiable</li>
+<li>Functionalities come first, then boundaries</li>
+<li>Diagrams help you think, they're not the architecture</li>
+<li>How you organize code depends on the problem</li>
+<li>Simple systems deserve simple architectures</li>
+<li>Add complexity only when needed</li>
+</ul>
+<p>Architecture is not a framework. It's not a diagram. It's how you organize decisions so the system can evolve without falling apart.</p>
+<p>Start with requirements. Define functionalities. Draw boundaries. Write code. Deploy. Iterate.</p>
+<p>Keep it simple. Ship it.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2024-09-26-dotnet8-clean-architecture-setup/">.NET 8 Clean Architecture Setup</a></strong></li>
+<li><strong><a href="/journal/2025-11-06-threads/">Threads</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

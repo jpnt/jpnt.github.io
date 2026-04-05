@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Trees</title>
+    <meta name="description" content="Solid introduction to trees"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-06-02-inicios/",
+    higher: "https://jpnt.github.io/journal/2024-02-25-tweaking-tlp/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Trees
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#concepts">Concepts</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#ascendants-and-descendants">Ascendants and Descendants</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#height-and-depth">Height and depth</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#binary-trees">Binary Trees</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#full-and-perfect-binary-trees">Full and Perfect Binary Trees</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#tree-traversals">Tree Traversals</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#types-of-traversals">Types of Traversals:</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#binary-search-tree-bst">Binary Search Tree (BST)</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#operations-on-bst">Operations on BST</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#avl-tree-or-balanced-trees">AVL Tree or Balanced Trees</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#avl-tree-operations">AVL Tree Operations</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#kd-trees">Kd-trees</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-02-27-trees/#2d-tree">2d-tree</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-27-trees/#related">Related</a>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="inici(os)" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-06-02-inicios&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Solid introduction to trees">Trees</span><a title="Tweaking TLP" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-02-25-tweaking-tlp&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<p>A tree is a hierarchical data structure composed of nodes connected by edges.
+The structure starts with a single root node and extends downwards, forming
+parent-child relationships among nodes. Each node, except the root, has exactly
+one parent, and nodes with no children are called leaf nodes. Various concepts
+and properties characterize trees.</p>
+<h2 id="concepts">Concepts</h2>
+<p>Nodes and Edges</p>
+<ul>
+<li>Node: Basic unit in a tree that contains data and may have zero or more child nodes.</li>
+<li>Edge: Connection between nodes that represents relationships.</li>
+</ul>
+<p>Root, Parent, Child, and Leaf</p>
+<ul>
+<li>Root Node: The topmost node in a tree, without a parent.</li>
+<li>Parent Node: A node that has one or more child nodes.</li>
+<li>Child Node: A node connected to another node, known as its parent.</li>
+<li>Leaf Node: A node without children.</li>
+</ul>
+<p>Subtrees and Paths</p>
+<ul>
+<li>Subtree: Any node in a tree can be considered the root of a subtree.</li>
+<li>Path: The sequence of nodes connected by edges from the root to a specific node.</li>
+</ul>
+<p>Ascendants and Descendants</p>
+<ul>
+<li>Ascendants: Nodes on the path from the root to a specific node.</li>
+<li>Descendants: Nodes reachable from a specific node by following edges.</li>
+</ul>
+<p>Height and Depth</p>
+<ul>
+<li>Height of a Node: Maximum path length from the node to a leaf.</li>
+<li>Depth of a Node: Path length from the root to the node.</li>
+</ul>
+<p>Degree</p>
+<ul>
+<li>Degree of a Node: Number of children a node has.</li>
+</ul>
+<h3 id="ascendants-and-descendants">Ascendants and Descendants</h3>
+<p><img src="/img/trees/ascdes.png" alt="" /></p>
+<p>Ascendents of node 12:</p>
+<ul>
+<li>50, 90, 75.</li>
+</ul>
+<p>Descendants of node 90:</p>
+<ul>
+<li>50, 37, 12.</li>
+</ul>
+<h3 id="height-and-depth">Height and depth</h3>
+<p><img src="/img/trees/height-depth.png" alt="" /></p>
+<h2 id="binary-trees">Binary Trees</h2>
+<p><img src="/img/trees/binary-tree.png" alt="" /></p>
+<p>A binary tree is a specific type of tree where each node has at most two children:
+a left child and a right child.</p>
+<h3 id="full-and-perfect-binary-trees">Full and Perfect Binary Trees</h3>
+<p>Full Binary Tree: Every node is a leaf or has exactly two children.</p>
+<ul>
+<li>It has n + 1 leaves, where n is the number of internal nodes.</li>
+</ul>
+<p>Perfect Binary Tree: A full binary tree where all leaves have the same depth.</p>
+<ul>
+<li>It has 2^(h + 1) - 1 nodes, where h is the height.</li>
+</ul>
+<h2 id="tree-traversals">Tree Traversals</h2>
+<p>Tree traversals are methods for visiting and exploring all nodes in a tree.</p>
+<p><img src="/img/trees/tree-traversals.png" alt="" /></p>
+<h3 id="types-of-traversals">Types of Traversals:</h3>
+<ul>
+<li>In-Order: Visit left subtree, visit the root, visit right subtree.</li>
+<li>Pre-Order: Visit the root, visit the left subtree, visit the right subtree.</li>
+<li>Post-Order: Visit left subtree, visit right subtree, visit the root.</li>
+<li>Level-Order: Visit nodes level by level, starting from the root and moving
+left to right across each level.</li>
+</ul>
+<h2 id="binary-search-tree-bst">Binary Search Tree (BST)</h2>
+<p><img src="/img/trees/bst.png" alt="" /></p>
+<p>A Binary Search Tree is a binary tree with the property that for each node, all
+nodes in its left subtree have values less than the node, and all nodes in its
+right subtree have values greater than the node.</p>
+<h3 id="operations-on-bst">Operations on BST</h3>
+<ul>
+<li>Search: Locate a node with a given key efficiently.</li>
+<li>Insertion: Add a new node while maintaining the BST property.</li>
+<li>Deletion: Remove a node while preserving the BST property.</li>
+<li>Performance: Search, insertion, deletion have an average time complexity of O(log n).</li>
+</ul>
+<h2 id="avl-tree-or-balanced-trees">AVL Tree or Balanced Trees</h2>
+<p>AVL trees are a type of self-balancing binary search tree where the height
+difference between the left and right subtrees (balance factor) of any node is at most 1.</p>
+<p><img src="/img/trees/avl.jpg" alt="" /></p>
+<h3 id="avl-tree-operations">AVL Tree Operations</h3>
+<ul>
+<li>Balance Factor: The height difference between the left and right subtrees.</li>
+<li>Balancing the Tree: Ensuring the balance factor is maintained.</li>
+<li>Rotation: Simple and double rotations to maintain balance.</li>
+<li>Insertion: Rebalance the tree after insertion to maintain AVL property.</li>
+<li>Deletion: Rebalance the tree after deletion to maintain AVL property.</li>
+<li>BST vs AVL Tree: Comparison of binary search trees and AVL trees.</li>
+<li>Sorting in AVL Tree: Utilizing the in-order traversal for sorted order.</li>
+</ul>
+<h2 id="kd-trees">Kd-trees</h2>
+<p>A Kd-tree, or k-dimensional tree, is a binary tree used for multidimensional
+searches, such as nearest neighbor or range searches.</p>
+<p><img src="/img/trees/kdtree.jpg" alt="" /></p>
+<h3 id="2d-tree">2d-tree</h3>
+<p>A 2d-tree is a specific instance of a Kd-tree where k is 2, representing points
+in a 2-dimensional space.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2023-09-26-databases/">Databases</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

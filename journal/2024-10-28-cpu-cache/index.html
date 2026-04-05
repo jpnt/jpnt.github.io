@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; CPU Cache</title>
+    <meta name="description" content="Overview of CPU Cache"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-11-14-divine-simplicity/",
+    higher: "https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+CPU Cache
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#what-is-cpu-cache">What is CPU cache</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#why-cpu-cache">Why CPU cache</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#the-memory-hierarchy">The memory hierarchy</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#before-cpu-cache">Before CPU cache</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#comparison-of-speed">Comparison of speed</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#how-cpu-cache-works">How CPU cache works</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#cache-lines-cache-hits-and-misses">Cache lines, cache hits and misses</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#cache-temporal-locality-and-spatial-locality">Cache temporal locality and spatial locality</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#the-3-c-s-of-cache-misses">The 3 C&#x27;s of cache misses</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#replacement-algorithms">Replacement Algorithms</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#cpu-cache-address-and-tag">CPU Cache Address and Tag</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#fully-associative-vs-direct-mapped-vs-set-associative-cache">Fully Associative vs Direct Mapped vs Set-Associative Cache</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#cpu-cache-flag-bits">CPU Cache Flag Bits</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#cache-write-policies">Cache Write Policies</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#unified-vs-split-caches">Unified vs Split Caches</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#overview-data-structure-alignment">Overview: Data Structure Alignment</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#overview-virtual-memory-effect-on-cpu-cache">Overview: Virtual Memory Effect on CPU Cache</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#overview-cpu-pipelining-effect-on-cpu-cache">Overview: CPU Pipelining Effect on CPU Cache</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#overview-cpu-branch-preduction-correlation-with-cpu-cache">Overview: CPU Branch Preduction correlation with CPU Cache</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#example-e31-core-with-freertos-data-structures">Example: E31 Core with FreeRTOS Data Structures:</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#references">References</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Divine Simplicity" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-11-14-divine-simplicity&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Overview of CPU Cache">CPU Cache</span><a title=".NET 8 Clean Architecture Setup" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-09-26-dotnet8-clean-architecture-setup&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<p><img src="/img/cpu-cache/ai.jpg" alt="" /></p>
+<h1 id="what-is-cpu-cache">What is CPU cache</h1>
+<p>CPU cache is a small but high-speed memory located on or near the processor core.
+It is designed to store frequently accessed data and instructions, allowing the CPU
+to retrieve them far more quickly than from the main memory. Modern CPUs have multiple
+levels of cache (L1, L2, and L3), each balancing size and speed to optimize data
+access speed and overall system performance.</p>
+<h1 id="why-cpu-cache">Why CPU cache</h1>
+<p>The main purpose of CPU cache is to reduce the time it takes for the CPU to retrieve
+data from main memory by storing recently or frequently accessed data closer to the CPU.
+Since cache memory is significantly faster than main memory, using cache reduces the latency
+associated with memory access. This reduction in latency boosts the CPU's ability to process
+instructions efficiently, minimizing bottlenecks that arise due to slower main memory access speeds.</p>
+<h2 id="the-memory-hierarchy">The memory hierarchy</h2>
+<p>Memory hierarchy refers to the structured arrangement of storage within a computer system, organized by speed, size, and cost.</p>
+<p>The hierarchy goes as follows (from fastest to slowest):</p>
+<ol>
+<li>
+<p><strong>Registers</strong></p>
+<ul>
+<li>Fastest and smallest storage located within the CPU</li>
+</ul>
+</li>
+<li>
+<p><strong>L1i/d, L2 and L3 Cache</strong></p>
+<ul>
+<li>Multi-level caches that provide fast access to frequently used data. L1 being
+the fastest and L3 the slowest.</li>
+</ul>
+</li>
+<li>
+<p><strong>Main memory (RAM)</strong></p>
+<ul>
+<li>Larger but slower memory used to store data and instructions currently in
+use by the system.</li>
+</ul>
+</li>
+<li>
+<p><strong>Longterm storage (Flash, Spinning disk)</strong></p>
+<ul>
+<li>Non-volatile storage that holds data long-term, access is slower compared
+to RAM.</li>
+</ul>
+</li>
+<li>
+<p><strong>Remote storage (Internet)</strong></p>
+<ul>
+<li>Usually slower than secondary storage due to the latency caused by the
+overhead of the communications between computers.</li>
+</ul>
+</li>
+</ol>
+<p>So, cache memory sits between the CPU and the main memory, serving as a fast
+buffer that stores copies of frequently accessed intructions and data, thus
+reducing the time it takes for the CPU to retrieve data.</p>
+<h1 id="before-cpu-cache">Before CPU cache</h1>
+<p>Before the introduction of CPU caches, processors had to fetch data directly
+from main memory for every operation. This process was slow and inefficient due
+to the significant speed difference between the CPU and main memory. As CPU speeds
+increased this disparity became more pronounced leading to performance bottlenecks.</p>
+<h1 id="comparison-of-speed">Comparison of speed</h1>
+<p>Here’s a comparison of typical access times across different levels of the memory
+hierarchy, note that this values are hardware dependant so this is just to give a general idea:</p>
+<table><thead><tr><th>Memory Type</th><th>Access Time</th><th>N cycles</th></tr></thead><tbody>
+<tr><td>Registers</td><td>0.2 - 1 ns</td><td>1 cycle</td></tr>
+<tr><td>L1 cache</td><td>0.5 - 3 ns</td><td>1 - 3 cycles</td></tr>
+<tr><td>L2 cache</td><td>5 - 20 ns</td><td>15 - 60 cycles</td></tr>
+<tr><td>L3 cache</td><td>10 - 40 ns</td><td>30 - 120 cycles</td></tr>
+<tr><td>Main memory (DRAM)</td><td>50 - 100 ns</td><td>150 - 300 cycles</td></tr>
+<tr><td>Solid-State drive</td><td>10 - 100 μs</td><td>30,000 - 300,000 cycles</td></tr>
+<tr><td>Hard-Disk drive</td><td>5 - 20 ms</td><td>15,000,000 - 60,000,000 cycles</td></tr>
+</tbody></table>
+<p>Cache memory provides much faster access times compared to main memory, which
+is why it is crucial for reducing latency and improving the performance of the CPU.</p>
+<h1 id="how-cpu-cache-works">How CPU cache works</h1>
+<h2 id="cache-lines-cache-hits-and-misses">Cache lines, cache hits and misses</h2>
+<p>CPU cache operates by storing copies of data from frequently accessed main
+memory locations. When the CPU needs to access data, it first checks whether
+the data is available in the cache. If the data is found (<strong>cache hit</strong>),
+it is returned quickly. If the data is not found (<strong>cache miss</strong>), the CPU must
+fetch the data from the slower main memory.</p>
+<p>Modern CPUs don't just fetch the exact data needed for a particular instruction
+when accessing memory. Instead, they fetch an entire <strong>cache line</strong>.</p>
+<p>A cache line is a contiguous block of memory, typically ranging from 32 to 128
+bytes in size, depending on the processor's architecture. The idea is that when
+one piece of data is accessed, the data adjacent to it is also likely to be
+accessed soon (this is known as spatial locality).</p>
+<p>By fetching the entire cache line, the CPU increases the chances of future
+accesses resulting in cache hits, thereby reducing the need for further memory accesses.</p>
+<p>For example, when accessing an element of an array, it is highly probable that
+nearby elements will also be accessed shortly. By loading the entire cache line,
+the CPU can serve future requests directly from the cache, which significantly
+speeds up data retrieval.</p>
+<p>This strategy enhances the overall efficiency of the cache system by reducing
+the number of cache misses, particularly the compulsory misses (those that occur
+the first time a data item is accessed).</p>
+<h2 id="cache-temporal-locality-and-spatial-locality">Cache temporal locality and spatial locality</h2>
+<p>Cache performance is heavily influenced by the principles of temporal locality
+and spatial locality:</p>
+<p><strong>Temporal Locality</strong>: recently accessed data is likely to be accessed again
+soon. Caches take advantage of temporal locality by storing recently accessed
+data, anticipating that the CPU will need it again.</p>
+<p><strong>Spatial Locality</strong>: data located near recently accessed data is likely to be
+accessed soon. Caches utilize spatial locality by storing blocks of data that
+include the requested information and adjacent memory addresses.</p>
+<h2 id="the-3-c-s-of-cache-misses">The 3 C's of cache misses</h2>
+<p>Cache misses can be categorized into three types, known as the 3 C's:</p>
+<ol>
+<li>
+<p><strong>Compulsory Misses</strong>: when data is accessed for the first time and must be loaded into the cache.</p>
+</li>
+<li>
+<p><strong>Capacity Misses</strong>: when the cache is too small to hold all the data required
+by the CPU, leading to some data being evicted and causing misses.</p>
+</li>
+<li>
+<p><strong>Conflict Misses</strong>: these occur in set-associative or direct-mapped caches when
+multiple data items compete for the same cache line, leading to evictions and misses</p>
+</li>
+</ol>
+<h2 id="replacement-algorithms">Replacement Algorithms</h2>
+<p>When the cache is full, something has to be trashed to make room for new data.
+The choice depends on which replacement algorithm is used:</p>
+<ol>
+<li>
+<p><strong>FIFO</strong>: The oldest data gets replaced. Not very good.</p>
+</li>
+<li>
+<p><strong>LRU</strong>: The data that hasn't been used for the longest time gets replaced. Most
+commonly used in multitasking environments.</p>
+</li>
+<li>
+<p><strong>LFU</strong>: The least accessed data gets replaced. Can be useful in some embedded scenarios
+where a computer is frequently doing something.</p>
+</li>
+<li>
+<p><strong>Random</strong>: A random block is replaced, which is the simplest and cheaper to implement.</p>
+</li>
+</ol>
+<h2 id="cpu-cache-address-and-tag">CPU Cache Address and Tag</h2>
+<p>The cache address and tag system is used to quickly determine whether the data
+the CPU needs is available (or not) in the cache. This process is fundamental to how
+caches operate, and it works differently depending on the type of cache
+organization algorithm (fully associative, direct mapped, or set-associative).</p>
+<h2 id="fully-associative-vs-direct-mapped-vs-set-associative-cache">Fully Associative vs Direct Mapped vs Set-Associative Cache</h2>
+<p>There are three main algorithms that determine how data is stored and retrieved:</p>
+<ol>
+<li><strong>Fully Associative Cache</strong></li>
+</ol>
+<ul>
+<li>How it works: Any memory block can be stored in any cache line, giving maximum flexibility in placement.</li>
+<li>Tag Comparison: The CPU compares the tag in every cache line to find a match, making this process complex and costly.</li>
+<li>Use Case: Used in small caches where flexibility and avoiding misses is more important than cost.</li>
+</ul>
+<ol start="2">
+<li><strong>Direct Mapped Cache</strong></li>
+</ol>
+<ul>
+<li>How it works: Each memory block has only one possible location in the cache, determined by a part of its address.</li>
+<li>Tag Comparison: The CPU only checks the tag for that specific line, making comparison simple and fast.</li>
+<li>Drawback (Trashing): Frequent evictions can occur if multiple memory blocks map to the same line, reducing performance.</li>
+<li>Use Case: Cost-effective design, useful for simpler systems.</li>
+</ul>
+<ol start="3">
+<li><strong>Set-Associative Cache</strong></li>
+</ol>
+<ul>
+<li>How it works: Cache is divided into “sets.” Each block of memory can be stored in any line within a designated set.</li>
+<li>Tag Comparison: The CPU checks tags of all lines in a set, providing flexibility with moderate complexity.</li>
+<li>Use Case: Most common in modern CPUs as it balances cost and performance.</li>
+</ul>
+<p>NOTE: At the hardware level, cache misses can be reduced by changing capacity, block size,
+and/or N-set associativity.</p>
+<h2 id="cpu-cache-flag-bits">CPU Cache Flag Bits</h2>
+<p>Flag bits are used in each cache line to track the status of the data:</p>
+<ul>
+<li>Valid Bit: Indicates if the data in the cache line is valid (usable).</li>
+<li>Dirty Bit: Shows if the data has been modified. If dirty, it needs to be written back to memory before replacement.</li>
+<li>LRU Bit(s): Used in caches with replacement policies to track the “least recently used” line, helping decide which data to evict when new data comes in.</li>
+</ul>
+<h2 id="cache-write-policies">Cache Write Policies</h2>
+<p>A cache write policy defines how data is written to the main memory once it is written to the cache.</p>
+<ul>
+<li>Write-Through: Data is written to both the cache and main memory at the same time. This is simple and ensures consistency but can be slower.</li>
+<li>Write-Back: Data is written to the cache only and written to memory later, when it’s replaced. This is faster but needs the dirty bit to ensure modified data is written back.</li>
+</ul>
+<h2 id="unified-vs-split-caches">Unified vs Split Caches</h2>
+<ul>
+<li>Unified Cache: Stores both instructions and data. This is more space-efficient but can lead to contention if instructions and data are frequently needed at the same time.</li>
+<li>Split Cache: Divides L1 cache into separate caches for instructions and data (L1i and L1d). This speeds up access by reducing contention but requires more cache space.</li>
+</ul>
+<h2 id="overview-data-structure-alignment">Overview: Data Structure Alignment</h2>
+<p>Aligned data means data is stored at memory addresses that match its size (e.g., 4-byte integer at an address divisible by 4). Proper alignment speeds up access and reduces cache misses because misaligned data might span multiple cache lines, increasing access time.</p>
+<h2 id="overview-virtual-memory-effect-on-cpu-cache">Overview: Virtual Memory Effect on CPU Cache</h2>
+<p>Virtual memory uses addresses mapped to physical memory, which can affect cache efficiency due to aliasing (where different virtual addresses refer to the same physical address). Techniques like TLBs (Translation Lookaside Buffers) and page coloring help manage this by keeping virtual memory organized and reducing unnecessary cache invalidations.</p>
+<h2 id="overview-cpu-pipelining-effect-on-cpu-cache">Overview: CPU Pipelining Effect on CPU Cache</h2>
+<p>In pipelined CPUs, each instruction phase (fetch, decode, execute) happens in parallel. If there’s a cache miss, it can stall the pipeline, slowing down all stages.</p>
+<p>Non-blocking caches help reduce stalls by allowing the pipeline to continue executing while fetching from memory.</p>
+<h2 id="overview-cpu-branch-preduction-correlation-with-cpu-cache">Overview: CPU Branch Preduction correlation with CPU Cache</h2>
+<p>Branch prediction can lead to cache pollution if predictions are incorrect. When the CPU loads instructions based on a predicted path that turns out to be wrong, it wastes cache space, potentially evicting useful data.</p>
+<p>Prefetching only high-confidence branches can help reduce this effect.</p>
+<h2 id="example-e31-core-with-freertos-data-structures">Example: E31 Core with FreeRTOS Data Structures:</h2>
+<p>In the SiFive E31 core running FreeRTOS, the operating system frequently accesses task control blocks (TCBs). When multiple tasks are running, frequently accessed TCBs stay in the cache, improving task-switching speed.</p>
+<p>Using small, aligned TCB structures ensures fewer cache misses and better cache utilization.</p>
+<h1 id="references">References</h1>
+<ul>
+<li>Harris, S. L., &amp; Harris, D. M. (2021). Digital design and computer architecture: RISC-V edition. Morgan Kaufmann.</li>
+<li>Patterson, D. A., &amp; Waterman, A. (2020). <em>Computer organization and design RISC-V edition: The hardware software interface</em> (2nd ed.). Morgan Kaufmann.</li>
+<li>Hennessy, J. L., &amp; Patterson, D. A. (2017). <em>Computer architecture: A quantitative approach</em> (6th ed.). Morgan Kaufmann.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-10-20-virtual-memory/">Memory Management Unit</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Threads</title>
+    <meta name="description" content="Pragmatic notes on threading concepts, APIs, and Linux implementation"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2025-12-12-focus/",
+    higher: "https://jpnt.github.io/journal/2025-04-04-unix-plan9-and-linux-containers/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Threads
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#context-and-brief-history">Context and brief history</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#why-threads-what-threads-some-concepts-first">Why threads? What threads? Some concepts first</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#processes-vs-threads">Processes vs Threads</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#example-global-variables-and-shared-memory">Example: Global Variables and Shared Memory</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#deadlocks">Deadlocks</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#spinlocks">Spinlocks</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#reader-writer-locks">Reader&#x2F;Writer Locks</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#thread-control">Thread Control</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#linux-kernel-context">Linux kernel context</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#everything-is-a-thread">&quot;Everything is a thread&quot;</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#threads-in-gui-applications">Threads in GUI applications</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#virtual-threads">Virtual threads</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2025-11-06-threads/#conclusion">Conclusion</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2025-11-06-threads/#resources">Resources</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2025-11-06-threads/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Focus" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2025-12-12-focus&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Pragmatic notes on threading concepts, APIs, and Linux implementation">Threads</span><a title="UNIX, Plan9 and Linux Containers" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2025-04-04-unix-plan9-and-linux-containers&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/infrastructure/">#infrastructure</a></span>
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<h1 id="context-and-brief-history">Context and brief history</h1>
+<p>Before threads as we know them today, operating systems already supported concurrency using multiple processes and hardware interrupts.
+We’re talking roughly about the period from the late 1950s to the 1980s, before the standardization of POSIX Threads (pthreads) in the 1990s.</p>
+<p>Early systems like IBM OS/360 (1967), MULTICS (1969), and later UNIX Version 6 (1975) implemented multiprogramming: several independent processes could appear to run at once by time-slicing the CPU.
+Each process had its own address space and execution context. The kernel saved and restored the CPU state when switching between them. This gave the illusion of parallelism on a single-core CPU.</p>
+<p>At the hardware level, CPUs of that era executed one instruction stream per processor core, in program order, but still overlapped work using mechanisms like interrupts and direct memory access (DMA).
+Interrupts allowed external devices or timers to temporarily suspend execution to handle events, and DMA let peripherals read or write memory without CPU intervention — limited forms of hardware concurrency.</p>
+<p>Threads were introduced later (1980s onward, formalized by POSIX in the early 1990s) to provide fine-grained, low-overhead concurrency within a single process.
+Unlike processes, threads share memory, file descriptors, and other resources directly, making communication and synchronization much cheaper.</p>
+<h1 id="why-threads-what-threads-some-concepts-first">Why threads? What threads? Some concepts first</h1>
+<p>A thread is a single sequence of execution within a process — the smallest schedulable unit of work in an operating system.
+Each thread has its own register state, program counter, and stack, but shares the process’s address space, open files, and other resources.</p>
+<p>The idea behind threads came from a practical need: reduce overhead and improve responsiveness.
+Before threads, creating or switching between processes required a full context switch — saving and restoring all CPU state and changing the active memory mapping. This was relatively expensive, especially on systems that handled many concurrent tasks (for example, window managers, network servers, or database engines).</p>
+<p>Threads make these cases cheaper because they:</p>
+<ol>
+<li>Avoid duplicating address spaces.</li>
+<li>Avoid heavy inter-process communication (IPC) costs — all threads see the same memory.</li>
+<li>Allow better latency hiding, e.g., one thread waiting on I/O while another continues computation.</li>
+</ol>
+<p>In short, threads were introduced to provide lightweight concurrency inside a single process, where tasks need to cooperate closely and share data freely.
+They bridge the gap between full isolation (processes) and pure event-driven or asynchronous code by letting multiple control flows coexist in the same memory context.</p>
+<p>At the kernel level, a thread is not magic. On Linux and most modern Unix-like systems, a “thread” is simply a task created with specific sharing flags (clone() with CLONE_VM, CLONE_FILES, and similar).
+Each thread still has its own kernel stack and scheduling entry, but they all map to the same address space. The kernel scheduler doesn’t treat them differently from processes — only the sharing semantics differ.</p>
+<p>From a system design perspective, threads trade safety for performance:</p>
+<ol>
+<li>They are cheaper to create and switch between.</li>
+<li>They allow direct memory sharing.</li>
+<li>But a bug in one thread (e.g., invalid pointer, race condition) can corrupt the entire process.</li>
+</ol>
+<p>TL;DR: A thread is a lightweight execution context within a process. It exists to make fine-grained parallelism and responsive design practical without the cost of full process isolation.</p>
+<h1 id="processes-vs-threads">Processes vs Threads</h1>
+<p>In UNIX-like systems, both processes and threads represent independent flows of execution.
+The difference is what they share and what they isolate.</p>
+<p>A process is an instance of a running program with its own:</p>
+<ul>
+<li>Address space (private virtual memory)</li>
+<li>Global and static variables</li>
+<li>Heap and stack</li>
+<li>File descriptor table (copied from the parent at fork(), but independent afterward)</li>
+<li>Signal handlers, PID, and other kernel metadata</li>
+</ul>
+<p>A thread, on the other hand, is a separate execution context within a process.
+It has:</p>
+<ul>
+<li>Its own stack (for function calls, locals, return addresses)</li>
+<li>Its own register state and thread-local storage (TLS)</li>
+<li>But it shares everything else with its sibling threads:
+<ul>
+<li>Global and static variables</li>
+<li>Heap memory</li>
+<li>Open file descriptors</li>
+<li>Signal dispositions (in most POSIX models)</li>
+<li>The process ID (getpid() returns the same value for all threads)</li>
+</ul>
+</li>
+</ul>
+<h1 id="example-global-variables-and-shared-memory">Example: Global Variables and Shared Memory</h1>
+<p>This is one of the key behavioral differences:</p>
+<ul>
+<li>In processes, global variables are copied on fork().</li>
+</ul>
+<p>After a fork(), the parent and child each have their own independent copy of every variable.
+Modifying a global variable in the child does not affect the parent, because they live in separate address spaces.</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FE8019;">int</span><span> counter </span><span style="color: #8EC07C;">=</span><span style="color: #D3869B;"> 0</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #FB4934;">if</span><span style="color: #A89984;"> (</span><span style="color: #FABD2F;">fork</span><span style="color: #A89984;">()</span><span style="color: #8EC07C;"> ==</span><span style="color: #D3869B;"> 0</span><span style="color: #A89984;">)</span></span>
+<span class="giallo-l"><span>    counter</span><span style="color: #8EC07C;">++</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;"> // child changes its own copy</span></span>
+<span class="giallo-l"><span style="color: #FB4934;">else</span></span>
+<span class="giallo-l"><span>    counter</span><span style="color: #8EC07C;">--</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;"> // parent changes its own copy</span></span></code></pre>
+<ul>
+<li>In threads, all globals are shared.</li>
+</ul>
+<p>Changing a global variable from one thread is visible to all threads in that process immediately.</p>
+<p>int counter = 0;</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FE8019;">void</span><span style="color: #8EC07C;">*</span><span style="color: #FABD2F;"> worker</span><span style="color: #A89984;">(</span><span style="color: #FE8019;">void</span><span style="color: #8EC07C;">*</span><span style="color: #83A598;"> arg</span><span style="color: #A89984;">) {</span></span>
+<span class="giallo-l"><span>    counter</span><span style="color: #8EC07C;">++</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #FB4934;">    return</span><span style="color: #D3869B;"> NULL</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE8019;">int</span><span style="color: #FABD2F;"> main</span><span style="color: #A89984;">(</span><span style="color: #FE8019;">void</span><span style="color: #A89984;">) {</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    pthread_t</span><span> t</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    pthread_create</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span>t</span><span style="color: #A89984;">,</span><span style="color: #D3869B;"> NULL</span><span style="color: #A89984;">,</span><span> worker</span><span style="color: #A89984;">,</span><span style="color: #D3869B;"> NULL</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    pthread_join</span><span style="color: #A89984;">(</span><span>t</span><span style="color: #A89984;">,</span><span style="color: #D3869B;"> NULL</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    printf</span><span style="color: #A89984;">(&quot;</span><span style="color: #D3869B;">%d\n</span><span style="color: #A89984;">&quot;,</span><span> counter</span><span style="color: #A89984;">);</span><span style="color: #928374;font-style: italic;"> // will print 1</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span></code></pre>
+<p>Because both the main thread and the worker thread share the same address space, counter is common to both.</p>
+<p>This is why threads require synchronization primitives like:</p>
+<ul>
+<li>mutexes</li>
+<li>condition variables</li>
+<li>atomic operations</li>
+</ul>
+<p>... to prevent race conditions on shared data.</p>
+<h1 id="deadlocks">Deadlocks</h1>
+<p>A deadlock occurs when two or more threads are waiting indefinitely for each other to release resources.
+The key property: cyclic waiting. Once a cycle exists, no thread can proceed.</p>
+<p>For example:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FE8019;">pthread_mutex_t</span><span> a </span><span style="color: #8EC07C;">=</span><span> PTHREAD_MUTEX_INITIALIZER</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">pthread_mutex_t</span><span> b </span><span style="color: #8EC07C;">=</span><span> PTHREAD_MUTEX_INITIALIZER</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE8019;">void</span><span style="color: #8EC07C;">*</span><span style="color: #FABD2F;"> t1</span><span style="color: #A89984;">(</span><span style="color: #FE8019;">void</span><span style="color: #8EC07C;">*</span><span style="color: #A89984;">) {</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    pthread_mutex_lock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span>a</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    pthread_mutex_lock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span>b</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span>    ...</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE8019;">void</span><span style="color: #8EC07C;">*</span><span style="color: #FABD2F;"> t2</span><span style="color: #A89984;">(</span><span style="color: #FE8019;">void</span><span style="color: #8EC07C;">*</span><span style="color: #A89984;">) {</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    pthread_mutex_lock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span>b</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">    pthread_mutex_lock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span>a</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span>    ...</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span></code></pre>
+<p>Both threads acquire one lock and wait forever for the other.</p>
+<p>Avoiding deadlocks usually means enforcing lock ordering:
+always acquire locks in a globally consistent order (e.g., alphabetically, by address, or by ID).</p>
+<p>Other mitigations include:</p>
+<ul>
+<li>Use trylock() variants and timeouts.</li>
+<li>Keep critical sections minimal.</li>
+<li>Prefer lock-free algorithms when possible.</li>
+</ul>
+<h1 id="spinlocks">Spinlocks</h1>
+<p>A spinlock is the simplest lock type.
+Instead of putting a thread to sleep while waiting, it spins — repeatedly checking if the lock is available.
+This wastes CPU cycles but avoids context-switch overhead, so it’s useful when:</p>
+<p>Critical sections are short (microseconds).</p>
+<p>The lock is used inside the kernel, where sleeping isn’t allowed (e.g., interrupt handlers).</p>
+<p>In pthreads: pthread_spin_lock() / pthread_spin_unlock().</p>
+<p>Typical kernel spinlock implementation pattern:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FB4934;">while</span><span style="color: #A89984;"> (</span><span style="color: #FABD2F;">__atomic_test_and_set</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span style="color: #83A598;">lock</span><span style="color: #A89984;">,</span><span> __ATOMIC_ACQUIRE</span><span style="color: #A89984;">))</span></span>
+<span class="giallo-l"><span style="color: #A89984;">    ;</span><span style="color: #928374;font-style: italic;"> // busy-wait</span></span></code></pre>
+<p>TL;DR: Use spinlocks only for very short, non-blocking critical sections; Otherwise, they degrade throughput.</p>
+<h1 id="reader-writer-locks">Reader/Writer Locks</h1>
+<p>A reader/writer lock (also called a shared/exclusive lock) allows:</p>
+<ul>
+<li>Multiple readers to hold the lock simultaneously.</li>
+<li>A single writer to hold it exclusively.</li>
+</ul>
+<p>Useful when reads are frequent and writes are rare, e.g., configuration tables, routing caches, metadata lookups.</p>
+<p>POSIX provides pthread_rwlock_t:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FE8019;">pthread_rwlock_t</span><span> rw </span><span style="color: #8EC07C;">=</span><span> PTHREAD_RWLOCK_INITIALIZER</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FABD2F;">pthread_rwlock_rdlock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span style="color: #83A598;">rw</span><span style="color: #A89984;">);</span><span style="color: #928374;font-style: italic;">  // shared read access</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">pthread_rwlock_wrlock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span style="color: #83A598;">rw</span><span style="color: #A89984;">);</span><span style="color: #928374;font-style: italic;">  // exclusive write access</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">pthread_rwlock_unlock</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">&amp;</span><span style="color: #83A598;">rw</span><span style="color: #A89984;">);</span></span></code></pre>
+<p>Internally, the implementation tracks reader counts and a pending writer flag.
+Writers typically have priority to avoid starvation.</p>
+<p>TL;DR: Use reader/writer locks to improve read-heavy workloads; Do not use them if writes are frequent — they’ll serialize anyway.</p>
+<p>Locks are coordination primitives to protect shared state.
+Deadlocks arise from incorrect locking order; spinlocks trade CPU for latency; reader/writer locks trade simplicity for concurrency in read-heavy code.
+Every real system (time correct) uses all three — depending on the performance and correctness balance required.</p>
+<h1 id="thread-control">Thread Control</h1>
+<p>Threads are not abstract entities. They’re concrete execution contexts managed by the kernel scheduler and created by system calls (clone() on Linux).
+From user space, we control threads primarily through the POSIX Threads (pthreads) API.
+Let’s cover their full lifecycle and map each function to what the kernel actually does.</p>
+<p>Creating threads API:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #A89984;">#</span><span style="color: #8EC07C;">include</span><span style="color: #A89984;"> &lt;</span><span style="color: #B8BB26;">pthread.h</span><span style="color: #A89984;">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE8019;">int</span><span style="color: #FABD2F;"> pthread_create</span><span style="color: #A89984;">(</span><span style="color: #FE8019;">pthread_t</span><span style="color: #8EC07C;"> *</span><span style="color: #FE8019;">restrict</span><span style="color: #83A598;"> thread</span><span style="color: #A89984;">,</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">                  const pthread_attr_t</span><span style="color: #8EC07C;"> *</span><span style="color: #FE8019;">restrict</span><span style="color: #83A598;"> attr</span><span style="color: #A89984;">,</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">                  void</span><span style="color: #8EC07C;"> *</span><span style="color: #A89984;">(</span><span style="color: #8EC07C;">*</span><span>start_routine</span><span style="color: #A89984;">)(</span><span style="color: #FE8019;">void</span><span style="color: #8EC07C;"> *</span><span style="color: #A89984;">),</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">                  void</span><span style="color: #8EC07C;"> *</span><span style="color: #FE8019;">restrict</span><span style="color: #83A598;"> arg</span><span style="color: #A89984;">);</span></span></code></pre>
+<p>For thread termination, there are three standard ways a thread ends:</p>
+<ol>
+<li>Normal return from the start routine.</li>
+<li>Explicit call to pthread_exit(void* retval).</li>
+<li>Another thread calls pthread_cancel().</li>
+</ol>
+<p>When a thread terminates:</p>
+<ul>
+<li>Its return value or exit code is stored until another thread joins it.</li>
+<li>Kernel deallocates the kernel stack and other thread-specific structures.</li>
+<li>If it’s the last thread in the process, the entire process exits.</li>
+</ul>
+<p>For joining threads: pthread_join() waits for another thread to finish:</p>
+<p>It blocks until the target thread terminates, then copies its exit status (if any).
+The joining thread is responsible for cleanup; detached threads (see below) are auto-cleaned by the runtime.</p>
+<p>A detached thread cleans up automatically when it exits — no need for pthread_join().</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FABD2F;">pthread_detach</span><span style="color: #A89984;">(</span><span>tid</span><span style="color: #A89984;">);</span></span></code></pre>
+<p>Internally, this sets the thread’s joinable flag to false. When it terminates, the runtime frees all resources immediately.
+Once detached, you can’t join it later — the handle becomes meaningless after exit.</p>
+<p>For cancellation: pthread_cancel() requests another thread to exit</p>
+<p>It doesn’t forcibly kill it; it sends a cancellation request, and the target checks for it at “cancellation points” — e.g. read(), pthread_testcancel(), sleep().</p>
+<p>Rule of thumb: Never rely on cancellation for cleanup. Use explicit signals or condition variables.</p>
+<p>Thread IDs: A POSIX thread ID (pthread_t), valid only within its process or a kernel TID (Thread ID), visible via gettid() or /proc/self/task/<tid>.</p>
+<p>getpid() returns the same value for all threads in a process (because its the same process).</p>
+<p>gettid() returns a unique kernel ID per thread — used by the scheduler and visible in ps -eLf.</p>
+<p>Scheduling and Priorities: Threads are scheduled the same way as processes. The kernel scheduler treats every thread as a task with its own priority and timeslice.</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FABD2F;">pthread_setschedparam</span><span style="color: #A89984;">(</span><span style="color: #FABD2F;">pthread_self</span><span style="color: #A89984;">(),</span><span> SCHED_FIFO</span><span style="color: #A89984;">,</span><span style="color: #8EC07C;"> &amp;</span><span style="color: #83A598;">param</span><span style="color: #A89984;">);</span></span></code></pre>
+<p>TL;DR: A thread’s lifetime is managed entirely in user space via pthread_* APIs, but its existence and scheduling are handled by the kernel as a normal task.
+Threads are cheap to create, but not free — each one still has a kernel stack, scheduler entry, and system call overhead.</p>
+<h1 id="linux-kernel-context">Linux kernel context</h1>
+<p>In Linux, there is no such thing as a “thread object” separate from a process.</p>
+<p>Everything is represented by the same structure:
+<a rel="noopener external" target="_blank" href="https://elixir.bootlin.com/linux/v6.17.7/source/include/linux/sched.h#L816">struct task_struct</a></p>
+<p>The task_struct is the central kernel representation of a schedulable entity — process or thread.
+Below is a reduced version showing only the fields relevant to user-space threads.</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="c"><span class="giallo-l"><span style="color: #FE8019;">struct</span><span> task_struct </span><span style="color: #A89984;">{</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    /* scheduling / execution context */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    pid_t</span><span>           pid</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">        /* unique kernel thread ID */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    pid_t</span><span>           tgid</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">       /* thread group ID (process ID) */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    struct</span><span> mm_struct </span><span style="color: #8EC07C;">*</span><span>mm</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">       /* memory descriptor (NULL for kernel threads) */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    struct</span><span> files_struct </span><span style="color: #8EC07C;">*</span><span>files</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;"> /* open file table */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    struct</span><span> fs_struct    </span><span style="color: #8EC07C;">*</span><span>fs</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">    /* filesystem info: cwd, root */</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    /* signal handling */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    struct</span><span> signal_struct </span><span style="color: #8EC07C;">*</span><span>signal</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;"> /* shared signal handlers */</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    /* thread group leader and siblings */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    struct</span><span> task_struct </span><span style="color: #8EC07C;">*</span><span>group_leader</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    /* kernel stack pointer, architecture context etc */</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    struct</span><span> thread_info thread_info</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    /* scheduling linkage, priority etc */</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    /* ... many other members omitted ... */</span></span>
+<span class="giallo-l"><span style="color: #A89984;">};</span></span></code></pre>
+<p>This structure represents a schedulable entity — what the kernel calls a task.</p>
+<p>User-space pthread_create() eventually calls the system call: clone(flags, stack, ptid, ctid, tls)</p>
+<h1 id="everything-is-a-thread">"Everything is a thread"</h1>
+<p>Linux doesn’t maintain separate code for “process creation” and “thread creation.”</p>
+<p>All user tasks are created by clone().</p>
+<p>The only thing that changes is the degree of resource sharing.</p>
+<p>That’s why the kernel community often says:</p>
+<p>“Everything in Linux is a thread; fork() is just a clone() with fewer flags.”</p>
+<p>This unification simplifies scheduling, accounting, and namespace management — all tasks are equal citizens in the scheduler, regardless of whether they’re “threads” or “processes.”</p>
+<h1 id="threads-in-gui-applications">Threads in GUI applications</h1>
+<p>Graphical applications often use threads to keep the user interface responsive.
+The main thread runs the event loop (handling input, drawing, etc.), while worker threads perform blocking or long-running tasks such as file I/O, network requests, or background computation.</p>
+<p>The typical model is this:</p>
+<ul>
+<li>Main/UI thread – owns all GUI state and must never block.</li>
+<li>Worker threads – handle heavy or asynchronous work, then notify the main thread (via signals, message queues, or atomic flags).</li>
+</ul>
+<p>Most GUI toolkits — GTK, Qt, Cocoa, Win32 — enforce that all UI operations must occur in the main thread.</p>
+<p>This prevents race conditions in windowing subsystems that are not thread-safe.</p>
+<p>So, GUI applications use threads for isolation of work, not for parallel rendering.
+Responsiveness first, throughput second.</p>
+<h1 id="virtual-threads">Virtual threads</h1>
+<p>"Virtual threads" refer to threads implemented mostly in user space, not directly as kernel tasks.</p>
+<p>For example:</p>
+<ul>
+<li>Go goroutines</li>
+<li>Java Project Loom</li>
+<li>Rusts async tasks (using executors)</li>
+</ul>
+<p>They multiplex many user-space execution contexts over a smaller pool of kernel threads.</p>
+<p>The kernel only sees the physical threads; scheduling between virtual ones happens in user land.</p>
+<p>But why?</p>
+<ol>
+<li>Lower creation and context-switch cost.</li>
+<li>Scales to hundreds of thousands of concurrent tasks.</li>
+<li>Fits workloads dominated by I/O wait (not CPU).</li>
+</ol>
+<p>So... why not?</p>
+<ol>
+<li>No true parallelism without multiple kernel threads.</li>
+<li>Blocking system calls stall the entire physical thread.</li>
+<li>Complex runtime scheduler and stack management.</li>
+</ol>
+<h1 id="conclusion">Conclusion</h1>
+<p>It's all trade-offs — user-space scheduling vs kernel scheduling, scalability vs transparency.
+There's no universally perfect model. Choose the best tool for the job based on requirements and objetives.</p>
+<h2 id="resources">Resources</h2>
+<p>[1] W. R. Stevens, S. A. Rago, Advanced Programming in the UNIX Environment, 3rd ed., Addison-Wesley Professional, 2013.</p>
+<p>[2] M. Kerrisk, The Linux Programming Interface: A Linux and UNIX System Programming Handbook, No Starch Press, 2010.</p>
+<p>[3] R. Love, Linux Kernel Development, 3rd ed., Addison-Wesley Professional, 2010.</p>
+<p>[4] Lawrence Livermore National Laboratory, “POSIX Threads Tutorial,” [Online]. Available: https://hpc-tutorials.llnl.gov/posix/</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-12-23-architecture/">Architecture</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Comprehensive SSH Configuration</title>
+    <meta name="description" content="A detailed guide on setting up and managing SSH"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2025-02-15-wireguard-networkmanager/",
+    higher: "https://jpnt.github.io/journal/2024-11-14-divine-simplicity/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Comprehensive SSH Configuration
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-12-29-ssh-config/#introduction">Introduction</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-12-29-ssh-config/#how-to-use-ssh-keys">How To Use SSH Keys</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-12-29-ssh-config/#ssh-daemon-sshd-configuration-file">SSH Daemon (sshd) Configuration File</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-12-29-ssh-config/#verify-ssh-connection">Verify SSH Connection</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-12-29-ssh-config/#troubleshooting-common-issues">Troubleshooting Common Issues</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-12-29-ssh-config/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Using WireGuard in NetworkManager" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2025-02-15-wireguard-networkmanager&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="A detailed guide on setting up and managing SSH">Comprehensive SSH Configuration</span><a title="Divine Simplicity" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-11-14-divine-simplicity&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/networks/">#networks</a></span>
+<h1 id="introduction">Introduction</h1>
+<p>The Secure Shell (SSH) protocol is a cryptographic network protocol
+designed for secure communication over an unsecured network. It is
+widely used for remote login and command-line execution, replacing
+older, insecure protocols like Telnet and rsh. This guide will explain
+how to configure SSH and manage keys.</p>
+<h2 id="how-to-use-ssh-keys">How To Use SSH Keys</h2>
+<p>SSH key-based authentication is more secure and convenient than passwords.
+The client creates a private key and sends a public key to the server.</p>
+<ol>
+<li>Create a Key Pair on the Client</li>
+</ol>
+<p>Run the following command to generate a new SSH key pair:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> ssh-keygen</span><span style="color: #D3869B;"> -t</span><span style="color: #B8BB26;"> ed25519</span><span style="color: #D3869B;"> -a 100 -f</span><span style="color: #B8BB26;"> ~/.ssh/id_ed25519</span><span style="color: #D3869B;"> -C</span><span style="color: #A89984;"> &quot;</span><span style="color: #B8BB26;">your_email@example.com</span><span style="color: #A89984;">&quot;</span></span></code></pre>
+<p>This will create two files:</p>
+<ul>
+<li><code>id_ed25519</code>: The private key (keep this secure!)</li>
+<li><code>id_ed25519.pub</code>: The public key</li>
+</ul>
+<ol start="2">
+<li>Copy Public Key to the Server</li>
+</ol>
+<p>Use the ssh-copy-id tool to copy your public key to the server:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> ssh-copy-id</span><span style="color: #D3869B;"> -i</span><span style="color: #B8BB26;"> ~/.ssh/id_ed25519.pub user@127.0.2.1</span></span></code></pre>
+<p>Alternatively, manually append the public key to the server's <code>~/.ssh/authorized_keys</code> file:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> cat ~/.ssh/id_ed25519.pub</span><span style="color: #8EC07C;"> &gt;&gt;</span><span style="color: #B8BB26;"> ~/.ssh/authorized_keys</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> chmod</span><span style="color: #D3869B;"> 600</span><span style="color: #B8BB26;"> ~/.ssh/authorized_keys</span></span></code></pre>
+<ol start="3">
+<li>Start the SSH Authentication Agent</li>
+</ol>
+<p>Start the agent to manage your keys:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> eval</span><span style="color: #A89984;"> $(</span><span style="color: #FABD2F;">ssh-agent</span><span style="color: #D3869B;"> -s</span><span style="color: #A89984;">)</span></span></code></pre>
+<ol start="4">
+<li>Add Your Private Key to the Agent</li>
+</ol>
+<p>Load your private key into the SSH agent:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> ssh-add ~/.ssh/id_ed25519</span></span></code></pre>
+<p>Verify that the key has been added:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> ssh-add</span><span style="color: #D3869B;"> -l</span></span></code></pre><h2 id="ssh-daemon-sshd-configuration-file">SSH Daemon (sshd) Configuration File</h2>
+<p>The SSH daemon settings can be fully configured through its file located
+at /etc/ssh/sshd_config. Open it with a text editor:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># vi /etc/ssh/sshd_config</span></span></code></pre>
+<p>Recommended settings:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span>PermitRootLogin no</span></span>
+<span class="giallo-l"><span>PubkeyAuthentication yes</span></span>
+<span class="giallo-l"><span>AuthorizedKeysFile .ssh/authorized_keys</span></span>
+<span class="giallo-l"><span>PasswordAuthentication no</span></span></code></pre>
+<p>After modifying the configuration, restart the SSH daemon to apply changes:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># systemctl restart sshd</span></span></code></pre><h2 id="verify-ssh-connection">Verify SSH Connection</h2>
+<p>After setting up your keys and configuration, test your connection to the server:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> ssh user@server_ip</span></span></code></pre><h2 id="troubleshooting-common-issues">Troubleshooting Common Issues</h2>
+<ol>
+<li>Permissions Errors</li>
+</ol>
+<p>Ensure the following permissions on your SSH-related files:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> chmod</span><span style="color: #D3869B;"> 700</span><span style="color: #B8BB26;"> ~/.ssh</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> chmod</span><span style="color: #D3869B;"> 600</span><span style="color: #B8BB26;"> ~/.ssh/id_rsa</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> chmod</span><span style="color: #D3869B;"> 644</span><span style="color: #B8BB26;"> ~/.ssh/id_rsa.pub</span></span></code></pre>
+<ol start="2">
+<li>Debugging Connection Issues</li>
+</ol>
+<p>Use verbose mode to diagnose issues:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> ssh</span><span style="color: #D3869B;"> -vvv</span><span style="color: #B8BB26;"> user@server_ip</span></span></code></pre><h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-02-15-wireguard-networkmanager/">Using WireGuard in NetworkManager</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Pop!_OS Install</title>
+    <meta name="description" content="How to install Pop!_OS"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2021-08-02-rust-ownership/",
+    higher: "https://jpnt.github.io/journal/2021-07-30-disable-suspend/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Pop!_OS Install
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2021-07-31-popos-install/#download-pop-os">Download Pop!_OS</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2021-07-31-popos-install/#create-a-bootable-usb-stick">Create a bootable USB stick</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2021-07-31-popos-install/#boot-from-the-usb-stick">Boot from the USB stick</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2021-07-31-popos-install/#install-pop-os">Install Pop!_OS</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2021-07-31-popos-install/#note-nvidia-graphics">NOTE: Nvidia graphics</a>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Rust Ownership" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2021-08-02-rust-ownership&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="How to install Pop!_OS">Pop!_OS Install</span><a title="Disable Suspend on Linux" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2021-07-30-disable-suspend&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<p><strong>Pop!_OS</strong> is a free and open-source <strong>Linux</strong> distribution, based on Ubuntu, and it uses the GNOME desktop.</p>
+<p>It provides full support for <strong>AMD</strong> and <strong>Nvidia</strong> graphics cards <strong>out-of-the-box</strong>, which makes it an excellent choice for beginners.</p>
+<h1 id="download-pop-os">Download Pop!_OS</h1>
+<p>Go to https://pop.system76.com/ and click on <strong>download</strong>.</p>
+<p><img src="/img/popos-install/pop-0.jpg" alt="" /></p>
+<p>Pop!_OS comes in two versions: the <strong>latest</strong>, and the <strong>LTS</strong> (Long Term Support). I will choose the latest, since I want to use the latest features.</p>
+<p>Pop!_OS also has two images: <strong>default</strong>, and <strong>Nvidia</strong>. If you use a Nvidia card use the Nvidia image, if not choose the default image.</p>
+<p><img src="/img/popos-install/pop-1.jpg" alt="" /></p>
+<h1 id="create-a-bootable-usb-stick">Create a bootable USB stick</h1>
+<p>Download an utility to create <strong>bootable USB drives</strong>, such as <strong>balenaEtcher</strong> at: https://www.balena.io/etcher/.</p>
+<p><img src="/img/popos-install/pop-2.jpg" alt="" /></p>
+<p>Select the <strong>Pop!_OS image</strong> you just downloaded.</p>
+<p><img src="/img/popos-install/pop-3.jpg" alt="" /></p>
+<p>Use the <strong>USB stick</strong> that you are going to make bootable.</p>
+<p><img src="/img/popos-install/pop-4.jpg" alt="" /></p>
+<p>Click on <strong>Flash!</strong></p>
+<p><img src="/img/popos-install/pop-5.jpg" alt="" /></p>
+<h1 id="boot-from-the-usb-stick">Boot from the USB stick</h1>
+<p><strong>Restart</strong> your computer, and hopefully it will <strong>boot into Pop!_OS</strong>.</p>
+<p><strong>NOTE:</strong> It if doesn't, you may need to change your BIOS boot order.</p>
+<h1 id="install-pop-os">Install Pop!_OS</h1>
+<p>After booting to Pop!_OS, you should see the <strong>"Install Pop!_OS"</strong> menu.</p>
+<p><img src="/img/popos-install/pop-6.jpg" alt="" /></p>
+<p>From this point, just select your <strong>language</strong>, set up your <strong>keyboard</strong> and configure your <strong>user</strong> and <strong>password</strong>.</p>
+<p>The installion provides a <strong>disk encryption</strong> feature, you can <strong>choose</strong> if you want it or not.</p>
+<p><img src="/img/popos-install/pop-7.jpg" alt="" /></p>
+<p>Now Pop!_OS is <strong>installing</strong>!</p>
+<p><img src="/img/popos-install/pop-8.jpg" alt="" /></p>
+<p>After installing, <strong>restart</strong> your computer.</p>
+<p><img src="/img/popos-install/pop-9.jpg" alt="" /></p>
+<p><strong>That's it! You've sucessfully installed Pop!_OS.</strong></p>
+<h1 id="note-nvidia-graphics">NOTE: Nvidia graphics</h1>
+<p>If you installed the default (Intel/AMD) image, and you <strong>have a Nvidia graphics card</strong> or <strong>just added one</strong>, you will have to <strong>install the drivers</strong> for the best <strong>performance</strong>, open the terminal and type:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">sudo</span><span style="color: #B8BB26;"> apt install system76-driver-nvidia</span></span></code></pre>
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

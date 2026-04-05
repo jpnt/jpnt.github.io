@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Rust Ownership</title>
+    <meta name="description" content="Understanding how Ownership works in Rust"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2022-01-06-learn-linux/",
+    higher: "https://jpnt.github.io/journal/2021-07-31-popos-install/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Rust Ownership
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#understanding-ownership">Understanding Ownership</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#what-is-a-garbage-collector">What is a Garbage collector?</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#stack-vs-heap">Stack vs Heap</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#stack">Stack</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#heap">Heap</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#ownership-rules">Ownership rules</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2021-08-02-rust-ownership/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="LEARN LINUX THE RIGHT WAY" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2022-01-06-learn-linux&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Understanding how Ownership works in Rust">Rust Ownership</span><a title="Pop!_OS Install" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2021-07-31-popos-install&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<h1 id="understanding-ownership">Understanding Ownership</h1>
+<p><strong>Ownership</strong> is what enables Rust to make <strong>memory safety guarantees without needing a garbage collector.</strong></p>
+<h2 id="what-is-a-garbage-collector">What is a Garbage collector?</h2>
+<p>Garbage collection (GC) is a form of <strong>automatic memory management</strong>.</p>
+<p>It attempts to <strong>reclaim memory</strong> which was allocated by the program, but is <strong>no longer used</strong> --- hence the name garbage.</p>
+<p>GC exists to <strong>relieve</strong> the programmer from <strong>manually managing memory</strong>, which can be <strong>susceptible to errors</strong> such as <strong>memory leaks</strong>.</p>
+<p>But garbage collection consumes resources when deciding which memory to free, which leads to <strong>decreased performace.</strong></p>
+<p>Some programming languages, like Python or C#, have garbage collection that looks for no longer used memory. In other languages, such as C and C++, the programmer must allocate and deallocate the memory manually.</p>
+<p>Rust uses a <strong>different approach</strong> --- memory is managed by a <strong>system of ownership with a set of rules</strong> that are checked by the compiler (rustc). The Ownership features <strong>don't</strong> slow down the program when it's running.</p>
+<h2 id="stack-vs-heap">Stack vs Heap</h2>
+<p>Both the stack and the heap are <strong>parts of memory available to store data at runtime</strong>, but they are structured in <strong>different ways.</strong></p>
+<p>In order to understand <strong>Ownership</strong> in Rust and how to take advantage of it, we first must understand the paradigms of allocating data in the <strong>Stack</strong> versus in the <strong>Heap</strong>.</p>
+<hr />
+<h2 id="stack">Stack</h2>
+<ol>
+<li>It is used by default on Rust.</li>
+<li>It is faster than allocating memory in the heap.</li>
+<li>Variables have a known fixed size.</li>
+<li>Memory is retrieved after variables go out of scope.</li>
+</ol>
+<p><strong>Example:</strong></p>
+<p>After the variable <strong>goes out of scope</strong>, it is not valid anymore:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FB4934;">fn</span><span style="color: #FABD2F;"> main</span><span style="color: #A89984;">() {</span><span style="color: #928374;font-style: italic;">			// x is not valid here, it&#39;s not declared yet.</span></span>
+<span class="giallo-l"><span>	</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">	let</span><span style="color: #83A598;"> x</span><span style="color: #8EC07C;"> =</span><span style="color: #D3869B;"> 2</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">		// integer x is declared, x is valid from now on.</span></span>
+<span class="giallo-l"><span>	</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">	print_x</span><span style="color: #A89984;">();</span><span style="color: #928374;font-style: italic;">	    // this runs the function &quot;print_x&quot; that is not</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">					// on the &quot;main&quot; function scope.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span><span style="color: #928374;font-style: italic;">					// the scope ends here, x is not valid anymore.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FB4934;">fn</span><span style="color: #FABD2F;"> print_x</span><span style="color: #A89984;">(){</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">	println!</span><span style="color: #A89984;">(&quot;{}&quot;,</span><span style="color: #83A598;"> x</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span></code></pre>
+<p>If we try to run this we will get the following <strong>error</strong>:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">error[E0425]:</span><span style="color: #B8BB26;"> cannot find value</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">x</span><span style="color: #A89984;">`</span><span> in this scope</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">  --</span><span>&gt;</span><span style="color: #B8BB26;"> main.rs:10:20</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">   |</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">10</span><span style="color: #8EC07C;"> |</span><span style="color: #FABD2F;">     println!(&quot;{}&quot;,</span><span style="color: #B8BB26;"> x</span><span>)</span><span style="color: #A89984;">;</span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">   |</span><span style="color: #FABD2F;">                    ^</span><span style="color: #B8BB26;"> not found in this scope</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FABD2F;">error:</span><span style="color: #B8BB26;"> aborting due to previous error</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FABD2F;">For</span><span style="color: #B8BB26;"> more information about this error, try</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">rustc</span><span style="color: #D3869B;"> --explain</span><span style="color: #B8BB26;"> E0425</span><span style="color: #A89984;">`</span><span style="color: #FE8019;">.</span></span></code></pre>
+<p><strong>Another example:</strong></p>
+<p>Every variable in the stack has a <strong>known fixed size:</strong></p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FB4934;">fn</span><span style="color: #FABD2F;"> main</span><span style="color: #A89984;">() {</span><span> </span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    let</span><span style="color: #83A598;"> stack_int</span><span style="color: #8EC07C;">:</span><span style="color: #FABD2F;"> i32</span><span style="color: #8EC07C;"> =</span><span style="color: #D3869B;"> 10</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">		// 32 bit integer to the stack</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    let</span><span style="color: #83A598;"> stack_float</span><span style="color: #8EC07C;">:</span><span style="color: #FABD2F;"> f64</span><span style="color: #8EC07C;"> =</span><span style="color: #D3869B;"> 20</span><span style="color: #8EC07C;">.</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">		// 64 bit float to the stack</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    let</span><span style="color: #83A598;"> stack_bool</span><span style="color: #8EC07C;">:</span><span style="color: #FABD2F;"> bool</span><span style="color: #8EC07C;"> =</span><span style="color: #D3869B;"> true</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">	// bool variable to the stack (true or false)</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">    let</span><span style="color: #83A598;"> stack_char</span><span style="color: #8EC07C;">:</span><span style="color: #FABD2F;"> char</span><span style="color: #8EC07C;"> =</span><span style="color: #A89984;"> &#39;</span><span style="color: #B8BB26;">a</span><span style="color: #A89984;">&#39;;</span><span style="color: #928374;font-style: italic;">		// char data type to the stack (fixed size)</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">	let</span><span style="color: #83A598;"> stack_str</span><span style="color: #8EC07C;">: &amp;</span><span style="color: #FABD2F;">str</span><span style="color: #8EC07C;"> =</span><span style="color: #A89984;"> &quot;</span><span style="color: #B8BB26;">hello</span><span style="color: #A89984;">&quot;;</span><span style="color: #928374;font-style: italic;">	// &amp;str (string that consists of unsigned 8 bit integers)</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span></code></pre>
+<p>Learn more about strings in Rust at: https://doc.rust-lang.org/rust-by-example/std/str.html</p>
+<hr />
+<h2 id="heap">Heap</h2>
+<ol>
+<li>Slower compared to allocating memory to the stack.</li>
+<li>Variables can grow in size (Vector, String, etc).</li>
+<li>Memory can live beyond the scope that created it.</li>
+<li>Memory is retrieved when the Owner goes out of scope.</li>
+</ol>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FE8019;">let</span><span style="color: #83A598;"> x</span><span style="color: #8EC07C;"> =</span><span style="color: #D3869B;"> 22</span><span style="color: #A89984;">;</span><span> </span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">/*  |    |</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    |    +--&gt; Value</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">    V     </span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">  Owner				*/</span></span></code></pre>
+<p><strong>Example:</strong></p>
+<p>When the <strong>Owner</strong> goes out of scope, the memory is retrieved:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="rust"><span class="giallo-l"><span style="color: #FB4934;">fn</span><span style="color: #FABD2F;"> main</span><span style="color: #A89984;">() {</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">	let</span><span style="color: #83A598;"> heap_string</span><span style="color: #8EC07C;">:</span><span style="color: #FABD2F;"> String</span><span style="color: #8EC07C;"> =</span><span style="color: #FABD2F;"> String</span><span style="color: #8EC07C;">::</span><span style="color: #FABD2F;">from</span><span style="color: #A89984;">(&quot;</span><span style="color: #B8BB26;">Hello</span><span style="color: #A89984;">&quot;);</span><span style="color: #928374;font-style: italic;">	// Heap String (vector of bytes)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #FE8019;">	let</span><span style="color: #83A598;"> heap_string_2</span><span style="color: #8EC07C;"> =</span><span style="color: #83A598;"> heap_string</span><span style="color: #A89984;">;</span><span style="color: #928374;font-style: italic;">   /* heap_string value is assigned to heap_string_2</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">									      a copy is not created because the ownership of</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">										  heap_string is transferred to heap_string_2,</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;">								   	      and heap_string gets destroyed (out of scope) */</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">	println!</span><span style="color: #A89984;">(&quot;{}&quot;,</span><span style="color: #83A598;"> heap_string</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">	println!</span><span style="color: #A89984;">(&quot;{}&quot;,</span><span style="color: #83A598;"> heap_string_2</span><span style="color: #A89984;">);</span></span>
+<span class="giallo-l"><span style="color: #A89984;">}</span></span></code></pre>
+<p>This will print an <strong>error</strong> because <strong>heap_string</strong> Ownership is moved to <strong>heap_string_2</strong>:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">error[E0382]:</span><span style="color: #B8BB26;"> borrow of moved value:</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">heap_string</span><span style="color: #A89984;">`</span><span>                                           </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;"> --</span><span>&gt;</span><span style="color: #B8BB26;"> main.rs:6:17</span><span>                                                                            </span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">  |</span><span>                                                                                          </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">2</span><span style="color: #8EC07C;"> |</span><span style="color: #FE8019;">     let</span><span style="color: #B8BB26;"> heap_string: String = String::from</span><span style="color: #A89984;">(</span><span style="color: #FABD2F;">&quot;Hello&quot;</span><span style="color: #A89984;">);</span><span>                                     </span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">  |</span><span style="color: #FABD2F;">         -----------</span><span style="color: #B8BB26;"> move occurs because</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">heap_string</span><span style="color: #A89984;">`</span><span style="color: #FABD2F;"> has</span><span style="color: #B8BB26;"> type</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">String</span><span style="color: #A89984;">`</span><span style="color: #FABD2F;">,</span><span style="color: #B8BB26;"> which does not i</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">mplement</span><span style="color: #B8BB26;"> the</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">Copy</span><span style="color: #A89984;">`</span><span style="color: #FABD2F;"> trait</span><span>                                                                    </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">3</span><span style="color: #8EC07C;"> |</span><span>                                                                                          </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">4</span><span style="color: #8EC07C;"> |</span><span style="color: #FE8019;">     let</span><span style="color: #B8BB26;"> heap_string_2 = heap_string</span><span style="color: #A89984;">;</span><span>                                                     </span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">  |</span><span style="color: #FABD2F;">                         -----------</span><span style="color: #B8BB26;"> value moved here</span><span>                                     </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">5</span><span style="color: #8EC07C;"> |</span><span>                                                                                          </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">6</span><span style="color: #8EC07C;"> |</span><span style="color: #FABD2F;">     println!(&quot;{}&quot;,</span><span style="color: #B8BB26;"> heap_string</span><span>)</span><span style="color: #A89984;">;</span><span>                                                         </span></span>
+<span class="giallo-l"><span style="color: #8EC07C;">  |</span><span style="color: #FABD2F;">                    ^^^^^^^^^^^</span><span style="color: #B8BB26;"> value borrowed here after move</span><span>                            </span></span>
+<span class="giallo-l"><span>                                                                                             </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">error:</span><span style="color: #B8BB26;"> aborting due to previous error</span><span>                                                        </span></span>
+<span class="giallo-l"><span>                                                                                             </span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">For</span><span style="color: #B8BB26;"> more information about this error, try</span><span style="color: #A89984;"> `</span><span style="color: #FABD2F;">rustc</span><span style="color: #D3869B;"> --explain</span><span style="color: #B8BB26;"> E0382</span><span style="color: #A89984;">`</span><span style="color: #FE8019;">.</span></span></code></pre>
+<hr />
+<h2 id="ownership-rules">Ownership rules</h2>
+<ol>
+<li>Each value in Rust has a variable called its <strong>owner</strong></li>
+<li>There can only be <strong>one</strong> owner at a time.</li>
+<li>When the owner goes <strong>out of scope</strong>, the value <strong>won't be valid</strong></li>
+</ol>
+<p><strong>NOTE:</strong> In the stack, because memory is "cheap", you can have more than one owner pointing at the same value.</p>
+<p>Learn more about Ownership at: https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2024-06-15-slices/">Slices</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

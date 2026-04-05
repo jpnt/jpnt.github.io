@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; .NET 8 Clean Architecture Setup</title>
+    <meta name="description" content="Clean Architecture overview and .NET 8 project setup"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-10-28-cpu-cache/",
+    higher: "https://jpnt.github.io/journal/2024-08-19-abstraction/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+.NET 8 Clean Architecture Setup
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#clean-architecture-overview">Clean Architecture Overview</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#clean-architecture-vs-onion-architecture">Clean Architecture vs Onion Architecture</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#domain-driven-design-ddd-101">Domain Driven Design (DDD) 101</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#solid-principles-101">SOLID Principles 101</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#layers-in-clean-architecture">Layers in Clean Architecture</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#quick-overview-of-cqrs">Quick Overview of CQRS</a>
+      </li>
+    </ul></li>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#file-system-hierarchy-example">File System Hierarchy Example</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#creating-project-using-net-cli">Creating Project Using .NET CLI</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#resources">Resources</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-09-26-dotnet8-clean-architecture-setup/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="CPU Cache" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-10-28-cpu-cache&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Clean Architecture overview and .NET 8 project setup">.NET 8 Clean Architecture Setup</span><a title="Abstraction" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-08-19-abstraction&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<p><img src="/img/dotnet8-clean-architecture-setup/clean_architecture.png" alt="" /></p>
+<h1 id="clean-architecture-overview">Clean Architecture Overview</h1>
+<ul>
+<li>Opinionated way of structuring code.</li>
+<li>Emphasizes separating the application into layers (Domain,
+Application, Infrastructure and Presentation) and ensuring dependencies flow inward.</li>
+<li>Each layer only knows about the inner layers.</li>
+<li>Architecture enforces design policies.</li>
+</ul>
+<h2 id="clean-architecture-vs-onion-architecture">Clean Architecture vs Onion Architecture</h2>
+<p>Both emphasize layer separation and the direction of dependencies, but Clean
+Architecture makes a stronger distinction between use cases (Application layer)
+and technical concerns (Infrastructure).</p>
+<h2 id="domain-driven-design-ddd-101">Domain Driven Design (DDD) 101</h2>
+<ul>
+<li>Focuses on creating a model of the business domain.</li>
+<li>Concepts such as Entities, Value Objects, Aggregates, Repositories and Services.</li>
+</ul>
+<h2 id="solid-principles-101">SOLID Principles 101</h2>
+<p>The SOLID principles are a set of design guidelines that promote maintainable, scalable, and flexible software systems.
+They provide a foundation that Clean Architecture builds upon. Lets take a quick look how each principle aligns with
+Clean Architecture:</p>
+<ol>
+<li>Single Responsibility Principle (SRP)</li>
+</ol>
+<ul>
+<li>Separation into layers ensures each part of the system has one responsibility.</li>
+</ul>
+<ol start="2">
+<li>Open/Closed Principle (OCP)</li>
+</ol>
+<ul>
+<li>Clean Architecture’s dependency inversion allows extending functionality
+(new Infrastructure services, for instance) without modifying core logic.</li>
+</ul>
+<ol start="3">
+<li>Liskov Substitution Principle (LSP)</li>
+</ol>
+<ul>
+<li>By enforcing interface-driven development, Clean Architecture allows
+interchangeable components (e.g., repositories, services) without impacting functionality.</li>
+</ul>
+<ol start="4">
+<li>Interface Segregation Principle (ISP)</li>
+</ol>
+<ul>
+<li>Interfaces are designed to be minimal, providing only what’s necessary for the layer that consumes them.</li>
+</ul>
+<ol start="5">
+<li>Dependency Inversion Principle (DIP)</li>
+</ol>
+<ul>
+<li>Clean Architecture ensures high-level policies (business logic) are independent
+of low-level details (Infrastructure). All dependencies are abstracted through interfaces.</li>
+</ul>
+<p><img src="/img/dotnet8-clean-architecture-setup/clean_architecture2.png" alt="" /></p>
+<h1 id="layers-in-clean-architecture">Layers in Clean Architecture</h1>
+<ol>
+<li>
+<p>Domain: Core business logic and rules, with no external dependencies. If defines
+Entities, Value Objects, Domain events, Domain services and Interfaces/Abstractions.
+It is independant of any framework of database.</p>
+</li>
+<li>
+<p>Application: Orchestration of the business logic in the domain layer. It defines
+Use Cases, DTOs and Application Services (or optionally CQRS). It depends on
+the Domain layer but not on the Infrastructure or Presentation.</p>
+</li>
+<li>
+<p>Infrastructure: Deals with external concerns like databases, APIs, file systems,
+etc. It implements interfaces defined in the Application and Domain layers.
+Sometimes, Infrastructure and Persistence are separated to ensure a better
+distinction of responsabilities.</p>
+</li>
+<li>
+<p>Presentation: This layer interacts with the outside world, often through a Web API
+(e.g. REST API) or user interface. It defines the entry point to the system, API
+endpoints, Middleware and Dependency Injection setup.</p>
+</li>
+</ol>
+<h2 id="quick-overview-of-cqrs">Quick Overview of CQRS</h2>
+<ul>
+<li>It is a Design Pattern: Command and Query Responsibility Segregation
+<ul>
+<li>Separates a service's write tasks (commands) from its read tasks (queries).</li>
+</ul>
+</li>
+<li>Not needed, you can just implement Use Case in Service classes, but...</li>
+<li>Benefits of CQRS
+<ul>
+<li>Single responsibility principle</li>
+<li>Interface Segregation principle</li>
+<li>Decorator pattern</li>
+<li>Loose coupling</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>Indirection</li>
+</ul>
+</li>
+</ul>
+<h1 id="file-system-hierarchy-example">File System Hierarchy Example</h1>
+<p>Take a SurgicalManagement project as an example:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span>SurgicalManagement.Domain</span></span>
+<span class="giallo-l"><span>    -&gt; DomainEntities</span></span>
+<span class="giallo-l"><span>    -&gt; DomainEvents</span></span>
+<span class="giallo-l"><span>    -&gt; ValueObjects</span></span>
+<span class="giallo-l"><span>    -&gt; DomainServicesInterfaces</span></span>
+<span class="giallo-l"><span>    -&gt; Aggregates</span></span>
+<span class="giallo-l"><span>    -&gt; DomainValidations</span></span>
+<span class="giallo-l"><span>SurgicalManagement.Application</span></span>
+<span class="giallo-l"><span>    -&gt; UseCases</span></span>
+<span class="giallo-l"><span>    -&gt; Commands (for CQRS)</span></span>
+<span class="giallo-l"><span>    -&gt; Queries (for CQRS)</span></span>
+<span class="giallo-l"><span>    -&gt; Abstractions/Contracts/Interfaces</span></span>
+<span class="giallo-l"><span>    -&gt; CommonInterfaces</span></span>
+<span class="giallo-l"><span>    -&gt; Specifications</span></span>
+<span class="giallo-l"><span>    -&gt; ApplicationServices</span></span>
+<span class="giallo-l"><span>    -&gt; Exceptions</span></span>
+<span class="giallo-l"><span>    -&gt; DTOs</span></span>
+<span class="giallo-l"><span>    -&gt; Behaviours</span></span>
+<span class="giallo-l"><span>    -&gt; ApplicationValidations</span></span>
+<span class="giallo-l"><span>SurgicalManagement.Infrastructure</span></span>
+<span class="giallo-l"><span>    -&gt; IdentityServices</span></span>
+<span class="giallo-l"><span>    -&gt; QueueStorage</span></span>
+<span class="giallo-l"><span>    -&gt; PaymentServices</span></span>
+<span class="giallo-l"><span>    -&gt; Notifications</span></span>
+<span class="giallo-l"><span>    -&gt; ThirdPartyServices</span></span>
+<span class="giallo-l"><span>    -&gt; Caching</span></span>
+<span class="giallo-l"><span>    -&gt; EventStore</span></span>
+<span class="giallo-l"><span>    -&gt; Monitoring</span></span>
+<span class="giallo-l"><span>SurgicalManagement.Persistence</span></span>
+<span class="giallo-l"><span>    -&gt; DataContext</span></span>
+<span class="giallo-l"><span>    -&gt; Repositories</span></span>
+<span class="giallo-l"><span>    -&gt; DataSeeding</span></span>
+<span class="giallo-l"><span>    -&gt; DataMigrations</span></span>
+<span class="giallo-l"><span>SurgicalManagement.CrossCutting</span></span>
+<span class="giallo-l"><span>    -&gt; Logging</span></span>
+<span class="giallo-l"><span>    -&gt; ExceptionHandling</span></span>
+<span class="giallo-l"><span>    -&gt; Validation</span></span>
+<span class="giallo-l"><span>    -&gt; Security</span></span>
+<span class="giallo-l"><span>    -&gt; Configuration</span></span>
+<span class="giallo-l"><span>SurgicalManagement.Presentation</span></span>
+<span class="giallo-l"><span>    -&gt; Controllers</span></span>
+<span class="giallo-l"><span>    -&gt; Views</span></span>
+<span class="giallo-l"><span>    -&gt; Middlewares</span></span>
+<span class="giallo-l"><span>    -&gt; DependencyInjection</span></span>
+<span class="giallo-l"><span>SurgicalManagement.Tests</span></span>
+<span class="giallo-l"><span>    -&gt; TestFramework (e.g. xUnit, NUnit, etc)</span></span>
+<span class="giallo-l"><span>    -&gt; DomainTests</span></span>
+<span class="giallo-l"><span>    -&gt; ApplicationTests</span></span>
+<span class="giallo-l"><span>    -&gt; InfrastructureTests</span></span>
+<span class="giallo-l"><span>    -&gt; PresentationTests</span></span></code></pre><h1 id="creating-project-using-net-cli">Creating Project Using .NET CLI</h1>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># Solution</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new sln</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Domain Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new classlib</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.Domain</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.Domain/SurgicalManagement.Domain.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Application Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new classlib</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.Application</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.Application/SurgicalManagement.Application.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Infrastructure Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new classlib</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.Infrastructure</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.Infrastructure/SurgicalManagement.Infrastructure.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Persistence Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new classlib</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.Persistence</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.Persistence/SurgicalManagement.Persistence.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># CrossCutting Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new classlib</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.CrossCutting</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.CrossCutting/SurgicalManagement.CrossCutting.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Presentation Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new webapi</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.Presentation</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.Presentation/SurgicalManagement.Presentation.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Tests Project</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> new xunit</span><span style="color: #D3869B;"> -n</span><span style="color: #B8BB26;"> SurgicalManagement.Tests</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> sln add SurgicalManagement.Tests/SurgicalManagement.Tests.csproj</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># Add Project References</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Application/SurgicalManagement.Application.csproj reference SurgicalManagement.Domain/SurgicalManagement.Domain.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.CrossCutting/SurgicalManagement.CrossCutting.csproj reference SurgicalManagement.Application/SurgicalManagement.Application.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Infrastructure/SurgicalManagement.Infrastructure.csproj reference SurgicalManagement.CrossCutting/SurgicalManagement.CrossCutting.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Persistence/SurgicalManagement.Persistence.csproj reference SurgicalManagement.CrossCutting/SurgicalManagement.CrossCutting.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Presentation/SurgicalManagement.Presentation.csproj reference SurgicalManagement.CrossCutting/SurgicalManagement.CrossCutting.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Tests/SurgicalManagement.Tests.csproj reference SurgicalManagement.CrossCutting/SurgicalManagement.CrossCutting.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Tests/SurgicalManagement.Tests.csproj reference SurgicalManagement.Infrastructure/SurgicalManagement.Infrastructure.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Tests/SurgicalManagement.Tests.csproj reference SurgicalManagement.Persistence/SurgicalManagement.Persistence.csproj</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dotnet</span><span style="color: #B8BB26;"> add SurgicalManagement.Tests/SurgicalManagement.Tests.csproj reference SurgicalManagement.Presentation/SurgicalManagement.Presentation.csproj</span></span></code></pre><h1 id="resources">Resources</h1>
+<ul>
+<li>https://www.youtube.com/watch?v=TQdLgzVk2T8</li>
+<li>https://www.youtube.com/watch?v=xnbLwL_OzNE</li>
+<li>https://www.youtube.com/watch?v=E6sUJWwZLwE</li>
+<li>https://www.youtube.com/watch?v=fe4iuaoxGbA</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-10-22-evolutionary-project-structure/">Evolutionary Project Structure</a></strong>: Both address project organization</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

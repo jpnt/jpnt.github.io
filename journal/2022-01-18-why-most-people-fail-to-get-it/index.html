@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="manifest" href="https://jpnt.github.io/manifest.json">
     <meta name="theme-color" content="#786"/>
-    <title>My personal blog</title>
-    <meta name="description" content="My personal blog"/>
+    <title>My personal blog &middot; Why Most People Fail to Get I.T.</title>
+    <meta name="description" content="A very brief talk on the subject"/>
     <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
     <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
   // Import Zola variables to Javascript
   var olivine = {
     base_url: "https://jpnt.github.io",
-    
-    
+    lower: "https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/",
+    higher: "https://jpnt.github.io/journal/2022-01-15-modern-software/",
   };
 </script>
 
@@ -49,7 +49,11 @@
     <header>
       <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
 <div dir="rtl" id="olivine-breadcrumb">
-<a href="https://jpnt.github.io">jpnt blog</a>
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Why Most People Fail to Get I.T.
 </div>
 
 <div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
@@ -59,7 +63,10 @@
     </header>
 
     <div class="sidebar" id="leftbar">
-      <div class="sidebar-content">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
 <ul>
   <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
   <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
@@ -79,48 +86,70 @@
 
     <div class="sidebar" id="rightbar">
       <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-18-why-most-people-fail-to-get-it/#what-is-it">What is IT?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-18-why-most-people-fail-to-get-it/#the-problem">The problem</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-18-why-most-people-fail-to-get-it/#what-should-be-done">What should be done</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-18-why-most-people-fail-to-get-it/#related">Related</a>
+  </li>
+</ul>
+</div>
 
 
+<div id="olivine-forward-links">
+<h3>Forward links</h3>
+<ul id="olivine-forward-link-lists">
+</ul>
+</div>
+<script>
+forward_list = [
+ "/posts/modern-software/", 
+];
+hydrateForward("olivine-forward-link-lists", forward_list,
+"https://jpnt.github.io/olivine-internal-sitemap/");
+</script>
 
       </div>
     </div>
 
     <div id="main-area">
-      <main>
-<h1>#systems</h1>
+      <main><h1><a title="Steam on Void Linux" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2022-05-30-voidlinux-steam&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="A very brief talk on the subject">Why Most People Fail to Get I.T.</span><a title="Modern Software is a disaster" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2022-01-15-modern-software&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<p>The Information Technology field is immensely vast, however, one can break it down in these core aspects.</p>
+<h2 id="what-is-it">What is IT?</h2>
 <ul>
-  
-  <li><a href="https://jpnt.github.io/journal/2021-07-30-disable-suspend/">Disable Suspend on Linux</a>: How to disable the suspend and hibernate services on Linux with systemd</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2021-07-31-popos-install/">Pop!_OS Install</a>: How to install Pop!_OS</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/">LEARN LINUX THE RIGHT WAY</a>: A guide to learn and teach Linux</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/">Steam on Void Linux</a>: How to install the Steam gaming platform on Void</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/">Docker to Podman</a>: Docker to Podman Migration Guide</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-02-25-tweaking-tlp/">Tweaking TLP</a>: Make your battery last longer on Linux</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-06-02-inicios/">inici(os)</a>: Ideas for the next OS</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/">Linux Audio Guide</a>: Better Linux Audio Experience</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-08-19-abstraction/">Abstraction</a>: The purpose of abstraction and the \\"fullstack\\" computer model</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/">CPU Cache</a>: Overview of CPU Cache</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-02-15-wireguard-networkmanager/">Using WireGuard in NetworkManager</a>: Quick overview how to use it</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-04-04-unix-plan9-and-linux-containers/">UNIX, Plan9 and Linux Containers</a></li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-11-06-threads/">Threads</a>: Pragmatic notes on threading concepts, APIs, and Linux implementation</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-12-23-architecture/">Architecture</a>: A pragmatic approach to think about and solve problems</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/">One abstraction to rule them all</a></li>
-  
+<li>Programming</li>
+<li>Computer Networking</li>
+<li>Databases</li>
+<li>Operating Systems</li>
 </ul>
+<h2 id="the-problem">The problem</h2>
+<p>The issue is that most people, even ones on the field, fail to grasp the core basics. They try
+to invent theories on what information technology is, and end up abstracting real problems with layers
+of garbage that just create new <a rel="noopener external" target="_blank" href="https://jpnt.github.io/posts/modern-software/">problems</a>.</p>
+<p>IT is not social studies and humanities, it is all about engineering and math, knowing how to approach
+a problem and solve it in the most optimal and correct way, it involves logic reasoning without
+a place for ambiguities.</p>
+<h2 id="what-should-be-done">What should be done</h2>
+<p>We should take a more <strong>know-how</strong> approach to learning and teaching, especially in engineering and IT.
+Keep abstractions at a minimum and prioritize knowledge.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-12-23-architecture/">Architecture</a></strong>: Architecture requires fundamentals</li>
+<li><strong><a href="/journal/2022-01-15-modern-software/">Modern Software is a disaster</a></strong>: Poor fundamentals cause problems</li>
+</ul>
+
+
 
       </main>
     </div>

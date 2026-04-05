@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="manifest" href="https://jpnt.github.io/manifest.json">
     <meta name="theme-color" content="#786"/>
-    <title>My personal blog</title>
-    <meta name="description" content="My personal blog"/>
+    <title>My personal blog &middot; Slices</title>
+    <meta name="description" content="Introduction and problems they solve"/>
     <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
     <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
   // Import Zola variables to Javascript
   var olivine = {
     base_url: "https://jpnt.github.io",
-    
-    
+    lower: "https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/",
+    higher: "https://jpnt.github.io/journal/2024-06-02-inicios/",
   };
 </script>
 
@@ -49,7 +49,11 @@
     <header>
       <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
 <div dir="rtl" id="olivine-breadcrumb">
-<a href="https://jpnt.github.io">jpnt blog</a>
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Slices
 </div>
 
 <div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
@@ -59,7 +63,10 @@
     </header>
 
     <div class="sidebar" id="leftbar">
-      <div class="sidebar-content">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
 <ul>
   <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
   <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
@@ -79,6 +86,25 @@
 
     <div class="sidebar" id="rightbar">
       <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-06-15-slices/#the-slice-concept">The Slice Concept</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-15-slices/#problem-of-pointers">Problem of Pointers</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-15-slices/#here-come-slices">Here come Slices</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-06-15-slices/#resources">Resources</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
 
 
 
@@ -86,41 +112,54 @@
     </div>
 
     <div id="main-area">
-      <main>
-<h1>#systems</h1>
+      <main><h1><a title="Linux Audio Guide" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-08-18-linux-audio-guide&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Introduction and problems they solve">Slices</span><a title="inici(os)" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-06-02-inicios&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/programming/">#programming</a></span>
+<h1 id="the-slice-concept">The Slice Concept</h1>
+<p>If you already understand pointers, then understanding Slices will be much easier,
+the way I think about them in the most simple level is this:</p>
+<p>Pointer := Memory Address + Data Type</p>
+<p>Slice := Pointer + Length</p>
+<p>This means a slice is a memory address with a data type and a length associated to it.</p>
+<h2 id="problem-of-pointers">Problem of Pointers</h2>
+<p>Alright, what I mean by this is the problems that arise from using pointers in
+languages such as C and C++, some of them include:</p>
+<ol>
+<li>Memory Management (allocation, deallocation)</li>
+<li>(Dereferencing) Null Pointers</li>
+<li>Dangling Pointers (pointers that point to data that has already been freed)</li>
+<li>Pointer Arithmetic (acessing invalid memory regions)</li>
+</ol>
+<p>There are a multitude of solutions to these problems, most of them debatable
+if they are any better, mostly because they just create new problems.</p>
+<p>Some of these solutions are: garbage colletion, smart pointers, bounds checking, RAII,
+compiler pointer safety warnings, etc.</p>
+<h2 id="here-come-slices">Here come Slices</h2>
+<p>Slices can offer a middle-ground solution to many of the problems associated with
+pointers, providing a little more safety while retaining the power and control that
+programmers require.</p>
+<p>Here are a few cases where Slices can help:</p>
+<ol>
+<li>Prevent buffer overflow and out-of-bounds errors</li>
+</ol>
 <ul>
-  
-  <li><a href="https://jpnt.github.io/journal/2021-07-30-disable-suspend/">Disable Suspend on Linux</a>: How to disable the suspend and hibernate services on Linux with systemd</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2021-07-31-popos-install/">Pop!_OS Install</a>: How to install Pop!_OS</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/">LEARN LINUX THE RIGHT WAY</a>: A guide to learn and teach Linux</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2022-05-30-voidlinux-steam/">Steam on Void Linux</a>: How to install the Steam gaming platform on Void</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/">Docker to Podman</a>: Docker to Podman Migration Guide</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-02-25-tweaking-tlp/">Tweaking TLP</a>: Make your battery last longer on Linux</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-06-02-inicios/">inici(os)</a>: Ideas for the next OS</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/">Linux Audio Guide</a>: Better Linux Audio Experience</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-08-19-abstraction/">Abstraction</a>: The purpose of abstraction and the \\"fullstack\\" computer model</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2024-10-28-cpu-cache/">CPU Cache</a>: Overview of CPU Cache</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-02-15-wireguard-networkmanager/">Using WireGuard in NetworkManager</a>: Quick overview how to use it</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-04-04-unix-plan9-and-linux-containers/">UNIX, Plan9 and Linux Containers</a></li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-11-06-threads/">Threads</a>: Pragmatic notes on threading concepts, APIs, and Linux implementation</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2025-12-23-architecture/">Architecture</a>: A pragmatic approach to think about and solve problems</li>
-  
-  <li><a href="https://jpnt.github.io/journal/2026-03-28-one-abstraction-to-rule-them-all/">One abstraction to rule them all</a></li>
-  
+<li>because Slices ensure that access to elements is within the valid range</li>
 </ul>
+<ol start="2">
+<li>Reduced risk of dangling pointers</li>
+</ol>
+<ul>
+<li>Slices can help manage the lifespan of memory regions more safely</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>https://zig-by-example.com/slices</li>
+<li>https://ziglang.org/documentation/master/#Slices</li>
+<li>http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/ch04-03-slices.html</li>
+<li>https://github.com/jpnt/csds/blob/main/tests/test_slice.c</li>
+</ul>
+
+
 
       </main>
     </div>

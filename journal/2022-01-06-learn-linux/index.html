@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; LEARN LINUX THE RIGHT WAY</title>
+    <meta name="description" content="A guide to learn and teach Linux"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2022-01-15-modern-software/",
+    higher: "https://jpnt.github.io/journal/2021-08-02-rust-ownership/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+LEARN LINUX THE RIGHT WAY
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#what-is-linux">WHAT IS LINUX?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#what-is-a-linux-distribution">WHAT IS A LINUX DISTRIBUTION</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#what-makes-a-linux-distribution">WHAT MAKES A LINUX DISTRIBUTION</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#difference-between-linux-distros">DIFFERENCE BETWEEN LINUX DISTROS</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#installing-software-on-a-linux-distro">INSTALLING SOFTWARE ON A LINUX DISTRO</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#flexibility-of-linux">FLEXIBILITY OF LINUX</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#introduction-to-the-terminal">INTRODUCTION TO THE TERMINAL</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#automation-and-scripting">AUTOMATION AND SCRIPTING</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#hardware-and-system-configuration">HARDWARE AND SYSTEM CONFIGURATION</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#operation-and-maintenance">OPERATION AND MAINTENANCE</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#linux-security">LINUX SECURITY</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#troubleshooting-and-diagnostics">TROUBLESHOOTING AND DIAGNOSTICS</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2022-01-06-learn-linux/#related">Related</a>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Modern Software is a disaster" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2022-01-15-modern-software&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="A guide to learn and teach Linux">LEARN LINUX THE RIGHT WAY</span><a title="Rust Ownership" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2021-08-02-rust-ownership&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<p><img src="/img/learn-linux/penguin.jpg" alt="" />
+<img src="/home/jpnt/Sync/jpnt-website/static/img/learn-linux/penguin.jpg" alt="" /></p>
+<h2 id="what-is-linux">WHAT IS LINUX?</h2>
+<ul>
+<li>Concept of a kernel
+<ul>
+<li>Hardware &lt;-&gt; Kernel &lt;-&gt; Software</li>
+<li>Monolithic kernel vs Microkernel</li>
+</ul>
+</li>
+<li>Open source nature
+<ul>
+<li>Worldwide development</li>
+<li>You can contribute to it</li>
+</ul>
+</li>
+</ul>
+<h2 id="what-is-a-linux-distribution">WHAT IS A LINUX DISTRIBUTION</h2>
+<ul>
+<li>OS based on monolithic Linux kernel</li>
+</ul>
+<h2 id="what-makes-a-linux-distribution">WHAT MAKES A LINUX DISTRIBUTION</h2>
+<ul>
+<li>Core: libc; Base: coreutils; Extras;
+<ul>
+<li>Most Linux distros differ on Extras</li>
+</ul>
+</li>
+</ul>
+<h2 id="difference-between-linux-distros">DIFFERENCE BETWEEN LINUX DISTROS</h2>
+<ul>
+<li>User-friendly vs user-centric distros</li>
+<li>Rolling release vs fixed release
+<ul>
+<li>Linux Mint vs Arch</li>
+</ul>
+</li>
+<li>Binary vs Source based</li>
+</ul>
+<h2 id="installing-software-on-a-linux-distro">INSTALLING SOFTWARE ON A LINUX DISTRO</h2>
+<ul>
+<li>A linux distro distributes packages</li>
+<li>Package manager: apt, pacman
+<ul>
+<li>´apt install firefox´</li>
+<li>´pacman -S firefox´</li>
+</ul>
+</li>
+</ul>
+<h2 id="flexibility-of-linux">FLEXIBILITY OF LINUX</h2>
+<ul>
+<li>Used on super computers
+<ul>
+<li>100% of top 500</li>
+</ul>
+</li>
+<li>Used on the server
+<ul>
+<li>96% of top 1,000,000</li>
+</ul>
+</li>
+<li>Used on personal computers</li>
+</ul>
+<h2 id="introduction-to-the-terminal">INTRODUCTION TO THE TERMINAL</h2>
+<ul>
+<li>Commands are programs
+<ul>
+<li>ls, cd, cat, pwd, whoami, echo, ps</li>
+<li>Learn every command: ´man command´</li>
+</ul>
+</li>
+<li>Everything is a file
+<ul>
+<li>Programs, devices and drivers are files</li>
+<li>´ls /dev´, ´ls /bin´</li>
+</ul>
+</li>
+</ul>
+<h2 id="automation-and-scripting">AUTOMATION AND SCRIPTING</h2>
+<ul>
+<li>Bash scripts
+<ul>
+<li>Shell vs Terminal</li>
+<li>Variables: PATH, export, env</li>
+<li>´#!/bin/bash´ vs ´#!/bin/sh´</li>
+</ul>
+</li>
+<li>Version control system (VCS)
+<ul>
+<li>Git: pull, push, commit, branch, log, status</li>
+</ul>
+</li>
+</ul>
+<h2 id="hardware-and-system-configuration">HARDWARE AND SYSTEM CONFIGURATION</h2>
+<ul>
+<li>Configure and verify network connection
+<ul>
+<li>ping, ip, nmtui, nmcli</li>
+</ul>
+</li>
+<li>Boot process
+<ul>
+<li>Bootloader: grub</li>
+<li>Boot modules and files: mkinitrd, dracut,
+initramfs, vmlinuz, grub-mkconfig</li>
+</ul>
+</li>
+<li>Install, configure and monitor kernel modules
+<ul>
+<li>dmesg, lsmod, modprobe</li>
+</ul>
+</li>
+<li>Manage storage
+<ul>
+<li>Partitions: GPT, MBR</li>
+<li>Linux file system hierarchy: ´ls /´</li>
+<li>File system types: ext4, btrfs, xfs</li>
+</ul>
+</li>
+<li>Virtualization
+<ul>
+<li>Type 1 vs type 2 hypervisor</li>
+<li>KVM: Kernel virtual machine</li>
+</ul>
+</li>
+</ul>
+<h2 id="operation-and-maintenance">OPERATION AND MAINTENANCE</h2>
+<ul>
+<li>Install, update and remove software
+<ul>
+<li>Package managers: apt, dnf, pacman</li>
+<li>Build tools: Makefile and compiling</li>
+</ul>
+</li>
+<li>Manage user and groups
+<ul>
+<li>Create: useradd, groupadd</li>
+<li>Modify: usermod, groupmod, passwd</li>
+</ul>
+</li>
+<li>Create, modify and redirect files
+<ul>
+<li>Text editors: vim, nano</li>
+<li>Read files: cat, grep, less</li>
+<li>File operations: touch, mv, cp, rm, ln</li>
+</ul>
+</li>
+<li>Manage services (systemd)
+<ul>
+<li>Using systemctl: start, stop, enable,
+status, restart</li>
+</ul>
+</li>
+<li>Linux graphical user interface
+<ul>
+<li>Servers: Xorg, Wayland</li>
+<li>DE/GUI: Gnome, KDE, xfce, Cinnamon</li>
+<li>Remote desktop: VNC, XRDP, Spice</li>
+</ul>
+</li>
+</ul>
+<h2 id="linux-security">LINUX SECURITY</h2>
+<ul>
+<li>User/group permissions
+<ul>
+<li>´ls -l´, chmod, chown, chgrp, rwx</li>
+</ul>
+</li>
+<li>Athentication methods
+<ul>
+<li>SSH: Public and Private keys</li>
+</ul>
+</li>
+<li>Firewall
+<ul>
+<li>UFW: Uncomplicated firewall</li>
+</ul>
+</li>
+<li>Compress files
+<ul>
+<li>Compression: gzip, xz, bzip2</li>
+<li>Integrety checks: MD5, SHA</li>
+</ul>
+</li>
+</ul>
+<h2 id="troubleshooting-and-diagnostics">TROUBLESHOOTING AND DIAGNOSTICS</h2>
+<ul>
+<li>Analyse system properties
+<ul>
+<li>Network: ping, nmap, netstat, tcpdump,
+wireshark, traceroute, arp, ip, nmcli</li>
+<li>Storage: iostat, df, du</li>
+<li>CPU: uptime, lscpu</li>
+<li>Memory: free, swap</li>
+</ul>
+</li>
+<li>Analyse system processes
+<ul>
+<li>ps, time, pgrep, pkill</li>
+</ul>
+</li>
+<li>Troubleshooting user issues
+<ul>
+<li>Permissions and authentication</li>
+</ul>
+</li>
+<li>Application and hardware issues
+<ul>
+<li>Storage, firewall, permission, dependencies</li>
+</ul>
+</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2024-08-18-linux-audio-guide/">Linux Audio Guide</a></strong>: Audio as specific Linux subsystem</li>
+<li><strong><a href="/journal/2021-07-30-disable-suspend/">Disable Suspend on Linux</a></strong>: Power management as Linux skill</li>
+<li><strong><a href="/journal/2025-11-01-linux-power-management/">Linux Power Management</a></strong>: Comprehensive power management</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

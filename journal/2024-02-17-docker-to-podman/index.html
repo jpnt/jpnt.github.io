@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Docker to Podman</title>
+    <meta name="description" content="Docker to Podman Migration Guide"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-02-25-tweaking-tlp/",
+    higher: "https://jpnt.github.io/journal/2023-11-01-iproute2/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Docker to Podman
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#motivation">Motivation</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#install-podman">Install Podman</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#identify-existing-containers">Identify Existing Containers</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#export-docker-container-to-a-tarball">Export Docker container to a Tarball</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#import-docker-container-into-podman">Import Docker container into Podman</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#check-imported-images">Check Imported Images</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#optional-rename-imported-image">(Optional) Rename Imported Image</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#optional-remove-dangling-docker-containers-and-images">(Optional) Remove Dangling Docker containers and images</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#start-podman-container">Start Podman Container</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-02-17-docker-to-podman/#related">Related</a>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Tweaking TLP" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-02-25-tweaking-tlp&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Docker to Podman Migration Guide">Docker to Podman</span><a title="Iproute2" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2023-11-01-iproute2&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<h3 id="motivation">Motivation</h3>
+<p>Containerization has become a common practise of modern software development;
+Docker has been a popular choice for container orchestration, however, as the
+field evolves, new tools emerge.</p>
+<p>One of those is Podman; one of the premises of it is that it does not require a
+daemon, unlike docker (dockerd).</p>
+<p>This is one of the many more reasons people are starting to migrate to podman.</p>
+<p>For more information I recommend reading: https://docs.podman.io/en/latest/</p>
+<h3 id="install-podman">Install Podman</h3>
+<p>https://podman.io/docs/installation</p>
+<h3 id="identify-existing-containers">Identify Existing Containers</h3>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> docker container ls</span><span style="color: #D3869B;"> -a</span></span></code></pre><h3 id="export-docker-container-to-a-tarball">Export Docker container to a Tarball</h3>
+<p>To import your Docker container into Podman you will need to export a tarball
+containing the filesystem of the container:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> docker export your_container_name</span><span style="color: #8EC07C;"> &gt;</span><span style="color: #B8BB26;"> your_container_name.tar</span></span></code></pre><h3 id="import-docker-container-into-podman">Import Docker container into Podman</h3>
+<p>Now that you have the tarball, you can import it into Podman:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> podman import your_container_name.tar</span></span></code></pre><h3 id="check-imported-images">Check Imported Images</h3>
+<p>Verify that your Docker container has been successfully imported into Podman:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> podman images</span></span></code></pre><h3 id="optional-rename-imported-image">(Optional) Rename Imported Image</h3>
+<p>If you want to assign a name for the imported image:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> podman tag</span><span style="color: #8EC07C;"> &lt;</span><span style="color: #B8BB26;">imported_image_i</span><span>d</span><span style="color: #8EC07C;">&gt;</span><span style="color: #B8BB26;"> your_container_name</span></span></code></pre><h3 id="optional-remove-dangling-docker-containers-and-images">(Optional) Remove Dangling Docker containers and images</h3>
+<p>If you wish to remove all Docker containers and images at once, after converting
+them to Podman:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> docker container prune</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> docker image prune</span></span></code></pre><h3 id="start-podman-container">Start Podman Container</h3>
+<p>For example:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">$</span><span style="color: #B8BB26;"> podman run</span><span style="color: #D3869B;"> -d --name</span><span style="color: #B8BB26;"> your_container_name</span><span style="color: #D3869B;"> -p</span><span style="color: #B8BB26;"> 8080:80 your_container_name</span></span></code></pre><h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-04-02-podman-networking/">Podman Networking</a></strong></li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

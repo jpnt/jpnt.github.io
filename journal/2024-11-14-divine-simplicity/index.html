@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Divine Simplicity</title>
+    <meta name="description" content="The Divine Simplicity Doctrine"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-12-29-ssh-config/",
+    higher: "https://jpnt.github.io/journal/2024-10-28-cpu-cache/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Divine Simplicity
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-11-14-divine-simplicity/#introduction-to-divine-simplicity">Introduction to Divine Simplicity</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-11-14-divine-simplicity/#biblical-foundation-for-divine-simplicity">Biblical Foundation for Divine Simplicity</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-11-14-divine-simplicity/#church-fathers-on-simplicity">Church Fathers on Simplicity</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-11-14-divine-simplicity/#divine-simplicity-and-the-doctrine-of-the-trinity">Divine Simplicity and the Doctrine of the Trinity</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-11-14-divine-simplicity/#related">Related</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Comprehensive SSH Configuration" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-12-29-ssh-config&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="The Divine Simplicity Doctrine">Divine Simplicity</span><a title="CPU Cache" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-10-28-cpu-cache&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/philosophy/">#philosophy</a></span>
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/productivity/">#productivity</a></span>
+<p><img src="/img/divine-simplicity/ai.jpg" alt="" /></p>
+<h1 id="introduction-to-divine-simplicity">Introduction to Divine Simplicity</h1>
+<p>Divine simplicity is the doctrine that God is <strong>not composed of parts</strong>,
+if that was the case then that would indicate incompleteness and a
+imperfection (God must be absolutely simple to be absolutely perfect).</p>
+<p>Unlike humans, whose attributes are separate and finite, God's attributes
+such as wisdom, love and power are not parts of Him but are fully and entirely
+unified within His essence. God is not a collection of qualities but exists in
+complete unity. Each attribute is not something God merely posesses -- He is His
+wisdom, love and power in a way that reflects His indivisible, unchangeable, and
+perfect nature.</p>
+<p>This doctrine teaches that God is a single, undivided act of existence. He is
+not made up of components or properties but exists as a perfectly unified, complete
+being without internal divisions. This unity means that God is not subject to change
+or complexity and exists as a single, all-encopassing essence, without potential for
+alteration.</p>
+<h2 id="biblical-foundation-for-divine-simplicity">Biblical Foundation for Divine Simplicity</h2>
+<h3 id="exodus-3-14">Exodus 3:14</h3>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span> God said to Moses, “I AM WHO I AM (YHWH). This is what you are to say to</span></span>
+<span class="giallo-l"><span> the Israelites: ‘I AM has sent me to you.’ ”</span></span></code></pre>
+<ul>
+<li>Points to His self-sufficiency and eternal existence</li>
+<li>Implies that God’s being is complete within itself</li>
+<li>Indicates no distinction between God's essence and (pure) existence</li>
+</ul>
+<h3 id="malachi-3-6">Malachi 3:6</h3>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span> For I am the Lord, I do not change;</span></span>
+<span class="giallo-l"><span> Therefore you are not consumed, O sons of Jacob.</span></span></code></pre>
+<ul>
+<li>Reflects God's immutability</li>
+<li>God does not change, indicating a unity without parts or division.</li>
+</ul>
+<h3 id="1-john-4-8">1 John 4:8</h3>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span> He who does not love does not know God, for God is love.</span></span></code></pre>
+<ul>
+<li>God's essence is pure love itself, rather than a mere posession of it</li>
+<li>He does not gain or lose qualities as created beings do but is consistently
+and wholly complete in every way</li>
+</ul>
+<h3 id="deuteronomy-6-4">Deuteronomy 6:4</h3>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span> Hear, O Israel: The LORD our God, the LORD is one</span></span></code></pre>
+<ul>
+<li>Affirms God's absolute unity</li>
+<li>Points to God's indivisible nature</li>
+</ul>
+<h3 id="john-4-24">John 4:24</h3>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="plain"><span class="giallo-l"><span> God is Spirit, and those who worship Him must worship in spirit and truth.</span></span></code></pre>
+<ul>
+<li>Implies God's non-composite spiritual nature</li>
+<li>Suggests no material parts</li>
+<li>Indicates God's pure actuality</li>
+<li>No potentiality or composition</li>
+</ul>
+<h2 id="church-fathers-on-simplicity">Church Fathers on Simplicity</h2>
+<p><strong>Augustine (354-430):</strong></p>
+<ul>
+<li>Declared that relation distinctions within the Trinity (Father, Son and Holy Spirit) do not
+imply any division or composition in God's essence</li>
+<li>3 Persons coexist within a single, idivisible divine essence</li>
+</ul>
+<p><strong>Basil of Caesarea (330-379):</strong></p>
+<ul>
+<li>Distinguished between God's essence and energies</li>
+<li>Maintained God's essence is absolutely simple</li>
+<li>Emphasized God's incomprehensibility</li>
+<li>Argued for simplicity while acknowledging divine activity</li>
+</ul>
+<p><strong>Hilary of Poitiers (310-367):</strong></p>
+<ul>
+<li>Stressed God's absolute unity</li>
+<li>Emphasized simplicity as key to understanding divine nature</li>
+<li>Connected simplicity to divine perfection</li>
+<li>Highlighted limits of human comprehension</li>
+</ul>
+<p><strong>Gregory of Nyssa (335-395):</strong></p>
+<ul>
+<li>Argued for God's indivisibility</li>
+<li>Connected simplicity to divine infinity</li>
+<li>Emphasized God's transcendence</li>
+<li>Linked simplicity to divine unity</li>
+</ul>
+<h2 id="divine-simplicity-and-the-doctrine-of-the-trinity">Divine Simplicity and the Doctrine of the Trinity</h2>
+<p>While divine simplicity might initially seem to conflict with the idea of the Trinity,
+Augustine and others clarified that the distinctions within the Trinity
+(Father, Son, Holy Spirit) do not imply division. The Persons are relational
+distinctions within the single, undivided divine essence, maintaining
+simplicity while allowing for relational differentiation. Thus divine
+simplicy remains by affirming that these 3 Persons coexist within a single,
+indivisible divine essence.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><strong><a href="/journal/2025-12-12-focus/">Focus</a></strong>: Complementary perspectives on simplicity</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>

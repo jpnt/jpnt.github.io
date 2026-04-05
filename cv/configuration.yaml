@@ -1,0 +1,75 @@
+header:
+  name: "João Pinto"
+  website: "https://jpnt.github.io/"
+  websiteDisplayName: "jpnt.github.io"
+  email: "mailto:joaopintojpgp@gmail.com"
+  phone: "+351 927460321"
+  github: "Github: https://github.com/jpnt"
+  linkedin: "Linkedin: https://linkedin.com/in/jpgpinto/"
+
+education:
+  - location: "Porto, Portugal"
+    name: "Instituto Superior de Engenharia do Porto (ISEP)"
+    date: "2025-Present (Expected 2027)"
+    degree: "Master's Degree in Critical Computer Systems (Mestrado em Engenharia Sistemas Computacionais Críticos)"
+  - location: "Porto, Portugal"
+    name: "Instituto Superior de Engenharia do Porto (ISEP)"
+    date: "2022-2025"
+    degree: "Bachelor's Degree in Computer Engineering (Licenciatura em Engenharia Informática)"
+employment:
+  - location: "Porto, Portugal"
+    company: "Sysnovare Innovative Solutions S.A."
+    date: "February 2025 - July 2025"
+    responsibilities:
+      - "Deployed containerized applications across development, staging, and production environments"
+      - "Documented security comparison between Docker and Podman for enterprise adoption"
+      - "Built GitHub Actions workflows for automated container image building and deployment"
+professional-development:
+  - Software Quality (ISEP, 2022); Capture-the-Flag Cybersecurity Hackathon (ISEP, 2024)
+  - Microcontroller Embedded Systems Programming; SQL Bootcamp; Linux System Programming
+projects:
+  - title: "RVOS (RISC-V FreeRTOS Analysis)"
+    website: "https://github.com/jpnt/RVOS"
+    contributions:
+      - "Analyzed FreeRTOS context switch implementation on RISC-V ISA"
+      - "Measured syscall overhead and identified scheduler bottlenecks"
+      - "Evaluated FreeRTOS data structure efficiency for embedded systems"
+  - title: "Surgical Management Fullstack Project (LAPR5)"
+    website: "https://github.com/jpnt/surgicalmanagement-back-end"
+    contributions:
+      - "Deployed multi-component system to Azure using Ansible and Docker"
+      - "Implemented .NET backend with Clean/Onion Architecture and SQL Server/EF Core"
+      - "Configured CI/CD pipeline for .NET backend, Node.js backend, and React frontend"
+      - "Designed RESTful API with authentication and data validation layers with DDD"
+  - title: "Applications File Bot (Parallel File Processing System)"
+    website: "https://github.com/jpnt/LAPR4-SCOMP"
+    contributions:
+      - "Developed multi-process file monitoring system using POSIX signals and pipes"
+      - "Implemented parent-child process architecture with configurable worker processes"
+      - "Created file distribution system for processing recruitment applications"
+      - "Built signal handling for SIGINT termination and inter-process communication"
+skills:
+  primary:
+    - "C"
+    - "Linux"
+    - "Git"
+    - "Shell Scripting"
+    - "Docker/Podman"
+    - "CI/CD"
+  secondary:
+    - "Java"
+    - "C#"
+    - "Go"
+    - "Python"
+    - "SQL"
+    - "JavaScript/TypeScript"
+    - "React"
+    - ".NET"
+    - "Node.js"
+    - "Ansible"
+  exposure:
+    - "Rust"
+    - "FreeRTOS"
+    - "Azure"
+    - "REST API Design"
+    - "Kubernetes"

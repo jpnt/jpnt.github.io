@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="manifest" href="https://jpnt.github.io/manifest.json">
+    <meta name="theme-color" content="#786"/>
+    <title>My personal blog &middot; Linux Audio Guide</title>
+    <meta name="description" content="Better Linux Audio Experience"/>
+    <link rel="icon" type="image/x-icon" href="https://jpnt.github.io/icon.svg">
+    <link href="https://jpnt.github.io/olivine.css" rel="stylesheet"/>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/></noscript><script>
+  // Import Zola variables to Javascript
+  var olivine = {
+    base_url: "https://jpnt.github.io",
+    lower: "https://jpnt.github.io/journal/2024-08-19-abstraction/",
+    higher: "https://jpnt.github.io/journal/2024-06-15-slices/",
+  };
+</script>
+
+    <script src="https://jpnt.github.io/olivine.js"></script>
+    
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      macros: {br: '\\\\'},
+      packages: {'[+]': ['amscd']}
+    },
+  };
+  for (oper of ['id', 'im', 'tr', 'coker', 'Hom', 'End', 'Aut', 'Ext', 'Tor',
+    'Gal', 'Spec', 'Spf']) {
+    MathJax.tex.macros[oper] = '\\operatorname{' + oper + '}';
+  }
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    
+
+  </head>
+
+  <body class="leftbar">
+    <script>
+      setSidebar();
+    </script>
+
+    <header>
+      <div><div><img src="https://jpnt.github.io/icon.svg" width="24" height="32" onclick="toggleBar('leftbar')" alt="Olivine logo" style="display:block;"></img></div>
+<div dir="rtl" id="olivine-breadcrumb">
+<a href="https://jpnt.github.io/">jpnt blog</a>
+<span> / </span>
+<a href="https://jpnt.github.io/journal/">Journal</a>
+<span> / </span>
+Linux Audio Guide
+</div>
+
+<div onclick="toggleTheme()"><span class="olivine-icon"><i class="fa-solid fa-palette"></i></span></div>
+<div onclick="toggleBar('rightbar')"><span class="olivine-icon"><i class="fa-solid fa-book"></i></span></div>
+
+      </div>
+    </header>
+
+    <div class="sidebar" id="leftbar">
+      <div class="sidebar-content"><ul class="hidden" id="olivine-directory">
+  <li><a href=".."><span class="olivine-icon"><i class="fa-solid fa-turn-up"></i></span> ..</a></li>
+</ul>
+<hr noshade style="width:100%;">
+<ul>
+  <li><a id="olivine-today"><span class="olivine-icon"><i class="fa-regular fa-calendar-check"></i></span> Today</a></li>
+  <li><a id="olivine-yesterday"><span class="olivine-icon"><i class="fa-regular fa-calendar-minus"></i></span> Yesterday</a></li>
+  <li><a id="olivine-calendar" href="https://jpnt.github.io/journal"><span class="olivine-icon"><i class="fa-regular fa-calendar-days"></i></span> All entries</a></li>
+  <script>setJournal();</script>
+</ul>
+
+
+<ul>
+  <li><a href="https://jpnt.github.io/olivine-internal-graph/"><span class="olivine-icon"><i class="fa-solid fa-diagram-project"></i></span> Graph view</a></li>
+</ul>
+
+<ul><li><a href="https://jpnt.github.io/tags/"><span class="olivine-icon"><i class="fa-solid fa-tags"></i></span>Tags</a></li></ul>
+
+      </div>
+    </div>
+
+    <div class="sidebar" id="rightbar">
+      <div class="sidebar-content">
+<div id="olivine-toc">
+<h3>Table of contents</h3>
+<ul>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#understanding-current-audio-solutions">Understanding Current Audio Solutions</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#understanding-the-stack">Understanding the Stack</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#so-which-one-do-i-use">So which one do I use?</a>
+  </li>
+  <li>
+    <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#pipewire">PipeWire</a>
+    <li><ul>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#pipewire-prerequisites">PipeWire prerequisites</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#pipewire-setup">PipeWire setup</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#bluetooth">Bluetooth</a>
+      </li>
+      <li>
+        <a href="https://jpnt.github.io/journal/2024-08-18-linux-audio-guide/#resources">Resources</a>
+      </li>
+    </ul></li>
+  </li>
+</ul>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div id="main-area">
+      <main><h1><a title="Abstraction" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-08-19-abstraction&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-left"></i></span></a><span title="Better Linux Audio Experience">Linux Audio Guide</span><a title="Slices" href="https:&#x2F;&#x2F;jpnt.github.io&#x2F;journal&#x2F;2024-06-15-slices&#x2F;"><span class="olivine-icon"><i class="fa-solid fa-angle-right"></i></span></a></h1>
+
+<span class="olivine-tag"><a href="https://jpnt.github.io/tags/systems/">#systems</a></span>
+<h1 id="understanding-current-audio-solutions">Understanding Current Audio Solutions</h1>
+<p>There are three commonly discussed audio abstraction layers in Linux:</p>
+<ol>
+<li>Pulseaudio</li>
+</ol>
+<ul>
+<li>Created as a modern replacement for Enlightenment Sound Daemon (ESD),
+it provides advanced features like per-application volume control and network audio streaming.</li>
+</ul>
+<ol start="2">
+<li>Jack</li>
+</ol>
+<ul>
+<li>Designed as a professional audio server for Linux, it offers low-latency audio
+processing and precise control over audio inputs and outputs, making it suitable
+for professional audio work.</li>
+</ul>
+<ol start="3">
+<li>Pipewire</li>
+</ol>
+<ul>
+<li>The newest abstraction layer, Pipewire integrates seamlessly with both
+Pulseaudio and Jack.</li>
+</ul>
+<h1 id="understanding-the-stack">Understanding the Stack</h1>
+<ol>
+<li>Kernel layer</li>
+</ol>
+<p>The kernel layer provides hardware abstraction. Advanced Linux Sound Architecture (ALSA)
+is the primary component that interacts with sound cards and manages communication,
+replacing the older Open Sound System (OSS). Thus, all three abstraction layers
+previously refered must communicate with ALSA.</p>
+<ol start="2">
+<li>Middleware/Backend layer</li>
+</ol>
+<p>ALSA Library (libasound): Provides a userspace interface to interact with ALSA.</p>
+<p>Problem: ALSA is specific to Linux. What about other operating systems?</p>
+<p>Solution: The need for cross-platform support led to the creation of sound servers like Pulseaudio,
+which works on UNIX like operating systems and even on Windows.</p>
+<h1 id="so-which-one-do-i-use">So which one do I use?</h1>
+<p>You might be asking if you really need sound servers/abtraction layers over ALSA
+to get audio working on Linux. The short answer is: <strong>no</strong>. The correct answer
+is: <strong>you should use a sound server</strong> (spoiler: PipeWire).</p>
+<p>End users can directly use ALSA if they wish and even have pseudo-pulseaudio emulation
+with <code>apulse</code> software.</p>
+<p>But, and this is according to my personal experience, it is highly recommended
+that you use a sound server, specifically PipeWire and I will explain you why.</p>
+<p>By default, ALSA comes with a very poor configuration, and does not (by default) support
+mixing of multiple streams. You can configure ALSA with various
+plugins that enable this feature such as <code>dmix</code>, <code>dsnoop</code>, etc.</p>
+<p>It is a very tiresome thing to do because even if you apparently configure things
+properly you will always come accross some problem sooner or later.</p>
+<p>Pulseaudio does one thing well: it sets a nice ALSA configuration by default,
+using its own plugin called <code>pulse</code>, which has multiple stream mixing without
+having to configure a single thing.</p>
+<p>However (and once again I will speak from experience) when you start doing more
+things such as bluetooth audio or want to re-route audio you will find yourself
+stuck with pulseaudio, because when it was initally designed it did not prioritize
+these things. If one wanted to do professional audio, one had to install JACK most
+likely with pulseaudio already installed, this was a mess.</p>
+<h1 id="pipewire">PipeWire</h1>
+<p>PipeWire aims to replace both PulseAudio and JACK by providing a unified solution
+for audio and video handling.</p>
+<p>It provides a handful of benefits such as:</p>
+<ol>
+<li>ALSA, PulseAudio and JACK compatibility</li>
+<li>Low-latency audio</li>
+<li>Simplified setup</li>
+<li>Bluetooth audio support</li>
+<li>Modular architecture</li>
+</ol>
+<p>Therefore, if you want the best possible audio experience on Linux, install PipeWire.</p>
+<h2 id="pipewire-prerequisites">PipeWire prerequisites</h2>
+<p>PipeWire requires three things to work properly:</p>
+<ol>
+<li><strong>D-Bus user</strong> session bus</li>
+</ol>
+<ul>
+<li>for inter-process communication and session management</li>
+</ul>
+<ol start="2">
+<li><strong>XDG_RUNTIME_DIR</strong> environment variable</li>
+</ol>
+<ul>
+<li>for creating a runtime directory to store temporary files and session-specific data</li>
+</ul>
+<ol start="3">
+<li>Pipewire session and policy manager</li>
+</ol>
+<ul>
+<li><code>wireplumber</code> is the most commonly used</li>
+</ul>
+<hr />
+<p>NOTE: If your DE/WM/Wayland compositor is not configured to provide a D-Bus user session bus,
+you have to run a dbus session alongside it:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># .xinitrc</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">exec</span><span style="color: #B8BB26;"> dbus-run-session mywm</span></span></code></pre>
+<p>NOTE: To set <code>XDG_RUNTIME_DIR</code> manually you may paste the following in your .profile:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #32302F;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># .profile</span></span>
+<span class="giallo-l"><span style="color: #FB4934;">if</span><span style="color: #FE8019;"> [</span><span style="color: #FB4934;"> -z</span><span style="color: #A89984;"> &quot;</span><span style="color: #83A598;">$XDG_RUNTIME_DIR</span><span style="color: #A89984;">&quot;</span><span style="color: #FE8019;"> ]</span><span style="color: #A89984;">;</span><span style="color: #FB4934;"> then</span></span>
+<span class="giallo-l"><span style="color: #83A598;">	XDG_RUNTIME_DIR</span><span style="color: #8EC07C;">=</span><span style="color: #A89984;">&quot;</span><span style="color: #B8BB26;">/tmp/</span><span style="color: #A89984;">$(</span><span style="color: #FABD2F;">id</span><span style="color: #D3869B;"> -u</span><span style="color: #A89984;">)</span><span style="color: #B8BB26;">-runtime-dir</span><span style="color: #A89984;">&quot;</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">	mkdir</span><span style="color: #D3869B;"> -pm 0700</span><span style="color: #A89984;"> &quot;</span><span style="color: #83A598;">$XDG_RUNTIME_DIR</span><span style="color: #A89984;">&quot;</span></span>
+<span class="giallo-l"><span style="color: #FE8019;">	export</span><span style="color: #83A598;"> XDG_RUNTIME_DIR</span></span>
+<span class="giallo-l"><span style="color: #FB4934;">fi</span></span></code></pre>
+<hr />
+<h2 id="pipewire-setup">PipeWire setup</h2>
+<p>Install <code>pipewire</code> and a PipeWire session manager <code>wireplumber</code>. Additionally, I recommend
+installing <code>alsa-pipewire</code> to synchronize ALSA audio control with PipeWire's.</p>
+<h2 id="bluetooth">Bluetooth</h2>
+<p>Install <code>bluez</code> and enable <code>bluetoothd</code> to get access to bluetoothctl and other utilities,
+PipeWire bluetooth support is built-in and works really well in my experience, with full
+support for LDAC (A2DP sink) for my Sony WH-1000XM4.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>https://docs.voidlinux.org/config/media/pipewire.html</li>
+<li>https://wiki.archlinux.org/title/PipeWire</li>
+<li>https://docs.voidlinux.org/config/bluetooth.html</li>
+<li>https://wiki.archlinux.org/title/Bluetooth</li>
+<li>https://pipewire.org/</li>
+</ul>
+
+
+
+      </main>
+    </div>
+    <div id="help-window" style="display:none;">
+  <div>
+    <h1>Keyboard shortcuts</h1>
+    <div id="help-shortcuts">
+      <div><code>j</code> scroll down</div>
+      <div><code>k</code> scroll up</div>
+      <div><code>g</code> scroll to top</div>
+      <div><code>G</code> scroll to bottom</div>
+      <div><code>h</code> go to previous sibling</div>
+      <div><code>l</code> go to next sibling</div>
+      <div><code>u</code> go to parent</div>
+      <div><code>U</code> go to root</div>
+      <div><code>r</code> reload page</div>
+      <div><code>H</code> go back in history</div>
+      <div><code>L</code> go forward in history</div>
+      <div><code>t</code> toggle theme</div>
+      <div><code>[</code> toggle left sidebar</div>
+      <div><code>]</code> toggle right sidebar</div>
+      <div><code>f</code> open and close link options</div>
+      <div><code>/</code> focus searchbar</div>
+      <div><code>?</code> toggle keyboard shortcuts</div>
+      <div><code>Esc</code> focus document</div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  
+</html>
